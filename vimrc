@@ -43,7 +43,7 @@ inoremap <C-U> <C-G>u<C-U>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
- set mouse=a
+" set mouse=a
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
@@ -104,7 +104,7 @@ inoremap <Nul> <C-x><C-o>
 let OmniCpp_ShowPrototypeInAbbr = 1
 
 
-let Tlist_Auto_Open = 1
+"let Tlist_Auto_Open = 1
 
 
 set directory=~/.vim/swp
@@ -128,7 +128,7 @@ set noerrorbells "do not ring error bells
 set number
 set showmode
 set guifont=Bitstream\ Vera\ Sans\ Mono\ 7
-colorscheme wombat
+colorscheme delek "slate delek zell wombat rdark
 set iminsert=0
 set imsearch=0
 inoremap <ESC> <ESC>:set iminsert=0<CR>:echo<CR>
@@ -195,6 +195,14 @@ let g:SrcExpl_updateTagsKey = "<F12>"
 
 " source $VIMRUNTIME/mswin.vim
 " behave mswin
+
+autocmd BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+autocmd BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+autocmd BufRead *.vala set smartindent
+autocmd BufRead *.vala set cindent
+au BufRead,BufNewFile *.vala            setfiletype vala
+au BufRead,BufNewFile *.vapi            setfiletype vala
+
 
 " My Setting End ------------------------------------------
 

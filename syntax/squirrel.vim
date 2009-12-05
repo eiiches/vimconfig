@@ -102,17 +102,17 @@ syntax keyword sqStorageClass	static
 syntax keyword sqConstant		null
 syntax keyword sqBoolean		true
 syntax keyword sqBoolean		false
-syntax region  sqComment		start=+/¥*+ end=+¥*/+
-syntax region  sqComment		start="//" skip="¥¥$" end="$" keepend
-syntax region  sqString			start=+"+ skip=+¥¥"+ end=+"+
-syntax region  sqString			start=+@"+ skip=+¥¥"+ end=+"+
+syntax region  sqComment		start=+/\*+ end=+\*/+
+syntax region  sqComment		start="//" skip="\\$" end="$" keepend
+syntax region  sqString			start=+"+ skip=+\\"+ end=+"+
+syntax region  sqString			start=+@"+ skip=+\\"+ end=+"+
 syntax region  sqCharacter		start=+'+ end=+'+
-syntax match   sqFloat			+¥d*¥.¥d*+
-syntax match   sqFloat			+¥d*¥.¥d*e¥d*+
-syntax match   sqFloat			+¥d*¥.¥d*e-¥d*+
-syntax match   sqNumber			+[1-9]¥d*+
-syntax match   sqNumber			+[0x]¥d*+
-syntax match   sqNumber			+[0]¥d*+
+syntax match   sqFloat			+\d*\.\d*+
+syntax match   sqFloat			+\d*\.\d*e\d*+
+syntax match   sqFloat			+\d*\.\d*e-\d*+
+syntax match   sqNumber			+[1-9]\d*+
+syntax match   sqNumber			+[0x]\d*+
+syntax match   sqNumber			+[0]\d*+
 
 
 :highlight link sqStatement     Statement

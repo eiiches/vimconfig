@@ -1,0 +1,2 @@
+DrawIt.vba: call delete('/home/eiichi/.vim/plugin/DrawItPlugin.vim')|call delete('/home/eiichi/.vim/plugin/cecutil.vim')|call delete('/home/eiichi/.vim/autoload/DrawIt.vim')|call delete('/home/eiichi/.vim/doc/DrawIt.txt')
+twitvim-0.4.2.vba: call delete('/home/eiichi/.vim/plugin/twitvim.vim')|call delete('/home/eiichi/.vim/doc/twitvim.txt')
