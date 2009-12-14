@@ -1,10 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/etc/apt'
-let g:netrw_dirhist_2='/home/eiichi/src/telepathy-butterfly-0.5.2/butterfly'
-let g:netrw_dirhist_3='/home/eiichi/techeng'
-let g:netrw_dirhist_4='/home/eiichi'
-let g:netrw_dirhist_5='/home/eiichi/.mission-control'
-let g:netrw_dirhist_6='/home/eiichi'
-let g:netrw_dirhist_7='/home/eiichi/.xpra'
-let g:netrw_dirhist_8='/etc/wpa_supplicant'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/home/eiichi/.gem/ruby/1.8/gems/rsruby-0.5.1.1/lib/rsruby'
