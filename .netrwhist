@@ -1,3 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
-let g:netrw_dirhist_1='/home/eiichi/.gem/ruby/1.8/gems/rsruby-0.5.1.1/lib/rsruby'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/eiichi/Desktop/railgun'
+let g:netrw_dirhist_2='/home/eiichi/test'
+let g:netrw_dirhist_3='/home/eiichi'
+let g:netrw_dirhist_4='/home/eiichi/test'
