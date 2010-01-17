@@ -1,0 +1,15 @@
+flag
+getopt
+getopt_long
+getopt_long_only
+has_arg
+name
+no_argument
+optarg
+opterr
+optind
+option
+optional_argument
+optopt
+required_argument
+val

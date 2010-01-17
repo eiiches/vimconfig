@@ -1,0 +1,89 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CLK_TCK	/usr/include/time.h	47;"	d
+_TIME_H	/usr/include/time.h	27;"	d
+__clock_t_defined	/usr/include/time.h	54;"	d
+__clockid_t_defined	/usr/include/time.h	87;"	d
+__clockid_time_t	/usr/include/time.h	95;"	d
+__daylight	/usr/include/time.h	/^extern int __daylight;		\/* If daylight-saving time is ever in use.  *\/$/;"	x
+__isleap	/usr/include/time.h	304;"	d
+__need_NULL	/usr/include/time.h	37;"	d
+__need_clock_t	/usr/include/time.h	67;"	d
+__need_size_t	/usr/include/time.h	36;"	d
+__need_time_t	/usr/include/time.h	83;"	d
+__need_timer_t	/usr/include/time.h	107;"	d
+__need_timespec	/usr/include/time.h	127;"	d
+__pid_t_defined	/usr/include/time.h	175;"	d
+__time_t_defined	/usr/include/time.h	70;"	d
+__timer_t_defined	/usr/include/time.h	99;"	d
+__timespec_defined	/usr/include/time.h	114;"	d
+__timezone	/usr/include/time.h	/^extern long int __timezone;	\/* Seconds west of UTC.  *\/$/;"	x
+__tm_gmtoff	/usr/include/time.h	/^  long int __tm_gmtoff;		\/* Seconds east of UTC.  *\/$/;"	m	struct:tm
+__tm_zone	/usr/include/time.h	/^  __const char *__tm_zone;	\/* Timezone abbreviation.  *\/$/;"	m	struct:tm
+__tzname	/usr/include/time.h	/^extern char *__tzname[2];	\/* Current timezone names.  *\/$/;"	x
+asctime	/usr/include/time.h	/^extern char *asctime (__const struct tm *__tp) __THROW;$/;"	p
+asctime_r	/usr/include/time.h	/^extern char *asctime_r (__const struct tm *__restrict __tp,$/;"	p
+clock	/usr/include/time.h	/^extern clock_t clock (void) __THROW;$/;"	p
+clock_getcpuclockid	/usr/include/time.h	/^extern int clock_getcpuclockid (pid_t __pid, clockid_t *__clock_id) __THROW;$/;"	p
+clock_getres	/usr/include/time.h	/^extern int clock_getres (clockid_t __clock_id, struct timespec *__res) __THROW;$/;"	p
+clock_gettime	/usr/include/time.h	/^extern int clock_gettime (clockid_t __clock_id, struct timespec *__tp) __THROW;$/;"	p
+clock_nanosleep	/usr/include/time.h	/^extern int clock_nanosleep (clockid_t __clock_id, int __flags,$/;"	p
+clock_settime	/usr/include/time.h	/^extern int clock_settime (clockid_t __clock_id, __const struct timespec *__tp)$/;"	p
+clock_t	/usr/include/time.h	/^typedef __clock_t clock_t;$/;"	t
+clockid_t	/usr/include/time.h	/^typedef __clockid_t clockid_t;$/;"	t
+ctime	/usr/include/time.h	/^extern char *ctime (__const time_t *__timer) __THROW;$/;"	p
+ctime_r	/usr/include/time.h	/^extern char *ctime_r (__const time_t *__restrict __timer,$/;"	p
+daylight	/usr/include/time.h	/^extern int daylight;$/;"	x
+difftime	/usr/include/time.h	/^extern double difftime (time_t __time1, time_t __time0)$/;"	p
+dysize	/usr/include/time.h	/^extern int dysize (int __year) __THROW  __attribute__ ((__const__));$/;"	p
+getdate	/usr/include/time.h	/^extern struct tm *getdate (__const char *__string);$/;"	p
+getdate_err	/usr/include/time.h	/^extern int getdate_err;$/;"	x
+getdate_r	/usr/include/time.h	/^extern int getdate_r (__const char *__restrict __string,$/;"	p
+gmtime	/usr/include/time.h	/^extern struct tm *gmtime (__const time_t *__timer) __THROW;$/;"	p
+gmtime_r	/usr/include/time.h	/^extern struct tm *gmtime_r (__const time_t *__restrict __timer,$/;"	p
+it_interval	/usr/include/time.h	/^    struct timespec it_interval;$/;"	m	struct:itimerspec	typeref:struct:itimerspec::timespec
+it_value	/usr/include/time.h	/^    struct timespec it_value;$/;"	m	struct:itimerspec	typeref:struct:itimerspec::timespec
+itimerspec	/usr/include/time.h	/^struct itimerspec$/;"	s
+localtime	/usr/include/time.h	/^extern struct tm *localtime (__const time_t *__timer) __THROW;$/;"	p
+localtime_r	/usr/include/time.h	/^extern struct tm *localtime_r (__const time_t *__restrict __timer,$/;"	p
+mktime	/usr/include/time.h	/^extern time_t mktime (struct tm *__tp) __THROW;$/;"	p
+nanosleep	/usr/include/time.h	/^extern int nanosleep (__const struct timespec *__requested_time,$/;"	p
+pid_t	/usr/include/time.h	/^typedef __pid_t pid_t;$/;"	t
+sigevent	/usr/include/time.h	/^struct sigevent;$/;"	x
+stime	/usr/include/time.h	/^extern int stime (__const time_t *__when) __THROW;$/;"	p
+strftime	/usr/include/time.h	/^extern size_t strftime (char *__restrict __s, size_t __maxsize,$/;"	p
+strftime_l	/usr/include/time.h	/^extern size_t strftime_l (char *__restrict __s, size_t __maxsize,$/;"	p
+strptime	/usr/include/time.h	/^extern char *strptime (__const char *__restrict __s,$/;"	p
+strptime_l	/usr/include/time.h	/^extern char *strptime_l (__const char *__restrict __s,$/;"	p
+time	/usr/include/time.h	/^extern time_t time (time_t *__timer) __THROW;$/;"	p
+time_t	/usr/include/time.h	/^typedef __time_t time_t;$/;"	t
+timegm	/usr/include/time.h	/^extern time_t timegm (struct tm *__tp) __THROW;$/;"	p
+timelocal	/usr/include/time.h	/^extern time_t timelocal (struct tm *__tp) __THROW;$/;"	p
+timer_create	/usr/include/time.h	/^extern int timer_create (clockid_t __clock_id,$/;"	p
+timer_delete	/usr/include/time.h	/^extern int timer_delete (timer_t __timerid) __THROW;$/;"	p
+timer_getoverrun	/usr/include/time.h	/^extern int timer_getoverrun (timer_t __timerid) __THROW;$/;"	p
+timer_gettime	/usr/include/time.h	/^extern int timer_gettime (timer_t __timerid, struct itimerspec *__value)$/;"	p
+timer_settime	/usr/include/time.h	/^extern int timer_settime (timer_t __timerid, int __flags,$/;"	p
+timer_t	/usr/include/time.h	/^typedef __timer_t timer_t;$/;"	t
+timespec	/usr/include/time.h	/^struct timespec$/;"	s
+timezone	/usr/include/time.h	/^extern long int timezone;$/;"	x
+tm	/usr/include/time.h	/^struct tm$/;"	s
+tm_gmtoff	/usr/include/time.h	/^  long int tm_gmtoff;		\/* Seconds east of UTC.  *\/$/;"	m	struct:tm
+tm_hour	/usr/include/time.h	/^  int tm_hour;			\/* Hours.	[0-23] *\/$/;"	m	struct:tm
+tm_isdst	/usr/include/time.h	/^  int tm_isdst;			\/* DST.		[-1\/0\/1]*\/$/;"	m	struct:tm
+tm_mday	/usr/include/time.h	/^  int tm_mday;			\/* Day.		[1-31] *\/$/;"	m	struct:tm
+tm_min	/usr/include/time.h	/^  int tm_min;			\/* Minutes.	[0-59] *\/$/;"	m	struct:tm
+tm_mon	/usr/include/time.h	/^  int tm_mon;			\/* Month.	[0-11] *\/$/;"	m	struct:tm
+tm_sec	/usr/include/time.h	/^  int tm_sec;			\/* Seconds.	[0-60] (1 leap second) *\/$/;"	m	struct:tm
+tm_wday	/usr/include/time.h	/^  int tm_wday;			\/* Day of week.	[0-6] *\/$/;"	m	struct:tm
+tm_yday	/usr/include/time.h	/^  int tm_yday;			\/* Days in year.[0-365]	*\/$/;"	m	struct:tm
+tm_year	/usr/include/time.h	/^  int tm_year;			\/* Year	- 1900.  *\/$/;"	m	struct:tm
+tm_zone	/usr/include/time.h	/^  __const char *tm_zone;	\/* Timezone abbreviation.  *\/$/;"	m	struct:tm
+tv_nsec	/usr/include/time.h	/^    long int tv_nsec;		\/* Nanoseconds.  *\/$/;"	m	struct:timespec
+tv_sec	/usr/include/time.h	/^    __time_t tv_sec;		\/* Seconds.  *\/$/;"	m	struct:timespec
+tzname	/usr/include/time.h	/^extern char *tzname[2];$/;"	x
+tzset	/usr/include/time.h	/^extern void tzset (void) __THROW;$/;"	p

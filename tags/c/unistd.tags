@@ -1,0 +1,204 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+F_LOCK	/usr/include/unistd.h	1043;"	d
+F_OK	/usr/include/unistd.h	257;"	d
+F_TEST	/usr/include/unistd.h	1045;"	d
+F_TLOCK	/usr/include/unistd.h	1044;"	d
+F_ULOCK	/usr/include/unistd.h	1042;"	d
+L_INCR	/usr/include/unistd.h	292;"	d
+L_SET	/usr/include/unistd.h	291;"	d
+L_XTND	/usr/include/unistd.h	293;"	d
+R_OK	/usr/include/unistd.h	254;"	d
+SEEK_CUR	/usr/include/unistd.h	285;"	d
+SEEK_END	/usr/include/unistd.h	286;"	d
+SEEK_SET	/usr/include/unistd.h	284;"	d
+STDERR_FILENO	/usr/include/unistd.h	185;"	d
+STDIN_FILENO	/usr/include/unistd.h	183;"	d
+STDOUT_FILENO	/usr/include/unistd.h	184;"	d
+TEMP_FAILURE_RETRY	/usr/include/unistd.h	1068;"	d
+W_OK	/usr/include/unistd.h	255;"	d
+X_OK	/usr/include/unistd.h	256;"	d
+_POSIX2_C_BIND	/usr/include/unistd.h	44;"	d
+_POSIX2_C_DEV	/usr/include/unistd.h	48;"	d
+_POSIX2_LOCALEDEF	/usr/include/unistd.h	56;"	d
+_POSIX2_SW_DEV	/usr/include/unistd.h	52;"	d
+_POSIX2_VERSION	/usr/include/unistd.h	40;"	d
+_POSIX_VERSION	/usr/include/unistd.h	34;"	d
+_UNISTD_H	/usr/include/unistd.h	24;"	d
+_XOPEN_CRYPT	/usr/include/unistd.h	81;"	d
+_XOPEN_ENH_I18N	/usr/include/unistd.h	85;"	d
+_XOPEN_LEGACY	/usr/include/unistd.h	88;"	d
+_XOPEN_UNIX	/usr/include/unistd.h	78;"	d
+_XOPEN_VERSION	/usr/include/unistd.h	60;"	d
+_XOPEN_XCU_VERSION	/usr/include/unistd.h	70;"	d
+_XOPEN_XPG2	/usr/include/unistd.h	73;"	d
+_XOPEN_XPG3	/usr/include/unistd.h	74;"	d
+_XOPEN_XPG4	/usr/include/unistd.h	75;"	d
+__REDIRECT	/usr/include/unistd.h	/^extern int __REDIRECT (lockf, (int __fd, int __cmd, __off64_t __len),$/;"	p
+__REDIRECT	/usr/include/unistd.h	/^extern ssize_t __REDIRECT (pread, (int __fd, void *__buf, size_t __nbytes,$/;"	p
+__REDIRECT	/usr/include/unistd.h	/^extern ssize_t __REDIRECT (pwrite, (int __fd, __const void *__buf,$/;"	p
+__REDIRECT_NTH	/usr/include/unistd.h	/^extern __off64_t __REDIRECT_NTH (lseek,$/;"	p
+__REDIRECT_NTH	/usr/include/unistd.h	/^extern __pid_t __REDIRECT_NTH (getpgrp, (__pid_t __pid), __getpgid);$/;"	p
+__REDIRECT_NTH	/usr/include/unistd.h	/^extern int __REDIRECT_NTH (ftruncate, (int __fd, __off64_t __length),$/;"	p
+__REDIRECT_NTH	/usr/include/unistd.h	/^extern int __REDIRECT_NTH (setpgrp, (__pid_t __pid, __pid_t __pgrp), setpgid);$/;"	p
+__REDIRECT_NTH	/usr/include/unistd.h	/^extern int __REDIRECT_NTH (truncate,$/;"	p
+__environ	/usr/include/unistd.h	/^extern char **__environ;$/;"	x
+__getpgid	/usr/include/unistd.h	/^extern __pid_t __getpgid (__pid_t __pid) __THROW;$/;"	p
+__gid_t_defined	/usr/include/unistd.h	206;"	d
+__intptr_t_defined	/usr/include/unistd.h	241;"	d
+__need_NULL	/usr/include/unistd.h	198;"	d
+__need_getopt	/usr/include/unistd.h	850;"	d
+__need_size_t	/usr/include/unistd.h	197;"	d
+__off64_t_defined	/usr/include/unistd.h	224;"	d
+__off_t_defined	/usr/include/unistd.h	220;"	d
+__pid_t_defined	/usr/include/unistd.h	234;"	d
+__socklen_t_defined	/usr/include/unistd.h	248;"	d
+__ssize_t_defined	/usr/include/unistd.h	194;"	d
+__uid_t_defined	/usr/include/unistd.h	211;"	d
+__useconds_t_defined	/usr/include/unistd.h	229;"	d
+_exit	/usr/include/unistd.h	/^extern void _exit (int __status) __attribute__ ((__noreturn__));$/;"	p
+access	/usr/include/unistd.h	/^extern int access (__const char *__name, int __type) __THROW __nonnull ((1));$/;"	p
+acct	/usr/include/unistd.h	/^extern int acct (__const char *__name) __THROW;$/;"	p
+alarm	/usr/include/unistd.h	/^extern unsigned int alarm (unsigned int __seconds) __THROW;$/;"	p
+brk	/usr/include/unistd.h	/^extern int brk (void *__addr) __THROW __wur;$/;"	p
+chdir	/usr/include/unistd.h	/^extern int chdir (__const char *__path) __THROW __nonnull ((1)) __wur;$/;"	p
+chown	/usr/include/unistd.h	/^extern int chown (__const char *__file, __uid_t __owner, __gid_t __group)$/;"	p
+chroot	/usr/include/unistd.h	/^extern int chroot (__const char *__path) __THROW __nonnull ((1)) __wur;$/;"	p
+close	/usr/include/unistd.h	/^extern int close (int __fd);$/;"	p
+confstr	/usr/include/unistd.h	/^extern size_t confstr (int __name, char *__buf, size_t __len) __THROW;$/;"	p
+crypt	/usr/include/unistd.h	/^extern char *crypt (__const char *__key, __const char *__salt)$/;"	p
+ctermid	/usr/include/unistd.h	/^extern char *ctermid (char *__s) __THROW;$/;"	p
+daemon	/usr/include/unistd.h	/^extern int daemon (int __nochdir, int __noclose) __THROW __wur;$/;"	p
+dup	/usr/include/unistd.h	/^extern int dup (int __fd) __THROW __wur;$/;"	p
+dup2	/usr/include/unistd.h	/^extern int dup2 (int __fd, int __fd2) __THROW;$/;"	p
+dup3	/usr/include/unistd.h	/^extern int dup3 (int __fd, int __fd2, int __flags) __THROW;$/;"	p
+eaccess	/usr/include/unistd.h	/^extern int eaccess (__const char *__name, int __type)$/;"	p
+encrypt	/usr/include/unistd.h	/^extern void encrypt (char *__block, int __edflag) __THROW __nonnull ((1));$/;"	p
+endusershell	/usr/include/unistd.h	/^extern void endusershell (void) __THROW; \/* Discard cached info.  *\/$/;"	p
+environ	/usr/include/unistd.h	/^extern char **environ;$/;"	x
+euidaccess	/usr/include/unistd.h	/^extern int euidaccess (__const char *__name, int __type)$/;"	p
+execl	/usr/include/unistd.h	/^extern int execl (__const char *__path, __const char *__arg, ...)$/;"	p
+execle	/usr/include/unistd.h	/^extern int execle (__const char *__path, __const char *__arg, ...)$/;"	p
+execlp	/usr/include/unistd.h	/^extern int execlp (__const char *__file, __const char *__arg, ...)$/;"	p
+execv	/usr/include/unistd.h	/^extern int execv (__const char *__path, char *__const __argv[])$/;"	p
+execve	/usr/include/unistd.h	/^extern int execve (__const char *__path, char *__const __argv[],$/;"	p
+execvp	/usr/include/unistd.h	/^extern int execvp (__const char *__file, char *__const __argv[])$/;"	p
+faccessat	/usr/include/unistd.h	/^extern int faccessat (int __fd, __const char *__file, int __type, int __flag)$/;"	p
+fchdir	/usr/include/unistd.h	/^extern int fchdir (int __fd) __THROW __wur;$/;"	p
+fchown	/usr/include/unistd.h	/^extern int fchown (int __fd, __uid_t __owner, __gid_t __group) __THROW __wur;$/;"	p
+fchownat	/usr/include/unistd.h	/^extern int fchownat (int __fd, __const char *__file, __uid_t __owner,$/;"	p
+fdatasync	/usr/include/unistd.h	/^extern int fdatasync (int __fildes);$/;"	p
+fexecve	/usr/include/unistd.h	/^extern int fexecve (int __fd, char *__const __argv[], char *__const __envp[])$/;"	p
+fork	/usr/include/unistd.h	/^extern __pid_t fork (void) __THROW;$/;"	p
+fpathconf	/usr/include/unistd.h	/^extern long int fpathconf (int __fd, int __name) __THROW;$/;"	p
+fsync	/usr/include/unistd.h	/^extern int fsync (int __fd);$/;"	p
+ftruncate	/usr/include/unistd.h	/^extern int ftruncate (int __fd, __off_t __length) __THROW __wur;$/;"	p
+ftruncate	/usr/include/unistd.h	990;"	d
+ftruncate64	/usr/include/unistd.h	/^extern int ftruncate64 (int __fd, __off64_t __length) __THROW __wur;$/;"	p
+get_current_dir_name	/usr/include/unistd.h	/^extern char *get_current_dir_name (void) __THROW;$/;"	p
+getcwd	/usr/include/unistd.h	/^extern char *getcwd (char *__buf, size_t __size) __THROW __wur;$/;"	p
+getdomainname	/usr/include/unistd.h	/^extern int getdomainname (char *__name, size_t __len)$/;"	p
+getdtablesize	/usr/include/unistd.h	/^extern int getdtablesize (void) __THROW;$/;"	p
+getegid	/usr/include/unistd.h	/^extern __gid_t getegid (void) __THROW;$/;"	p
+geteuid	/usr/include/unistd.h	/^extern __uid_t geteuid (void) __THROW;$/;"	p
+getgid	/usr/include/unistd.h	/^extern __gid_t getgid (void) __THROW;$/;"	p
+getgroups	/usr/include/unistd.h	/^extern int getgroups (int __size, __gid_t __list[]) __THROW __wur;$/;"	p
+gethostid	/usr/include/unistd.h	/^extern long int gethostid (void);$/;"	p
+gethostname	/usr/include/unistd.h	/^extern int gethostname (char *__name, size_t __len) __THROW __nonnull ((1));$/;"	p
+getlogin	/usr/include/unistd.h	/^extern char *getlogin (void);$/;"	p
+getlogin_r	/usr/include/unistd.h	/^extern int getlogin_r (char *__name, size_t __name_len) __nonnull ((1));$/;"	p
+getpagesize	/usr/include/unistd.h	/^extern int getpagesize (void)  __THROW __attribute__ ((__const__));$/;"	p
+getpass	/usr/include/unistd.h	/^extern char *getpass (__const char *__prompt) __nonnull ((1));$/;"	p
+getpgid	/usr/include/unistd.h	/^extern __pid_t getpgid (__pid_t __pid) __THROW;$/;"	p
+getpgrp	/usr/include/unistd.h	/^extern __pid_t getpgrp (void) __THROW;$/;"	p
+getpgrp	/usr/include/unistd.h	600;"	d
+getpid	/usr/include/unistd.h	/^extern __pid_t getpid (void) __THROW;$/;"	p
+getppid	/usr/include/unistd.h	/^extern __pid_t getppid (void) __THROW;$/;"	p
+getresgid	/usr/include/unistd.h	/^extern int getresgid (__gid_t *__rgid, __gid_t *__egid, __gid_t *__sgid)$/;"	p
+getresuid	/usr/include/unistd.h	/^extern int getresuid (__uid_t *__ruid, __uid_t *__euid, __uid_t *__suid)$/;"	p
+getsid	/usr/include/unistd.h	/^extern __pid_t getsid (__pid_t __pid) __THROW;$/;"	p
+getuid	/usr/include/unistd.h	/^extern __uid_t getuid (void) __THROW;$/;"	p
+getusershell	/usr/include/unistd.h	/^extern char *getusershell (void) __THROW;$/;"	p
+getwd	/usr/include/unistd.h	/^extern char *getwd (char *__buf)$/;"	p
+gid_t	/usr/include/unistd.h	/^typedef __gid_t gid_t;$/;"	t
+group_member	/usr/include/unistd.h	/^extern int group_member (__gid_t __gid) __THROW;$/;"	p
+intptr_t	/usr/include/unistd.h	/^typedef __intptr_t intptr_t;$/;"	t
+isatty	/usr/include/unistd.h	/^extern int isatty (int __fd) __THROW;$/;"	p
+lchown	/usr/include/unistd.h	/^extern int lchown (__const char *__file, __uid_t __owner, __gid_t __group)$/;"	p
+link	/usr/include/unistd.h	/^extern int link (__const char *__from, __const char *__to)$/;"	p
+linkat	/usr/include/unistd.h	/^extern int linkat (int __fromfd, __const char *__from, int __tofd,$/;"	p
+lockf	/usr/include/unistd.h	/^extern int lockf (int __fd, int __cmd, __off_t __len) __wur;$/;"	p
+lockf	/usr/include/unistd.h	1054;"	d
+lockf64	/usr/include/unistd.h	/^extern int lockf64 (int __fd, int __cmd, __off64_t __len) __wur;$/;"	p
+lseek	/usr/include/unistd.h	/^extern __off_t lseek (int __fd, __off_t __offset, int __whence) __THROW;$/;"	p
+lseek	/usr/include/unistd.h	310;"	d
+lseek64	/usr/include/unistd.h	/^extern __off64_t lseek64 (int __fd, __off64_t __offset, int __whence)$/;"	p
+nice	/usr/include/unistd.h	/^extern int nice (int __inc) __THROW __wur;$/;"	p
+off64_t	/usr/include/unistd.h	/^typedef __off64_t off64_t;$/;"	t
+off_t	/usr/include/unistd.h	/^typedef __off64_t off_t;$/;"	t
+off_t	/usr/include/unistd.h	/^typedef __off_t off_t;$/;"	t
+pathconf	/usr/include/unistd.h	/^extern long int pathconf (__const char *__path, int __name)$/;"	p
+pause	/usr/include/unistd.h	/^extern int pause (void);$/;"	p
+pid_t	/usr/include/unistd.h	/^typedef __pid_t pid_t;$/;"	t
+pipe	/usr/include/unistd.h	/^extern int pipe (int __pipedes[2]) __THROW __wur;$/;"	p
+pipe2	/usr/include/unistd.h	/^extern int pipe2 (int __pipedes[2], int __flags) __THROW __wur;$/;"	p
+pread	/usr/include/unistd.h	/^extern ssize_t pread (int __fd, void *__buf, size_t __nbytes,$/;"	p
+pread	/usr/include/unistd.h	364;"	d
+pread64	/usr/include/unistd.h	/^extern ssize_t pread64 (int __fd, void *__buf, size_t __nbytes,$/;"	p
+profil	/usr/include/unistd.h	/^extern int profil (unsigned short int *__sample_buffer, size_t __size,$/;"	p
+pwrite	/usr/include/unistd.h	/^extern ssize_t pwrite (int __fd, __const void *__buf, size_t __n,$/;"	p
+pwrite	/usr/include/unistd.h	365;"	d
+pwrite64	/usr/include/unistd.h	/^extern ssize_t pwrite64 (int __fd, __const void *__buf, size_t __n,$/;"	p
+read	/usr/include/unistd.h	/^extern ssize_t read (int __fd, void *__buf, size_t __nbytes) __wur;$/;"	p
+readlink	/usr/include/unistd.h	/^extern ssize_t readlink (__const char *__restrict __path,$/;"	p
+readlinkat	/usr/include/unistd.h	/^extern ssize_t readlinkat (int __fd, __const char *__restrict __path,$/;"	p
+revoke	/usr/include/unistd.h	/^extern int revoke (__const char *__file) __THROW __nonnull ((1)) __wur;$/;"	p
+rmdir	/usr/include/unistd.h	/^extern int rmdir (__const char *__path) __THROW __nonnull ((1));$/;"	p
+sbrk	/usr/include/unistd.h	/^extern void *sbrk (intptr_t __delta) __THROW;$/;"	p
+setdomainname	/usr/include/unistd.h	/^extern int setdomainname (__const char *__name, size_t __len)$/;"	p
+setegid	/usr/include/unistd.h	/^extern int setegid (__gid_t __gid) __THROW;$/;"	p
+seteuid	/usr/include/unistd.h	/^extern int seteuid (__uid_t __uid) __THROW;$/;"	p
+setgid	/usr/include/unistd.h	/^extern int setgid (__gid_t __gid) __THROW;$/;"	p
+sethostid	/usr/include/unistd.h	/^extern int sethostid (long int __id) __THROW __wur;$/;"	p
+sethostname	/usr/include/unistd.h	/^extern int sethostname (__const char *__name, size_t __len)$/;"	p
+setlogin	/usr/include/unistd.h	/^extern int setlogin (__const char *__name) __THROW __nonnull ((1));$/;"	p
+setpgid	/usr/include/unistd.h	/^extern int setpgid (__pid_t __pid, __pid_t __pgid) __THROW;$/;"	p
+setpgrp	/usr/include/unistd.h	/^extern int setpgrp (void) __THROW;$/;"	p
+setpgrp	/usr/include/unistd.h	639;"	d
+setregid	/usr/include/unistd.h	/^extern int setregid (__gid_t __rgid, __gid_t __egid) __THROW;$/;"	p
+setresgid	/usr/include/unistd.h	/^extern int setresgid (__gid_t __rgid, __gid_t __egid, __gid_t __sgid)$/;"	p
+setresuid	/usr/include/unistd.h	/^extern int setresuid (__uid_t __ruid, __uid_t __euid, __uid_t __suid)$/;"	p
+setreuid	/usr/include/unistd.h	/^extern int setreuid (__uid_t __ruid, __uid_t __euid) __THROW;$/;"	p
+setsid	/usr/include/unistd.h	/^extern __pid_t setsid (void) __THROW;$/;"	p
+setuid	/usr/include/unistd.h	/^extern int setuid (__uid_t __uid) __THROW;$/;"	p
+setusershell	/usr/include/unistd.h	/^extern void setusershell (void) __THROW; \/* Rewind and re-read the file.  *\/$/;"	p
+sleep	/usr/include/unistd.h	/^extern unsigned int sleep (unsigned int __seconds);$/;"	p
+socklen_t	/usr/include/unistd.h	/^typedef __socklen_t socklen_t;$/;"	t
+ssize_t	/usr/include/unistd.h	/^typedef __ssize_t ssize_t;$/;"	t
+swab	/usr/include/unistd.h	/^extern void swab (__const void *__restrict __from, void *__restrict __to,$/;"	p
+symlink	/usr/include/unistd.h	/^extern int symlink (__const char *__from, __const char *__to)$/;"	p
+symlinkat	/usr/include/unistd.h	/^extern int symlinkat (__const char *__from, int __tofd,$/;"	p
+sync	/usr/include/unistd.h	/^extern void sync (void) __THROW;$/;"	p
+syscall	/usr/include/unistd.h	/^extern long int syscall (long int __sysno, ...) __THROW;$/;"	p
+sysconf	/usr/include/unistd.h	/^extern long int sysconf (int __name) __THROW;$/;"	p
+tcgetpgrp	/usr/include/unistd.h	/^extern __pid_t tcgetpgrp (int __fd) __THROW;$/;"	p
+tcsetpgrp	/usr/include/unistd.h	/^extern int tcsetpgrp (int __fd, __pid_t __pgrp_id) __THROW;$/;"	p
+truncate	/usr/include/unistd.h	/^extern int truncate (__const char *__file, __off_t __length)$/;"	p
+truncate	/usr/include/unistd.h	970;"	d
+truncate64	/usr/include/unistd.h	/^extern int truncate64 (__const char *__file, __off64_t __length)$/;"	p
+ttyname	/usr/include/unistd.h	/^extern char *ttyname (int __fd) __THROW;$/;"	p
+ttyname_r	/usr/include/unistd.h	/^extern int ttyname_r (int __fd, char *__buf, size_t __buflen)$/;"	p
+ttyslot	/usr/include/unistd.h	/^extern int ttyslot (void) __THROW;$/;"	p
+ualarm	/usr/include/unistd.h	/^extern __useconds_t ualarm (__useconds_t __value, __useconds_t __interval)$/;"	p
+uid_t	/usr/include/unistd.h	/^typedef __uid_t uid_t;$/;"	t
+unlink	/usr/include/unistd.h	/^extern int unlink (__const char *__name) __THROW __nonnull ((1));$/;"	p
+unlinkat	/usr/include/unistd.h	/^extern int unlinkat (int __fd, __const char *__name, int __flag)$/;"	p
+useconds_t	/usr/include/unistd.h	/^typedef __useconds_t useconds_t;$/;"	t
+usleep	/usr/include/unistd.h	/^extern int usleep (__useconds_t __useconds);$/;"	p
+vfork	/usr/include/unistd.h	/^extern __pid_t vfork (void) __THROW;$/;"	p
+vhangup	/usr/include/unistd.h	/^extern int vhangup (void) __THROW;$/;"	p
+write	/usr/include/unistd.h	/^extern ssize_t write (int __fd, __const void *__buf, size_t __n) __wur;$/;"	p

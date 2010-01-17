@@ -1,0 +1,30 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+_GETOPT_H	/usr/include/getopt.h	24;"	d
+__GNUC_PREREQ	/usr/include/getopt.h	40;"	d
+__REDIRECT	/usr/include/getopt.h	/^  extern int __REDIRECT (getopt, (int ___argc, char *const *___argv,$/;"	p
+__THROW	/usr/include/getopt.h	43;"	d
+__THROW	/usr/include/getopt.h	45;"	d
+__need_getopt	/usr/include/getopt.h	191;"	d
+__posix_getopt	/usr/include/getopt.h	/^extern int __posix_getopt (int ___argc, char *const *___argv,$/;"	p
+flag	/usr/include/getopt.h	/^  int *flag;$/;"	m	struct:option
+getopt	/usr/include/getopt.h	/^extern int getopt ();$/;"	p
+getopt	/usr/include/getopt.h	/^extern int getopt (int ___argc, char *const *___argv, const char *__shortopts)$/;"	p
+getopt	/usr/include/getopt.h	167;"	d
+getopt_long	/usr/include/getopt.h	/^extern int getopt_long (int ___argc, char *const *___argv,$/;"	p
+getopt_long_only	/usr/include/getopt.h	/^extern int getopt_long_only (int ___argc, char *const *___argv,$/;"	p
+has_arg	/usr/include/getopt.h	/^  int has_arg;$/;"	m	struct:option
+name	/usr/include/getopt.h	/^  const char *name;$/;"	m	struct:option
+no_argument	/usr/include/getopt.h	118;"	d
+optarg	/usr/include/getopt.h	/^extern char *optarg;$/;"	x
+opterr	/usr/include/getopt.h	/^extern int opterr;$/;"	x
+optind	/usr/include/getopt.h	/^extern int optind;$/;"	x
+option	/usr/include/getopt.h	/^struct option$/;"	s
+optional_argument	/usr/include/getopt.h	120;"	d
+optopt	/usr/include/getopt.h	/^extern int optopt;$/;"	x
+required_argument	/usr/include/getopt.h	119;"	d
+val	/usr/include/getopt.h	/^  int val;$/;"	m	struct:option

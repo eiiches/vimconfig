@@ -196,6 +196,7 @@ let g:SrcExpl_updateTagsKey = "<F12>"
 " source $VIMRUNTIME/mswin.vim
 " behave mswin
 
+autocmd FileType c set dict=~/.vim/dict/c/*.dict
 autocmd BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
 autocmd BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
 autocmd BufRead *.vala set smartindent

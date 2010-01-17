@@ -1,0 +1,22 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+_ASSERT_H	/usr/include/assert.h	26;"	d
+_ASSERT_H	/usr/include/assert.h	36;"	d
+_ASSERT_H_DECLS	/usr/include/assert.h	67;"	d
+__ASSERT_FUNCTION	/usr/include/assert.h	109;"	d
+__ASSERT_VOID_CAST	/usr/include/assert.h	28;"	d
+__ASSERT_VOID_CAST	/usr/include/assert.h	40;"	d
+__ASSERT_VOID_CAST	/usr/include/assert.h	42;"	d
+__assert	/usr/include/assert.h	/^extern void __assert (const char *__assertion, const char *__file, int __line)$/;"	p
+__assert_fail	/usr/include/assert.h	/^extern void __assert_fail (__const char *__assertion, __const char *__file,$/;"	p
+__assert_perror_fail	/usr/include/assert.h	/^extern void __assert_perror_fail (int __errnum, __const char *__file,$/;"	p
+assert	/usr/include/assert.h	27;"	d
+assert	/usr/include/assert.h	52;"	d
+assert	/usr/include/assert.h	91;"	d
+assert_perror	/usr/include/assert.h	31;"	d
+assert_perror	/usr/include/assert.h	61;"	d
+assert_perror	/usr/include/assert.h	97;"	d

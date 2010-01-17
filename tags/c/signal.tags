@@ -1,0 +1,78 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+NSIG	/usr/include/signal.h	207;"	d
+SV_INTERRUPT	/usr/include/signal.h	325;"	d
+SV_ONSTACK	/usr/include/signal.h	324;"	d
+SV_RESETHAND	/usr/include/signal.h	326;"	d
+_SIGNAL_H	/usr/include/signal.h	26;"	d
+__libc_current_sigrtmax	/usr/include/signal.h	/^extern int __libc_current_sigrtmax (void) __THROW;$/;"	p
+__libc_current_sigrtmin	/usr/include/signal.h	/^extern int __libc_current_sigrtmin (void) __THROW;$/;"	p
+__need_sig_atomic_t	/usr/include/signal.h	44;"	d
+__need_sigset_t	/usr/include/signal.h	52;"	d
+__need_size_t	/usr/include/signal.h	348;"	d
+__need_timespec	/usr/include/signal.h	75;"	d
+__pid_t_defined	/usr/include/signal.h	63;"	d
+__sig_atomic_t_defined	/usr/include/signal.h	39;"	d
+__sighandler_t	/usr/include/signal.h	/^typedef void (*__sighandler_t) (int);$/;"	t
+__sigpause	/usr/include/signal.h	/^extern int __sigpause (int __sig_or_mask, int __is_sig);$/;"	p
+__sigset_t_defined	/usr/include/signal.h	49;"	d
+__sysv_signal	/usr/include/signal.h	/^extern __sighandler_t __sysv_signal (int __sig, __sighandler_t __handler)$/;"	p
+__uid_t_defined	/usr/include/signal.h	69;"	d
+_sys_siglist	/usr/include/signal.h	/^extern __const char *__const _sys_siglist[_NSIG];$/;"	x
+bsd_signal	/usr/include/signal.h	/^extern __sighandler_t bsd_signal (int __sig, __sighandler_t __handler)$/;"	p
+gsignal	/usr/include/signal.h	/^extern int gsignal (int __sig) __THROW;$/;"	p
+kill	/usr/include/signal.h	/^extern int kill (__pid_t __pid, int __sig) __THROW;$/;"	p
+killpg	/usr/include/signal.h	/^extern int killpg (__pid_t __pgrp, int __sig) __THROW;$/;"	p
+pid_t	/usr/include/signal.h	/^typedef __pid_t pid_t;$/;"	t
+psiginfo	/usr/include/signal.h	/^extern void psiginfo (__const siginfo_t *__pinfo, __const char *__s);$/;"	p
+psignal	/usr/include/signal.h	/^extern void psignal (int __sig, __const char *__s);$/;"	p
+raise	/usr/include/signal.h	/^extern int raise (int __sig) __THROW;$/;"	p
+sig_atomic_t	/usr/include/signal.h	/^typedef __sig_atomic_t sig_atomic_t;$/;"	t
+sig_t	/usr/include/signal.h	/^typedef __sighandler_t sig_t;$/;"	t
+sigaction	/usr/include/signal.h	/^extern int sigaction (int __sig, __const struct sigaction *__restrict __act,$/;"	p
+sigaddset	/usr/include/signal.h	/^extern int sigaddset (sigset_t *__set, int __signo) __THROW __nonnull ((1));$/;"	p
+sigaltstack	/usr/include/signal.h	/^extern int sigaltstack (__const struct sigaltstack *__restrict __ss,$/;"	p
+sigandset	/usr/include/signal.h	/^extern int sigandset (sigset_t *__set, __const sigset_t *__left,$/;"	p
+sigblock	/usr/include/signal.h	/^extern int sigblock (int __mask) __THROW __attribute_deprecated__;$/;"	p
+sigdelset	/usr/include/signal.h	/^extern int sigdelset (sigset_t *__set, int __signo) __THROW __nonnull ((1));$/;"	p
+sigemptyset	/usr/include/signal.h	/^extern int sigemptyset (sigset_t *__set) __THROW __nonnull ((1));$/;"	p
+sigfillset	/usr/include/signal.h	/^extern int sigfillset (sigset_t *__set) __THROW __nonnull ((1));$/;"	p
+siggetmask	/usr/include/signal.h	/^extern int siggetmask (void) __THROW __attribute_deprecated__;$/;"	p
+sighandler_t	/usr/include/signal.h	/^typedef __sighandler_t sighandler_t;$/;"	t
+sighold	/usr/include/signal.h	/^extern int sighold (int __sig) __THROW;$/;"	p
+sigignore	/usr/include/signal.h	/^extern int sigignore (int __sig) __THROW;$/;"	p
+siginterrupt	/usr/include/signal.h	/^extern int siginterrupt (int __sig, int __interrupt) __THROW;$/;"	p
+sigisemptyset	/usr/include/signal.h	/^extern int sigisemptyset (__const sigset_t *__set) __THROW __nonnull ((1));$/;"	p
+sigismember	/usr/include/signal.h	/^extern int sigismember (__const sigset_t *__set, int __signo)$/;"	p
+sigmask	/usr/include/signal.h	193;"	d
+signal	/usr/include/signal.h	/^extern __sighandler_t signal (int __sig, __sighandler_t __handler)$/;"	p
+sigorset	/usr/include/signal.h	/^extern int sigorset (sigset_t *__set, __const sigset_t *__left,$/;"	p
+sigpause	/usr/include/signal.h	/^extern int sigpause (int __mask) __THROW __attribute_deprecated__;$/;"	p
+sigpause	/usr/include/signal.h	180;"	d
+sigpending	/usr/include/signal.h	/^extern int sigpending (sigset_t *__set) __THROW __nonnull ((1));$/;"	p
+sigprocmask	/usr/include/signal.h	/^extern int sigprocmask (int __how, __const sigset_t *__restrict __set,$/;"	p
+sigqueue	/usr/include/signal.h	/^extern int sigqueue (__pid_t __pid, int __sig, __const union sigval __val)$/;"	p
+sigrelse	/usr/include/signal.h	/^extern int sigrelse (int __sig) __THROW;$/;"	p
+sigreturn	/usr/include/signal.h	/^extern int sigreturn (struct sigcontext *__scp) __THROW;$/;"	p
+sigset	/usr/include/signal.h	/^extern __sighandler_t sigset (int __sig, __sighandler_t __disp) __THROW;$/;"	p
+sigset_t	/usr/include/signal.h	/^typedef __sigset_t sigset_t;$/;"	t
+sigsetmask	/usr/include/signal.h	/^extern int sigsetmask (int __mask) __THROW __attribute_deprecated__;$/;"	p
+sigstack	/usr/include/signal.h	/^extern int sigstack (struct sigstack *__ss, struct sigstack *__oss)$/;"	p
+sigsuspend	/usr/include/signal.h	/^extern int sigsuspend (__const sigset_t *__set) __nonnull ((1));$/;"	p
+sigtimedwait	/usr/include/signal.h	/^extern int sigtimedwait (__const sigset_t *__restrict __set,$/;"	p
+sigvec	/usr/include/signal.h	/^extern int sigvec (int __sig, __const struct sigvec *__vec,$/;"	p
+sigvec	/usr/include/signal.h	/^struct sigvec$/;"	s
+sigwait	/usr/include/signal.h	/^extern int sigwait (__const sigset_t *__restrict __set, int *__restrict __sig)$/;"	p
+sigwaitinfo	/usr/include/signal.h	/^extern int sigwaitinfo (__const sigset_t *__restrict __set,$/;"	p
+ssignal	/usr/include/signal.h	/^extern __sighandler_t ssignal (int __sig, __sighandler_t __handler)$/;"	p
+sv_flags	/usr/include/signal.h	/^    int sv_flags;		\/* Flags (see below).  *\/$/;"	m	struct:sigvec
+sv_handler	/usr/include/signal.h	/^    __sighandler_t sv_handler;	\/* Signal handler.  *\/$/;"	m	struct:sigvec
+sv_mask	/usr/include/signal.h	/^    int sv_mask;		\/* Mask of signals to be blocked.  *\/$/;"	m	struct:sigvec
+sv_onstack	/usr/include/signal.h	320;"	d
+sys_siglist	/usr/include/signal.h	/^extern __const char *__const sys_siglist[_NSIG];$/;"	x
+sysv_signal	/usr/include/signal.h	/^extern __sighandler_t sysv_signal (int __sig, __sighandler_t __handler)$/;"	p
+uid_t	/usr/include/signal.h	/^typedef __uid_t uid_t;$/;"	t

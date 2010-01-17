@@ -1,0 +1,160 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BUFSIZ	/usr/include/stdio.h	108;"	d
+EOF	/usr/include/stdio.h	115;"	d
+FILE	/usr/include/stdio.h	/^typedef struct _IO_FILE FILE;$/;"	t	typeref:struct:_IO_FILE
+P_tmpdir	/usr/include/stdio.h	128;"	d
+SEEK_CUR	/usr/include/stdio.h	122;"	d
+SEEK_END	/usr/include/stdio.h	123;"	d
+SEEK_SET	/usr/include/stdio.h	121;"	d
+_IOFBF	/usr/include/stdio.h	101;"	d
+_IOLBF	/usr/include/stdio.h	102;"	d
+_IONBF	/usr/include/stdio.h	103;"	d
+_IO_FILE	/usr/include/stdio.h	/^struct _IO_FILE;$/;"	x
+_STDIO_H	/usr/include/stdio.h	27;"	d
+_STDIO_USES_IOSTREAM	/usr/include/stdio.h	73;"	d
+_VA_LIST_DEFINED	/usr/include/stdio.h	81;"	d
+__FILE	/usr/include/stdio.h	/^typedef struct _IO_FILE __FILE;$/;"	t	typeref:struct:_IO_FILE
+__FILE_defined	/usr/include/stdio.h	57;"	d
+__REDIRECT	/usr/include/stdio.h	/^extern int __REDIRECT (fscanf, (FILE *__restrict __stream,$/;"	p
+__REDIRECT	/usr/include/stdio.h	/^extern int __REDIRECT (scanf, (__const char *__restrict __format, ...),$/;"	p
+__REDIRECT	/usr/include/stdio.h	/^extern int __REDIRECT (sscanf, (__const char *__restrict __s,$/;"	p
+__REDIRECT	/usr/include/stdio.h	/^extern int __REDIRECT (vfscanf,$/;"	p
+__REDIRECT	/usr/include/stdio.h	/^extern int __REDIRECT (vscanf, (__const char *__restrict __format,$/;"	p
+__REDIRECT	/usr/include/stdio.h	/^extern int __REDIRECT (vsscanf,$/;"	p
+____FILE_defined	/usr/include/stdio.h	67;"	d
+__asprintf	/usr/include/stdio.h	/^extern int __asprintf (char **__restrict __ptr,$/;"	p
+__getdelim	/usr/include/stdio.h	/^extern _IO_ssize_t __getdelim (char **__restrict __lineptr,$/;"	p
+__isoc99_fscanf	/usr/include/stdio.h	/^extern int __isoc99_fscanf (FILE *__restrict __stream,$/;"	p
+__isoc99_scanf	/usr/include/stdio.h	/^extern int __isoc99_scanf (__const char *__restrict __format, ...) __wur;$/;"	p
+__isoc99_sscanf	/usr/include/stdio.h	/^extern int __isoc99_sscanf (__const char *__restrict __s,$/;"	p
+__isoc99_vfscanf	/usr/include/stdio.h	/^extern int __isoc99_vfscanf (FILE *__restrict __s,$/;"	p
+__isoc99_vscanf	/usr/include/stdio.h	/^extern int __isoc99_vscanf (__const char *__restrict __format,$/;"	p
+__isoc99_vsscanf	/usr/include/stdio.h	/^extern int __isoc99_vsscanf (__const char *__restrict __s,$/;"	p
+__need_FILE	/usr/include/stdio.h	37;"	d
+__need_FILE	/usr/include/stdio.h	59;"	d
+__need_NULL	/usr/include/stdio.h	33;"	d
+__need___FILE	/usr/include/stdio.h	38;"	d
+__need___FILE	/usr/include/stdio.h	69;"	d
+__need_getopt	/usr/include/stdio.h	900;"	d
+__need_size_t	/usr/include/stdio.h	32;"	d
+asprintf	/usr/include/stdio.h	/^extern int asprintf (char **__restrict __ptr,$/;"	p
+clearerr	/usr/include/stdio.h	/^extern void clearerr (FILE *__stream) __THROW;$/;"	p
+clearerr_unlocked	/usr/include/stdio.h	/^extern void clearerr_unlocked (FILE *__stream) __THROW;$/;"	p
+ctermid	/usr/include/stdio.h	/^extern char *ctermid (char *__s) __THROW;$/;"	p
+cuserid	/usr/include/stdio.h	/^extern char *cuserid (char *__s);$/;"	p
+dprintf	/usr/include/stdio.h	/^extern int dprintf (int __fd, __const char *__restrict __fmt, ...)$/;"	p
+fclose	/usr/include/stdio.h	/^extern int fclose (FILE *__stream);$/;"	p
+fcloseall	/usr/include/stdio.h	/^extern int fcloseall (void);$/;"	p
+fdopen	/usr/include/stdio.h	/^extern FILE *fdopen (int __fd, __const char *__modes) __THROW __wur;$/;"	p
+feof	/usr/include/stdio.h	/^extern int feof (FILE *__stream) __THROW __wur;$/;"	p
+feof_unlocked	/usr/include/stdio.h	/^extern int feof_unlocked (FILE *__stream) __THROW __wur;$/;"	p
+ferror	/usr/include/stdio.h	/^extern int ferror (FILE *__stream) __THROW __wur;$/;"	p
+ferror_unlocked	/usr/include/stdio.h	/^extern int ferror_unlocked (FILE *__stream) __THROW __wur;$/;"	p
+fflush	/usr/include/stdio.h	/^extern int fflush (FILE *__stream);$/;"	p
+fflush_unlocked	/usr/include/stdio.h	/^extern int fflush_unlocked (FILE *__stream);$/;"	p
+fgetc	/usr/include/stdio.h	/^extern int fgetc (FILE *__stream);$/;"	p
+fgetc_unlocked	/usr/include/stdio.h	/^extern int fgetc_unlocked (FILE *__stream);$/;"	p
+fgetpos	/usr/include/stdio.h	/^extern int fgetpos (FILE *__restrict __stream, fpos_t *__restrict __pos);$/;"	p
+fgetpos64	/usr/include/stdio.h	/^extern int fgetpos64 (FILE *__restrict __stream, fpos64_t *__restrict __pos);$/;"	p
+fgets	/usr/include/stdio.h	/^extern char *fgets (char *__restrict __s, int __n, FILE *__restrict __stream)$/;"	p
+fgets_unlocked	/usr/include/stdio.h	/^extern char *fgets_unlocked (char *__restrict __s, int __n,$/;"	p
+fileno	/usr/include/stdio.h	/^extern int fileno (FILE *__stream) __THROW __wur;$/;"	p
+fileno_unlocked	/usr/include/stdio.h	/^extern int fileno_unlocked (FILE *__stream) __THROW __wur;$/;"	p
+flockfile	/usr/include/stdio.h	/^extern void flockfile (FILE *__stream) __THROW;$/;"	p
+fmemopen	/usr/include/stdio.h	/^extern FILE *fmemopen (void *__s, size_t __len, __const char *__modes)$/;"	p
+fopen	/usr/include/stdio.h	/^extern FILE *fopen (__const char *__restrict __filename,$/;"	p
+fopen64	/usr/include/stdio.h	/^extern FILE *fopen64 (__const char *__restrict __filename,$/;"	p
+fopencookie	/usr/include/stdio.h	/^extern FILE *fopencookie (void *__restrict __magic_cookie,$/;"	p
+fpos64_t	/usr/include/stdio.h	/^typedef _G_fpos64_t fpos64_t;$/;"	t
+fpos_t	/usr/include/stdio.h	/^typedef _G_fpos_t fpos_t;$/;"	t
+fprintf	/usr/include/stdio.h	/^extern int fprintf (FILE *__restrict __stream,$/;"	p
+fputc	/usr/include/stdio.h	/^extern int fputc (int __c, FILE *__stream);$/;"	p
+fputc_unlocked	/usr/include/stdio.h	/^extern int fputc_unlocked (int __c, FILE *__stream);$/;"	p
+fputs	/usr/include/stdio.h	/^extern int fputs (__const char *__restrict __s, FILE *__restrict __stream);$/;"	p
+fputs_unlocked	/usr/include/stdio.h	/^extern int fputs_unlocked (__const char *__restrict __s,$/;"	p
+fread	/usr/include/stdio.h	/^extern size_t fread (void *__restrict __ptr, size_t __size,$/;"	p
+fread_unlocked	/usr/include/stdio.h	/^extern size_t fread_unlocked (void *__restrict __ptr, size_t __size,$/;"	p
+freopen	/usr/include/stdio.h	/^extern FILE *freopen (__const char *__restrict __filename,$/;"	p
+freopen64	/usr/include/stdio.h	/^extern FILE *freopen64 (__const char *__restrict __filename,$/;"	p
+fscanf	/usr/include/stdio.h	/^extern int fscanf (FILE *__restrict __stream,$/;"	p
+fscanf	/usr/include/stdio.h	439;"	d
+fseek	/usr/include/stdio.h	/^extern int fseek (FILE *__stream, long int __off, int __whence);$/;"	p
+fseeko	/usr/include/stdio.h	/^extern int fseeko (FILE *__stream, __off_t __off, int __whence);$/;"	p
+fseeko64	/usr/include/stdio.h	/^extern int fseeko64 (FILE *__stream, __off64_t __off, int __whence);$/;"	p
+fsetpos	/usr/include/stdio.h	/^extern int fsetpos (FILE *__stream, __const fpos_t *__pos);$/;"	p
+fsetpos64	/usr/include/stdio.h	/^extern int fsetpos64 (FILE *__stream, __const fpos64_t *__pos);$/;"	p
+ftell	/usr/include/stdio.h	/^extern long int ftell (FILE *__stream) __wur;$/;"	p
+ftello	/usr/include/stdio.h	/^extern __off_t ftello (FILE *__stream) __wur;$/;"	p
+ftello64	/usr/include/stdio.h	/^extern __off64_t ftello64 (FILE *__stream) __wur;$/;"	p
+ftrylockfile	/usr/include/stdio.h	/^extern int ftrylockfile (FILE *__stream) __THROW __wur;$/;"	p
+funlockfile	/usr/include/stdio.h	/^extern void funlockfile (FILE *__stream) __THROW;$/;"	p
+fwrite	/usr/include/stdio.h	/^extern size_t fwrite (__const void *__restrict __ptr, size_t __size,$/;"	p
+fwrite_unlocked	/usr/include/stdio.h	/^extern size_t fwrite_unlocked (__const void *__restrict __ptr, size_t __size,$/;"	p
+getc	/usr/include/stdio.h	/^extern int getc (FILE *__stream);$/;"	p
+getc	/usr/include/stdio.h	525;"	d
+getc_unlocked	/usr/include/stdio.h	/^extern int getc_unlocked (FILE *__stream);$/;"	p
+getchar	/usr/include/stdio.h	/^extern int getchar (void);$/;"	p
+getchar_unlocked	/usr/include/stdio.h	/^extern int getchar_unlocked (void);$/;"	p
+getdelim	/usr/include/stdio.h	/^extern _IO_ssize_t getdelim (char **__restrict __lineptr,$/;"	p
+getline	/usr/include/stdio.h	/^extern _IO_ssize_t getline (char **__restrict __lineptr,$/;"	p
+gets	/usr/include/stdio.h	/^extern char *gets (char *__s) __wur;$/;"	p
+getw	/usr/include/stdio.h	/^extern int getw (FILE *__stream);$/;"	p
+obstack	/usr/include/stdio.h	/^struct obstack;			\/* See <obstack.h>.  *\/$/;"	x
+obstack_printf	/usr/include/stdio.h	/^extern int obstack_printf (struct obstack *__restrict __obstack,$/;"	p
+obstack_vprintf	/usr/include/stdio.h	/^extern int obstack_vprintf (struct obstack *__restrict __obstack,$/;"	p
+open_memstream	/usr/include/stdio.h	/^extern FILE *open_memstream (char **__bufloc, size_t *__sizeloc) __THROW __wur;$/;"	p
+pclose	/usr/include/stdio.h	/^extern int pclose (FILE *__stream);$/;"	p
+perror	/usr/include/stdio.h	/^extern void perror (__const char *__s);$/;"	p
+popen	/usr/include/stdio.h	/^extern FILE *popen (__const char *__command, __const char *__modes) __wur;$/;"	p
+printf	/usr/include/stdio.h	/^extern int printf (__const char *__restrict __format, ...);$/;"	p
+putc	/usr/include/stdio.h	/^extern int putc (int __c, FILE *__stream);$/;"	p
+putc	/usr/include/stdio.h	567;"	d
+putc_unlocked	/usr/include/stdio.h	/^extern int putc_unlocked (int __c, FILE *__stream);$/;"	p
+putchar	/usr/include/stdio.h	/^extern int putchar (int __c);$/;"	p
+putchar_unlocked	/usr/include/stdio.h	/^extern int putchar_unlocked (int __c);$/;"	p
+puts	/usr/include/stdio.h	/^extern int puts (__const char *__s);$/;"	p
+putw	/usr/include/stdio.h	/^extern int putw (int __w, FILE *__stream);$/;"	p
+remove	/usr/include/stdio.h	/^extern int remove (__const char *__filename) __THROW;$/;"	p
+rename	/usr/include/stdio.h	/^extern int rename (__const char *__old, __const char *__new) __THROW;$/;"	p
+renameat	/usr/include/stdio.h	/^extern int renameat (int __oldfd, __const char *__old, int __newfd,$/;"	p
+rewind	/usr/include/stdio.h	/^extern void rewind (FILE *__stream);$/;"	p
+scanf	/usr/include/stdio.h	/^extern int scanf (__const char *__restrict __format, ...) __wur;$/;"	p
+scanf	/usr/include/stdio.h	440;"	d
+setbuf	/usr/include/stdio.h	/^extern void setbuf (FILE *__restrict __stream, char *__restrict __buf) __THROW;$/;"	p
+setbuffer	/usr/include/stdio.h	/^extern void setbuffer (FILE *__restrict __stream, char *__restrict __buf,$/;"	p
+setlinebuf	/usr/include/stdio.h	/^extern void setlinebuf (FILE *__stream) __THROW;$/;"	p
+setvbuf	/usr/include/stdio.h	/^extern int setvbuf (FILE *__restrict __stream, char *__restrict __buf,$/;"	p
+snprintf	/usr/include/stdio.h	/^extern int snprintf (char *__restrict __s, size_t __maxlen,$/;"	p
+sprintf	/usr/include/stdio.h	/^extern int sprintf (char *__restrict __s,$/;"	p
+sscanf	/usr/include/stdio.h	/^extern int sscanf (__const char *__restrict __s,$/;"	p
+sscanf	/usr/include/stdio.h	441;"	d
+stderr	/usr/include/stdio.h	/^extern struct _IO_FILE *stderr;		\/* Standard error output stream.  *\/$/;"	x
+stderr	/usr/include/stdio.h	151;"	d
+stdin	/usr/include/stdio.h	/^extern struct _IO_FILE *stdin;		\/* Standard input stream.  *\/$/;"	x
+stdin	/usr/include/stdio.h	149;"	d
+stdout	/usr/include/stdio.h	/^extern struct _IO_FILE *stdout;		\/* Standard output stream.  *\/$/;"	x
+stdout	/usr/include/stdio.h	150;"	d
+tempnam	/usr/include/stdio.h	/^extern char *tempnam (__const char *__dir, __const char *__pfx)$/;"	p
+tmpfile	/usr/include/stdio.h	/^extern FILE *tmpfile (void) __wur;$/;"	p
+tmpfile64	/usr/include/stdio.h	/^extern FILE *tmpfile64 (void) __wur;$/;"	p
+tmpnam	/usr/include/stdio.h	/^extern char *tmpnam (char *__s) __THROW __wur;$/;"	p
+tmpnam_r	/usr/include/stdio.h	/^extern char *tmpnam_r (char *__s) __THROW __wur;$/;"	p
+ungetc	/usr/include/stdio.h	/^extern int ungetc (int __c, FILE *__stream);$/;"	p
+va_list	/usr/include/stdio.h	/^typedef _G_va_list va_list;$/;"	t
+vasprintf	/usr/include/stdio.h	/^extern int vasprintf (char **__restrict __ptr, __const char *__restrict __f,$/;"	p
+vdprintf	/usr/include/stdio.h	/^extern int vdprintf (int __fd, __const char *__restrict __fmt,$/;"	p
+vfprintf	/usr/include/stdio.h	/^extern int vfprintf (FILE *__restrict __s, __const char *__restrict __format,$/;"	p
+vfscanf	/usr/include/stdio.h	/^extern int vfscanf (FILE *__restrict __s, __const char *__restrict __format,$/;"	p
+vfscanf	/usr/include/stdio.h	498;"	d
+vprintf	/usr/include/stdio.h	/^extern int vprintf (__const char *__restrict __format, _G_va_list __arg);$/;"	p
+vscanf	/usr/include/stdio.h	/^extern int vscanf (__const char *__restrict __format, _G_va_list __arg)$/;"	p
+vscanf	/usr/include/stdio.h	499;"	d
+vsnprintf	/usr/include/stdio.h	/^extern int vsnprintf (char *__restrict __s, size_t __maxlen,$/;"	p
+vsprintf	/usr/include/stdio.h	/^extern int vsprintf (char *__restrict __s, __const char *__restrict __format,$/;"	p
+vsscanf	/usr/include/stdio.h	/^extern int vsscanf (__const char *__restrict __s,$/;"	p
+vsscanf	/usr/include/stdio.h	500;"	d

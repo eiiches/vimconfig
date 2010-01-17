@@ -1,0 +1,178 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+EXIT_FAILURE	/usr/include/stdlib.h	134;"	d
+EXIT_SUCCESS	/usr/include/stdlib.h	135;"	d
+MB_CUR_MAX	/usr/include/stdlib.h	139;"	d
+RAND_MAX	/usr/include/stdlib.h	129;"	d
+WEXITSTATUS	/usr/include/stdlib.h	85;"	d
+WIFCONTINUED	/usr/include/stdlib.h	92;"	d
+WIFEXITED	/usr/include/stdlib.h	88;"	d
+WIFSIGNALED	/usr/include/stdlib.h	89;"	d
+WIFSTOPPED	/usr/include/stdlib.h	90;"	d
+WSTOPSIG	/usr/include/stdlib.h	87;"	d
+WTERMSIG	/usr/include/stdlib.h	86;"	d
+_Exit	/usr/include/stdlib.h	/^extern void _Exit (int __status) __THROW __attribute__ ((__noreturn__));$/;"	p
+_STDLIB_H	/usr/include/stdlib.h	38;"	d
+__COMPAR_FN_T	/usr/include/stdlib.h	690;"	d
+__REDIRECT	/usr/include/stdlib.h	/^extern int __REDIRECT (mkostemp, (char *__template, int __flags), mkostemp64)$/;"	p
+__REDIRECT	/usr/include/stdlib.h	/^extern int __REDIRECT (mkstemp, (char *__template), mkstemp64)$/;"	p
+__WAIT_INT	/usr/include/stdlib.h	51;"	d
+__WAIT_STATUS	/usr/include/stdlib.h	64;"	d
+__WAIT_STATUS_DEFN	/usr/include/stdlib.h	65;"	d
+__a	/usr/include/stdlib.h	/^    unsigned long long int __a;	\/* Factor in congruential formula.  *\/$/;"	m	struct:drand48_data
+__c	/usr/include/stdlib.h	/^    unsigned short int __c;	\/* Additive const. in congruential formula.  *\/$/;"	m	struct:drand48_data
+__compar_d_fn_t	/usr/include/stdlib.h	/^typedef int (*__compar_d_fn_t) (__const void *, __const void *, void *);$/;"	t
+__compar_fn_t	/usr/include/stdlib.h	/^typedef int (*__compar_fn_t) (__const void *, __const void *);$/;"	t
+__ctype_get_mb_cur_max	/usr/include/stdlib.h	/^extern size_t __ctype_get_mb_cur_max (void) __THROW __wur;$/;"	p
+__init	/usr/include/stdlib.h	/^    unsigned short int __init;	\/* Flag for initializing.  *\/$/;"	m	struct:drand48_data
+__ldiv_t_defined	/usr/include/stdlib.h	111;"	d
+__lldiv_t_defined	/usr/include/stdlib.h	123;"	d
+__malloc_and_calloc_defined	/usr/include/stdlib.h	468;"	d
+__need_NULL	/usr/include/stdlib.h	31;"	d
+__need_malloc_and_calloc	/usr/include/stdlib.h	910;"	d
+__need_size_t	/usr/include/stdlib.h	28;"	d
+__need_wchar_t	/usr/include/stdlib.h	30;"	d
+__old_x	/usr/include/stdlib.h	/^    unsigned short int __old_x[3]; \/* Old state.  *\/$/;"	m	struct:drand48_data
+__secure_getenv	/usr/include/stdlib.h	/^extern char *__secure_getenv (__const char *__name)$/;"	p
+__x	/usr/include/stdlib.h	/^    unsigned short int __x[3];	\/* Current state.  *\/$/;"	m	struct:drand48_data
+a64l	/usr/include/stdlib.h	/^extern long int a64l (__const char *__s)$/;"	p
+abort	/usr/include/stdlib.h	/^extern void abort (void) __THROW __attribute__ ((__noreturn__));$/;"	p
+abs	/usr/include/stdlib.h	/^extern int abs (int __x) __THROW __attribute__ ((__const__)) __wur;$/;"	p
+at_quick_exit	/usr/include/stdlib.h	/^extern int at_quick_exit (void (*__func) (void)) __THROW __nonnull ((1));$/;"	p
+atexit	/usr/include/stdlib.h	/^extern int atexit (void (*__func) (void)) __THROW __nonnull ((1));$/;"	p
+atof	/usr/include/stdlib.h	/^__NTH (atof (__const char *__nptr))$/;"	f
+atof	/usr/include/stdlib.h	/^extern double atof (__const char *__nptr)$/;"	p
+atoi	/usr/include/stdlib.h	/^__NTH (atoi (__const char *__nptr))$/;"	f
+atoi	/usr/include/stdlib.h	/^extern int atoi (__const char *__nptr)$/;"	p
+atol	/usr/include/stdlib.h	/^__NTH (atol (__const char *__nptr))$/;"	f
+atol	/usr/include/stdlib.h	/^extern long int atol (__const char *__nptr)$/;"	p
+atoll	/usr/include/stdlib.h	/^__NTH (atoll (__const char *__nptr))$/;"	f
+atoll	/usr/include/stdlib.h	/^__extension__ extern long long int atoll (__const char *__nptr)$/;"	p
+bsearch	/usr/include/stdlib.h	/^extern void *bsearch (__const void *__key, __const void *__base,$/;"	p
+calloc	/usr/include/stdlib.h	/^extern void *calloc (size_t __nmemb, size_t __size)$/;"	p
+canonicalize_file_name	/usr/include/stdlib.h	/^extern char *canonicalize_file_name (__const char *__name)$/;"	p
+cfree	/usr/include/stdlib.h	/^extern void cfree (void *__ptr) __THROW;$/;"	p
+clearenv	/usr/include/stdlib.h	/^extern int clearenv (void) __THROW;$/;"	p
+comparison_fn_t	/usr/include/stdlib.h	/^typedef __compar_fn_t comparison_fn_t;$/;"	t
+div	/usr/include/stdlib.h	/^extern div_t div (int __numer, int __denom)$/;"	p
+div_t	/usr/include/stdlib.h	/^  } div_t;$/;"	t	typeref:struct:__anon1
+drand48	/usr/include/stdlib.h	/^extern double drand48 (void) __THROW;$/;"	p
+drand48_data	/usr/include/stdlib.h	/^struct drand48_data$/;"	s
+drand48_r	/usr/include/stdlib.h	/^extern int drand48_r (struct drand48_data *__restrict __buffer,$/;"	p
+ecvt	/usr/include/stdlib.h	/^extern char *ecvt (double __value, int __ndigit, int *__restrict __decpt,$/;"	p
+ecvt_r	/usr/include/stdlib.h	/^extern int ecvt_r (double __value, int __ndigit, int *__restrict __decpt,$/;"	p
+end_ptr	/usr/include/stdlib.h	/^    int32_t *end_ptr;		\/* Pointer behind state table.  *\/$/;"	m	struct:random_data
+erand48	/usr/include/stdlib.h	/^extern double erand48 (unsigned short int __xsubi[3]) __THROW __nonnull ((1));$/;"	p
+erand48_r	/usr/include/stdlib.h	/^extern int erand48_r (unsigned short int __xsubi[3],$/;"	p
+exit	/usr/include/stdlib.h	/^extern void exit (int __status) __THROW __attribute__ ((__noreturn__));$/;"	p
+fcvt	/usr/include/stdlib.h	/^extern char *fcvt (double __value, int __ndigit, int *__restrict __decpt,$/;"	p
+fcvt_r	/usr/include/stdlib.h	/^extern int fcvt_r (double __value, int __ndigit, int *__restrict __decpt,$/;"	p
+fptr	/usr/include/stdlib.h	/^    int32_t *fptr;		\/* Front pointer.  *\/$/;"	m	struct:random_data
+free	/usr/include/stdlib.h	/^extern void free (void *__ptr) __THROW;$/;"	p
+gcvt	/usr/include/stdlib.h	/^extern char *gcvt (double __value, int __ndigit, char *__buf)$/;"	p
+getenv	/usr/include/stdlib.h	/^extern char *getenv (__const char *__name) __THROW __nonnull ((1)) __wur;$/;"	p
+getloadavg	/usr/include/stdlib.h	/^extern int getloadavg (double __loadavg[], int __nelem)$/;"	p
+getpt	/usr/include/stdlib.h	/^extern int getpt (void);$/;"	p
+getsubopt	/usr/include/stdlib.h	/^extern int getsubopt (char **__restrict __optionp,$/;"	p
+grantpt	/usr/include/stdlib.h	/^extern int grantpt (int __fd) __THROW;$/;"	p
+initstate	/usr/include/stdlib.h	/^extern char *initstate (unsigned int __seed, char *__statebuf,$/;"	p
+initstate_r	/usr/include/stdlib.h	/^extern int initstate_r (unsigned int __seed, char *__restrict __statebuf,$/;"	p
+jrand48	/usr/include/stdlib.h	/^extern long int jrand48 (unsigned short int __xsubi[3])$/;"	p
+jrand48_r	/usr/include/stdlib.h	/^extern int jrand48_r (unsigned short int __xsubi[3],$/;"	p
+l64a	/usr/include/stdlib.h	/^extern char *l64a (long int __n) __THROW __wur;$/;"	p
+labs	/usr/include/stdlib.h	/^extern long int labs (long int __x) __THROW __attribute__ ((__const__)) __wur;$/;"	p
+lcong48	/usr/include/stdlib.h	/^extern void lcong48 (unsigned short int __param[7]) __THROW __nonnull ((1));$/;"	p
+lcong48_r	/usr/include/stdlib.h	/^extern int lcong48_r (unsigned short int __param[7],$/;"	p
+ldiv	/usr/include/stdlib.h	/^extern ldiv_t ldiv (long int __numer, long int __denom)$/;"	p
+ldiv_t	/usr/include/stdlib.h	/^  } ldiv_t;$/;"	t	typeref:struct:__anon2
+llabs	/usr/include/stdlib.h	/^__extension__ extern long long int llabs (long long int __x)$/;"	p
+lldiv	/usr/include/stdlib.h	/^__extension__ extern lldiv_t lldiv (long long int __numer,$/;"	p
+lldiv_t	/usr/include/stdlib.h	/^  } lldiv_t;$/;"	t	typeref:struct:__anon3
+lrand48	/usr/include/stdlib.h	/^extern long int lrand48 (void) __THROW;$/;"	p
+lrand48_r	/usr/include/stdlib.h	/^extern int lrand48_r (struct drand48_data *__restrict __buffer,$/;"	p
+malloc	/usr/include/stdlib.h	/^extern void *malloc (size_t __size) __THROW __attribute_malloc__ __wur;$/;"	p
+mblen	/usr/include/stdlib.h	/^extern int mblen (__const char *__s, size_t __n) __THROW __wur;$/;"	p
+mbstowcs	/usr/include/stdlib.h	/^extern size_t mbstowcs (wchar_t *__restrict  __pwcs,$/;"	p
+mbtowc	/usr/include/stdlib.h	/^extern int mbtowc (wchar_t *__restrict __pwc,$/;"	p
+mkdtemp	/usr/include/stdlib.h	/^extern char *mkdtemp (char *__template) __THROW __nonnull ((1)) __wur;$/;"	p
+mkostemp	/usr/include/stdlib.h	/^extern int mkostemp (char *__template, int __flags) __nonnull ((1)) __wur;$/;"	p
+mkostemp	/usr/include/stdlib.h	652;"	d
+mkostemp64	/usr/include/stdlib.h	/^extern int mkostemp64 (char *__template, int __flags) __nonnull ((1)) __wur;$/;"	p
+mkstemp	/usr/include/stdlib.h	/^extern int mkstemp (char *__template) __nonnull ((1)) __wur;$/;"	p
+mkstemp	/usr/include/stdlib.h	621;"	d
+mkstemp64	/usr/include/stdlib.h	/^extern int mkstemp64 (char *__template) __nonnull ((1)) __wur;$/;"	p
+mktemp	/usr/include/stdlib.h	/^extern char *mktemp (char *__template) __THROW __nonnull ((1)) __wur;$/;"	p
+mrand48	/usr/include/stdlib.h	/^extern long int mrand48 (void) __THROW;$/;"	p
+mrand48_r	/usr/include/stdlib.h	/^extern int mrand48_r (struct drand48_data *__restrict __buffer,$/;"	p
+nrand48	/usr/include/stdlib.h	/^extern long int nrand48 (unsigned short int __xsubi[3])$/;"	p
+nrand48_r	/usr/include/stdlib.h	/^extern int nrand48_r (unsigned short int __xsubi[3],$/;"	p
+on_exit	/usr/include/stdlib.h	/^extern int on_exit (void (*__func) (int __status, void *__arg), void *__arg)$/;"	p
+posix_memalign	/usr/include/stdlib.h	/^extern int posix_memalign (void **__memptr, size_t __alignment, size_t __size)$/;"	p
+posix_openpt	/usr/include/stdlib.h	/^extern int posix_openpt (int __oflag) __wur;$/;"	p
+ptsname	/usr/include/stdlib.h	/^extern char *ptsname (int __fd) __THROW __wur;$/;"	p
+ptsname_r	/usr/include/stdlib.h	/^extern int ptsname_r (int __fd, char *__buf, size_t __buflen)$/;"	p
+putenv	/usr/include/stdlib.h	/^extern int putenv (char *__string) __THROW __nonnull ((1));$/;"	p
+qecvt	/usr/include/stdlib.h	/^extern char *qecvt (long double __value, int __ndigit,$/;"	p
+qecvt_r	/usr/include/stdlib.h	/^extern int qecvt_r (long double __value, int __ndigit,$/;"	p
+qfcvt	/usr/include/stdlib.h	/^extern char *qfcvt (long double __value, int __ndigit,$/;"	p
+qfcvt_r	/usr/include/stdlib.h	/^extern int qfcvt_r (long double __value, int __ndigit,$/;"	p
+qgcvt	/usr/include/stdlib.h	/^extern char *qgcvt (long double __value, int __ndigit, char *__buf)$/;"	p
+qsort	/usr/include/stdlib.h	/^extern void qsort (void *__base, size_t __nmemb, size_t __size,$/;"	p
+qsort_r	/usr/include/stdlib.h	/^extern void qsort_r (void *__base, size_t __nmemb, size_t __size,$/;"	p
+quick_exit	/usr/include/stdlib.h	/^extern void quick_exit (int __status) __THROW __attribute__ ((__noreturn__));$/;"	p
+quot	/usr/include/stdlib.h	/^    int quot;			\/* Quotient.  *\/$/;"	m	struct:__anon1
+quot	/usr/include/stdlib.h	/^    long int quot;		\/* Quotient.  *\/$/;"	m	struct:__anon2
+quot	/usr/include/stdlib.h	/^    long long int quot;		\/* Quotient.  *\/$/;"	m	struct:__anon3
+rand	/usr/include/stdlib.h	/^extern int rand (void) __THROW;$/;"	p
+rand_deg	/usr/include/stdlib.h	/^    int rand_deg;		\/* Degree of random number generator.  *\/$/;"	m	struct:random_data
+rand_r	/usr/include/stdlib.h	/^extern int rand_r (unsigned int *__seed) __THROW;$/;"	p
+rand_sep	/usr/include/stdlib.h	/^    int rand_sep;		\/* Distance between front and rear.  *\/$/;"	m	struct:random_data
+rand_type	/usr/include/stdlib.h	/^    int rand_type;		\/* Type of random number generator.  *\/$/;"	m	struct:random_data
+random	/usr/include/stdlib.h	/^extern long int random (void) __THROW;$/;"	p
+random_data	/usr/include/stdlib.h	/^struct random_data$/;"	s
+random_r	/usr/include/stdlib.h	/^extern int random_r (struct random_data *__restrict __buf,$/;"	p
+realloc	/usr/include/stdlib.h	/^extern void *realloc (void *__ptr, size_t __size)$/;"	p
+realpath	/usr/include/stdlib.h	/^extern char *realpath (__const char *__restrict __name,$/;"	p
+rem	/usr/include/stdlib.h	/^    int rem;			\/* Remainder.  *\/$/;"	m	struct:__anon1
+rem	/usr/include/stdlib.h	/^    long int rem;		\/* Remainder.  *\/$/;"	m	struct:__anon2
+rem	/usr/include/stdlib.h	/^    long long int rem;		\/* Remainder.  *\/$/;"	m	struct:__anon3
+rpmatch	/usr/include/stdlib.h	/^extern int rpmatch (__const char *__response) __THROW __nonnull ((1)) __wur;$/;"	p
+rptr	/usr/include/stdlib.h	/^    int32_t *rptr;		\/* Rear pointer.  *\/$/;"	m	struct:random_data
+seed48	/usr/include/stdlib.h	/^extern unsigned short int *seed48 (unsigned short int __seed16v[3])$/;"	p
+seed48_r	/usr/include/stdlib.h	/^extern int seed48_r (unsigned short int __seed16v[3],$/;"	p
+setenv	/usr/include/stdlib.h	/^extern int setenv (__const char *__name, __const char *__value, int __replace)$/;"	p
+setkey	/usr/include/stdlib.h	/^extern void setkey (__const char *__key) __THROW __nonnull ((1));$/;"	p
+setstate	/usr/include/stdlib.h	/^extern char *setstate (char *__statebuf) __THROW __nonnull ((1));$/;"	p
+setstate_r	/usr/include/stdlib.h	/^extern int setstate_r (char *__restrict __statebuf,$/;"	p
+srand	/usr/include/stdlib.h	/^extern void srand (unsigned int __seed) __THROW;$/;"	p
+srand48	/usr/include/stdlib.h	/^extern void srand48 (long int __seedval) __THROW;$/;"	p
+srand48_r	/usr/include/stdlib.h	/^extern int srand48_r (long int __seedval, struct drand48_data *__buffer)$/;"	p
+srandom	/usr/include/stdlib.h	/^extern void srandom (unsigned int __seed) __THROW;$/;"	p
+srandom_r	/usr/include/stdlib.h	/^extern int srandom_r (unsigned int __seed, struct random_data *__buf)$/;"	p
+state	/usr/include/stdlib.h	/^    int32_t *state;		\/* Array of state values.  *\/$/;"	m	struct:random_data
+strtod	/usr/include/stdlib.h	/^extern double strtod (__const char *__restrict __nptr,$/;"	p
+strtod_l	/usr/include/stdlib.h	/^extern double strtod_l (__const char *__restrict __nptr,$/;"	p
+strtof	/usr/include/stdlib.h	/^extern float strtof (__const char *__restrict __nptr,$/;"	p
+strtof_l	/usr/include/stdlib.h	/^extern float strtof_l (__const char *__restrict __nptr,$/;"	p
+strtol	/usr/include/stdlib.h	/^extern long int strtol (__const char *__restrict __nptr,$/;"	p
+strtol_l	/usr/include/stdlib.h	/^extern long int strtol_l (__const char *__restrict __nptr,$/;"	p
+strtold	/usr/include/stdlib.h	/^extern long double strtold (__const char *__restrict __nptr,$/;"	p
+strtold_l	/usr/include/stdlib.h	/^extern long double strtold_l (__const char *__restrict __nptr,$/;"	p
+strtoll	/usr/include/stdlib.h	/^extern long long int strtoll (__const char *__restrict __nptr,$/;"	p
+strtoll_l	/usr/include/stdlib.h	/^extern long long int strtoll_l (__const char *__restrict __nptr,$/;"	p
+strtoq	/usr/include/stdlib.h	/^extern long long int strtoq (__const char *__restrict __nptr,$/;"	p
+strtoul	/usr/include/stdlib.h	/^extern unsigned long int strtoul (__const char *__restrict __nptr,$/;"	p
+strtoul_l	/usr/include/stdlib.h	/^extern unsigned long int strtoul_l (__const char *__restrict __nptr,$/;"	p
+strtoull	/usr/include/stdlib.h	/^extern unsigned long long int strtoull (__const char *__restrict __nptr,$/;"	p
+strtoull_l	/usr/include/stdlib.h	/^extern unsigned long long int strtoull_l (__const char *__restrict __nptr,$/;"	p
+strtouq	/usr/include/stdlib.h	/^extern unsigned long long int strtouq (__const char *__restrict __nptr,$/;"	p
+system	/usr/include/stdlib.h	/^extern int system (__const char *__command) __wur;$/;"	p
+unlockpt	/usr/include/stdlib.h	/^extern int unlockpt (int __fd) __THROW;$/;"	p
+unsetenv	/usr/include/stdlib.h	/^extern int unsetenv (__const char *__name) __THROW;$/;"	p
+valloc	/usr/include/stdlib.h	/^extern void *valloc (size_t __size) __THROW __attribute_malloc__ __wur;$/;"	p
+wcstombs	/usr/include/stdlib.h	/^extern size_t wcstombs (char *__restrict __s,$/;"	p
+wctomb	/usr/include/stdlib.h	/^extern int wctomb (char *__s, wchar_t __wchar) __THROW __wur;$/;"	p

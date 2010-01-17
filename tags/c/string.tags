@@ -1,0 +1,85 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+_STRING_H	/usr/include/string.h	24;"	d
+__CORRECT_ISO_CPP_STRING_H_PROTO	/usr/include/string.h	37;"	d
+__REDIRECT_NTH	/usr/include/string.h	/^extern int __REDIRECT_NTH (strerror_r,$/;"	p
+__bzero	/usr/include/string.h	/^extern void __bzero (void *__s, size_t __n) __THROW __nonnull ((1));$/;"	p
+__mempcpy	/usr/include/string.h	/^extern void *__mempcpy (void *__restrict __dest,$/;"	p
+__need_NULL	/usr/include/string.h	32;"	d
+__need_size_t	/usr/include/string.h	31;"	d
+__stpcpy	/usr/include/string.h	/^extern char *__stpcpy (char *__restrict __dest, __const char *__restrict __src)$/;"	p
+__stpncpy	/usr/include/string.h	/^extern char *__stpncpy (char *__restrict __dest,$/;"	p
+__strtok_r	/usr/include/string.h	/^extern char *__strtok_r (char *__restrict __s,$/;"	p
+basename	/usr/include/string.h	/^extern char *basename (__const char *__filename) __THROW __nonnull ((1));$/;"	p
+bcmp	/usr/include/string.h	/^extern int bcmp (__const void *__s1, __const void *__s2, size_t __n)$/;"	p
+bcopy	/usr/include/string.h	/^extern void bcopy (__const void *__src, void *__dest, size_t __n)$/;"	p
+bzero	/usr/include/string.h	/^extern void bzero (void *__s, size_t __n) __THROW __nonnull ((1));$/;"	p
+ffs	/usr/include/string.h	/^extern int ffs (int __i) __THROW __attribute__ ((__const__));$/;"	p
+ffsl	/usr/include/string.h	/^extern int ffsl (long int __l) __THROW __attribute__ ((__const__));$/;"	p
+ffsll	/usr/include/string.h	/^__extension__ extern int ffsll (long long int __ll)$/;"	p
+index	/usr/include/string.h	/^extern char *index (__const char *__s, int __c)$/;"	p
+index	/usr/include/string.h	/^index (__const char *__s, int __c) __THROW$/;"	f
+index	/usr/include/string.h	/^index (char *__s, int __c) __THROW$/;"	f
+memccpy	/usr/include/string.h	/^extern void *memccpy (void *__restrict __dest, __const void *__restrict __src,$/;"	p
+memchr	/usr/include/string.h	/^extern void *memchr (__const void *__s, int __c, size_t __n)$/;"	p
+memchr	/usr/include/string.h	/^memchr (__const void *__s, int __c, size_t __n) __THROW$/;"	f
+memchr	/usr/include/string.h	/^memchr (void *__s, int __c, size_t __n) __THROW$/;"	f
+memcmp	/usr/include/string.h	/^extern int memcmp (__const void *__s1, __const void *__s2, size_t __n)$/;"	p
+memcpy	/usr/include/string.h	/^extern void *memcpy (void *__restrict __dest,$/;"	p
+memfrob	/usr/include/string.h	/^extern void *memfrob (void *__s, size_t __n) __THROW __nonnull ((1));$/;"	p
+memmem	/usr/include/string.h	/^extern void *memmem (__const void *__haystack, size_t __haystacklen,$/;"	p
+memmove	/usr/include/string.h	/^extern void *memmove (void *__dest, __const void *__src, size_t __n)$/;"	p
+mempcpy	/usr/include/string.h	/^extern void *mempcpy (void *__restrict __dest,$/;"	p
+memrchr	/usr/include/string.h	/^extern void *memrchr (__const void *__s, int __c, size_t __n)$/;"	p
+memset	/usr/include/string.h	/^extern void *memset (void *__s, int __c, size_t __n) __THROW __nonnull ((1));$/;"	p
+rindex	/usr/include/string.h	/^extern char *rindex (__const char *__s, int __c)$/;"	p
+rindex	/usr/include/string.h	/^rindex (__const char *__s, int __c) __THROW$/;"	f
+rindex	/usr/include/string.h	/^rindex (char *__s, int __c) __THROW$/;"	f
+stpcpy	/usr/include/string.h	/^extern char *stpcpy (char *__restrict __dest, __const char *__restrict __src)$/;"	p
+stpncpy	/usr/include/string.h	/^extern char *stpncpy (char *__restrict __dest,$/;"	p
+strcasecmp	/usr/include/string.h	/^extern int strcasecmp (__const char *__s1, __const char *__s2)$/;"	p
+strcasecmp_l	/usr/include/string.h	/^extern int strcasecmp_l (__const char *__s1, __const char *__s2,$/;"	p
+strcasestr	/usr/include/string.h	/^extern char *strcasestr (__const char *__haystack, __const char *__needle)$/;"	p
+strcat	/usr/include/string.h	/^extern char *strcat (char *__restrict __dest, __const char *__restrict __src)$/;"	p
+strchr	/usr/include/string.h	/^strchr (__const char *__s, int __c) __THROW$/;"	f
+strchr	/usr/include/string.h	/^strchr (char *__s, int __c) __THROW$/;"	f
+strcmp	/usr/include/string.h	/^extern int strcmp (__const char *__s1, __const char *__s2)$/;"	p
+strcoll	/usr/include/string.h	/^extern int strcoll (__const char *__s1, __const char *__s2)$/;"	p
+strcoll_l	/usr/include/string.h	/^extern int strcoll_l (__const char *__s1, __const char *__s2, __locale_t __l)$/;"	p
+strcpy	/usr/include/string.h	/^extern char *strcpy (char *__restrict __dest, __const char *__restrict __src)$/;"	p
+strcspn	/usr/include/string.h	/^extern size_t strcspn (__const char *__s, __const char *__reject)$/;"	p
+strdup	/usr/include/string.h	/^extern char *strdup (__const char *__s)$/;"	p
+strdupa	/usr/include/string.h	187;"	d
+strerror	/usr/include/string.h	/^extern char *strerror (int __errnum) __THROW;$/;"	p
+strerror_l	/usr/include/string.h	/^extern char *strerror_l (int __errnum, __locale_t __l) __THROW;$/;"	p
+strfry	/usr/include/string.h	/^extern char *strfry (char *__string) __THROW __nonnull ((1));$/;"	p
+strlen	/usr/include/string.h	/^extern size_t strlen (__const char *__s)$/;"	p
+strncasecmp	/usr/include/string.h	/^extern int strncasecmp (__const char *__s1, __const char *__s2, size_t __n)$/;"	p
+strncasecmp_l	/usr/include/string.h	/^extern int strncasecmp_l (__const char *__s1, __const char *__s2,$/;"	p
+strncat	/usr/include/string.h	/^extern char *strncat (char *__restrict __dest, __const char *__restrict __src,$/;"	p
+strncmp	/usr/include/string.h	/^extern int strncmp (__const char *__s1, __const char *__s2, size_t __n)$/;"	p
+strncpy	/usr/include/string.h	/^extern char *strncpy (char *__restrict __dest,$/;"	p
+strndup	/usr/include/string.h	/^extern char *strndup (__const char *__string, size_t __n)$/;"	p
+strndupa	/usr/include/string.h	197;"	d
+strnlen	/usr/include/string.h	/^extern size_t strnlen (__const char *__string, size_t __maxlen)$/;"	p
+strpbrk	/usr/include/string.h	/^extern char *strpbrk (__const char *__s, __const char *__accept)$/;"	p
+strpbrk	/usr/include/string.h	/^strpbrk (__const char *__s, __const char *__accept) __THROW$/;"	f
+strpbrk	/usr/include/string.h	/^strpbrk (char *__s, __const char *__accept) __THROW$/;"	f
+strrchr	/usr/include/string.h	/^extern char *strrchr (__const char *__s, int __c)$/;"	p
+strrchr	/usr/include/string.h	/^strrchr (__const char *__s, int __c) __THROW$/;"	f
+strrchr	/usr/include/string.h	/^strrchr (char *__s, int __c) __THROW$/;"	f
+strsep	/usr/include/string.h	/^extern char *strsep (char **__restrict __stringp,$/;"	p
+strsignal	/usr/include/string.h	/^extern char *strsignal (int __sig) __THROW;$/;"	p
+strspn	/usr/include/string.h	/^extern size_t strspn (__const char *__s, __const char *__accept)$/;"	p
+strstr	/usr/include/string.h	/^extern char *strstr (__const char *__haystack, __const char *__needle)$/;"	p
+strstr	/usr/include/string.h	/^strstr (__const char *__haystack, __const char *__needle) __THROW$/;"	f
+strstr	/usr/include/string.h	/^strstr (char *__haystack, __const char *__needle) __THROW$/;"	f
+strtok	/usr/include/string.h	/^extern char *strtok (char *__restrict __s, __const char *__restrict __delim)$/;"	p
+strtok_r	/usr/include/string.h	/^extern char *strtok_r (char *__restrict __s, __const char *__restrict __delim,$/;"	p
+strverscmp	/usr/include/string.h	/^extern int strverscmp (__const char *__s1, __const char *__s2)$/;"	p
+strxfrm	/usr/include/string.h	/^extern size_t strxfrm (char *__restrict __dest,$/;"	p
+strxfrm_l	/usr/include/string.h	/^extern size_t strxfrm_l (char *__dest, __const char *__src, size_t __n,$/;"	p

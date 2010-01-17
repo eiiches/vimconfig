@@ -1,0 +1,130 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+REGS_FIXED	/usr/include/regex.h	410;"	d
+REGS_REALLOCATE	/usr/include/regex.h	409;"	d
+REGS_UNALLOCATED	/usr/include/regex.h	408;"	d
+REG_BADBR	/usr/include/regex.h	/^  REG_BADBR,		\/* Invalid contents of \\{\\}.  *\/$/;"	e	enum:__anon1
+REG_BADPAT	/usr/include/regex.h	/^  REG_BADPAT,		\/* Invalid pattern.  *\/$/;"	e	enum:__anon1
+REG_BADRPT	/usr/include/regex.h	/^  REG_BADRPT,		\/* No preceding re for repetition op.  *\/$/;"	e	enum:__anon1
+REG_EBRACE	/usr/include/regex.h	/^  REG_EBRACE,		\/* Unmatched \\{.  *\/$/;"	e	enum:__anon1
+REG_EBRACK	/usr/include/regex.h	/^  REG_EBRACK,		\/* Unmatched left bracket.  *\/$/;"	e	enum:__anon1
+REG_ECOLLATE	/usr/include/regex.h	/^  REG_ECOLLATE,		\/* Inalid collating element.  *\/$/;"	e	enum:__anon1
+REG_ECTYPE	/usr/include/regex.h	/^  REG_ECTYPE,		\/* Invalid character class name.  *\/$/;"	e	enum:__anon1
+REG_EEND	/usr/include/regex.h	/^  REG_EEND,		\/* Premature end.  *\/$/;"	e	enum:__anon1
+REG_EESCAPE	/usr/include/regex.h	/^  REG_EESCAPE,		\/* Trailing backslash.  *\/$/;"	e	enum:__anon1
+REG_ENOSYS	/usr/include/regex.h	/^  REG_ENOSYS = -1,	\/* This will never happen for this implementation.  *\/$/;"	e	enum:__anon1
+REG_EPAREN	/usr/include/regex.h	/^  REG_EPAREN,		\/* Parenthesis imbalance.  *\/$/;"	e	enum:__anon1
+REG_ERANGE	/usr/include/regex.h	/^  REG_ERANGE,		\/* Invalid range end.  *\/$/;"	e	enum:__anon1
+REG_ERPAREN	/usr/include/regex.h	/^  REG_ERPAREN		\/* Unmatched ) or \\); not returned from regcomp.  *\/$/;"	e	enum:__anon1
+REG_ESIZE	/usr/include/regex.h	/^  REG_ESIZE,		\/* Compiled pattern bigger than 2^16 bytes.  *\/$/;"	e	enum:__anon1
+REG_ESPACE	/usr/include/regex.h	/^  REG_ESPACE,		\/* Ran out of memory.  *\/$/;"	e	enum:__anon1
+REG_ESUBREG	/usr/include/regex.h	/^  REG_ESUBREG,		\/* Invalid back reference.  *\/$/;"	e	enum:__anon1
+REG_EXTENDED	/usr/include/regex.h	281;"	d
+REG_ICASE	/usr/include/regex.h	285;"	d
+REG_NEWLINE	/usr/include/regex.h	290;"	d
+REG_NOERROR	/usr/include/regex.h	/^  REG_NOERROR = 0,	\/* Success.  *\/$/;"	e	enum:__anon1
+REG_NOMATCH	/usr/include/regex.h	/^  REG_NOMATCH,		\/* Didn't find a match (for regexec).  *\/$/;"	e	enum:__anon1
+REG_NOSUB	/usr/include/regex.h	294;"	d
+REG_NOTBOL	/usr/include/regex.h	304;"	d
+REG_NOTEOL	/usr/include/regex.h	307;"	d
+REG_STARTEND	/usr/include/regex.h	312;"	d
+RE_BACKSLASH_ESCAPE_IN_LISTS	/usr/include/regex.h	50;"	d
+RE_BK_PLUS_QM	/usr/include/regex.h	55;"	d
+RE_CARET_ANCHORS_HERE	/usr/include/regex.h	171;"	d
+RE_CHAR_CLASSES	/usr/include/regex.h	61;"	d
+RE_CONTEXT_INDEP_ANCHORS	/usr/include/regex.h	75;"	d
+RE_CONTEXT_INDEP_OPS	/usr/include/regex.h	83;"	d
+RE_CONTEXT_INVALID_DUP	/usr/include/regex.h	175;"	d
+RE_CONTEXT_INVALID_OPS	/usr/include/regex.h	87;"	d
+RE_DEBUG	/usr/include/regex.h	155;"	d
+RE_DOT_NEWLINE	/usr/include/regex.h	91;"	d
+RE_DOT_NOT_NULL	/usr/include/regex.h	95;"	d
+RE_DUP_MAX	/usr/include/regex.h	270;"	d
+RE_DUP_MAX	/usr/include/regex.h	273;"	d
+RE_HAT_LISTS_NOT_NEWLINE	/usr/include/regex.h	99;"	d
+RE_ICASE	/usr/include/regex.h	166;"	d
+RE_INTERVALS	/usr/include/regex.h	104;"	d
+RE_INVALID_INTERVAL_ORD	/usr/include/regex.h	160;"	d
+RE_LIMITED_OPS	/usr/include/regex.h	108;"	d
+RE_NEWLINE_ALT	/usr/include/regex.h	112;"	d
+RE_NO_BK_BRACES	/usr/include/regex.h	117;"	d
+RE_NO_BK_PARENS	/usr/include/regex.h	121;"	d
+RE_NO_BK_REFS	/usr/include/regex.h	125;"	d
+RE_NO_BK_VBAR	/usr/include/regex.h	129;"	d
+RE_NO_EMPTY_RANGES	/usr/include/regex.h	135;"	d
+RE_NO_GNU_OPS	/usr/include/regex.h	147;"	d
+RE_NO_POSIX_BACKTRACKING	/usr/include/regex.h	143;"	d
+RE_NO_SUB	/usr/include/regex.h	179;"	d
+RE_NREGS	/usr/include/regex.h	454;"	d
+RE_SYNTAX_AWK	/usr/include/regex.h	196;"	d
+RE_SYNTAX_ED	/usr/include/regex.h	228;"	d
+RE_SYNTAX_EGREP	/usr/include/regex.h	217;"	d
+RE_SYNTAX_EMACS	/usr/include/regex.h	194;"	d
+RE_SYNTAX_GNU_AWK	/usr/include/regex.h	203;"	d
+RE_SYNTAX_GREP	/usr/include/regex.h	212;"	d
+RE_SYNTAX_POSIX_AWK	/usr/include/regex.h	208;"	d
+RE_SYNTAX_POSIX_BASIC	/usr/include/regex.h	238;"	d
+RE_SYNTAX_POSIX_BASIC	/usr/include/regex.h	241;"	d
+RE_SYNTAX_POSIX_EGREP	/usr/include/regex.h	223;"	d
+RE_SYNTAX_POSIX_EXTENDED	/usr/include/regex.h	251;"	d
+RE_SYNTAX_POSIX_MINIMAL_BASIC	/usr/include/regex.h	248;"	d
+RE_SYNTAX_POSIX_MINIMAL_EXTENDED	/usr/include/regex.h	259;"	d
+RE_SYNTAX_SED	/usr/include/regex.h	230;"	d
+RE_TRANSLATE_TYPE	/usr/include/regex.h	357;"	d
+RE_UNMATCHED_RIGHT_PAREN_ORD	/usr/include/regex.h	139;"	d
+_REGEX_H	/usr/include/regex.h	23;"	d
+_RE_SYNTAX_POSIX_COMMON	/usr/include/regex.h	233;"	d
+__REPB_PREFIX	/usr/include/regex.h	/^  __RE_TRANSLATE_TYPE __REPB_PREFIX(translate);$/;"	p	struct:re_pattern_buffer
+__REPB_PREFIX	/usr/include/regex.h	/^  char *__REPB_PREFIX(fastmap);$/;"	p	struct:re_pattern_buffer
+__REPB_PREFIX	/usr/include/regex.h	/^  reg_syntax_t __REPB_PREFIX(syntax);$/;"	p	struct:re_pattern_buffer
+__REPB_PREFIX	/usr/include/regex.h	/^  unsigned __REPB_PREFIX(can_be_null) : 1;$/;"	p	struct:re_pattern_buffer
+__REPB_PREFIX	/usr/include/regex.h	/^  unsigned __REPB_PREFIX(fastmap_accurate) : 1;$/;"	p	struct:re_pattern_buffer
+__REPB_PREFIX	/usr/include/regex.h	/^  unsigned __REPB_PREFIX(newline_anchor) : 1;$/;"	p	struct:re_pattern_buffer
+__REPB_PREFIX	/usr/include/regex.h	/^  unsigned __REPB_PREFIX(no_sub) : 1;$/;"	p	struct:re_pattern_buffer
+__REPB_PREFIX	/usr/include/regex.h	/^  unsigned __REPB_PREFIX(not_bol) : 1;$/;"	p	struct:re_pattern_buffer
+__REPB_PREFIX	/usr/include/regex.h	/^  unsigned __REPB_PREFIX(not_eol) : 1;$/;"	p	struct:re_pattern_buffer
+__REPB_PREFIX	/usr/include/regex.h	/^  unsigned __REPB_PREFIX(regs_allocated) : 2;$/;"	p	struct:re_pattern_buffer
+__REPB_PREFIX	/usr/include/regex.h	/^  unsigned char *__REPB_PREFIX(buffer);$/;"	p	struct:re_pattern_buffer
+__REPB_PREFIX	/usr/include/regex.h	/^  unsigned long int __REPB_PREFIX(allocated);$/;"	p	struct:re_pattern_buffer
+__REPB_PREFIX	/usr/include/regex.h	/^  unsigned long int __REPB_PREFIX(used);$/;"	p	struct:re_pattern_buffer
+__REPB_PREFIX	/usr/include/regex.h	362;"	d
+__REPB_PREFIX	/usr/include/regex.h	364;"	d
+__RE_TRANSLATE_TYPE	/usr/include/regex.h	355;"	d
+__restrict	/usr/include/regex.h	550;"	d
+__restrict	/usr/include/regex.h	552;"	d
+__restrict_arr	/usr/include/regex.h	560;"	d
+__restrict_arr	/usr/include/regex.h	562;"	d
+active_reg_t	/usr/include/regex.h	/^typedef unsigned long int active_reg_t;$/;"	t
+end	/usr/include/regex.h	/^  regoff_t *end;$/;"	m	struct:re_registers
+num_regs	/usr/include/regex.h	/^  unsigned num_regs;$/;"	m	struct:re_registers
+re_comp	/usr/include/regex.h	/^extern char *re_comp (const char *);$/;"	p
+re_compile_fastmap	/usr/include/regex.h	/^extern int re_compile_fastmap (struct re_pattern_buffer *__buffer);$/;"	p
+re_compile_pattern	/usr/include/regex.h	/^extern const char *re_compile_pattern (const char *__pattern, size_t __length,$/;"	p
+re_exec	/usr/include/regex.h	/^extern int re_exec (const char *);$/;"	p
+re_match	/usr/include/regex.h	/^extern int re_match (struct re_pattern_buffer *__buffer, const char *__string,$/;"	p
+re_match_2	/usr/include/regex.h	/^extern int re_match_2 (struct re_pattern_buffer *__buffer,$/;"	p
+re_nsub	/usr/include/regex.h	/^  size_t re_nsub;$/;"	m	struct:re_pattern_buffer
+re_pattern_buffer	/usr/include/regex.h	/^struct re_pattern_buffer$/;"	s
+re_registers	/usr/include/regex.h	/^struct re_registers$/;"	s
+re_search	/usr/include/regex.h	/^extern int re_search (struct re_pattern_buffer *__buffer, const char *__string,$/;"	p
+re_search_2	/usr/include/regex.h	/^extern int re_search_2 (struct re_pattern_buffer *__buffer,$/;"	p
+re_set_registers	/usr/include/regex.h	/^extern void re_set_registers (struct re_pattern_buffer *__buffer,$/;"	p
+re_set_syntax	/usr/include/regex.h	/^extern reg_syntax_t re_set_syntax (reg_syntax_t __syntax);$/;"	p
+re_syntax_options	/usr/include/regex.h	/^extern reg_syntax_t re_syntax_options;$/;"	x
+reg_errcode_t	/usr/include/regex.h	/^} reg_errcode_t;$/;"	t	typeref:enum:__anon1
+reg_syntax_t	/usr/include/regex.h	/^typedef unsigned long int reg_syntax_t;$/;"	t
+regcomp	/usr/include/regex.h	/^extern int regcomp (regex_t *__restrict __preg,$/;"	p
+regerror	/usr/include/regex.h	/^extern size_t regerror (int __errcode, const regex_t *__restrict __preg,$/;"	p
+regex_t	/usr/include/regex.h	/^typedef struct re_pattern_buffer regex_t;$/;"	t	typeref:struct:re_pattern_buffer
+regexec	/usr/include/regex.h	/^extern int regexec (const regex_t *__restrict __preg,$/;"	p
+regfree	/usr/include/regex.h	/^extern void regfree (regex_t *__preg);$/;"	p
+regmatch_t	/usr/include/regex.h	/^} regmatch_t;$/;"	t	typeref:struct:__anon2
+regoff_t	/usr/include/regex.h	/^typedef int regoff_t;$/;"	t
+rm_eo	/usr/include/regex.h	/^  regoff_t rm_eo;  \/* Byte offset from string's start to substring's end.  *\/$/;"	m	struct:__anon2
+rm_so	/usr/include/regex.h	/^  regoff_t rm_so;  \/* Byte offset from string's start to substring's start.  *\/$/;"	m	struct:__anon2
+s_reg_t	/usr/include/regex.h	/^typedef long int s_reg_t;$/;"	t
+start	/usr/include/regex.h	/^  regoff_t *start;$/;"	m	struct:re_registers
