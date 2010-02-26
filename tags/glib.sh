@@ -1,3 +1,3 @@
 #!/bin/bash
-IGNORE_TOKEN="-I__wur -I__THROW -I__attribute_malloc__ -I__attribute_pure__ -I__attribute_deprecated__ -I__attribute_warn_unused_result__ -I__nonnull"
+IGNORE_TOKEN="-I__wur -I__THROW -I__attribute_malloc__ -I__attribute_pure__ -I__attribute_deprecated__ -I__attribute_warn_unused_result__ -I__nonnull -IG_GNUC_PRINTF -IG_GNUC_SCANF -IG_GNUC_FORMAT -IG_GNUC_NORETURN -IG_GNUC_CONST -IG_GNUC_UNUSED -IG_GNUC_NO_INSTRUMENT -IG_GNUC_ALLOC_SIZE2 -IG_GNUC_ALLOC_SIZE -IG_GNUC_DEPRICATED -IG_GNUC_EXTENSION -IG_GNUC_FUNCTION -IG_GNUC_MALLOC -IG_GNUC_MAY_ALIAS -IG_GNUC_NULL_TERMINATED -IG_GNUC_PRETTY_FUNCTION -IG_GNUC_PURE -IG_GNUC_WARN_UNUSED_RESULT"
 ctags --c-kinds=+pxdf $IGNORE_TOKEN -R -f - /usr/include/glib-2.0/ /usr/lib/glib-2.0/include/ | grep -v "^_" | grep -v "^!" | cut -f 1 | sort | uniq > glib.dict
