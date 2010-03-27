@@ -97,14 +97,26 @@ endif
 
 " My Settings Begin ---------------------------------------
 
+" To enable devhelp search:
+let g:devhelpSearch=1
+
+" To enable devhelp assistant:
+let g:devhelpAssistant=1
+
+" To change the search key (e.g. to F5):
+let g:devhelpSearchKey = '<F10>'
+
+" To change the update delay (e.g. to 150ms):
+set updatetime=150
+
+" To change the length (e.g. to 5 characters) before a word becomes
+" relevant:
+let g:devhelpWordLength = 5
 
 set nocp "for omnicppcomplete
 map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=foldcase --exclude=*~ .<CR>
 inoremap <Nul> <C-x><C-o>
 let OmniCpp_ShowPrototypeInAbbr = 1
-
-
-"let Tlist_Auto_Open = 1
 
 
 set directory=~/.vim/swp
@@ -196,7 +208,10 @@ let g:SrcExpl_updateTagsKey = "<F12>"
 " source $VIMRUNTIME/mswin.vim
 " behave mswin
 
+"let Tlist_Auto_Open = 1
+
 autocmd FileType c set dict=~/.vim/dict/c/*.dict
+
 autocmd BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
 autocmd BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
 autocmd BufRead *.vala set smartindent
