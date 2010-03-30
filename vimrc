@@ -210,7 +210,11 @@ let g:SrcExpl_updateTagsKey = "<F12>"
 
 "let Tlist_Auto_Open = 1
 
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
+
 autocmd FileType c set dict=~/.vim/dict/c/*.dict
+autocmd FileType h set dict=~/.vim/dict/c/*.dict
 
 autocmd BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
 autocmd BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
