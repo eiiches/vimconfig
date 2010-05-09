@@ -70,6 +70,7 @@ function! DevhelpUpdate (flag)
       if s:lastWord != s:word && strlen (s:word) > g:devhelpWordLength
         " Update Devhelp
         call system ('devhelp -a '.s:word.' &')
+				echo s:word
 
         " Remember the word for next time
         let s:lastWord = s:word

@@ -1,6 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/home/eiichi/Desktop/railgun'
-let g:netrw_dirhist_2='/home/eiichi/test'
-let g:netrw_dirhist_3='/home/eiichi'
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/eiichi/clean_install'
+let g:netrw_dirhist_2='/home/eiichi/vimbenkyo/vim-ref/autoload/ref'
+let g:netrw_dirhist_3='/tmp/debug'
 let g:netrw_dirhist_4='/home/eiichi/test'
+let g:netrw_dirhist_5='/home/eiichi/ironpython'
+let g:netrw_dirhist_6='/home/eiichi/class_data_algorithm/mml'
+let g:netrw_dirhist_7='/home/eiichi/desktop'
+let g:netrw_dirhist_8='/home/eiichi/class_advanced_lab/optimization'
+let g:netrw_dirhist_9='/home/eiichi/class_data_algorithm/mml/samples'

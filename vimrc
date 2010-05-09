@@ -107,7 +107,7 @@ let g:devhelpAssistant=1
 let g:devhelpSearchKey = '<F10>'
 
 " To change the update delay (e.g. to 150ms):
-set updatetime=150
+set updatetime=1500
 
 " To change the length (e.g. to 5 characters) before a word becomes
 " relevant:
@@ -238,5 +238,10 @@ function VimModelineExec()
 		endif
 	endfor
 endfunction
+
+set makeprg=pump\ make
+
+set runtimepath+=~/vimbenkyo/vim-ref
+set runtimepath+=~/vimbenkyo/vim-quickrun
 
 " My Setting End ------------------------------------------
