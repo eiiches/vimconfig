@@ -1,0 +1,19 @@
+" Vim syntax file
+" my gtk extensions
+
+
+
+
+syn keyword gtkFunction gtk_expander_new_with_widget gtk_scrolled_window_new_full gtk_alignment_new_full gtk_viewport_new_full
+
+" GtkBox
+syn keyword gtkFunction gtk_vbox_new_pack gtk_hbox_new_pack 
+
+" GtkLabel
+syn keyword gtkFunction gtk_label_new_with_markup gtk_label_new_with_markup_printf gtk_label_new_printf gtk_label_set_label_printf gtk_label_set_markup_printf
+
+" GtkWrapLabel
+syn keyword gtkFunction gtk_wrap_label_new gtk_wrap_label_new_with_markup gtk_wrap_label_new_with_markup_printf gtk_wrap_label_new_printf gtk_wrap_label_set_label_printf gtk_wrap_label_set_markup_printf
+
+" GObject
+syn keyword gObjectMacro g_signal_connect_all

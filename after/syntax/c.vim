@@ -52,6 +52,7 @@ else
 	runtime! syntax/poppler.vim
 	runtime! syntax/vte.vim
 	runtime! syntax/xlib.vim
+	runtime! syntax/gtkextends.vim
 endif
 
 
