@@ -210,12 +210,24 @@ let g:SrcExpl_updateTagsKey = "<F12>"
 
 "let Tlist_Auto_Open = 1
 
+
+" misc
+set makeprg=make
+set runtimepath+=~/vimbenkyo/vim-ref
+set runtimepath+=~/vimbenkyo/vim-quickrun
+
+
+" settings for XML
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
 
+
+" load dictionary for c
 autocmd FileType c set dict=~/.vim/dict/c/*.dict
 autocmd FileType h set dict=~/.vim/dict/c/*.dict
 
+
+" settings for Vala
 autocmd BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
 autocmd BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
 autocmd BufRead *.vala set smartindent
@@ -223,8 +235,12 @@ autocmd BufRead *.vala set cindent
 au BufRead,BufNewFile *.vala            setfiletype vala
 au BufRead,BufNewFile *.vapi            setfiletype vala
 
-au BufWritePost *.sh exe "silent !chmod +x %"
 
+" add execute permission for shell scripts.
+au BufWritePost *.sh exec "silent !chmod +x %"
+
+
+" extended mode line
 au BufReadPost * call VimModelineExec()
 function VimModelineExec()
 	" read modelines
@@ -239,20 +255,29 @@ function VimModelineExec()
 	endfor
 endfunction
 
-set makeprg=make
 
-set runtimepath+=~/vimbenkyo/vim-ref
-set runtimepath+=~/vimbenkyo/vim-quickrun
-
-" VimWiki
+" VimWiki settings
 let wiki = {}
 let wiki.path = '~/vimwiki/'
-"let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'c': 'c', 'ruby': 'ruby'}
 let wiki.auto_export = 1
 let wiki.path_html = '~/vimwiki/html/'
 let wiki.html_header = '~/vimwiki/header.html'
 let g:vimwiki_list = [wiki]
 let g:vimwiki_folding = 1
 let g:vimwiki_camel_case = 0
+
+
+" write with root permission
+function WriteSudo(...)
+	if a:0 > 0
+		exec "write !sudo tee ".a:1." > /dev/null"
+		exec "file ".a:1
+		set nomodified
+	else
+		write !sudo tee % > /dev/null
+	endif
+endfunction
+command -nargs=? -complete=file WriteSudo call WriteSudo(<f-args>)
+
 
 " My Setting End ------------------------------------------
