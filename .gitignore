@@ -3,3 +3,5 @@
 *.pyc
 .netrwhist
 swp/
+doc/tags
+doc/tags-ja
