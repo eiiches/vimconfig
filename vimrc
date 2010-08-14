@@ -140,7 +140,8 @@ set noerrorbells "do not ring error bells
 set number
 set showmode
 set guifont=Bitstream\ Vera\ Sans\ Mono\ 7
-colorscheme delek "slate delek zell wombat rdark
+"delek slate delek zell wombat rdark
+colorscheme xoria256
 set iminsert=0
 set imsearch=0
 inoremap <ESC> <ESC>:set iminsert=0<CR>:echo<CR>
