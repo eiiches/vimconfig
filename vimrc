@@ -210,24 +210,18 @@ let g:SrcExpl_updateTagsKey = "<F12>"
 
 "let Tlist_Auto_Open = 1
 
-
 " misc
 set makeprg=make
-set runtimepath+=~/vimbenkyo/vim-ref
-set runtimepath+=~/vimbenkyo/vim-quickrun
 
-
-" settings for XML
+" for xml
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
 
-
-" load dictionary for c
+" for c
 autocmd FileType c set dict=~/.vim/dict/c/*.dict
 autocmd FileType h set dict=~/.vim/dict/c/*.dict
 
-
-" settings for Vala
+" for vala
 autocmd BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
 autocmd BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
 autocmd BufRead *.vala set smartindent
@@ -235,9 +229,14 @@ autocmd BufRead *.vala set cindent
 au BufRead,BufNewFile *.vala            setfiletype vala
 au BufRead,BufNewFile *.vapi            setfiletype vala
 
+" for C# 
+au FileType cs set foldmethod=marker
+au FileType cs set foldmarker={,}
+au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',)
+au FileType cs set foldlevelstart=2  
 
-" add execute permission for shell scripts.
-au BufWritePost *.sh exec "silent !chmod +x %"
+" for shell scripts
+au BufWritePost *.sh exe "silent !chmod +x %"
 
 
 " extended mode line
@@ -255,7 +254,6 @@ function VimModelineExec()
 	endfor
 endfunction
 
-
 " VimWiki settings
 let wiki = {}
 let wiki.path = '~/vimwiki/'
@@ -265,7 +263,6 @@ let wiki.html_header = '~/vimwiki/header.html'
 let g:vimwiki_list = [wiki]
 let g:vimwiki_folding = 1
 let g:vimwiki_camel_case = 0
-
 
 " write with root permission
 function WriteSudo(...)
@@ -279,5 +276,8 @@ function WriteSudo(...)
 endfunction
 command -nargs=? -complete=file WriteSudo call WriteSudo(<f-args>)
 
+set runtimepath+=~/.vim/runtime/vim-ref
+set runtimepath+=~/.vim/runtime/vim-quickrun
+set runtimepath+=~/.vim/runtime/xpt
 
 " My Setting End ------------------------------------------
