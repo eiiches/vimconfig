@@ -293,4 +293,7 @@ set runtimepath+=~/.vim/runtime/xpt
 " for NERDTree
 set runtimepath+=~/.vim/runtime/nerdtree
 
+" for taglist
+set runtimepath+=~/.vim/runtime/taglist
+
 " My Setting End ------------------------------------------
