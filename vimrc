@@ -277,7 +277,12 @@ endfunction
 command -nargs=? -complete=file WriteSudo call WriteSudo(<f-args>)
 
 set runtimepath+=~/.vim/runtime/vim-ref
+
+" for vim-quickrun
 set runtimepath+=~/.vim/runtime/vim-quickrun
+nnoremap <silent> <Leader>q :QuickRun >> -mode n<CR>
+vnoremap <silent> <Leader>q :QuickRun >> -mode v<CR>
+
 set runtimepath+=~/.vim/runtime/xpt
 
 " My Setting End ------------------------------------------
