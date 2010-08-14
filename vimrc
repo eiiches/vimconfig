@@ -290,4 +290,7 @@ vnoremap <silent> <Leader>q :QuickRun >> -mode v<CR>
 " for xp template
 set runtimepath+=~/.vim/runtime/xpt
 
+" for NERDTree
+set runtimepath+=~/.vim/runtime/nerdtree
+
 " My Setting End ------------------------------------------
