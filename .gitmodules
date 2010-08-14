@@ -1,0 +1,6 @@
+[submodule "runtime/vim-quickrun"]
+	path = runtime/vim-quickrun
+	url = http://github.com/thinca/vim-quickrun.git
+[submodule "runtime/vim-ref"]
+	path = runtime/vim-ref
+	url = http://github.com/thinca/vim-ref.git
