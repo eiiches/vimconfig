@@ -238,6 +238,8 @@ au FileType cs set foldlevelstart=2
 " for shell scripts
 au BufWritePost *.sh exe "silent !chmod +x %"
 
+" for squirrel
+au! BufRead,BufNewFile *.nut setfiletype squirrel
 
 " extended mode line
 au BufReadPost * call VimModelineExec()
@@ -276,6 +278,7 @@ function WriteSudo(...)
 endfunction
 command -nargs=? -complete=file WriteSudo call WriteSudo(<f-args>)
 
+" for vim-ref
 set runtimepath+=~/.vim/runtime/vim-ref
 
 " for vim-quickrun
@@ -283,6 +286,7 @@ set runtimepath+=~/.vim/runtime/vim-quickrun
 nnoremap <silent> <Leader>q :QuickRun >> -mode n<CR>
 vnoremap <silent> <Leader>q :QuickRun >> -mode v<CR>
 
+" for xp template
 set runtimepath+=~/.vim/runtime/xpt
 
 " My Setting End ------------------------------------------
