@@ -113,7 +113,7 @@ set updatetime=150
 " relevant:
 let g:devhelpWordLength = 5
 
-set nocp "for omnicppcomplete
+"for omnicppcomplete
 map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=foldcase --exclude=*~ .<CR>
 inoremap <Nul> <C-x><C-o>
 let OmniCpp_ShowPrototypeInAbbr = 1
@@ -295,5 +295,15 @@ set runtimepath+=~/.vim/runtime/nerdtree
 
 " for taglist
 set runtimepath+=~/.vim/runtime/taglist
+
+" for omnicppcomplete
+set runtimepath+=~/.vim/runtime/omnicppcomplete
+
+" for autocomplpop
+set runtimepath+=~/.vim/runtime/autocomplpop
+
+" for neocomplcache
+" set runtimepath+=~/.vim/runtime/neocomplcache
+" let g:neocomplcache_enable_at_startup = 1 
 
 " My Setting End ------------------------------------------
