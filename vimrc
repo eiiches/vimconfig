@@ -209,7 +209,6 @@ let g:SrcExpl_updateTagsKey = "<F12>"
 " source $VIMRUNTIME/mswin.vim
 " behave mswin
 
-"let Tlist_Auto_Open = 1
 
 " misc
 set makeprg=make
@@ -292,9 +291,12 @@ set runtimepath+=~/.vim/runtime/xpt
 
 " for NERDTree
 set runtimepath+=~/.vim/runtime/nerdtree
+nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
 
 " for taglist
 set runtimepath+=~/.vim/runtime/taglist
+"let Tlist_Auto_Open = 1
+nnoremap <silent> <Leader>f :TlistToggle<CR>
 
 " for omnicppcomplete
 set runtimepath+=~/.vim/runtime/omnicppcomplete
