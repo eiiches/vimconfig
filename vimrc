@@ -158,16 +158,16 @@ let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
 
 " for c
-autocmd FileType c set dict=~/.vim/dict/c/*.dict
-autocmd FileType h set dict=~/.vim/dict/c/*.dict
+au FileType c set dict=~/.vim/dict/c/*.dict
+au FileType cpp set dict=~/.vim/dict/c/*.dict
 
 " for vala
-autocmd BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-autocmd BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-autocmd BufRead *.vala set smartindent
-autocmd BufRead *.vala set cindent
-au BufRead,BufNewFile *.vala            setfiletype vala
-au BufRead,BufNewFile *.vapi            setfiletype vala
+au BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+au BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+au BufRead *.vala set smartindent
+au BufRead *.vala set cindent
+au BufRead,BufNewFile *.vala setfiletype vala
+au BufRead,BufNewFile *.vapi setfiletype vala
 
 " for C# 
 au FileType cs set foldmethod=marker
@@ -246,9 +246,11 @@ let g:vimwiki_folding = 1
 let g:vimwiki_camel_case = 0
 
 " for devhelp
-let g:devhelpSearch=1 " To enable devhelp search:
-let g:devhelpAssistant=1 " To enable devhelp assistant:
-let g:devhelpSearchKey = '<F10>' " To change the search key (e.g. to F5):
+au CursorHold *.c,*.h call DevhelpUpdate('a')
+au CursorHoldI *.c,*.h call DevhelpUpdate('a')
+" let g:devhelpSearch=1 " To enable devhelp search:
+" let g:devhelpAssistant=1 " To enable devhelp assistant:
+" let g:devhelpSearchKey = '<F10>' " To change the search key (e.g. to F5):
 set updatetime=150 " To change the update delay (e.g. to 150ms):
 let g:devhelpWordLength = 5 " To change the length (e.g. to 5 characters) before a word becomes relevant:
 
