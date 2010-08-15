@@ -252,7 +252,7 @@ au CursorHoldI *.c,*.h call DevhelpUpdate('a')
 " let g:devhelpSearch=1 " To enable devhelp search:
 " let g:devhelpAssistant=1 " To enable devhelp assistant:
 " let g:devhelpSearchKey = '<F10>' " To change the search key (e.g. to F5):
-set updatetime=150 " To change the update delay (e.g. to 150ms):
+au FileType c,cpp setlocal updatetime=150 " To change the update delay (e.g. to 150ms):
 let g:devhelpWordLength = 5 " To change the length (e.g. to 5 characters) before a word becomes relevant:
 
 " for vim-ref
