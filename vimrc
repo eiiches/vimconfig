@@ -265,6 +265,7 @@ vnoremap <silent> <Leader>r :QuickRun >> -mode v<CR>
 
 " for xp template
 set runtimepath+=~/.vim/runtime/xpt
+set runtimepath+=~/.vim/runtime/xpt_personal
 let g:xptemplate_brace_complete = ''
 let g:xptemplate_key = '<C-\>'
 
