@@ -131,6 +131,7 @@ set smartcase			" but don't ignore it, when search string contains uppercase let
 
 set shiftwidth=2
 
+set laststatus=2 "always show statusline
 
 set shellslash
 set grepprg=grep\ -nH\ $* 
