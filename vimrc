@@ -1,11 +1,13 @@
 "
-" Vim Setting File by Eiichi Sato
+" .vimrc by Eiichi Sato
 "
 " To use it, copy it to
 "     for Unix and OS/2:  ~/.vimrc
 "	      for Amiga:  s:.vimrc
 "  for MS-DOS and Win32:  $VIM\_vimrc
 "	    for OpenVMS:  sys$login:.vimrc
+
+" {{{
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -25,25 +27,12 @@ else
   set backup		" keep a backup file
 endif
 
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
-
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
-
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
-
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-" set mouse=a
-endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -94,31 +83,28 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
+" }}}
 
-"------------------------------------------------------------------------------
-"--- general settings
+" --- general settings --------------------------------------------------- {{{
 
 set directory=~/.vim/swp
 set tabstop=2
-
-set guioptions-=T "remove tool bar
-set guioptions-=m "remove gui menu
-set guioptions-=e "remove GUI tab bar
-set guioptions-=r "remove right-scrollbar
-set guioptions-=L "remove left-scrollbar
 
 nmap gb :ls<CR>:buf 
 
 map j gj
 map k gk
 
+set incsearch		" do incremental searching
+
 set nowrap
+set ruler		" show the cursor position all the time
 
 set history=500 "overwrite the default above
 set noerrorbells "do not ring error bells
 set number
+set showcmd		" display incomplete commands
 set showmode
-set guifont=Bitstream\ Vera\ Sans\ Mono\ 7
 "delek slate delek zell wombat rdark
 colorscheme xoria256
 set iminsert=0
@@ -150,9 +136,20 @@ set fileencodings=utf-8,euc-jp,sjis,iso-2022-jp
 
 set makeprg=make
 
+"}}}
 
-"------------------------------------------------------------------------------
-"--- filetype settings
+" --- gvim settings ------------------------------------------------------ {{{
+
+set guifont=Bitstream\ Vera\ Sans\ Mono\ 7
+set guioptions-=T "remove tool bar
+set guioptions-=m "remove gui menu
+set guioptions-=e "remove GUI tab bar
+set guioptions-=r "remove right-scrollbar
+set guioptions-=L "remove left-scrollbar
+
+" }}}
+
+" --- filetype settings -------------------------------------------------- {{{
 
 " for xml
 let g:xml_syntax_folding=1
@@ -182,9 +179,12 @@ au BufWritePost *.sh exe "silent !chmod +x %"
 " for squirrel
 au! BufRead,BufNewFile *.nut setfiletype squirrel
 
+" for vim
+au FileType vim set foldmethod=marker
 
-"------------------------------------------------------------------------------
-"--- functions
+" }}}
+
+" --- functions ---------------------------------------------------------- {{{
 
 " extended mode line
 au BufReadPost * call VimModelineExec()
@@ -213,9 +213,9 @@ function WriteSudo(...)
 endfunction
 command -nargs=? -complete=file WriteSudo call WriteSudo(<f-args>)
 
+" }}}
 
-"------------------------------------------------------------------------------
-"--- plugin settings
+" --- plugin settings ---------------------------------------------------- {{{
 
 " for SrcExpl
 nnoremap <silent> <Leader>j :SrcExplToggle<CR>
@@ -290,3 +290,4 @@ set runtimepath+=~/.vim/runtime/autocomplpop
 " set runtimepath+=~/.vim/runtime/neocomplcache
 " let g:neocomplcache_enable_at_startup = 1 
 
+" }}}
