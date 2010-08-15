@@ -5,10 +5,12 @@ XPTvar $TRUE           1
 XPTvar $FALSE          0
 XPTvar $NULL           NULL
 
-XPTvar $BRif           ' '
-XPTvar $BRloop         ' '
-XPTvar $BRstc          ' '
+XPTvar $BRif           \n
+XPTvar $BRloop         \n
+XPTvar $BRstc          \n
 XPTvar $BRfun          \n
+XPTvar $SParg          ''
+XPTvar $SPop           ' '
 
 XPTvar $VOID_LINE      /* void */;
 XPTvar $CURSOR_PH      /* cursor */
@@ -45,19 +47,19 @@ XSET elts=c_printf_elts( R( 'pattern' ), ',' )
 
 
 XPT printf	" printf\(...)
-printf(`$SPop^`:_printfElts:^`$SPop^)
+printf(`:_printfElts:^)
 
 
 XPT sprintf	" sprintf\(...)
-sprintf(`$SPop^`str^,`$SPop^`:_printfElts:^`$SPop^)
+sprintf(`str^,`$SPop^`:_printfElts:^)
 
 
 XPT snprintf	" snprintf\(...)
-snprintf(`$SPop^`str^,`$SPop^`size^,`$SPop^`:_printfElts:^`$SPop^)
+snprintf(`str^,`$SPop^`size^,`$SPop^`:_printfElts:^)
 
 
 XPT fprintf	" fprintf\(...)
-fprintf(`$SPop^`stream^,`$SPop^`:_printfElts:^`$SPop^)
+fprintf(`stream^,`$SPop^`:_printfElts:^)
 
 XPT memcpy " memcpy (..., ..., sizeof (...) ... )
 memcpy( `dest^, `source^, sizeof(`type^int^) * `count^ )
@@ -69,7 +71,7 @@ XPT malloc " malloc ( ... );
 (`type^int^*)malloc( sizeof( `type^ ) * `count^ )
 
 XPT assert	" assert (.., msg)
-assert(`$SPop^`isTrue^,`$SPop^"`text^"`$SPop^)
+assert(`isTrue^,`$SPop^"`text^")
 
 
 XPT fcomment
