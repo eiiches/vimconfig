@@ -1,4 +1,3 @@
-
 "
 " Vim Setting File by Eiichi Sato
 "
@@ -95,29 +94,9 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-" My Settings Begin ---------------------------------------
 
-" To enable devhelp search:
-let g:devhelpSearch=1
-
-" To enable devhelp assistant:
-let g:devhelpAssistant=1
-
-" To change the search key (e.g. to F5):
-let g:devhelpSearchKey = '<F10>'
-
-" To change the update delay (e.g. to 150ms):
-set updatetime=150
-
-" To change the length (e.g. to 5 characters) before a word becomes
-" relevant:
-let g:devhelpWordLength = 5
-
-"for omnicppcomplete
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=foldcase --exclude=*~ .<CR>
-inoremap <Nul> <C-x><C-o>
-let OmniCpp_ShowPrototypeInAbbr = 1
-
+"------------------------------------------------------------------------------
+"--- general settings
 
 set directory=~/.vim/swp
 set tabstop=2
@@ -168,50 +147,11 @@ set completeopt=menuone
 set encoding=utf8
 set fileencodings=utf-8,euc-jp,sjis,iso-2022-jp
 
-" // The switch of the Source Explorer
-nmap <F8> :SrcExplToggle<CR>
-
-" // Set the height of Source Explorer window
-let g:SrcExpl_winHeight = 8
-
-" // Set 100 ms for refreshing the Source Explorer
-let g:SrcExpl_refreshTime = 100
-
-" // Set "Enter" key to jump into the exact definition context
-let g:SrcExpl_jumpKey = "<ENTER>"
-
-" // Set "Space" key for back from the definition context
-let g:SrcExpl_gobackKey = "<SPACE>"
-
-" // In order to Avoid conflicts, the Source Explorer should know what plugins
-" // are using buffers. And you need add their bufname into the list below
-" // according to the command ":buffers!"
-let g:SrcExpl_pluginList = [
-        \ "__Tag_List__",
-        \ "_NERD_tree_",
-        \ "Source_Explorer"
-    \ ]
-" // Enable/Disable the local definition searching, and note that this is not
-" // guaranteed to work, the Source Explorer doesn't check the syntax for now.
-" // It only searches for a match with the keyword according to command 'gd'
-let g:SrcExpl_searchLocalDef = 1
-
-" // Let the Source Explorer update the tags file when opening
-let g:SrcExpl_isUpdateTags = 0
-
-" // Use program 'ctags' with argument '--sort=foldcase -R' to create or
-" // update a tags file
-let g:SrcExpl_updateTagsCmd = "ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=foldcase --exclude=*~ ."
-
-" // Set "<F12>" key for updating the tags file artificially
-let g:SrcExpl_updateTagsKey = "<F12>" 
-
-" source $VIMRUNTIME/mswin.vim
-" behave mswin
-
-
-" misc
 set makeprg=make
+
+
+"------------------------------------------------------------------------------
+"--- filetype settings
 
 " for xml
 let g:xml_syntax_folding=1
@@ -241,6 +181,10 @@ au BufWritePost *.sh exe "silent !chmod +x %"
 " for squirrel
 au! BufRead,BufNewFile *.nut setfiletype squirrel
 
+
+"------------------------------------------------------------------------------
+"--- functions
+
 " extended mode line
 au BufReadPost * call VimModelineExec()
 function VimModelineExec()
@@ -256,16 +200,6 @@ function VimModelineExec()
 	endfor
 endfunction
 
-" VimWiki settings
-let wiki = {}
-let wiki.path = '~/vimwiki/'
-let wiki.auto_export = 1
-let wiki.path_html = '~/vimwiki/html/'
-let wiki.html_header = '~/vimwiki/header.html'
-let g:vimwiki_list = [wiki]
-let g:vimwiki_folding = 1
-let g:vimwiki_camel_case = 0
-
 " write with root permission
 function WriteSudo(...)
 	if a:0 > 0
@@ -277,6 +211,46 @@ function WriteSudo(...)
 	endif
 endfunction
 command -nargs=? -complete=file WriteSudo call WriteSudo(<f-args>)
+
+
+"------------------------------------------------------------------------------
+"--- plugin settings
+
+" for SrcExpl
+nnoremap <silent> <Leader>j :SrcExplToggle<CR>
+let g:SrcExpl_winHeight = 8 " // Set the height of Source Explorer window
+let g:SrcExpl_refreshTime = 100 " // Set 100 ms for refreshing the Source Explorer
+let g:SrcExpl_jumpKey = "<ENTER>" " // Set "Enter" key to jump into the exact definition context
+let g:SrcExpl_gobackKey = "<SPACE>" " // Set "Space" key for back from the definition context
+" // In order to Avoid conflicts, the Source Explorer should know what plugins
+" // are using buffers. And you need add their bufname into the list below
+" // according to the command ":buffers!"
+let g:SrcExpl_pluginList = [
+        \ "__Tag_List__",
+        \ "_NERD_tree_",
+        \ "Source_Explorer"
+    \ ]
+let g:SrcExpl_searchLocalDef = 0 " search local file for the keyword
+let g:SrcExpl_isUpdateTags = 0 " // Let the Source Explorer update the tags file when opening
+let g:SrcExpl_updateTagsCmd = "ctags --c++-kinds=+p --fields=+iaS --extra=+q --sort=foldcase --exclude=*~ ." " // Use program 'ctags' with argument '--sort=foldcase -R' to update a tags file
+let g:SrcExpl_updateTagsKey = "<F12>" " // Set <F12> key for updating the tags file artificially
+
+" for VimWiki 
+let wiki = {}
+let wiki.path = '~/vimwiki/'
+let wiki.auto_export = 1
+let wiki.path_html = '~/vimwiki/html/'
+let wiki.html_header = '~/vimwiki/header.html'
+let g:vimwiki_list = [wiki]
+let g:vimwiki_folding = 1
+let g:vimwiki_camel_case = 0
+
+" for devhelp
+let g:devhelpSearch=1 " To enable devhelp search:
+let g:devhelpAssistant=1 " To enable devhelp assistant:
+let g:devhelpSearchKey = '<F10>' " To change the search key (e.g. to F5):
+set updatetime=150 " To change the update delay (e.g. to 150ms):
+let g:devhelpWordLength = 5 " To change the length (e.g. to 5 characters) before a word becomes relevant:
 
 " for vim-ref
 set runtimepath+=~/.vim/runtime/vim-ref
@@ -300,6 +274,9 @@ nnoremap <silent> <Leader>f :TlistToggle<CR>
 
 " for omnicppcomplete
 set runtimepath+=~/.vim/runtime/omnicppcomplete
+map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=foldcase --exclude=*~ .<CR>
+inoremap <Nul> <C-x><C-o>
+let OmniCpp_ShowPrototypeInAbbr = 1
 
 " for autocomplpop
 set runtimepath+=~/.vim/runtime/autocomplpop
@@ -308,4 +285,3 @@ set runtimepath+=~/.vim/runtime/autocomplpop
 " set runtimepath+=~/.vim/runtime/neocomplcache
 " let g:neocomplcache_enable_at_startup = 1 
 
-" My Setting End ------------------------------------------
