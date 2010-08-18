@@ -136,6 +136,13 @@ set fileencodings=utf-8,euc-jp,sjis,iso-2022-jp
 
 set makeprg=make
 
+" for vim7.3
+if version >= 703
+	set undofile
+	set undodir=/tmp
+	set cryptmethod=blowfish
+endif
+
 "}}}
 
 " --- gvim settings ------------------------------------------------------ {{{
