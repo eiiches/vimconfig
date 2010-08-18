@@ -136,6 +136,8 @@ set fileencodings=utf-8,euc-jp,sjis,iso-2022-jp
 
 set makeprg=make
 
+set wildmenu "list candidates in statusline for commandline completion
+
 " for vim7.3
 if version >= 703
 	set undofile
