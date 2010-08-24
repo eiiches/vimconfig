@@ -265,7 +265,11 @@ au FileType c,cpp setlocal updatetime=150 " To change the update delay (e.g. to 
 let g:devhelpWordLength = 5 " To change the length (e.g. to 5 characters) before a word becomes relevant:
 
 " for vim-ref
+set runtimepath+=~/.vim/runtime/vim-ref-gtkdoc
 set runtimepath+=~/.vim/runtime/vim-ref
+let g:ref_gtkdoc_cmd='gtkdoc'
+au FileType c,cpp nnoremap K :Ref gtkdoc <C-R>=expand("<cword>")<CR><CR><C-W>p
+
 
 " for vim-quickrun
 set runtimepath+=~/.vim/runtime/vim-quickrun

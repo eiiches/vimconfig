@@ -10,3 +10,6 @@
 [submodule "runtime/neocomplcache"]
 	path = runtime/neocomplcache
 	url = git://github.com/Shougo/neocomplcache.git
+[submodule "runtime/vim-ref-gtkdoc"]
+	path = runtime/vim-ref-gtkdoc
+	url = git@github.com:eiiches/vim-ref-gtkdoc.git
