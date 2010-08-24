@@ -165,8 +165,7 @@ let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
 
 " for c
-au FileType c set dict=~/.vim/dict/c/*.dict
-au FileType cpp set dict=~/.vim/dict/c/*.dict
+au FileType c,cpp set dict=~/.vim/dict/c/*.dict
 au FileType c,cpp set foldmethod=marker
 au FileType c,cpp set foldmarker={{{,}}}
 au FileType c,cpp set commentstring=\ \/\*\ %s\ \*\/
@@ -258,22 +257,6 @@ let g:vimwiki_list = [wiki]
 let g:vimwiki_folding = 1
 let g:vimwiki_camel_case = 0
 
-" for devhelp
-au CursorHold *.c,*.h call DevhelpUpdate('a')
-au CursorHoldI *.c,*.h call DevhelpUpdate('a')
-" let g:devhelpSearch=1 " To enable devhelp search:
-" let g:devhelpAssistant=1 " To enable devhelp assistant:
-" let g:devhelpSearchKey = '<F10>' " To change the search key (e.g. to F5):
-au FileType c,cpp setlocal updatetime=150 " To change the update delay (e.g. to 150ms):
-let g:devhelpWordLength = 5 " To change the length (e.g. to 5 characters) before a word becomes relevant:
-
-" for vim-ref
-set runtimepath+=~/.vim/runtime/vim-ref-gtkdoc
-set runtimepath+=~/.vim/runtime/vim-ref
-let g:ref_gtkdoc_cmd='gtkdoc'
-au FileType c,cpp nnoremap K :Ref gtkdoc <C-R>=expand("<cword>")<CR><CR><C-W>p
-
-
 " for vim-quickrun
 set runtimepath+=~/.vim/runtime/vim-quickrun
 nnoremap <silent> <Leader>r :QuickRun >> -mode n<CR>
@@ -300,11 +283,57 @@ map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=foldcase -
 inoremap <Nul> <C-x><C-o>
 let OmniCpp_ShowPrototypeInAbbr = 1
 
-" for autocomplpop
-set runtimepath+=~/.vim/runtime/autocomplpop
-
 " for neocomplcache
 " set runtimepath+=~/.vim/runtime/neocomplcache
 " let g:neocomplcache_enable_at_startup = 1 
+
+" for devhelp
+" au CursorHold *.c,*.h call DevhelpUpdate('a')
+" au CursorHoldI *.c,*.h call DevhelpUpdate('a')
+" let g:devhelpSearch=1 " To enable devhelp search:
+" let g:devhelpAssistant=1 " To enable devhelp assistant:
+" let g:devhelpSearchKey = '<F10>' " To change the search key (e.g. to F5):
+" au FileType c,cpp setlocal updatetime=150 " To change the update delay (e.g. to 150ms):
+" let g:devhelpWordLength = 5 " To change the length (e.g. to 5 characters) before a word becomes relevant:
+
+" for autocomplpop
+set runtimepath+=~/.vim/runtime/autocomplpop
+
+" for vim-ref
+set runtimepath+=~/.vim/runtime/vim-ref-gtkdoc
+set runtimepath+=~/.vim/runtime/vim-ref
+let g:ref_gtkdoc_cmd='gtkdoc'
+
+" --- for gtk development ---------------------------------------------------- {{{1
+
+" emulate devhelp.vim using vim-ref
+let s:lastword = ''
+function RefreshGtkdoc()
+		let s:word = GetCursorWord()
+		if len(s:word) > 4 && s:lastword != s:word
+			call ref#open('gtkdoc', s:word, {'noenter': 1})
+			let s:lastword = s:word
+		endif
+endfunction
+
+" for gtk development
+let g:Filetype_c_gtk = 0
+au BufReadPost,BufWritePost *.c,*.h call CheckGtkDevehelopment()
+function CheckGtkDevehelopment()
+	for s:line in getline(0, line("$"))
+		if s:line =~# '<glib.h>' || s:line =~# '<gtk/gtk.h>'
+			let g:Filetype_c_gtk = 1
+			break
+		endif
+	endfor
+
+	if g:Filetype_c_gtk
+		setlocal updatetime=150
+		au CursorHold <buffer> call RefreshGtkdoc()
+		au CursorHoldI <buffer> call RefreshGtkdoc()
+		inoremap <buffer> <silent> <C-n> <C-n><C-r>=RefreshGtkdoc()?'':''<Esc><C-n><C-p>
+		inoremap <buffer> <silent> <C-p> <C-p><C-r>=RefreshGtkdoc()?'':''<Esc><C-n><C-p>
+	endif
+endfunction
 
 " }}}
