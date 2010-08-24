@@ -127,7 +127,7 @@ let g:tex_flavor = "latex"
 
 "set cindent
 "set autoindent
-"set scrolloff=5 		" 5 lines bevore and after the current line when scrolling
+set scrolloff=2 		" 2 lines bevore and after the current line when scrolling
 "set completeopt=menu,longest,preview
 set completeopt=menuone
 
@@ -167,6 +167,9 @@ au FileType xml setlocal foldmethod=syntax
 " for c
 au FileType c set dict=~/.vim/dict/c/*.dict
 au FileType cpp set dict=~/.vim/dict/c/*.dict
+au FileType c,cpp set foldmethod=marker
+au FileType c,cpp set foldmarker={{{,}}}
+au FileType c,cpp set commentstring=\ \/\*\ %s\ \*\/
 
 " for vala
 au BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
