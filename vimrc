@@ -175,6 +175,8 @@ au FileType c,cpp set dict=~/.vim/dict/c/*.dict
 au FileType c,cpp set foldmethod=marker
 au FileType c,cpp set foldmarker={{{,}}}
 au FileType c,cpp set commentstring=\ \/\*\ %s\ \*\/
+au FileType c,cpp set list listchars=tab:>-,precedes:<,extends:>
+let g:c_space_errors = 1
 
 " for vala
 au BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
