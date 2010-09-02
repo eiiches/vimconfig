@@ -303,6 +303,7 @@ set runtimepath+=~/.vim/runtime/autocomplpop
 set runtimepath+=~/.vim/runtime/vim-ref-gtkdoc
 set runtimepath+=~/.vim/runtime/vim-ref
 let g:ref_gtkdoc_cmd='gtkdoc'
+let g:ref_noenter=1
 
 " --- for gtk development ---------------------------------------------------- {{{1
 
@@ -328,11 +329,12 @@ function CheckGtkDevehelopment()
 	endfor
 
 	if g:Filetype_c_gtk
-		setlocal updatetime=150
-		au CursorHold <buffer> call RefreshGtkdoc()
-		au CursorHoldI <buffer> call RefreshGtkdoc()
-		inoremap <buffer> <silent> <C-n> <C-n><C-r>=RefreshGtkdoc()?'':''<Esc><C-n><C-p>
-		inoremap <buffer> <silent> <C-p> <C-p><C-r>=RefreshGtkdoc()?'':''<Esc><C-n><C-p>
+"		setlocal updatetime=150
+"		au CursorHold <buffer> call RefreshGtkdoc()
+"		au CursorHoldI <buffer> call RefreshGtkdoc()
+"		inoremap <buffer> <silent> <C-n> <C-n><C-r>=RefreshGtkdoc()?'':''<Esc><C-n><C-p>
+"		inoremap <buffer> <silent> <C-p> <C-p><C-r>=RefreshGtkdoc()?'':''<Esc><C-n><C-p>
+		nnoremap <buffer> <silent> K :call RefreshGtkdoc()<CR>
 	endif
 endfunction
 
