@@ -171,11 +171,13 @@ let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
 
 " for c
-au FileType c,cpp set dict=~/.vim/dict/c/*.dict
-au FileType c,cpp set foldmethod=marker
-au FileType c,cpp set foldmarker={{{,}}}
-au FileType c,cpp set commentstring=\ \/\*\ %s\ \*\/
-au FileType c,cpp set list listchars=tab:>-,precedes:<,extends:>
+au FileType c,cpp setlocal dict=~/.vim/dict/c/*.dict
+au FileType c,cpp setlocal foldmethod=marker
+au FileType c,cpp setlocal foldmarker={{{,}}}
+au FileType c,cpp setlocal commentstring=\ \/\*\ %s\ \*\/
+
+au FileType c,cpp setlocal list listchars=tab:>-,precedes:<,extends:>
+au FileType c,cpp highlight SpecialKey ctermfg=240
 let g:c_space_errors = 1
 
 " for vala
