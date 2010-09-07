@@ -106,7 +106,7 @@ set number
 set showcmd		" display incomplete commands
 set showmode
 "delek slate delek zell wombat rdark
-colorscheme xoria256
+colorscheme myxoria256
 set iminsert=0
 set imsearch=0
 inoremap <ESC> <ESC>:set iminsert=0<CR>:echo<CR>
