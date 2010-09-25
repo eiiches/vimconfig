@@ -188,6 +188,9 @@ au BufRead *.vala set cindent
 au BufRead,BufNewFile *.vala setfiletype vala
 au BufRead,BufNewFile *.vapi setfiletype vala
 
+" for brainfuck
+au BufRead *.bf setfiletype brainfuck
+
 " for C# 
 au FileType cs set foldmethod=marker
 au FileType cs set foldmarker={,}
