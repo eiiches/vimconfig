@@ -241,6 +241,12 @@ command -nargs=? -complete=file WriteSudo call WriteSudo(<f-args>)
 
 " --- plugin settings ---------------------------------------------------- {{{
 
+" for localvimrc (script_id = 441)
+let g:localvimrc_name = '.lvimrc'
+let g:localvimrc_count = -1
+let g:localvimrc_sandbox = 1
+let g:localvimrc_ask = 0
+
 " for SrcExpl
 nnoremap <silent> <Leader>j :SrcExplToggle<CR>
 let g:SrcExpl_winHeight = 8 " // Set the height of Source Explorer window
