@@ -152,6 +152,9 @@ endif
 nnoremap <C-L> :nohls<CR><C-L>
 inoremap <C-L> <C-O>:nohls<CR>
  
+" tab shown as >--- in gray
+set listchars+=tab:>-
+highlight SpecialKey ctermfg=240
 
 " --- gvim settings ------------------------------------------------------ {{{
 
@@ -170,14 +173,20 @@ set guioptions-=L "remove left-scrollbar
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
 
+" for python
+au FileType python setlocal expandtab
+au FileType python setlocal tabstop=4
+au FileType python setlocal softtabstop=4
+au FileType python setlocal shiftwidth=4
+au FileType python setlocal colorcolumn=80
+let g:python_space_error_highlight = 1
+
 " for c
 au FileType c,cpp setlocal dict=~/.vim/dict/c/*.dict
 au FileType c,cpp setlocal foldmethod=marker
 au FileType c,cpp setlocal foldmarker={{{,}}}
 au FileType c,cpp setlocal commentstring=\ \/\*\ %s\ \*\/
-
-au FileType c,cpp setlocal list listchars=tab:>-,precedes:<,extends:>
-au FileType c,cpp highlight SpecialKey ctermfg=240
+au FileType c,cpp setlocal list listchars+=precedes:<,extends:>
 let g:c_space_errors = 1
 
 " for vala
