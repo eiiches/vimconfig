@@ -333,6 +333,12 @@ set runtimepath+=~/.vim/runtime/vim-ref
 let g:ref_gtkdoc_cmd='gtkdoc'
 let g:ref_noenter=1
 
+
+" for current-func-info.vim
+set runtimepath+=~/.vim/runtime/current-func-info
+set statusline=%<%f\ %{cfi#format(\"[%s()]\",\"\")}\ %h%m%r%=%-14.(%l,%c%V%)\ %P%{XPMautoUpdate(\"statusline\")}
+
+
 " --- for gtk development ---------------------------------------------------- {{{1
 
 " emulate devhelp.vim using vim-ref
