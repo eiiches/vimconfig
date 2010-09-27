@@ -178,7 +178,9 @@ au FileType python setlocal expandtab
 au FileType python setlocal tabstop=4
 au FileType python setlocal softtabstop=4
 au FileType python setlocal shiftwidth=4
-au FileType python setlocal colorcolumn=80
+if version >= 703
+	au FileType python setlocal colorcolumn=80
+endif
 let g:python_space_error_highlight = 1
 
 " for c
