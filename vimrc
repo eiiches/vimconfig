@@ -338,8 +338,20 @@ let g:ref_noenter=1
 
 " for current-func-info.vim
 set runtimepath+=~/.vim/runtime/current-func-info
-set statusline=%<%f\ %{cfi#format(\"[%s()]\",\"\")}\ %h%m%r%=%-14.(%l,%c%V%)\ %P%{XPMautoUpdate(\"statusline\")}
+set statusline=%<%f%{GitBranchInfoString()}\ %{cfi#format(\"[%s()]\",\"\")}\ %h%m%r%=%-14.(%l,%c%V%)\ %P%{XPMautoUpdate(\"statusline\")}
 
+
+" for metarw-git
+set runtimepath+=~/.vim/runtime/vim-metarw
+set runtimepath+=~/.vim/runtime/metarw-git
+
+
+" for git-branch-info.vim
+let g:git_branch_status_head_current=1
+let g:git_branch_status_text=' '
+let g:git_branch_status_nogit=''
+let g:git_branch_status_around='[]'
+let g:git_branch_status_ignore_remotes=1
 
 " --- for gtk development ---------------------------------------------------- {{{1
 

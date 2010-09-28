@@ -1,0 +1,1 @@
+../runtime/vim-git-branch-info/git-branch-info.vim
