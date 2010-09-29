@@ -1,9 +1,9 @@
 [submodule "runtime/vim-quickrun"]
 	path = runtime/vim-quickrun
-	url = http://github.com/thinca/vim-quickrun.git
+	url = git://github.com/thinca/vim-quickrun.git
 [submodule "runtime/vim-ref"]
 	path = runtime/vim-ref
-	url = http://github.com/thinca/vim-ref.git
+	url = git://github.com/thinca/vim-ref.git
 [submodule "runtime/nerdtree"]
 	path = runtime/nerdtree
 	url = git://github.com/scrooloose/nerdtree
