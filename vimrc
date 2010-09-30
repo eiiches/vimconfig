@@ -150,14 +150,18 @@ endif
 "make <c-l> clear the highlight as well as redraw
 nnoremap <C-L> :nohls<CR><C-L>
 inoremap <C-L> <C-O>:nohls<CR>
- 
-" tab shown as >--- in gray
-set listchars+=tab:>-
-highlight SpecialKey ctermfg=240
 
 " colorscheme delek slate delek zell wombat rdark
 set t_Co=256
-colorscheme myxoria256
+if &t_Co >= 256
+	colorscheme myxoria256
+endif
+
+" tab shown as >--- in gray
+set listchars+=tab:>-
+if &t_Co >= 256
+	highlight SpecialKey ctermfg=240
+endif
 
 " --- gvim settings ------------------------------------------------------ {{{
 
