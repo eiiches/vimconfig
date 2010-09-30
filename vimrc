@@ -105,8 +105,7 @@ set noerrorbells "do not ring error bells
 set number
 set showcmd		" display incomplete commands
 set showmode
-"delek slate delek zell wombat rdark
-colorscheme myxoria256
+
 set iminsert=0
 set imsearch=0
 inoremap <ESC> <ESC>:set iminsert=0<CR>:echo<CR>
@@ -155,6 +154,10 @@ inoremap <C-L> <C-O>:nohls<CR>
 " tab shown as >--- in gray
 set listchars+=tab:>-
 highlight SpecialKey ctermfg=240
+
+" colorscheme delek slate delek zell wombat rdark
+set t_Co=256
+colorscheme myxoria256
 
 " --- gvim settings ------------------------------------------------------ {{{
 
