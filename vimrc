@@ -1,5 +1,5 @@
 "
-" .vimrc by Eiichi Sato
+" Maintainer: Eiichi Sato
 "
 " To use it, copy it to
 "     for Unix and OS/2:  ~/.vimrc
@@ -87,74 +87,78 @@ endif
 
 " --- general settings --------------------------------------------------- {{{
 
-set directory=~/.vim/swp
-set tabstop=2
-
-nmap gb :ls<CR>:buf 
-
-map j gj
-map k gk
-
 set incsearch		" do incremental searching
+set smartcase			" but don't ignore it, when search string contains uppercase letters
+set ignorecase			" ignore case
 
 set nowrap
 set ruler		" show the cursor position all the time
-
-set history=500 "overwrite the default above
-set noerrorbells "do not ring error bells
+set showmatch			" showmatch: Show the matching bracket for the last ')'?
 set number
 set showcmd		" display incomplete commands
 set showmode
+set noerrorbells "do not ring error bells
+set laststatus=2 "always show statusline
+set shellslash
+set scrolloff=2 		" 2 lines bevore and after the current line when scrolling
+
+set grepprg=grep\ -nH\ $*
+set makeprg=make
+
+set history=500 "overwrite the default above
 
 set iminsert=0
 set imsearch=0
 inoremap <ESC> <ESC>:set iminsert=0<CR>:echo<CR>
-set showmatch			" showmatch: Show the matching bracket for the last ')'?
 
-set ignorecase			" ignore case
-set smartcase			" but don't ignore it, when search string contains uppercase letters
-
-set shiftwidth=2
-
-set laststatus=2 "always show statusline
-
-set shellslash
-set grepprg=grep\ -nH\ $* 
-let g:Tex_CompileRule_dvi = 'platex --interaction=nonstopmode $*' 
-"let g:Tex_ViewRule_dvi = 'xdvik-ja'
-let g:tex_flavor = "latex"
-
-"set cindent
-"set autoindent
-set scrolloff=2 		" 2 lines bevore and after the current line when scrolling
 "set completeopt=menu,longest,preview
 set completeopt=menuone
+set wildmenu "list candidates in statusline for commandline completion
 
+" set swap directory
+set directory=~/.vim/swp
+
+" list and open buffer (trailing space needed)
+nnoremap gb :ls<CR>:buf 
+
+" natural movement for wrapped lines
+nnoremap j gj
+nnoremap k gk
+
+" default indenting
+set tabstop=2
+set shiftwidth=2
+set noexpandtab
+"set cindent
+"set autoindent
+
+" encodings
 set encoding=utf8
 set fileencodings=utf-8,euc-jp,sjis,iso-2022-jp
 
-set makeprg=make
-
-set wildmenu "list candidates in statusline for commandline completion
-
-" for vim7.3
+" persistent undo
 if version >= 703
 	set undofile
 	set undodir=/tmp
-	set cryptmethod=blowfish
 endif
 
-"}}}
-
+" use more secure cryptmethod
+if version >= 703
+	set cryptmethod=blowfish
+endif
 
 "make <c-l> clear the highlight as well as redraw
 nnoremap <C-L> :nohls<CR><C-L>
 inoremap <C-L> <C-O>:nohls<CR>
 
-" colorscheme delek slate delek zell wombat rdark
+" set terminal color
 set t_Co=256
+
+" colorscheme delek slate delek zell wombat rdark
 if &t_Co >= 256
 	colorscheme myxoria256
+else
+	colorscheme desert
 endif
 
 " tab shown as >--- in gray
@@ -163,17 +167,7 @@ if &t_Co >= 256
 	highlight SpecialKey ctermfg=240
 endif
 
-" --- gvim settings ------------------------------------------------------ {{{
-
-set guifont=Bitstream\ Vera\ Sans\ Mono\ 7
-set guioptions-=T "remove tool bar
-set guioptions-=m "remove gui menu
-set guioptions-=e "remove GUI tab bar
-set guioptions-=r "remove right-scrollbar
-set guioptions-=L "remove left-scrollbar
-
 " }}}
-
 " --- filetype settings -------------------------------------------------- {{{
 
 " for xml
@@ -210,11 +204,11 @@ au BufRead,BufNewFile *.vapi setfiletype vala
 " for brainfuck
 au BufRead *.bf setfiletype brainfuck
 
-" for C# 
+" for C#
 au FileType cs set foldmethod=marker
 au FileType cs set foldmarker={,}
 au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',)
-au FileType cs set foldlevelstart=2  
+au FileType cs set foldlevelstart=2
 
 " for shell scripts
 au BufWritePost *.sh exe "silent !chmod +x %"
@@ -226,7 +220,6 @@ au! BufRead,BufNewFile *.nut setfiletype squirrel
 au FileType vim set foldmethod=marker
 
 " }}}
-
 " --- functions ---------------------------------------------------------- {{{
 
 " extended mode line
@@ -257,8 +250,12 @@ endfunction
 command -nargs=? -complete=file WriteSudo call WriteSudo(<f-args>)
 
 " }}}
-
 " --- plugin settings ---------------------------------------------------- {{{
+
+" for vim-latex
+let g:Tex_CompileRule_dvi = 'platex --interaction=nonstopmode $*'
+"let g:Tex_ViewRule_dvi = 'xdvik-ja'
+let g:tex_flavor = "latex"
 
 " for localvimrc (script_id = 441)
 let g:localvimrc_name = '.lvimrc'
@@ -285,7 +282,7 @@ let g:SrcExpl_isUpdateTags = 0 " // Let the Source Explorer update the tags file
 let g:SrcExpl_updateTagsCmd = "ctags --c++-kinds=+p --fields=+iaS --extra=+q --sort=foldcase --exclude=*~ ." " // Use program 'ctags' with argument '--sort=foldcase -R' to update a tags file
 let g:SrcExpl_updateTagsKey = "<F12>" " // Set <F12> key for updating the tags file artificially
 
-" for VimWiki 
+" for VimWiki
 let wiki = {}
 let wiki.path = '~/vimwiki/'
 let wiki.auto_export = 1
@@ -344,16 +341,13 @@ set runtimepath+=~/.vim/runtime/vim-ref
 let g:ref_gtkdoc_cmd='gtkdoc'
 let g:ref_noenter=1
 
-
 " for current-func-info.vim
 set runtimepath+=~/.vim/runtime/current-func-info
 set statusline=%<%f%{GitBranchInfoString()}\ %{cfi#format(\"[%s()]\",\"\")}\ %h%m%r%=%-14.(%l,%c%V%)\ %P%{XPMautoUpdate(\"statusline\")}
 
-
 " for metarw-git
 set runtimepath+=~/.vim/runtime/vim-metarw
 set runtimepath+=~/.vim/runtime/metarw-git
-
 
 " for git-branch-info.vim
 let g:git_branch_status_head_current=1

@@ -19,3 +19,9 @@ git submodule update
 	git submodule update
 	make
 )
+
+(
+	cd
+	ln -s .vim/vimrc .vimrc
+	ln -s .vim/gvimrc .gvimrc
+)
