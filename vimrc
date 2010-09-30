@@ -253,6 +253,7 @@ command -nargs=? -complete=file WriteSudo call WriteSudo(<f-args>)
 " --- plugin settings ---------------------------------------------------- {{{
 
 " for vim-latex
+set runtimepath+=~/.vim/runtime/vim-latex/vimfiles
 let g:Tex_CompileRule_dvi = 'platex --interaction=nonstopmode $*'
 "let g:Tex_ViewRule_dvi = 'xdvik-ja'
 let g:tex_flavor = "latex"
