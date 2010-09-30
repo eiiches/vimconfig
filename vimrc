@@ -161,11 +161,8 @@ else
 	colorscheme desert
 endif
 
-" tab shown as >--- in gray
+" tab shown as >---
 set listchars+=tab:>-
-if &t_Co >= 256
-	highlight SpecialKey ctermfg=240
-endif
 
 " }}}
 " --- filetype settings -------------------------------------------------- {{{
