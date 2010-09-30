@@ -3,6 +3,7 @@
 VIM_ROOT=$(readlink -f $(dirname $0))
 
 cd $VIM_ROOT
+git svn fetch vim-latex -r1105:HEAD
 git submodule init
 git submodule update
 
