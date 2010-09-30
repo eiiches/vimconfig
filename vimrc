@@ -182,6 +182,7 @@ if version >= 703
 	au FileType python setlocal colorcolumn=80
 endif
 let g:python_space_error_highlight = 1
+au FileType python setlocal omnifunc=pythoncomplete#Complete
 
 " for c
 au FileType c,cpp setlocal dict=~/.vim/dict/c/*.dict
@@ -314,8 +315,9 @@ inoremap <Nul> <C-x><C-o>
 let OmniCpp_ShowPrototypeInAbbr = 1
 
 " for neocomplcache
-" set runtimepath+=~/.vim/runtime/neocomplcache
-" let g:neocomplcache_enable_at_startup = 1 
+set runtimepath+=~/.vim/runtime/neocomplcache
+let g:neocomplcache_enable_at_startup = 1
+inoremap <expr><C-x><C-o> &filetype == 'vim' ? "\<C-x><C-v><C-p>" : neocomplcache#manual_omni_complete()
 
 " for devhelp
 " au CursorHold *.c,*.h call DevhelpUpdate('a')
@@ -327,7 +329,7 @@ let OmniCpp_ShowPrototypeInAbbr = 1
 " let g:devhelpWordLength = 5 " To change the length (e.g. to 5 characters) before a word becomes relevant:
 
 " for autocomplpop
-set runtimepath+=~/.vim/runtime/autocomplpop
+"set runtimepath+=~/.vim/runtime/autocomplpop
 
 " for vim-ref
 set runtimepath+=~/.vim/runtime/vim-ref-gtkdoc
