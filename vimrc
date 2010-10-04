@@ -216,6 +216,9 @@ au! BufRead,BufNewFile *.nut setfiletype squirrel
 " for vim
 au FileType vim set foldmethod=marker
 
+" for actionscript
+au BufRead,BufNewFile *.as set filetype=actionscript
+
 " }}}
 " --- functions ---------------------------------------------------------- {{{
 
