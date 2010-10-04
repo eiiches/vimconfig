@@ -218,6 +218,8 @@ au FileType vim set foldmethod=marker
 
 " for actionscript
 au BufRead,BufNewFile *.as set filetype=actionscript
+au FileType actionscript setlocal dictionary+=~/.vim/dict/actionscript/actionscript.dict
+au FileType actionscript set omnifunc=actionscriptcomplete#Complete
 
 " }}}
 " --- functions ---------------------------------------------------------- {{{
@@ -323,6 +325,11 @@ let OmniCpp_ShowPrototypeInAbbr = 1
 set runtimepath+=~/.vim/runtime/neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 inoremap <expr><C-x><C-o> &filetype == 'vim' ? "\<C-x><C-v><C-p>" : neocomplcache#manual_omni_complete()
+" let g:neocomplcache_dictionary_filetype_lists =
+"			\ {
+"			\ 	'default': '',
+"			\ 	'actionscript': $HOME.'/.vim/dict/actionscript/*.dict'
+"			\ }
 
 " for devhelp
 " au CursorHold *.c,*.h call DevhelpUpdate('a')
