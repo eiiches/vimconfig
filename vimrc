@@ -164,6 +164,11 @@ endif
 " tab shown as >---
 set listchars+=tab:>-
 
+" set screen title
+set t_ts=k
+set t_fs=\
+set titlestring=%t
+
 " }}}
 " --- filetype settings -------------------------------------------------- {{{
 
