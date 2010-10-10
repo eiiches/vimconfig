@@ -207,10 +207,11 @@ au BufRead,BufNewFile *.vapi setfiletype vala
 au BufRead *.bf setfiletype brainfuck
 
 " for C#
-au FileType cs set foldmethod=marker
-au FileType cs set foldmarker={,}
-au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',)
-au FileType cs set foldlevelstart=2
+au FileType cs setlocal foldmethod=marker
+au FileType cs setlocal foldmarker={{{,}}}
+au FileType cs setlocal commentstring=\ \/\*\ %s\ \*\/
+au FileType cs setlocal efm=%f(%l,%c):\ error\ CS%n:\ %m
+
 
 " for shell scripts
 au BufWritePost *.sh exe "silent !chmod +x %"
