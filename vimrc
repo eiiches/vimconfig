@@ -419,14 +419,6 @@ set runtimepath+=~/.vim/runtime/taglist
 nnoremap <silent> <Leader>f :TlistToggle<CR>
 
 " }}}
-" {{{ omnicppcomplete
-
-set runtimepath+=~/.vim/runtime/omnicppcomplete
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=foldcase --exclude=*~ .<CR>
-inoremap <Nul> <C-x><C-o>
-let OmniCpp_ShowPrototypeInAbbr = 1
-
-" }}}
 " {{{ neocomplcache
 
 set runtimepath+=~/.vim/runtime/neocomplcache
