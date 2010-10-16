@@ -14,7 +14,7 @@ if v:progname =~? "evim"
   finish
 endif
 
-" Use Vim settings, rather then Vi settings (much better!).
+" Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
@@ -74,14 +74,6 @@ else
   set autoindent		" always set autoindenting on
 
 endif " has("autocmd")
-
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
-endif
 
 " }}}
 
@@ -335,6 +327,17 @@ function! WriteSudo(...)
 	endif
 endfunction
 command! -nargs=? -complete=file WriteSudo call WriteSudo(<f-args>)
+
+" }}}
+" {{{ :DiffOrig
+
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+		  \ | wincmd p | diffthis
+endif
 
 " }}}
 
