@@ -85,7 +85,80 @@ endif
 
 " }}}
 
-" --- general settings --------------------------------------------------- {{{
+" Settings: ----------------------------
+" {{{ .vimrc editing and reloading
+
+" automatic reloading
+if has("autocmd")
+	autocmd BufWritePost .vimrc source $MYVIMRC
+endif
+
+nmap <leader>v :vsplit $MYVIMRC<CR>
+
+" }}}
+" {{{ encodings
+
+set encoding=utf8
+set fileencodings=utf-8,euc-jp,sjis,iso-2022-jp
+
+" }}}
+" {{{ indenting
+
+" these below are the defaults. maybe overridden later
+set tabstop=2
+set shiftwidth=2
+set noexpandtab
+"set cindent
+"set autoindent
+
+" }}}
+" {{{ colors
+"
+" set terminal color
+set t_Co=256
+
+" colorscheme delek slate delek zell wombat rdark
+if &t_Co >= 256
+	colorscheme myxoria256
+else
+	colorscheme desert
+endif
+
+" }}}
+" {{{ terminal titles
+
+" for 'screen'
+set t_ts=k
+set t_fs=\
+set titlestring=%t
+
+" }}}
+" {{{ encryption
+
+" use more secure cryptmethod
+if version >= 703
+	set cryptmethod=blowfish
+endif
+
+" }}}
+" {{{ extended modeline
+
+au BufReadPost * call VimModelineExec()
+function! VimModelineExec()
+	" read modelines
+	let end = line("$")
+	let tail = getline(max([end-&modelines+1, 1]), end)
+	" iterate through lines
+	for line in tail
+		let mlist = matchlist(line, '^.*[ \t]vimexec: \?\(.*\):.*$')
+		if len(mlist) > 1
+			exec mlist[1]
+		endif
+	endfor
+endfunction
+
+" }}}
+" {{{ general settings
 
 set incsearch		" do incremental searching
 set smartcase			" but don't ignore it, when search string contains uppercase letters
@@ -125,58 +198,30 @@ nnoremap gb :ls<CR>:buf
 nnoremap j gj
 nnoremap k gk
 
-" default indenting
-set tabstop=2
-set shiftwidth=2
-set noexpandtab
-"set cindent
-"set autoindent
-
-" encodings
-set encoding=utf8
-set fileencodings=utf-8,euc-jp,sjis,iso-2022-jp
-
 " persistent undo
 if version >= 703
 	set undofile
 	set undodir=/tmp
 endif
 
-" use more secure cryptmethod
-if version >= 703
-	set cryptmethod=blowfish
-endif
-
 "make <c-l> clear the highlight as well as redraw
 nnoremap <C-L> :nohls<CR><C-L>
 inoremap <C-L> <C-O>:nohls<CR>
 
-" set terminal color
-set t_Co=256
-
-" colorscheme delek slate delek zell wombat rdark
-if &t_Co >= 256
-	colorscheme myxoria256
-else
-	colorscheme desert
-endif
-
 " tab shown as >---
 set listchars+=tab:>-
 
-" set screen title
-set t_ts=k
-set t_fs=\
-set titlestring=%t
-
 " }}}
-" --- filetype settings -------------------------------------------------- {{{
 
-" for xml
+" FileTypes: ---------------------------
+" {{{ xml
+
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
 
-" for python
+" }}}
+" {{{ python
+
 au FileType python setlocal expandtab
 au FileType python setlocal tabstop=4
 au FileType python setlocal softtabstop=4
@@ -187,7 +232,9 @@ endif
 let g:python_space_error_highlight = 1
 au FileType python setlocal omnifunc=pythoncomplete#Complete
 
-" for c
+" }}}
+" {{{ C
+
 au FileType c,cpp setlocal dict=~/.vim/dict/c/*.dict
 au FileType c,cpp setlocal foldmethod=marker
 au FileType c,cpp setlocal foldmarker={{{,}}}
@@ -195,186 +242,12 @@ au FileType c,cpp setlocal commentstring=\ \/\*\ %s\ \*\/
 au FileType c,cpp setlocal list listchars+=precedes:<,extends:>
 let g:c_space_errors = 1
 
-" for vala
-au BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-au BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-au BufRead *.vala set smartindent
-au BufRead *.vala set cindent
-au BufRead,BufNewFile *.vala setfiletype vala
-au BufRead,BufNewFile *.vapi setfiletype vala
-
-" for brainfuck
-au BufRead *.bf setfiletype brainfuck
-
-" for C#
-au FileType cs setlocal foldmethod=marker
-au FileType cs setlocal foldmarker={{{,}}}
-au FileType cs setlocal commentstring=\ \/\*\ %s\ \*\/
-au FileType cs setlocal efm=%f(%l,%c):\ error\ CS%n:\ %m
-
-
-" for shell scripts
-au BufWritePost *.sh exe "silent !chmod +x %"
-
-" for squirrel
-au! BufRead,BufNewFile *.nut setfiletype squirrel
-
-" for vim
-au FileType vim set foldmethod=marker
-
-" for actionscript
-au BufRead,BufNewFile *.as set filetype=actionscript
-au FileType actionscript setlocal dictionary+=~/.vim/dict/actionscript/actionscript.dict
-au FileType actionscript set omnifunc=actionscriptcomplete#Complete
-
 " }}}
-" --- functions ---------------------------------------------------------- {{{
-
-" extended mode line
-au BufReadPost * call VimModelineExec()
-function VimModelineExec()
-	" read modelines
-	let end = line("$")
-	let tail = getline(max([end-&modelines+1, 1]), end)
-	" iterate through lines
-	for line in tail
-		let mlist = matchlist(line, '^.*[ \t]vimexec: \?\(.*\):.*$')
-		if len(mlist) > 1
-			exec mlist[1]
-		endif
-	endfor
-endfunction
-
-" write with root permission
-function WriteSudo(...)
-	if a:0 > 0
-		exec "write !sudo tee ".a:1." > /dev/null"
-		exec "file ".a:1
-		set nomodified
-	else
-		write !sudo tee % > /dev/null
-	endif
-endfunction
-command -nargs=? -complete=file WriteSudo call WriteSudo(<f-args>)
-
-" }}}
-" --- plugin settings ---------------------------------------------------- {{{
-
-" for vim-latex
-set runtimepath+=~/.vim/runtime/vim-latex/vimfiles
-let g:Tex_CompileRule_dvi = 'platex --interaction=nonstopmode $*'
-"let g:Tex_ViewRule_dvi = 'xdvik-ja'
-let g:tex_flavor = "latex"
-
-" for localvimrc (script_id = 441)
-let g:localvimrc_name = '.lvimrc'
-let g:localvimrc_count = -1
-let g:localvimrc_sandbox = 1
-let g:localvimrc_ask = 0
-
-" for SrcExpl
-nnoremap <silent> <Leader>j :SrcExplToggle<CR>
-let g:SrcExpl_winHeight = 8 " // Set the height of Source Explorer window
-let g:SrcExpl_refreshTime = 100 " // Set 100 ms for refreshing the Source Explorer
-let g:SrcExpl_jumpKey = "<ENTER>" " // Set "Enter" key to jump into the exact definition context
-let g:SrcExpl_gobackKey = "<SPACE>" " // Set "Space" key for back from the definition context
-" // In order to Avoid conflicts, the Source Explorer should know what plugins
-" // are using buffers. And you need add their bufname into the list below
-" // according to the command ":buffers!"
-let g:SrcExpl_pluginList = [
-        \ "__Tag_List__",
-        \ "_NERD_tree_",
-        \ "Source_Explorer"
-    \ ]
-let g:SrcExpl_searchLocalDef = 0 " search local file for the keyword
-let g:SrcExpl_isUpdateTags = 0 " // Let the Source Explorer update the tags file when opening
-let g:SrcExpl_updateTagsCmd = "ctags --c++-kinds=+p --fields=+iaS --extra=+q --sort=foldcase --exclude=*~ ." " // Use program 'ctags' with argument '--sort=foldcase -R' to update a tags file
-let g:SrcExpl_updateTagsKey = "<F12>" " // Set <F12> key for updating the tags file artificially
-
-" for VimWiki
-let wiki = {}
-let wiki.path = '~/vimwiki/'
-let wiki.auto_export = 1
-let wiki.path_html = '~/vimwiki/html/'
-let wiki.html_header = '~/vimwiki/header.html'
-let g:vimwiki_list = [wiki]
-let g:vimwiki_folding = 1
-let g:vimwiki_camel_case = 0
-
-" for vim-quickrun
-set runtimepath+=~/.vim/runtime/vim-quickrun
-nnoremap <silent> <Leader>r :QuickRun >> -mode n<CR>
-vnoremap <silent> <Leader>r :QuickRun >> -mode v<CR>
-
-" for xp template
-set runtimepath+=~/.vim/runtime/xpt
-set runtimepath+=~/.vim/runtime/xpt_personal
-let g:xptemplate_brace_complete = ''
-let g:xptemplate_key = '<C-\>'
-
-" for NERDTree
-set runtimepath+=~/.vim/runtime/nerdtree
-nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
-
-" for taglist
-set runtimepath+=~/.vim/runtime/taglist
-"let Tlist_Auto_Open = 1
-nnoremap <silent> <Leader>f :TlistToggle<CR>
-
-" for omnicppcomplete
-set runtimepath+=~/.vim/runtime/omnicppcomplete
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=foldcase --exclude=*~ .<CR>
-inoremap <Nul> <C-x><C-o>
-let OmniCpp_ShowPrototypeInAbbr = 1
-
-" for neocomplcache
-set runtimepath+=~/.vim/runtime/neocomplcache
-let g:neocomplcache_enable_at_startup = 1
-inoremap <expr><C-x><C-o> &filetype == 'vim' ? "\<C-x><C-v><C-p>" : neocomplcache#manual_omni_complete()
-" let g:neocomplcache_dictionary_filetype_lists =
-"			\ {
-"			\ 	'default': '',
-"			\ 	'actionscript': $HOME.'/.vim/dict/actionscript/*.dict'
-"			\ }
-
-" for devhelp
-" au CursorHold *.c,*.h call DevhelpUpdate('a')
-" au CursorHoldI *.c,*.h call DevhelpUpdate('a')
-" let g:devhelpSearch=1 " To enable devhelp search:
-" let g:devhelpAssistant=1 " To enable devhelp assistant:
-" let g:devhelpSearchKey = '<F10>' " To change the search key (e.g. to F5):
-" au FileType c,cpp setlocal updatetime=150 " To change the update delay (e.g. to 150ms):
-" let g:devhelpWordLength = 5 " To change the length (e.g. to 5 characters) before a word becomes relevant:
-
-" for autocomplpop
-"set runtimepath+=~/.vim/runtime/autocomplpop
-
-" for vim-ref
-set runtimepath+=~/.vim/runtime/vim-ref-gtkdoc
-set runtimepath+=~/.vim/runtime/vim-ref
-let g:ref_gtkdoc_cmd='gtkdoc'
-let g:ref_noenter=1
-
-" for current-func-info.vim
-set runtimepath+=~/.vim/runtime/current-func-info
-set statusline=%<%f%{GitBranchInfoString()}\ %{cfi#format(\"[%s()]\",\"\")}\ %h%m%r%=%-14.(%l,%c%V%)\ %P%{XPMautoUpdate(\"statusline\")}
-
-" for metarw-git
-set runtimepath+=~/.vim/runtime/vim-metarw
-set runtimepath+=~/.vim/runtime/metarw-git
-
-" for git-branch-info.vim
-let g:git_branch_status_head_current=1
-let g:git_branch_status_text=' '
-let g:git_branch_status_nogit=''
-let g:git_branch_status_around='[]'
-let g:git_branch_status_ignore_remotes=1
-
-" --- for gtk development ---------------------------------------------------- {{{1
+" {{{ gtk
 
 " emulate devhelp.vim using vim-ref
 let s:lastword = ''
-function RefreshGtkdoc()
+function! RefreshGtkdoc()
 		let s:word = GetCursorWord()
 		if len(s:word) > 4 && s:lastword != s:word
 			call ref#open('gtkdoc', s:word, {'noenter': 1})
@@ -385,7 +258,7 @@ endfunction
 " for gtk development
 let g:Filetype_c_gtk = 0
 au BufReadPost,BufWritePost *.c,*.h call CheckGtkDevehelopment()
-function CheckGtkDevehelopment()
+function! CheckGtkDevehelopment()
 	for s:line in getline(0, line("$"))
 		if s:line =~# '<glib.h>' || s:line =~# '<gtk/gtk.h>'
 			let g:Filetype_c_gtk = 1
@@ -404,3 +277,209 @@ function CheckGtkDevehelopment()
 endfunction
 
 " }}}
+" {{{ vala
+
+au BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+au BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+au BufRead *.vala set smartindent
+au BufRead *.vala set cindent
+au BufRead,BufNewFile *.vala setfiletype vala
+au BufRead,BufNewFile *.vapi setfiletype vala
+
+" }}}
+" {{{ brainfuck
+au BufRead *.bf setfiletype brainfuck
+" }}}
+" {{{ C#
+
+au FileType cs setlocal foldmethod=marker
+au FileType cs setlocal foldmarker={{{,}}}
+au FileType cs setlocal commentstring=\ \/\*\ %s\ \*\/
+au FileType cs setlocal efm=%f(%l,%c):\ error\ CS%n:\ %m
+
+" }}}
+" {{{ shell script
+"
+au BufWritePost *.sh exe "silent !chmod +x %"
+
+" }}}
+" {{{ squirrel
+
+au! BufRead,BufNewFile *.nut setfiletype squirrel
+
+" }}}
+" {{{ vim script
+
+au FileType vim set foldmethod=marker
+
+" }}}
+" {{{ actionscript
+
+au BufRead,BufNewFile *.as set filetype=actionscript
+au FileType actionscript setlocal dictionary+=~/.vim/dict/actionscript/actionscript.dict
+au FileType actionscript set omnifunc=actionscriptcomplete#Complete
+
+" }}}
+
+" Commands: ----------------------------
+" {{{ :WriteSudo
+
+" write with root permission
+function! WriteSudo(...)
+	if a:0 > 0
+		exec "write !sudo tee ".a:1." > /dev/null"
+		exec "file ".a:1
+		set nomodified
+	else
+		write !sudo tee % > /dev/null
+	endif
+endfunction
+command! -nargs=? -complete=file WriteSudo call WriteSudo(<f-args>)
+
+" }}}
+
+" Plugins: -----------------------------
+" {{{ vim-latex
+
+set runtimepath+=~/.vim/runtime/vim-latex/vimfiles
+let g:Tex_CompileRule_dvi = 'platex --interaction=nonstopmode $*'
+"let g:Tex_ViewRule_dvi = 'xdvik-ja'
+let g:tex_flavor = "latex"
+
+" }}}
+" {{{ localvimrc (script_id = 441)
+
+let g:localvimrc_name = '.lvimrc'
+let g:localvimrc_count = -1
+let g:localvimrc_sandbox = 1
+let g:localvimrc_ask = 0
+
+" }}}
+" {{{ SrcExpl
+
+nnoremap <silent> <Leader>j :SrcExplToggle<CR>
+let g:SrcExpl_winHeight = 8 " // Set the height of Source Explorer window
+let g:SrcExpl_refreshTime = 100 " // Set 100 ms for refreshing the Source Explorer
+let g:SrcExpl_jumpKey = "<ENTER>" " // Set "Enter" key to jump into the exact definition context
+let g:SrcExpl_gobackKey = "<SPACE>" " // Set "Space" key for back from the definition context
+" // In order to Avoid conflicts, the Source Explorer should know what plugins
+" // are using buffers. And you need add their bufname into the list below
+" // according to the command ":buffers!"
+let g:SrcExpl_pluginList = [
+        \ "__Tag_List__",
+        \ "_NERD_tree_",
+        \ "Source_Explorer"
+    \ ]
+let g:SrcExpl_searchLocalDef = 0 " search local file for the keyword
+let g:SrcExpl_isUpdateTags = 0 " // Let the Source Explorer update the tags file when opening
+let g:SrcExpl_updateTagsCmd = "ctags --c++-kinds=+p --fields=+iaS --extra=+q --sort=foldcase --exclude=*~ ." " // Use program 'ctags' with argument '--sort=foldcase -R' to update a tags file
+let g:SrcExpl_updateTagsKey = "<F12>" " // Set <F12> key for updating the tags file artificially
+
+" }}}
+" {{{ VimWiki
+
+let wiki = {}
+let wiki.path = '~/vimwiki/'
+let wiki.auto_export = 1
+let wiki.path_html = '~/vimwiki/html/'
+let wiki.html_header = '~/vimwiki/header.html'
+let g:vimwiki_list = [wiki]
+let g:vimwiki_folding = 1
+let g:vimwiki_camel_case = 0
+
+" }}}
+" {{{ vim-quickrun
+
+set runtimepath+=~/.vim/runtime/vim-quickrun
+nnoremap <silent> <Leader>r :QuickRun >> -mode n<CR>
+vnoremap <silent> <Leader>r :QuickRun >> -mode v<CR>
+
+" }}}
+" {{{ xp template
+
+set runtimepath+=~/.vim/runtime/xpt
+set runtimepath+=~/.vim/runtime/xpt_personal
+let g:xptemplate_brace_complete = ''
+let g:xptemplate_key = '<C-\>'
+
+" }}}
+" {{{ NERDTree
+
+set runtimepath+=~/.vim/runtime/nerdtree
+nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
+
+" }}}
+" {{{ taglist
+
+set runtimepath+=~/.vim/runtime/taglist
+"let Tlist_Auto_Open = 1
+nnoremap <silent> <Leader>f :TlistToggle<CR>
+
+" }}}
+" {{{ omnicppcomplete
+
+set runtimepath+=~/.vim/runtime/omnicppcomplete
+map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --sort=foldcase --exclude=*~ .<CR>
+inoremap <Nul> <C-x><C-o>
+let OmniCpp_ShowPrototypeInAbbr = 1
+
+" }}}
+" {{{ neocomplcache
+
+set runtimepath+=~/.vim/runtime/neocomplcache
+let g:neocomplcache_enable_at_startup = 1
+inoremap <expr><C-x><C-o> &filetype == 'vim' ? "\<C-x><C-v><C-p>" : neocomplcache#manual_omni_complete()
+" let g:neocomplcache_dictionary_filetype_lists =
+"			\ {
+"			\ 	'default': '',
+"			\ 	'actionscript': $HOME.'/.vim/dict/actionscript/*.dict'
+"			\ }
+
+" }}}
+" {{{ devhelp
+
+" au CursorHold *.c,*.h call DevhelpUpdate('a')
+" au CursorHoldI *.c,*.h call DevhelpUpdate('a')
+" let g:devhelpSearch=1 " To enable devhelp search:
+" let g:devhelpAssistant=1 " To enable devhelp assistant:
+" let g:devhelpSearchKey = '<F10>' " To change the search key (e.g. to F5):
+" au FileType c,cpp setlocal updatetime=150 " To change the update delay (e.g. to 150ms):
+" let g:devhelpWordLength = 5 " To change the length (e.g. to 5 characters) before a word becomes relevant:
+
+" }}}
+" {{{ autocomplpop
+
+"set runtimepath+=~/.vim/runtime/autocomplpop
+
+" }}}
+" {{{ vim-ref
+
+set runtimepath+=~/.vim/runtime/vim-ref-gtkdoc
+set runtimepath+=~/.vim/runtime/vim-ref
+let g:ref_gtkdoc_cmd='gtkdoc'
+let g:ref_noenter=1
+
+" }}}
+" {{{ current-func-info.vim
+
+set runtimepath+=~/.vim/runtime/current-func-info
+set statusline=%<%f%{GitBranchInfoString()}\ %{cfi#format(\"[%s()]\",\"\")}\ %h%m%r%=%-14.(%l,%c%V%)\ %P%{XPMautoUpdate(\"statusline\")}
+
+" }}}
+" {{{ metarw-git
+
+set runtimepath+=~/.vim/runtime/vim-metarw
+set runtimepath+=~/.vim/runtime/metarw-git
+
+" }}}
+" {{{ git-branch-info.vim
+
+let g:git_branch_status_head_current=1
+let g:git_branch_status_text=' '
+let g:git_branch_status_nogit=''
+let g:git_branch_status_around='[]'
+let g:git_branch_status_ignore_remotes=1
+
+" }}}
+
+" vim: ts=2:sw=2:sts=0:fdm=marker:fmr={{{,}}}
