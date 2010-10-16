@@ -166,6 +166,20 @@ if version >= 703
 endif
 
 " }}}
+" {{{ status line
+
+" always show statusline
+set laststatus=2
+set statusline=%<%f\ %y[%{&fileencoding},%{&fileformat}]%{GitBranchInfoString()}%{cfi#format(\"[%s()]\",\"\")}%h%m%r%=%-14.(%l,%c%V%)\ %P%{XPMautoUpdate(\"statusline\")}
+" list candidates in statusline for commandline completion
+set wildmenu
+
+" show INSERT when in the mode.
+set showmode
+" show incomplete commands
+set showcmd
+
+" }}}
 " {{{ miscellaneous
 
 set incsearch		" do incremental searching
@@ -176,10 +190,7 @@ set nowrap
 set ruler		" show the cursor position all the time
 set showmatch			" showmatch: Show the matching bracket for the last ')'?
 set number
-set showcmd		" display incomplete commands
-set showmode
 set noerrorbells "do not ring error bells
-set laststatus=2 "always show statusline
 set shellslash
 set scrolloff=2 		" 2 lines bevore and after the current line when scrolling
 
@@ -194,7 +205,6 @@ inoremap <ESC> <ESC>:set iminsert=0<CR>:echo<CR>
 
 "set completeopt=menu,longest,preview
 set completeopt=menuone
-set wildmenu "list candidates in statusline for commandline completion
 
 " set swap directory
 set directory=~/.vim/swp
@@ -462,7 +472,6 @@ let g:ref_noenter=1
 " {{{ current-func-info.vim
 
 set runtimepath+=~/.vim/runtime/current-func-info
-set statusline=%<%f%{GitBranchInfoString()}\ %{cfi#format(\"[%s()]\",\"\")}\ %h%m%r%=%-14.(%l,%c%V%)\ %P%{XPMautoUpdate(\"statusline\")}
 
 " }}}
 " {{{ metarw-git
@@ -474,7 +483,7 @@ set runtimepath+=~/.vim/runtime/metarw-git
 " {{{ git-branch-info.vim
 
 let g:git_branch_status_head_current=1
-let g:git_branch_status_text=' '
+let g:git_branch_status_text=''
 let g:git_branch_status_nogit=''
 let g:git_branch_status_around='[]'
 let g:git_branch_status_ignore_remotes=1
