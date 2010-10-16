@@ -88,10 +88,14 @@ endif
 nmap <leader>v :vsplit $MYVIMRC<CR>
 
 " }}}
-" {{{ encodings
+" {{{ encoding and format
 
-set encoding=utf8
+set encoding=utf-8
+set fileencoding=utf-8
 set fileencodings=utf-8,euc-jp,sjis,iso-2022-jp
+
+set fileformat=unix
+set fileformats=unix,dos,mac
 
 " }}}
 " {{{ indenting
