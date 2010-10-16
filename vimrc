@@ -157,7 +157,16 @@ set foldmethod=marker
 set foldmarker={{{,}}}
 
 " }}}
-" {{{ general settings
+" {{{ undo
+
+" enable persistent undo
+if version >= 703
+	set undofile
+	set undodir=/tmp
+endif
+
+" }}}
+" {{{ miscellaneous
 
 set incsearch		" do incremental searching
 set smartcase			" but don't ignore it, when search string contains uppercase letters
@@ -196,12 +205,6 @@ nnoremap gb :ls<CR>:buf
 " natural movement for wrapped lines
 nnoremap j gj
 nnoremap k gk
-
-" persistent undo
-if version >= 703
-	set undofile
-	set undodir=/tmp
-endif
 
 "make <c-l> clear the highlight as well as redraw
 nnoremap <C-L> :nohls<CR><C-L>
