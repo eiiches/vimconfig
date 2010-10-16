@@ -150,6 +150,13 @@ function! VimModelineExec()
 endfunction
 
 " }}}
+" {{{ folding
+
+" default folding
+set foldmethod=marker
+set foldmarker={{{,}}}
+
+" }}}
 " {{{ general settings
 
 set incsearch		" do incremental searching
@@ -228,8 +235,6 @@ au FileType python setlocal omnifunc=pythoncomplete#Complete
 " {{{ C
 
 au FileType c,cpp setlocal dict=~/.vim/dict/c/*.dict
-au FileType c,cpp setlocal foldmethod=marker
-au FileType c,cpp setlocal foldmarker={{{,}}}
 au FileType c,cpp setlocal commentstring=\ \/\*\ %s\ \*\/
 au FileType c,cpp setlocal list listchars+=precedes:<,extends:>
 let g:c_space_errors = 1
@@ -284,8 +289,6 @@ au BufRead *.bf setfiletype brainfuck
 " }}}
 " {{{ C#
 
-au FileType cs setlocal foldmethod=marker
-au FileType cs setlocal foldmarker={{{,}}}
 au FileType cs setlocal commentstring=\ \/\*\ %s\ \*\/
 au FileType cs setlocal efm=%f(%l,%c):\ error\ CS%n:\ %m
 
@@ -301,8 +304,6 @@ au! BufRead,BufNewFile *.nut setfiletype squirrel
 
 " }}}
 " {{{ vim script
-
-au FileType vim set foldmethod=marker
 
 " }}}
 " {{{ actionscript
