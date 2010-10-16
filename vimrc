@@ -481,5 +481,10 @@ let g:git_branch_status_around='[]'
 let g:git_branch_status_ignore_remotes=1
 
 " }}}
+" {{{ surround.vim (script_id = 1697)
+
+set runtimepath+=~/.vim/runtime/vim-surround
+
+" }}}
 
 " vim: ts=2:sw=2:sts=0:fdm=marker:fmr={{{,}}}
