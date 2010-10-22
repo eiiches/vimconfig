@@ -127,6 +127,7 @@ endif
 set t_ts=k
 set t_fs=\
 set titlestring=%t
+set title
 
 " }}}
 " {{{ encryption
