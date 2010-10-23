@@ -185,15 +185,37 @@ set showmode
 set showcmd
 
 " }}}
-" {{{ miscellaneous
+" {{{ search
 
-set incsearch		" do incremental searching
-set smartcase			" but don't ignore it, when search string contains uppercase letters
-set ignorecase			" ignore case
+set incsearch   " do incremental searching
+set smartcase   " but don't ignore it, when search string contains uppercase letters
+set ignorecase  " ignore case
+set showmatch   " showmatch: Show the matching bracket for the last ')'?
+set wrapscan    " search wrap around the end of the file
+set report=0    " report always the number of lines changed
+set matchpairs+=<:>
+
+" }}}
+" {{{ key mapping
+
+" list and open buffer (trailing space needed)
+nnoremap gb :ls<CR>:buf 
+
+" natural movement for wrapped lines
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
+
+"make <c-l> clear the highlight as well as redraw
+nnoremap <C-L> :nohls<CR><C-L>
+inoremap <C-L> <C-O>:nohls<CR>
+
+" }}}
+" {{{ miscellaneous
 
 set nowrap
 set ruler		" show the cursor position all the time
-set showmatch			" showmatch: Show the matching bracket for the last ')'?
 set number
 set noerrorbells "do not ring error bells
 set shellslash
@@ -213,17 +235,6 @@ set completeopt=menuone
 
 " set swap directory
 set directory=~/.vim/swp
-
-" list and open buffer (trailing space needed)
-nnoremap gb :ls<CR>:buf 
-
-" natural movement for wrapped lines
-nnoremap j gj
-nnoremap k gk
-
-"make <c-l> clear the highlight as well as redraw
-nnoremap <C-L> :nohls<CR><C-L>
-inoremap <C-L> <C-O>:nohls<CR>
 
 " tab shown as >---
 set listchars+=tab:>-
