@@ -436,16 +436,18 @@ let g:xptemplate_brace_complete = ''
 let g:xptemplate_key = '<C-\>'
 
 " }}}
-" {{{ NERDTree
+" {{{ NERDTree (script_id = 1658)
 
 set runtimepath+=~/.vim/runtime/nerdtree
 nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
+let g:NERDTreeWinPos = "right"
 
 " }}}
-" {{{ taglist
+" {{{ taglist (script_id = 273)
 
 set runtimepath+=~/.vim/runtime/taglist
-"let Tlist_Auto_Open = 1
+" let Tlist_Auto_Open = 1
+" let g:Tlist_Use_Rigth_Window = 1
 nnoremap <silent> <Leader>f :TlistToggle<CR>
 
 " }}}
