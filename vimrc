@@ -82,7 +82,7 @@ endif " has("autocmd")
 
 " automatic reloading
 if has("autocmd")
-	autocmd BufWritePost .vimrc source $MYVIMRC
+	autocmd BufWritePost .vimrc,~/.vim/vimrc source $MYVIMRC
 endif
 
 nmap <leader>v :vsplit $MYVIMRC<CR>
