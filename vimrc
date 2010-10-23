@@ -388,7 +388,7 @@ let g:localvimrc_sandbox = 1
 let g:localvimrc_ask = 0
 
 " }}}
-" {{{ SrcExpl
+" {{{ srcexpl.vim (script_id = 2179)
 
 nnoremap <silent> <Leader>j :SrcExplToggle<CR>
 let g:SrcExpl_winHeight = 8 " // Set the height of Source Explorer window
@@ -421,7 +421,7 @@ let g:vimwiki_folding = 1
 let g:vimwiki_camel_case = 0
 
 " }}}
-" {{{ vim-quickrun
+" {{{ quickrun.vim (script_id = 3146)
 
 set runtimepath+=~/.vim/runtime/vim-quickrun
 nnoremap <silent> <Leader>r :QuickRun >> -mode n<CR>
@@ -461,6 +461,45 @@ inoremap <expr><C-x><C-o> &filetype == 'vim' ? "\<C-x><C-v><C-p>" : neocomplcach
 "			\ }
 
 " }}}
+" {{{ vim-ref (script_id = 3067)
+
+set runtimepath+=~/.vim/runtime/vim-ref-gtkdoc
+set runtimepath+=~/.vim/runtime/vim-ref
+let g:ref_gtkdoc_cmd='gtkdoc'
+let g:ref_noenter=1
+
+" }}}
+" {{{ current-func-info.vim (script_id = 3197)
+
+set runtimepath+=~/.vim/runtime/current-func-info
+
+" }}}
+" {{{ metarw (script_id = 2335)
+
+set runtimepath+=~/.vim/runtime/vim-metarw
+
+" }}}
+" {{{ metarw-git (script_id = 2336)
+
+set runtimepath+=~/.vim/runtime/metarw-git
+
+" }}}
+" {{{ git-branch-info (script_id = 2258)
+
+let g:git_branch_status_head_current=1
+let g:git_branch_status_text=''
+let g:git_branch_status_nogit=''
+let g:git_branch_status_around='[]'
+let g:git_branch_status_ignore_remotes=1
+
+" }}}
+" {{{ surround.vim (script_id = 1697)
+
+set runtimepath+=~/.vim/runtime/vim-surround
+
+" }}}
+
+" Disabled Plugins: --------------------
 " {{{ devhelp
 
 " au CursorHold *.c,*.h call DevhelpUpdate('a')
@@ -475,39 +514,6 @@ inoremap <expr><C-x><C-o> &filetype == 'vim' ? "\<C-x><C-v><C-p>" : neocomplcach
 " {{{ autocomplpop
 
 "set runtimepath+=~/.vim/runtime/autocomplpop
-
-" }}}
-" {{{ vim-ref
-
-set runtimepath+=~/.vim/runtime/vim-ref-gtkdoc
-set runtimepath+=~/.vim/runtime/vim-ref
-let g:ref_gtkdoc_cmd='gtkdoc'
-let g:ref_noenter=1
-
-" }}}
-" {{{ current-func-info.vim
-
-set runtimepath+=~/.vim/runtime/current-func-info
-
-" }}}
-" {{{ metarw-git
-
-set runtimepath+=~/.vim/runtime/vim-metarw
-set runtimepath+=~/.vim/runtime/metarw-git
-
-" }}}
-" {{{ git-branch-info.vim
-
-let g:git_branch_status_head_current=1
-let g:git_branch_status_text=''
-let g:git_branch_status_nogit=''
-let g:git_branch_status_around='[]'
-let g:git_branch_status_ignore_remotes=1
-
-" }}}
-" {{{ surround.vim (script_id = 1697)
-
-set runtimepath+=~/.vim/runtime/vim-surround
 
 " }}}
 
