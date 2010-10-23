@@ -234,7 +234,7 @@ inoremap <ESC> <ESC>:set iminsert=0<CR>:echo<CR>
 set completeopt=menuone
 
 " set swap directory
-set directory=~/.vim/swp
+" set directory=~/.vim/swp
 
 " tab shown as >---
 set listchars+=tab:>-
