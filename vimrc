@@ -239,6 +239,10 @@ set completeopt=menuone
 " tab shown as >---
 set listchars+=tab:>-
 
+" split direction
+set splitbelow
+set splitright
+
 " }}}
 
 " FileTypes: ---------------------------
