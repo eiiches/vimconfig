@@ -198,8 +198,8 @@ set matchpairs+=<:>
 " }}}
 " {{{ key mapping
 
-" list and open buffer (trailing space needed)
-nnoremap gb :ls<CR>:buf 
+" list and open buffer
+nnoremap gb :ls<CR>:buf<Space>
 
 " natural movement for wrapped lines
 nnoremap j gj
