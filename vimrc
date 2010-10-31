@@ -504,6 +504,13 @@ let g:git_branch_status_ignore_remotes=1
 set runtimepath+=~/.vim/runtime/vim-surround
 
 " }}}
+" {{{ GNONEAlignArguments
+" http://damien.lespiau.name/blog/2009/12/07/aligning-c-function-parameters-with-vim/
+" http://git.lespiau.name/cgit/sk/plain/dotfiles/vim/plugin/GNOME-align-args.vim
+
+noremap <Leader>g :GNOMEAlignArguments<CR>
+
+" }}}
 
 " Disabled Plugins: --------------------
 " {{{ devhelp
