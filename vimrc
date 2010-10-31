@@ -161,6 +161,12 @@ endfunction
 set foldmethod=marker
 set foldmarker={{{,}}}
 
+function! MyFoldText()
+	return foldtext() . ' --- >>>'
+endfunction
+set foldtext=MyFoldText()
+set fillchars-=fold:-
+
 " }}}
 " {{{ undo
 
@@ -270,6 +276,7 @@ au FileType python setlocal omnifunc=pythoncomplete#Complete
 au FileType c,cpp setlocal dict=~/.vim/dict/c/*.dict
 au FileType c,cpp setlocal commentstring=\ \/\*\ %s\ \*\/
 au FileType c,cpp setlocal list listchars+=precedes:<,extends:>
+au FileType c,cpp set foldcolumn=2
 let g:c_space_errors = 1
 
 " }}}
@@ -337,6 +344,8 @@ au! BufRead,BufNewFile *.nut setfiletype squirrel
 
 " }}}
 " {{{ vim script
+
+au FileType vim set foldcolumn=2
 
 " }}}
 " {{{ actionscript
