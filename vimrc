@@ -367,6 +367,13 @@ au FileType actionscript setlocal dictionary+=~/.vim/dict/actionscript/actionscr
 au FileType actionscript set omnifunc=actionscriptcomplete#Complete
 
 " }}}
+" {{{ MS Office
+
+au BufReadCmd *.pptx call zip#Browse(expand("<amatch>"))
+au BufReadCmd *.xlsx call zip#Browse(expand("<amatch>"))
+au BufReadCmd *.docx call zip#Browse(expand("<amatch>"))
+
+" }}}
 
 " Commands: ----------------------------
 " {{{ :WriteSudo
