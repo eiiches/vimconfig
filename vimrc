@@ -221,6 +221,14 @@ inoremap <C-L> <C-O>:nohls<CR>
 vnoremap < <gv
 vnoremap > >gv
 
+" command line keymap
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
+cnoremap <C-b> <C-Left>
+cnoremap <C-w> <C-Right>
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+
 " }}}
 " {{{ miscellaneous
 
@@ -393,7 +401,7 @@ endif
 
 set runtimepath+=~/.vim/runtime/vim-latex/vimfiles
 let g:Tex_CompileRule_dvi = 'platex --interaction=nonstopmode $*'
-"let g:Tex_ViewRule_dvi = 'xdvik-ja'
+let g:Tex_ViewRule_dvi = 'xdvi-ja'
 let g:tex_flavor = "latex"
 
 " }}}
@@ -470,14 +478,15 @@ nnoremap <silent> <Leader>f :TlistToggle<CR>
 " }}}
 " {{{ neocomplcache
 
-set runtimepath+=~/.vim/runtime/neocomplcache
-let g:neocomplcache_enable_at_startup = 1
-inoremap <expr><C-x><C-o> &filetype == 'vim' ? "\<C-x><C-v><C-p>" : neocomplcache#manual_omni_complete()
+" set runtimepath+=~/.vim/runtime/neocomplcache
+" let g:neocomplcache_enable_at_startup = 1
+" inoremap <expr><C-x><C-o> &filetype == 'vim' ? "\<C-x><C-v><C-p>" : neocomplcache#manual_omni_complete()
 " let g:neocomplcache_dictionary_filetype_lists =
 "			\ {
 "			\ 	'default': '',
 "			\ 	'actionscript': $HOME.'/.vim/dict/actionscript/*.dict'
 "			\ }
+
 
 " }}}
 " {{{ vim-ref (script_id = 3067)
