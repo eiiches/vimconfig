@@ -217,6 +217,10 @@ nnoremap gk k
 nnoremap <C-L> :nohls<CR><C-L>
 inoremap <C-L> <C-O>:nohls<CR>
 
+" reselect visual block after indent/unindent
+vnoremap < <gv
+vnoremap > >gv
+
 " }}}
 " {{{ miscellaneous
 
