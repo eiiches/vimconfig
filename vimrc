@@ -527,6 +527,8 @@ set runtimepath+=~/.vim/runtime/metarw-git
 " }}}
 " {{{ git-branch-info (script_id = 2258)
 
+
+set runtimepath+=~/.vim/runtime/vim-git-branch-info
 let g:git_branch_status_head_current=1
 let g:git_branch_status_text=''
 let g:git_branch_status_nogit=''
