@@ -181,7 +181,7 @@ endif
 
 " always show statusline
 set laststatus=2
-set statusline=%<%f\ %y[%{&fileencoding},%{&fileformat}]%{GitBranchInfoString()}%{cfi#format(\"[%s()]\",\"\")}%h%m%r%=%-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %y[%{&fileencoding},%{&fileformat}]%{GitBranchInfoString()}%h%m%r%=%-14.(%l,%c%V%)\ %P
 " list candidates in statusline for commandline completion
 set wildmenu
 
@@ -492,6 +492,7 @@ let g:neocomplcache_dictionary_filetype_lists =
 		\ 	'actionscript': $HOME.'/.vim/dict/actionscript/*.dict'
 		\ }
 
+let g:neocomplcache_snippets_dir = '~/.vim/snippets'
 imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 
 " }}}
@@ -501,11 +502,6 @@ set runtimepath+=~/.vim/runtime/vim-ref-gtkdoc
 set runtimepath+=~/.vim/runtime/vim-ref
 let g:ref_gtkdoc_cmd='gtkdoc'
 let g:ref_noenter=1
-
-" }}}
-" {{{ current-func-info.vim (script_id = 3197)
-
-set runtimepath+=~/.vim/runtime/current-func-info
 
 " }}}
 " {{{ metarw (script_id = 2335)
@@ -578,6 +574,11 @@ endif
 " set runtimepath+=~/.vim/runtime/xpt_personal
 " let g:xptemplate_brace_complete = ''
 " let g:xptemplate_key = '<C-\>'
+
+" }}}
+" {{{ current-func-info.vim (script_id = 3197)
+
+" set runtimepath+=~/.vim/runtime/current-func-info
 
 " }}}
 
