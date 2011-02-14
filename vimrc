@@ -181,7 +181,7 @@ endif
 
 " always show statusline
 set laststatus=2
-set statusline=%<%f\ %y[%{&fileencoding},%{&fileformat}]%{GitBranchInfoString()}%{cfi#format(\"[%s()]\",\"\")}%h%m%r%=%-14.(%l,%c%V%)\ %P%{XPMautoUpdate(\"statusline\")}
+set statusline=%<%f\ %y[%{&fileencoding},%{&fileformat}]%{GitBranchInfoString()}%{cfi#format(\"[%s()]\",\"\")}%h%m%r%=%-14.(%l,%c%V%)\ %P
 " list candidates in statusline for commandline completion
 set wildmenu
 
@@ -466,14 +466,6 @@ nnoremap <silent> <Leader>r :QuickRun >> -mode n<CR>
 vnoremap <silent> <Leader>r :QuickRun >> -mode v<CR>
 
 " }}}
-" {{{ xp template
-
-set runtimepath+=~/.vim/runtime/xpt
-set runtimepath+=~/.vim/runtime/xpt_personal
-let g:xptemplate_brace_complete = ''
-let g:xptemplate_key = '<C-\>'
-
-" }}}
 " {{{ NERDTree (script_id = 1658)
 
 set runtimepath+=~/.vim/runtime/nerdtree
@@ -491,15 +483,16 @@ nnoremap <silent> <Leader>f :TlistToggle<CR>
 " }}}
 " {{{ neocomplcache
 
-" set runtimepath+=~/.vim/runtime/neocomplcache
-" let g:neocomplcache_enable_at_startup = 1
-" inoremap <expr><C-x><C-o> &filetype == 'vim' ? "\<C-x><C-v><C-p>" : neocomplcache#manual_omni_complete()
-" let g:neocomplcache_dictionary_filetype_lists =
-"			\ {
-"			\ 	'default': '',
-"			\ 	'actionscript': $HOME.'/.vim/dict/actionscript/*.dict'
-"			\ }
+set runtimepath+=~/.vim/runtime/neocomplcache
+let g:neocomplcache_enable_at_startup = 1
+inoremap <expr><C-x><C-o> &filetype == 'vim' ? "\<C-x><C-v><C-p>" : neocomplcache#manual_omni_complete()
+let g:neocomplcache_dictionary_filetype_lists =
+		\ {
+		\ 	'default': '',
+		\ 	'actionscript': $HOME.'/.vim/dict/actionscript/*.dict'
+		\ }
 
+imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 
 " }}}
 " {{{ vim-ref (script_id = 3067)
@@ -577,6 +570,14 @@ endif
 " {{{ autocomplpop
 
 "set runtimepath+=~/.vim/runtime/autocomplpop
+
+" }}}
+" {{{ xp template
+
+" set runtimepath+=~/.vim/runtime/xpt
+" set runtimepath+=~/.vim/runtime/xpt_personal
+" let g:xptemplate_brace_complete = ''
+" let g:xptemplate_key = '<C-\>'
 
 " }}}
 
