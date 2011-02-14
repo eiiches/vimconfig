@@ -12,7 +12,7 @@
 	url = git://github.com/Shougo/neocomplcache.git
 [submodule "runtime/vim-ref-gtkdoc"]
 	path = runtime/vim-ref-gtkdoc
-	url = git@github.com:eiiches/vim-ref-gtkdoc.git
+	url = git://github.com/eiiches/vim-ref-gtkdoc.git
 [submodule "runtime/current-func-info"]
 	path = runtime/current-func-info
 	url = git://github.com/tyru/current-func-info.vim.git
