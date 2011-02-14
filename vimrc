@@ -292,6 +292,12 @@ au FileType c,cpp set foldcolumn=2
 let g:c_space_errors = 1
 
 " }}}
+" {{{ D
+
+au FileType d setlocal commentstring=\ \/\*\ %s\ \*\/
+au FileType d setlocal list listchars+=precedes:<,extends:>
+
+" }}}
 " {{{ gtk
 
 " emulate devhelp.vim using vim-ref
