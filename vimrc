@@ -540,6 +540,11 @@ set runtimepath+=~/.vim/runtime/vim-surround
 noremap <Leader>g :GNOMEAlignArguments<CR>
 
 " }}}
+" {{{ unite.vim
+
+set runtimepath+=~/.vim/runtime/unite.vim
+
+" }}}
 
 " Disabled Plugins: --------------------
 " {{{ devhelp

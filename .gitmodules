@@ -31,3 +31,6 @@
 [submodule "runtime/vim-surround"]
 	path = runtime/vim-surround
 	url = http://github.com/tpope/vim-surround.git
+[submodule "runtime/unite.vim"]
+	path = runtime/unite.vim
+	url = git://github.com/Shougo/unite.vim.git
