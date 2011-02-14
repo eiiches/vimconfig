@@ -551,6 +551,14 @@ noremap <Leader>g :GNOMEAlignArguments<CR>
 set runtimepath+=~/.vim/runtime/unite.vim
 
 " }}}
+" {{{ javacomplete (script_id = 1785)
+
+set runtimepath+=~/.vim/runtime/javacomplete
+if has("autocmd")
+	au Filetype java setlocal omnifunc=javacomplete#Complete
+endif
+
+" }}}
 
 " Disabled Plugins: --------------------
 " {{{ devhelp
