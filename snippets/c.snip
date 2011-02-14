@@ -1,47 +1,58 @@
 snippet     if
 abbr        if () {}
-    if (${1:/* condition */}) {
+    if (${1:/* condition */})
+    {
         ${0:/* code */}
     }
 
 snippet else
-    else {
+    else
+    {
         ${0}
     }
 
 snippet elseif
-    else if (${1:/* condition */}) {
+    else if (${1:/* condition */})
+    {
         ${0}
     }
 
 snippet     ifelse
 abbr        if () {} else {}
-    if (${1:condition}) {
+    if (${1:condition})
+    {
         ${2}
-    } else {
+    }
+    else
+    {
         ${3}
     }
 
 snippet     for
 abbr        for () {}
-    for (${1} = 0; $1 < ${2}; $1++) {
+    for (${1} = 0; $1 < ${2}; $1++)
+    {
         ${0}
     }
 
 snippet     while
 abbr        while () {}
-    while (${1:/* condition */}) {
+    while (${1:/* condition */})
+    {
         ${0:/* code */}
     }
 
 snippet     do_while
-    do {
+    do
+    {
         ${0:/* code */}
-    } while (${1:/* condition */});
+    }
+    while (${1:/* condition */});
 
 snippet     switch
 abbr        switch () {}
-    switch (${1:var}) {
+    switch (${1:var})
+    {
         case ${2:val}:
             ${0}
             break;
@@ -49,31 +60,37 @@ abbr        switch () {}
 
 snippet     function
 abbr        func() {}
-    ${1:void} ${2:func_name}(${3}) {
+    ${1:void}
+    ${2:func_name}(${3})
+    {
         ${0}
     }
 
 snippet     struct
 abbr        struct {}
-    struct ${1:name} {
+    struct ${1:name}
+    {
         ${0:/* data */}
     };
 
 # Typedef struct
 snippet struct_typedef
-    typedef struct ${1:name}{
+    typedef struct ${1:name}
+    {
         ${0:/* data */}
     };
 
 snippet     enum
 abbr        enum {}
-    enum ${1:name} {
+    enum ${1:name}
+    {
         ${0}
     };
 
 # main function.
 snippet main
-    int main(int argc, char const* argv[])
+    int
+    main(int argc, char const **argv)
     {
         ${0}
         return 0;
@@ -102,11 +119,11 @@ abbr include-guard
         #define $1
 
         ${0}
-    #endif /* ${1} */
+    #endif /* $1 */
 
 # Tertiary conditional
 snippet conditional
-    (${1:/* condition */})? ${2:a} : ${3:b}
+    (${1:/* condition */}) ? ${2:a} : ${3:b}
 
 # Typedef
 snippet typedef
@@ -122,3 +139,123 @@ snippet comment
 alias /*
     /* ${1:comment} */
     ${0}
+
+snippet gobject
+    /* class: ${1:CAPITAL_CASE}, ${2:CamelCase}, ${3:lower_case}, ${4:simple_name} */
+    /* base: ${5:G_TYPE_OBJECT}, ${6:GObject} */
+    /* prefix: ${7:EGG} */
+
+
+    /* ===== Header ===== */
+    
+    #ifndef _$1_H_
+    #define _$1_H_
+
+    #include <glib.h>
+    #include <glib-object.h>
+
+    /* {{{ $2 */
+    
+    typedef struct _$2 $2;
+    typedef struct _$2Class $2Class;
+
+    struct _$2
+    {
+        $6 base;
+    };
+
+    struct _$2Class
+    {
+        $6Class base;
+
+        /* TODO: add signals */
+    };
+
+    #define $7_TYPE_$1 ($3_get_type())
+    #define $7_$1(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), $7_TYPE_$1, $2))
+    #define $7_$1_CLASS(obj) (G_TYPE_CHECK_CLASS_CAST ((obj), $7_TYPE_$1, $2Class))
+    #define $7_IS_$1(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), $7_TYPE_$1))
+    #define $7_IS_$1_CLASS(obj) (G_TYPE_CHECK_CLASS_TYPE ((obj), $7_TYPE_$1))
+    #define $7_$1_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), $7_TYPE_$1, $2Class))
+
+    extern GType
+    $3_get_type();
+
+    /* }}} */
+
+    extern $2 *
+    $3_new(${8:Parameters});
+
+    #endif /* _$1_H_ */
+
+
+
+
+    /* ====== Body ====== */
+
+    #include <glib.h>
+    #include <${9:headername}.h>
+
+    /* {{{ $2 */
+
+    typedef struct _Private Private;
+    #define PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE((obj), $7_TYPE_$1, $2Private))
+
+    static void $3_finalize(GObject *object);
+    static void $3_class_init($2Class *klass);
+    static void $3_init($2 *manager);
+    
+    struct _Private
+    {
+        /* TODO: add private variables */
+
+    };
+
+    enum
+    {
+        /* TODO: add signals */
+
+        SIGNAL_LENGTH
+    };
+    static guint $3_signals[SIGNAL_LENGTH] = {0};
+    
+    G_DEFINE_TYPE($2, $3, $5);
+
+    static void
+    $3_class_init($2Class *klass)
+    {
+        g_type_class_add_private(G_OBJECT_CLASS(klass), sizeof(Private));
+
+        /* TODO: signal setup */
+
+
+        /* finalizer */
+        G_OBJECT_CLASS(klass)->finalize = $3_finalize;
+    }
+
+    static void
+    $3_finalize(GObject *gobject)
+    {
+        /* TODO: finalize */
+
+    }
+    
+    static void
+    $3_init($2 *$4)
+    {
+        /* TODO: instance initizalization */
+
+    }
+
+    /* }}} */
+    
+    $2 *
+    $3_new($8)
+    {
+        $2 *$4 = g_object_new($7_TYPE_$1, NULL);
+
+        /* TODO: object setup */
+
+        return $4;
+    }
+    
