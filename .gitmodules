@@ -25,9 +25,6 @@
 [submodule "runtime/vim-git-branch-info"]
 	path = runtime/vim-git-branch-info
 	url = git://github.com/taq/vim-git-branch-info.git
-[submodule "runtime/vim-latex"]
-	path = runtime/vim-latex
-	url = ./
 [submodule "runtime/vim-surround"]
 	path = runtime/vim-surround
 	url = http://github.com/tpope/vim-surround.git
