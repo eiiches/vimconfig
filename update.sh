@@ -16,7 +16,17 @@ do
 done
 
 (
-# TODO...
-	#git svn fetch vim-latex
+	cd runtime/vim-metarw
+	make
 )
+
+(
+	cd runtime/metarw-git
+	make
+)
+
+#(
+# TODO...
+#	git svn fetch vim-latex
+#)
 
