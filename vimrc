@@ -162,7 +162,7 @@ set foldmethod=marker
 set foldmarker={{{,}}}
 
 function! MyFoldText()
-	return foldtext() . ' --- >>>'
+	return foldtext() . '...'
 endfunction
 set foldtext=MyFoldText()
 set fillchars-=fold:-
