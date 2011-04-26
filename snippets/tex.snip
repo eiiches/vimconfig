@@ -1,13 +1,126 @@
-snippet init
-    \documentclass[a4paper]{article}
-    \usepackage{amsmath}
-    \usepackage{ascmac}
-    \usepackage{enumerate}
-    \usepackage{array}
-    \usepackage{multirow}
-    \usepackage{arydshln}
-    \begin{document}
-    ${0}
-    \end{document}
 
-    % vim: ts=2 sw=2 colorcolumn=100
+snippet begin
+  \begin{${1:type}}
+    ${2}
+  \end{$1}
+  ${0}
+
+snippet \begin
+  \begin{${1:type}}
+    ${2}
+  \end{$1}
+  ${0}
+
+snippet init
+  \documentclass[a4paper]{article}
+  \usepackage{amsmath}
+  \usepackage{ascmac}
+  \usepackage{enumerate}
+  \usepackage{array}
+  \usepackage{multirow}
+  \usepackage{arydshln}
+  \begin{document}
+  ${0}
+  \end{document}
+
+  % vim: ts=2 sw=2 colorcolumn=100
+
+snippet top
+  \title{${1:title}}
+  \author{${2:author}}
+  \date{\today}
+  \maketitle
+  \tableofcontents
+  \newpage
+  ${0}
+
+snippet fig
+  \begin{figure}[htpb]
+    \centering
+    \scalebox{0.3}{
+    \includegraphics*{${1:filename}}
+    }
+    \caption{${2:caption}}
+    \label{fig:${3:slug}}
+  \end{figure}
+  ${0}
+
+snippet tab
+  \begin{table}[htpb]
+    \centering
+    \begin{tabular}{${1:dimension}}
+    ${4:data}
+    \end{tabular}
+    \caption{${2:caption}}
+    \label{tab:${3:slug}}
+  \end{table}
+  ${0}
+
+snippet tabu
+  \begin{tabular}{${1:dimension}}
+  ${2:data}
+  \end{tabular}
+  ${0}
+
+snippet ref
+  \ref{${1:ref}}${0}
+
+snippet section
+  \section{${1:section}}
+  ${0}
+
+snippet subsection
+  \subsection{${1:subsection}}
+  ${0}
+
+snippet subsubsection
+  \subsubsection{${1:subsubsection}}
+  ${0}
+
+snippet box
+  \begin{itembox}[l]{${1:title}}
+    ${0}
+  \end{itembox}
+    
+snippet matrix
+  \left[\begin{array}{${1:dim}} ${2:elems} \end{array}\right]
+
+snippet math
+  $$ ${1:expression} $$
+  ${0}
+
+snippet imath
+  $ ${1} $ ${0}
+
+snippet equation
+  \begin{equation}
+    ${0}
+  \end{equation}
+
+snippet split
+  \begin{equation}
+    \begin{split}
+      ${0}
+    \end{split}
+  \end{equation}
+
+snippet align
+  \begin{align}
+    ${0}
+  \end{align}
+
+snippet frac
+  \frac{${1}}{${2}}${0}
+
+snippet enum
+  \begin{enumerate}[${1:type}]
+    ${2}
+  \end{enumerate}
+  ${0}
+
+snippet rightp
+  \right)
+
+snippet leftp
+  \left)
+

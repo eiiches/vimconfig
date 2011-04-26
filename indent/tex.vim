@@ -1,0 +1,1 @@
+../runtime/vim-latex/vimfiles/indent/tex.vim

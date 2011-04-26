@@ -419,14 +419,6 @@ endif
 " }}}
 
 " Plugins: -----------------------------
-" {{{ vim-latex
-
-set runtimepath+=~/.vim/runtime/vim-latex/vimfiles
-let g:Tex_CompileRule_dvi = 'platex --interaction=nonstopmode $*'
-let g:Tex_ViewRule_dvi = 'xdvi-ja'
-let g:tex_flavor = "latex"
-
-" }}}
 " {{{ localvimrc (script_id = 441)
 
 let g:localvimrc_name = '.lvimrc'
@@ -588,6 +580,16 @@ endif
 " {{{ current-func-info.vim (script_id = 3197)
 
 " set runtimepath+=~/.vim/runtime/current-func-info
+
+" }}}
+" {{{ vim-latex
+
+" set runtimepath+=~/.vim/runtime/vim-latex/vimfiles
+" let g:Tex_CompileRule_dvi = 'platex --interaction=nonstopmode $*'
+" let g:Tex_CompileRule_pdf = 'dvipdfmx'
+" let g:Tex_ViewRule_dvi = 'evince'
+" let g:Tex_ViewRule_pdf = 'evince'
+" let g:tex_flavor = "latex"
 
 " }}}
 
