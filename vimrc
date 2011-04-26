@@ -92,7 +92,7 @@ nmap <leader>v :vsplit $MYVIMRC<CR>
 
 set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8,euc-jp,sjis,iso-2022-jp
+set fileencodings=utf-8,euc-jp,sjis,iso-2022-jp,cp932
 
 set fileformat=unix
 set fileformats=unix,dos,mac
