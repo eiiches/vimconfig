@@ -321,7 +321,7 @@ endfunction
 
 " for gtk development
 let g:Filetype_c_gtk = 0
-au BufReadPost,BufWritePost *.c,*.h call CheckGtkDevehelopment()
+au BufReadPost,BufWritePost *.c,*.h,*.cpp,*.hpp call CheckGtkDevehelopment()
 function! CheckGtkDevehelopment()
 	for s:line in getline(0, line("$"))
 		if s:line =~# '<glib.h>' || s:line =~# '<gtk/gtk.h>'
