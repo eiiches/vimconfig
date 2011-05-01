@@ -101,8 +101,8 @@ set fileformats=unix,dos,mac
 " {{{ indenting
 
 " these below are the defaults. maybe overridden later
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set noexpandtab
 "set autoindent
 set copyindent
