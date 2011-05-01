@@ -104,8 +104,10 @@ set fileformats=unix,dos,mac
 set tabstop=2
 set shiftwidth=2
 set noexpandtab
-"set cindent
 "set autoindent
+set copyindent
+set cindent
+set cinoptions=(0,u0,U0
 
 " }}}
 " {{{ colors
