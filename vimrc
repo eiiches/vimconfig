@@ -135,10 +135,12 @@ endif
 " {{{ terminal titles
 
 " for 'screen'
-set t_ts=k
-set t_fs=\
-set titlestring=%t
-set title
+if $STY != ''
+	set t_ts=k
+	set t_fs=\
+	set titlestring=%t
+	set title
+endif
 
 " }}}
 " {{{ encryption
