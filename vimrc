@@ -302,7 +302,8 @@ au FileType c,cpp setlocal dict=~/.vim/dict/c/*.dict
 au FileType c,cpp setlocal commentstring=\ \/\*\ %s\ \*\/
 au FileType c,cpp setlocal list listchars+=precedes:<,extends:>
 au FileType c,cpp set foldcolumn=2
-let g:c_space_errors = 1
+au FileType c,cpp let g:c_space_errors = 1
+au FileType   cpp let g:c_no_curly_error = 1
 
 " }}}
 " {{{ D
