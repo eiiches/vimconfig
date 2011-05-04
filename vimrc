@@ -107,7 +107,13 @@ set noexpandtab
 "set autoindent
 set copyindent
 set cindent
+
+" define indentation around parentheses.
 set cinoptions=(0,u0,U0
+" do not indent before C++ scope declarations: public; protected; private;
+set cinoptions+=g0
+" do not indent function return type
+set cinoptions+=t0
 
 " }}}
 " {{{ colors
