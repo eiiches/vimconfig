@@ -2,10 +2,10 @@
 " Maintainer: Eiichi Sato
 "
 " To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
+"   for Unix and OS/2:  ~/.vimrc
+"   for Amiga:  s:.vimrc
+"   for MS-DOS and Win32:  $VIM\_vimrc
+"   for OpenVMS:  sys$login:.vimrc
 
 " {{{
 
@@ -398,6 +398,11 @@ au FileType actionscript set omnifunc=actionscriptcomplete#Complete
 au BufReadCmd *.pptx call zip#Browse(expand("<amatch>"))
 au BufReadCmd *.xlsx call zip#Browse(expand("<amatch>"))
 au BufReadCmd *.docx call zip#Browse(expand("<amatch>"))
+
+" }}}
+" {{{ GLSL
+
+au BufNewFile,BufRead *.frag,*.vert,*.glsl setf glsl
 
 " }}}
 
