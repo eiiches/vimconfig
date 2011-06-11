@@ -82,8 +82,9 @@ snippet subsubsection
 
 snippet box
   \begin{itembox}[l]{${1:title}}
-    ${0}
+    ${2:content}
   \end{itembox}
+  ${0}
     
 snippet matrix
   \left[\begin{array}{${1:dim}} ${2:elems} \end{array}\right]
@@ -109,8 +110,15 @@ snippet split
 
 snippet align
   \begin{align}
-    ${0}
+    ${1}
   \end{align}
+  ${0}
+
+snippet align*
+  \begin{align*}
+    ${1}
+  \end{align*}
+  ${0}
 
 snippet frac
   \frac{${1}}{${2}}${0}
