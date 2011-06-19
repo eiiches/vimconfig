@@ -198,14 +198,22 @@ endif
 " }}}
 " {{{ status line
 
+" status line util function
+function! MyBranch()
+	if exists('*GitBranchInfoString') | return GitBranchInfoString()
+				\ | else | return '' | endif
+endfunction
+
 " always show statusline
 set laststatus=2
-set statusline=%<%f\ %y[%{&fileencoding},%{&fileformat}]%{GitBranchInfoString()}%h%m%r%=%-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %y[%{&fileencoding},%{&fileformat}]%{MyBranch()}%h%m%r%=%-14.(%l,%c%V%)\ %P
+
 " list candidates in statusline for commandline completion
 set wildmenu
 
 " show INSERT when in the mode.
 set showmode
+
 " show incomplete commands
 set showcmd
 
@@ -532,7 +540,6 @@ set runtimepath+=~/.vim/runtime/metarw-git
 
 " }}}
 " {{{ git-branch-info (script_id = 2258)
-
 
 set runtimepath+=~/.vim/runtime/vim-git-branch-info
 let g:git_branch_status_head_current=1
