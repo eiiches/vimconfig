@@ -227,10 +227,10 @@ set matchpairs+=<:>
 nnoremap gb :ls<CR>:buf<Space>
 
 " natural movement for wrapped lines
-nnoremap j gj
-nnoremap k gk
-nnoremap gj j
-nnoremap gk k
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
 
 "make <c-l> clear the highlight as well as redraw
 nnoremap <C-L> :nohls<CR><C-L>
