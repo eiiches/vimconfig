@@ -8,7 +8,7 @@
 "	    for OpenVMS:  sys$login:.gvimrc
 
 " hide the mouse when typing text
-set mousehide		
+set mousehide
 
 " make shift-insert work like in Xterm
 map <S-Insert> <MiddleMouse>
