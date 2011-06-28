@@ -157,23 +157,6 @@ if version >= 703
 endif
 
 " }}}
-" {{{ extended modeline
-
-au BufReadPost * call VimModelineExec()
-function! VimModelineExec()
-	" read modelines
-	let end = line("$")
-	let tail = getline(max([end-&modelines+1, 1]), end)
-	" iterate through lines
-	for line in tail
-		let mlist = matchlist(line, '^.*[ \t]vimexec: \?\(.*\):.*$')
-		if len(mlist) > 1
-			exec mlist[1]
-		endif
-	endfor
-endfunction
-
-" }}}
 " {{{ folding
 
 " default folding
@@ -229,7 +212,7 @@ set report=0    " report always the number of lines changed
 set matchpairs+=<:>
 
 " }}}
-" {{{ key mapping
+" {{{ key mappings
 
 " list and open buffer
 nnoremap gb :ls<CR>:buf<Space>
@@ -291,13 +274,13 @@ set splitright
 " }}}
 
 " FileTypes: ---------------------------
-" {{{ xml
+" {{{ XML
 
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
 
 " }}}
-" {{{ python
+" {{{ Python
 
 au FileType python setlocal expandtab
 au FileType python setlocal tabstop=4
@@ -319,13 +302,6 @@ au FileType c,cpp set foldcolumn=2
 au FileType c,cpp let g:c_space_errors = 1
 au FileType   cpp let g:c_no_curly_error = 1
 
-" }}}
-" {{{ D
-
-au FileType d setlocal commentstring=\ \/\*\ %s\ \*\/
-au FileType d setlocal list listchars+=precedes:<,extends:>
-
-" }}}
 " {{{ gtk
 
 " emulate devhelp.vim using vim-ref
@@ -360,7 +336,14 @@ function! CheckGtkDevehelopment()
 endfunction
 
 " }}}
-" {{{ vala
+" }}}
+" {{{ D
+
+au FileType d setlocal commentstring=\ \/\*\ %s\ \*\/
+au FileType d setlocal list listchars+=precedes:<,extends:>
+
+" }}}
+" {{{ Vala
 
 au BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
 au BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
@@ -370,8 +353,10 @@ au BufRead,BufNewFile *.vala setfiletype vala
 au BufRead,BufNewFile *.vapi setfiletype vala
 
 " }}}
-" {{{ brainfuck
-au BufRead *.bf setfiletype brainfuck
+" {{{ Brainfuck
+
+au BufRead,BufNewFile *.bf setfiletype brainfuck
+
 " }}}
 " {{{ C#
 
@@ -379,36 +364,36 @@ au FileType cs setlocal commentstring=\ \/\*\ %s\ \*\/
 au FileType cs setlocal efm=%f(%l,%c):\ error\ CS%n:\ %m
 
 " }}}
-" {{{ shell script
+" {{{ Shell Script
 "
 au BufWritePost *.sh exe "silent !chmod +x %"
 
 " }}}
-" {{{ squirrel
+" {{{ Squirrel
 
 au! BufRead,BufNewFile *.nut setfiletype squirrel
 
 " }}}
-" {{{ vim script
+" {{{ Vim
 
 au FileType vim set foldcolumn=2
 
 " }}}
-" {{{ actionscript
+" {{{ ActionScript
 
 au BufRead,BufNewFile *.as set filetype=actionscript
 au FileType actionscript setlocal dictionary+=~/.vim/dict/actionscript/actionscript.dict
 au FileType actionscript set omnifunc=actionscriptcomplete#Complete
 
 " }}}
-" {{{ MS Office
+" {{{ Microsoft Office
 
 au BufReadCmd *.pptx call zip#Browse(expand("<amatch>"))
 au BufReadCmd *.xlsx call zip#Browse(expand("<amatch>"))
 au BufReadCmd *.docx call zip#Browse(expand("<amatch>"))
 
 " }}}
-" {{{ GLSL
+" {{{ OpenGL Shader
 
 au BufNewFile,BufRead *.frag,*.vert,*.glsl setf glsl
 
@@ -449,7 +434,7 @@ command! Unhex :%!xxd -r
 " }}}
 
 " Plugins: -----------------------------
-" {{{ localvimrc (script_id = 441)
+" {{{ localvimrc [ http://www.vim.org/scripts/script.php?script_id=441 ]
 
 let g:localvimrc_name = '.lvimrc'
 let g:localvimrc_count = -1
@@ -457,7 +442,88 @@ let g:localvimrc_sandbox = 1
 let g:localvimrc_ask = 0
 
 " }}}
-" {{{ srcexpl.vim (script_id = 2179)
+" {{{ quickrun.vim [ http://www.vim.org/scripts/script.php?script_id=3146 ]
+
+set runtimepath+=~/.vim/runtime/vim-quickrun
+nnoremap <silent> <Leader>r :QuickRun >> -mode n<CR>
+vnoremap <silent> <Leader>r :QuickRun >> -mode v<CR>
+
+" }}}
+" {{{ surround.vim [ http://www.vim.org/scripts/script.php?script_id=1697 ]
+
+set runtimepath+=~/.vim/runtime/vim-surround
+
+" }}}
+" {{{ vimwiki [ http://www.vim.org/scripts/script.php?script_id=2226 ]
+
+" do not specify default wiki.
+let g:vimwiki_list = [{}]
+
+let g:vimwiki_folding = 0
+let g:vimwiki_camel_case = 0
+
+" }}}
+" {{{ vim-ref [ http://www.vim.org/scripts/script.php?script_id=3067 ]
+
+set runtimepath+=~/.vim/runtime/vim-ref-gtkdoc
+set runtimepath+=~/.vim/runtime/vim-ref
+let g:ref_gtkdoc_cmd='gtkdoc'
+let g:ref_noenter=1
+
+" }}}
+" {{{ metarw [ http://www.vim.org/scripts/script.php?script_id=2335 ]
+
+set runtimepath+=~/.vim/runtime/vim-metarw
+
+" }}}
+" {{{ metarw-git [ http://www.vim.org/scripts/script.php?script_id=2336 ]
+
+set runtimepath+=~/.vim/runtime/metarw-git
+
+" }}}
+" {{{ git-branch-info [ http://www.vim.org/scripts/script.php?script_id=2258 ]
+
+set runtimepath+=~/.vim/runtime/vim-git-branch-info
+let g:git_branch_status_head_current=1
+let g:git_branch_status_text=''
+let g:git_branch_status_nogit=''
+let g:git_branch_status_around='[]'
+let g:git_branch_status_ignore_remotes=1
+
+" }}}
+" {{{ unite.vim [ http://www.vim.org/scripts/script.php?script_id=3396 ]
+
+set runtimepath+=~/.vim/runtime/unite.vim
+
+" override mapping for :ls :buf
+nnoremap gb :Unite buffer<CR>
+
+" }}}
+" {{{ neocomplcache [ http://www.vim.org/scripts/script.php?script_id=2620 ]
+
+set runtimepath+=~/.vim/runtime/neocomplcache
+let g:neocomplcache_enable_at_startup = 1
+inoremap <expr><C-x><C-o> &filetype == 'vim' ? "\<C-x><C-v><C-p>" : neocomplcache#manual_omni_complete()
+let g:neocomplcache_dictionary_filetype_lists =
+		\ {
+		\ 	'default': '',
+		\ 	'actionscript': $HOME.'/.vim/dict/actionscript/*.dict'
+		\ }
+
+let g:neocomplcache_snippets_dir = '~/.vim/snippets'
+imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
+
+" }}}
+" {{{ javacomplete [ http://www.vim.org/scripts/script.php?script_id=1785 ]
+
+set runtimepath+=~/.vim/runtime/javacomplete
+if has("autocmd")
+	au Filetype java setlocal omnifunc=javacomplete#Complete
+endif
+
+" }}}
+
+" {{{ srcexpl.vim [ http://www.vim.org/scripts/script.php?script_id=2179 ]
 
 nnoremap <silent> <Leader>j :SrcExplToggle<CR>
 let g:SrcExpl_winHeight = 8 " // Set the height of Source Explorer window
@@ -478,86 +544,12 @@ let g:SrcExpl_updateTagsCmd = "ctags --c++-kinds=+p --fields=+iaS --extra=+q --s
 let g:SrcExpl_updateTagsKey = "<F12>" " // Set <F12> key for updating the tags file artificially
 
 " }}}
-" {{{ VimWiki
-
-let wiki = {}
-let wiki.path = '~/vimwiki/'
-let wiki.auto_export = 1
-let wiki.path_html = '~/vimwiki/html/'
-let wiki.html_header = '~/vimwiki/header.html'
-let g:vimwiki_list = [wiki]
-let g:vimwiki_folding = 1
-let g:vimwiki_camel_case = 0
-
-" }}}
-" {{{ quickrun.vim (script_id = 3146)
-
-set runtimepath+=~/.vim/runtime/vim-quickrun
-nnoremap <silent> <Leader>r :QuickRun >> -mode n<CR>
-vnoremap <silent> <Leader>r :QuickRun >> -mode v<CR>
-
-" }}}
-" {{{ NERDTree (script_id = 1658)
-
-set runtimepath+=~/.vim/runtime/nerdtree
-nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
-let g:NERDTreeWinPos = "right"
-
-" }}}
-" {{{ taglist (script_id = 273)
+" {{{ taglist [ http://www.vim.org/scripts/script.php?script_id=273 ]
 
 set runtimepath+=~/.vim/runtime/taglist
 " let Tlist_Auto_Open = 1
 " let g:Tlist_Use_Rigth_Window = 1
 nnoremap <silent> <Leader>f :TlistToggle<CR>
-
-" }}}
-" {{{ neocomplcache
-
-set runtimepath+=~/.vim/runtime/neocomplcache
-let g:neocomplcache_enable_at_startup = 1
-inoremap <expr><C-x><C-o> &filetype == 'vim' ? "\<C-x><C-v><C-p>" : neocomplcache#manual_omni_complete()
-let g:neocomplcache_dictionary_filetype_lists =
-		\ {
-		\ 	'default': '',
-		\ 	'actionscript': $HOME.'/.vim/dict/actionscript/*.dict'
-		\ }
-
-let g:neocomplcache_snippets_dir = '~/.vim/snippets'
-imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
-
-" }}}
-" {{{ vim-ref (script_id = 3067)
-
-set runtimepath+=~/.vim/runtime/vim-ref-gtkdoc
-set runtimepath+=~/.vim/runtime/vim-ref
-let g:ref_gtkdoc_cmd='gtkdoc'
-let g:ref_noenter=1
-
-" }}}
-" {{{ metarw (script_id = 2335)
-
-set runtimepath+=~/.vim/runtime/vim-metarw
-
-" }}}
-" {{{ metarw-git (script_id = 2336)
-
-set runtimepath+=~/.vim/runtime/metarw-git
-
-" }}}
-" {{{ git-branch-info (script_id = 2258)
-
-set runtimepath+=~/.vim/runtime/vim-git-branch-info
-let g:git_branch_status_head_current=1
-let g:git_branch_status_text=''
-let g:git_branch_status_nogit=''
-let g:git_branch_status_around='[]'
-let g:git_branch_status_ignore_remotes=1
-
-" }}}
-" {{{ surround.vim (script_id = 1697)
-
-set runtimepath+=~/.vim/runtime/vim-surround
 
 " }}}
 " {{{ GNONEAlignArguments
@@ -567,59 +559,5 @@ set runtimepath+=~/.vim/runtime/vim-surround
 noremap <Leader>g :GNOMEAlignArguments<CR>
 
 " }}}
-" {{{ unite.vim
 
-set runtimepath+=~/.vim/runtime/unite.vim
-
-" }}}
-" {{{ javacomplete (script_id = 1785)
-
-set runtimepath+=~/.vim/runtime/javacomplete
-if has("autocmd")
-	au Filetype java setlocal omnifunc=javacomplete#Complete
-endif
-
-" }}}
-
-" Disabled Plugins: --------------------
-" {{{ devhelp
-
-" au CursorHold *.c,*.h call DevhelpUpdate('a')
-" au CursorHoldI *.c,*.h call DevhelpUpdate('a')
-" let g:devhelpSearch=1 " To enable devhelp search:
-" let g:devhelpAssistant=1 " To enable devhelp assistant:
-" let g:devhelpSearchKey = '<F10>' " To change the search key (e.g. to F5):
-" au FileType c,cpp setlocal updatetime=150 " To change the update delay (e.g. to 150ms):
-" let g:devhelpWordLength = 5 " To change the length (e.g. to 5 characters) before a word becomes relevant:
-
-" }}}
-" {{{ autocomplpop
-
-"set runtimepath+=~/.vim/runtime/autocomplpop
-
-" }}}
-" {{{ xp template
-
-" set runtimepath+=~/.vim/runtime/xpt
-" set runtimepath+=~/.vim/runtime/xpt_personal
-" let g:xptemplate_brace_complete = ''
-" let g:xptemplate_key = '<C-\>'
-
-" }}}
-" {{{ current-func-info.vim (script_id = 3197)
-
-" set runtimepath+=~/.vim/runtime/current-func-info
-
-" }}}
-" {{{ vim-latex
-
-" set runtimepath+=~/.vim/runtime/vim-latex/vimfiles
-" let g:Tex_CompileRule_dvi = 'platex --interaction=nonstopmode $*'
-" let g:Tex_CompileRule_pdf = 'dvipdfmx'
-" let g:Tex_ViewRule_dvi = 'evince'
-" let g:Tex_ViewRule_pdf = 'evince'
-" let g:tex_flavor = "latex"
-
-" }}}
-
-" vim: ts=2:sw=2:sts=0:fdm=marker:fmr={{{,}}}
+" vim: ts=4:sw=4:sts=0:fdm=marker:fmr={{{,}}}
