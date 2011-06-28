@@ -441,6 +441,12 @@ if !exists(":DiffOrig")
 endif
 
 " }}}
+" {{{ :Hex
+
+command! Hex :%!xxd
+command! Unhex :%!xxd -r
+
+" }}}
 
 " Plugins: -----------------------------
 " {{{ localvimrc (script_id = 441)
