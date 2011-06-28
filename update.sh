@@ -15,18 +15,7 @@ do
 	cd -
 done
 
-(
-	cd runtime/vim-metarw
-	make
-)
-
-(
-	cd runtime/metarw-git
-	make
-)
-
-#(
-# TODO...
-#	git svn fetch vim-latex
-#)
+( cd runtime/vimproc && make -f make_gcc.mak )
+( cd runtime/vim-metarw && make )
+( cd runtime/metarw-git && make )
 

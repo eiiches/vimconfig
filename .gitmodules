@@ -31,3 +31,9 @@
 [submodule "runtime/unite.vim"]
 	path = runtime/unite.vim
 	url = git://github.com/Shougo/unite.vim.git
+[submodule "runtime/vimshell"]
+	path = runtime/vimshell
+	url = git://github.com/Shougo/vimshell.git
+[submodule "runtime/vimproc"]
+	path = runtime/vimproc
+	url = git://github.com/Shougo/vimproc.git

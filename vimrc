@@ -522,6 +522,16 @@ if has("autocmd")
 endif
 
 " }}}
+" {{{ vimproc
+
+set runtimepath+=~/.vim/runtime/vimproc
+
+" }}}
+" {{{ vimshell
+
+set runtimepath+=~/.vim/runtime/vimshell
+
+" }}}
 
 " {{{ srcexpl.vim [ http://www.vim.org/scripts/script.php?script_id=2179 ]
 
