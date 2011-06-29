@@ -37,3 +37,6 @@
 [submodule "runtime/vimproc"]
 	path = runtime/vimproc
 	url = git://github.com/Shougo/vimproc.git
+[submodule "runtime/zencoding-vim"]
+	path = runtime/zencoding-vim
+	url = git://github.com/mattn/zencoding-vim.git

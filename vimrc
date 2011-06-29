@@ -522,14 +522,19 @@ if has("autocmd")
 endif
 
 " }}}
-" {{{ vimproc
+" {{{ vimproc [ https://github.com/Shougo/vimproc ]
 
 set runtimepath+=~/.vim/runtime/vimproc
 
 " }}}
-" {{{ vimshell
+" {{{ vimshell [ https://github.com/Shougo/vimshell ]
 
 set runtimepath+=~/.vim/runtime/vimshell
+
+" }}}
+" {{{ zencoding [ https://github.com/mattn/zencoding-vim ]
+
+set runtimepath+=~/.vim/runtime/zencoding-vim
 
 " }}}
 
