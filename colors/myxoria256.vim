@@ -85,10 +85,10 @@ hi Underlined   ctermfg=39  guifg=#00afff                           cterm=underl
 hi diffAdded    ctermfg=150 guifg=#afdf87
 hi diffRemoved  ctermfg=174 guifg=#df8787
 """ vimdiff
-hi diffAdd      ctermfg=none  guifg=none      ctermbg=151 guibg=#afdfaf
+hi diffAdd      ctermfg=none  guifg=none      ctermbg=61 guibg=#afdfaf
 "hi diffDelete   ctermfg=none  guifg=none      ctermbg=186 guibg=#dfdf87 cterm=none gui=none
 hi diffDelete   ctermfg=none  guifg=none      ctermbg=246 guibg=#949494 cterm=none gui=none
-hi diffChange   ctermfg=none  guifg=none      ctermbg=181 guibg=#dfafaf
-hi diffText     ctermfg=none  guifg=none      ctermbg=174 guibg=#df8787 cterm=none gui=none
+hi diffChange   ctermfg=none  guifg=none      ctermbg=97 guibg=#dfafaf
+hi diffText     ctermfg=none  guifg=none      ctermbg=163 guibg=#df8787 cterm=none gui=none
 
 " vim: set expandtab tabstop=2 shiftwidth=2 smarttab softtabstop=2:
