@@ -290,7 +290,6 @@ if version >= 703
 	au FileType python setlocal colorcolumn=80
 endif
 let g:python_space_error_highlight = 1
-au FileType python setlocal omnifunc=pythoncomplete#Complete
 
 " }}}
 " {{{ C
