@@ -445,8 +445,8 @@ let g:localvimrc_ask = 0
 " {{{ quickrun.vim [ http://www.vim.org/scripts/script.php?script_id=3146 ]
 
 set runtimepath+=~/.vim/runtime/vim-quickrun
-nnoremap <silent> <Leader>r :QuickRun >> -mode n<CR>
-vnoremap <silent> <Leader>r :QuickRun >> -mode v<CR>
+nnoremap <silent> <Leader>r :QuickRun > -mode n<CR>
+vnoremap <silent> <Leader>r :QuickRun > -mode v<CR>
 
 " }}}
 " {{{ surround.vim [ http://www.vim.org/scripts/script.php?script_id=1697 ]
