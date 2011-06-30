@@ -495,8 +495,16 @@ let g:git_branch_status_ignore_remotes=1
 
 set runtimepath+=~/.vim/runtime/unite.vim
 
+" <ESC> to leave Unite mode
+autocmd FileType unite nmap <buffer> <ESC> <Plug>(unite_exit)
+autocmd FileType unite imap <buffer> jj <Plug>(unite_insert_leave)
+
 " override mapping for :ls :buf
-nnoremap gb :Unite buffer<CR>
+nnoremap gb :Unite -prompt=>>\  buffer<CR>
+
+nnoremap gl :UniteWithBufferDir -prompt=>>\  -buffer-name=files file<CR>
+nnoremap gL :UniteWithCurrentDir -prompt=>>\  -buffer-name=files file<CR>
+nnoremap gr :Unite -prompt=>>\  -buffer-name=files file_mru directory_mru<CR>
 
 " }}}
 " {{{ neocomplcache [ http://www.vim.org/scripts/script.php?script_id=2620 ]
