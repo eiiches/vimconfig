@@ -397,6 +397,13 @@ au BufReadCmd *.docx call zip#Browse(expand("<amatch>"))
 au BufNewFile,BufRead *.frag,*.vert,*.glsl setf glsl
 
 " }}}
+" {{{ LaTeX
+
+au FileType tex setlocal shellpipe=&>
+au FileType tex setlocal errorformat=%f:%l:\ %m
+au! BufWritePost *.tex silent make | cwin
+
+" }}}
 
 " Commands: ----------------------------
 " {{{ :WriteSudo
