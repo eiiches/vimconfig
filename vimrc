@@ -399,9 +399,17 @@ au BufNewFile,BufRead *.frag,*.vert,*.glsl setf glsl
 " }}}
 " {{{ LaTeX
 
+function! MakeTex()
+	if filereadable('Makefile')
+		silent make | cwin
+	else
+		silent make -f '~/.vim/makerules/Makefile' %<.pdf | cwin
+	endif
+endfunction
+
 au FileType tex setlocal shellpipe=&>
 au FileType tex setlocal errorformat=%f:%l:\ %m
-au! BufWritePost *.tex silent make | cwin
+au! BufWritePost *.tex call MakeTex()
 
 " }}}
 
