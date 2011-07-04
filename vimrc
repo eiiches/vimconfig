@@ -411,6 +411,17 @@ au FileType tex setlocal shellpipe=&>
 au FileType tex setlocal errorformat=%f:%l:\ %m
 au! BufWritePost *.tex call MakeTex()
 
+function! OpenPdf()
+	let s:pdfpath = expand('%:p:r').'.pdf'
+	if filereadable(s:pdfpath)
+		call vimproc#system_bg('evince '.s:pdfpath)
+	else
+		echo 'File not found: ' . s:pdfpath
+	endif
+endfunction
+
+au FileType tex nnoremap <silent> <buffer> <Leader>r :call OpenPdf()<CR>
+
 " }}}
 
 " Commands: ----------------------------
