@@ -219,9 +219,13 @@ nnoremap gb :ls<CR>:buf<Space>
 
 " natural movement for wrapped lines
 noremap j gj
-noremap k gk
 noremap gj j
+noremap k gk
 noremap gk k
+noremap 0 g0
+noremap g0 0
+noremap $ g$
+noremap g$ $
 
 "make <c-l> clear the highlight as well as redraw
 nnoremap <C-L> :nohls<CR><C-L>
