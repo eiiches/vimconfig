@@ -461,6 +461,11 @@ command! Hex :%!xxd
 command! Unhex :%!xxd -r
 
 " }}}
+" {{{ :Maps
+
+command! -nargs=* -complete=mapping Maps map <args> | map! <args> | lmap <args>
+
+" }}}
 
 " Plugins: -----------------------------
 " {{{ localvimrc [ http://www.vim.org/scripts/script.php?script_id=441 ]
