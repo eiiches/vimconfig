@@ -568,6 +568,41 @@ set runtimepath+=~/.vim/runtime/vimproc
 
 set runtimepath+=~/.vim/runtime/vimshell
 
+augroup vimshellmaps
+	" Clear
+	au!
+
+	" Ctrl-D to exit
+	au FileType {vimshell,int*} imap <buffer><silent> <C-d> <ESC>:q<CR>
+
+	" Moving to other windows
+	au FileType {vimshell,int*} imap <buffer><silent> <C-w>h <ESC><C-w>h
+	au FileType {vimshell,int*} imap <buffer><silent> <C-w>j <ESC><C-w>j
+	au FileType {vimshell,int*} imap <buffer><silent> <C-w>k <ESC><C-w>k
+	au FileType {vimshell,int*} imap <buffer><silent> <C-w>l <ESC><C-w>l
+
+	" Orignal <C-w>
+	au FileType {vimshell,int*} inoremap <buffer><silent> <C-w><C-w> <C-w>
+augroup END
+
+" Aliases
+au FileType vimshell call vimshell#altercmd#define('sl', 'ls')
+au FileType vimshell call vimshell#altercmd#define('ll', 'ls -l')
+
+" Python interpreter
+au FileType int-python set filetype=python
+
+" Interactive Shell
+function! OpenInteractiveShell()
+	try
+		VimShellInteractive
+	catch
+		echo 'No interpreter registered for "' . &filetype . '"'
+	endtry
+endfunction
+nnoremap <silent> gs :VimShellPop<CR>
+nnoremap <silent> gS :call OpenInteractiveShell()<CR>
+
 " }}}
 " {{{ zencoding [ https://github.com/mattn/zencoding-vim ]
 
