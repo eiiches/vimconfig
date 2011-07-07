@@ -499,7 +499,6 @@ let g:vimwiki_camel_case = 0
 
 set runtimepath+=~/.vim/runtime/vim-ref-gtkdoc
 set runtimepath+=~/.vim/runtime/vim-ref
-let g:ref_gtkdoc_cmd='gtkdoc'
 let g:ref_noenter=1
 
 " }}}

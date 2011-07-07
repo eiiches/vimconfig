@@ -10,4 +10,5 @@ git submodule foreach 'git checkout master; git pull'
 ( cd runtime/vimproc && make -f make_gcc.mak )
 ( cd runtime/vim-metarw && make )
 ( cd runtime/metarw-git && make )
+( cd runtime/vim-ref-gtkdoc/gtkdoc && make )
 
