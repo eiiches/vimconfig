@@ -238,8 +238,6 @@ vnoremap > >gv
 " command line keymap
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
-cnoremap <C-b> <C-Left>
-cnoremap <C-w> <C-Right>
 cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
 
