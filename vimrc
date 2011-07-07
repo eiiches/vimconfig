@@ -425,6 +425,11 @@ endfunction
 au FileType tex nnoremap <silent> <buffer> <Leader>r :call OpenPdf()<CR>
 
 " }}}
+" {{{ Makefile
+
+au FileType make set noexpandtab
+
+" }}}
 
 " Commands: ----------------------------
 " {{{ :WriteSudo
