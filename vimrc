@@ -189,7 +189,7 @@ endfunction
 
 " always show statusline
 set laststatus=2
-set statusline=%<%f\ %y[%{&fileencoding},%{&fileformat}]%{MyBranch()}%h%m%r%=%-14.(%l,%c%V%)\ %P
+set statusline=%f\ %y[%{&fileencoding},%{&fileformat}]%<%{MyBranch()}%h%m%r%=%-14.(%l,%c%V%)\ %P
 
 " list candidates in statusline for commandline completion
 set wildmenu
