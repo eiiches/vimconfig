@@ -591,6 +591,7 @@ augroup vimshellmaps
 	au FileType {vimshell,int*} imap <buffer><silent> <C-w>J <ESC><C-w>Ja
 	au FileType {vimshell,int*} imap <buffer><silent> <C-w>K <ESC><C-w>Ka
 	au FileType {vimshell,int*} imap <buffer><silent> <C-w>L <ESC><C-w>La
+	au FileType {vimshell,int*} imap <buffer><silent> <C-w>= <ESC><C-w>=a
 
 	" Switch to insert mode on BufEnter
 	au BufEnter *vimshell call vimshell#start_insert()
