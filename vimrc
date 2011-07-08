@@ -580,25 +580,25 @@ augroup vimshellmaps
 	au!
 
 	" Ctrl-D to exit
-	au FileType {vimshell,int*} imap <buffer><silent> <C-d> <ESC>:q<CR>
+	au FileType {vimshell,int-*} imap <buffer><silent> <C-d> <ESC>:q<CR>
 
 	" Moving to other windows
-	au FileType {vimshell,int*} imap <buffer><silent> <C-w>h <ESC><C-w>h
-	au FileType {vimshell,int*} imap <buffer><silent> <C-w>j <ESC><C-w>j
-	au FileType {vimshell,int*} imap <buffer><silent> <C-w>k <ESC><C-w>k
-	au FileType {vimshell,int*} imap <buffer><silent> <C-w>l <ESC><C-w>l
-	au FileType {vimshell,int*} imap <buffer><silent> <C-w>H <ESC><C-w>Ha
-	au FileType {vimshell,int*} imap <buffer><silent> <C-w>J <ESC><C-w>Ja
-	au FileType {vimshell,int*} imap <buffer><silent> <C-w>K <ESC><C-w>Ka
-	au FileType {vimshell,int*} imap <buffer><silent> <C-w>L <ESC><C-w>La
-	au FileType {vimshell,int*} imap <buffer><silent> <C-w>= <ESC><C-w>=a
+	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>h <ESC><C-w>h
+	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>j <ESC><C-w>j
+	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>k <ESC><C-w>k
+	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>l <ESC><C-w>l
+	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>H <ESC><C-w>Ha
+	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>J <ESC><C-w>Ja
+	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>K <ESC><C-w>Ka
+	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>L <ESC><C-w>La
+	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>= <ESC><C-w>=a
 
 	" Switch to insert mode on BufEnter
 	au BufEnter *vimshell call vimshell#start_insert()
 	au BufEnter iexe-* startinsert!
 
 	" Orignal <C-w>
-	au FileType {vimshell,int*} inoremap <buffer><silent> <C-w><C-w> <C-w>
+	au FileType {vimshell,int-*} inoremap <buffer><silent> <C-w><C-w> <C-w>
 augroup END
 
 " Aliases
