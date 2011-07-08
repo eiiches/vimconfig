@@ -13,9 +13,6 @@
 [submodule "runtime/vim-ref-gtkdoc"]
 	path = runtime/vim-ref-gtkdoc
 	url = git://github.com/eiiches/vim-ref-gtkdoc.git
-[submodule "runtime/current-func-info"]
-	path = runtime/current-func-info
-	url = git://github.com/tyru/current-func-info.vim.git
 [submodule "runtime/metarw-git"]
 	path = runtime/metarw-git
 	url = git://github.com/kana/vim-metarw-git.git
