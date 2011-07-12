@@ -469,6 +469,28 @@ command! Unhex :%!xxd -r
 command! -nargs=* -complete=mapping Maps map <args> | map! <args> | lmap <args>
 
 " }}}
+" {{{ :{Restore,Save}Session
+
+function! RestoreSession()
+	if filereadable('Session.vim')
+		source Session.vim
+	endif
+endfunction
+command! -nargs=0 RestoreSession call RestoreSession()
+
+function! SaveSession()
+	mksession!
+endfunction
+command! -nargs=0 SaveSession call SaveSession()
+
+" automatically restore session when vim is started without arguments.
+autocmd VimEnter * if argc() == 0 | call RestoreSession() | endif
+
+" :qq to save session and quit
+command! -nargs=0 Qq call SaveSession() | qa
+cnoreabbrev qq Qq
+
+" }}}
 
 " Plugins: -----------------------------
 " {{{ localvimrc [ http://www.vim.org/scripts/script.php?script_id=441 ]
