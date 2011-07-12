@@ -27,3 +27,8 @@ set guioptions-=e "tab bar
 set guioptions-=r "right-scrollbar
 set guioptions-=L "left-scrollbar
 
+" IM
+set iminsert=0
+set imsearch=0
+inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+

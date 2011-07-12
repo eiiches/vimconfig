@@ -256,10 +256,6 @@ set makeprg=make
 
 set history=500 "overwrite the default above
 
-set iminsert=0
-set imsearch=0
-inoremap <ESC> <ESC>:set iminsert=0<CR>:echo<CR>
-
 "set completeopt=menu,longest,preview
 set completeopt=menuone
 
