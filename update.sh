@@ -11,3 +11,5 @@ git submodule foreach 'git checkout master; git pull'
 ( cd runtime/metarw-git && make )
 ( cd runtime/vim-ref-gtkdoc/gtkdoc && make )
 
+vim +UpdateHelp +q
+

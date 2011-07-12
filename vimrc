@@ -487,6 +487,20 @@ command! -nargs=0 Qq call SaveSession() | qa
 cnoreabbrev qq Qq
 
 " }}}
+" {{{ :UpdateHelp
+
+function! UpdateHelp()
+	for rundir in split(&rtp, ',')
+		let l:docdir = rundir . '/doc'
+		if isdirectory(l:docdir)
+			echo l:docdir
+			execute 'helptags ' . l:docdir
+		endif
+	endfor
+endfunction
+command! -nargs=0 UpdateHelp call UpdateHelp()
+
+" }}}
 
 " Plugins: -----------------------------
 " {{{ quickrun.vim [ http://www.vim.org/scripts/script.php?script_id=3146 ]
