@@ -374,6 +374,7 @@ au! BufRead,BufNewFile *.nut setfiletype squirrel
 " {{{ Vim
 
 au FileType vim set foldcolumn=2
+au FileType vim nnoremap <buffer> K :vert help <C-R>=expand('<cword>')<CR><CR><C-w>p
 
 " }}}
 " {{{ ActionScript
