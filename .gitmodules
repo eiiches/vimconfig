@@ -40,3 +40,6 @@
 [submodule "runtime/argtextobj.vim"]
 	path = runtime/argtextobj.vim
 	url = git://github.com/vim-scripts/argtextobj.vim.git
+[submodule "runtime/drawit"]
+	path = runtime/drawit
+	url = git://github.com/vim-scripts/DrawIt.git

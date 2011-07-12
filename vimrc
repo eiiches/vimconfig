@@ -648,6 +648,11 @@ set runtimepath+=~/.vim/runtime/zencoding-vim
 set runtimepath+=~/.vim/runtime/argtextobj.vim
 
 " }}}
+" {{{ drawit [ https://github.com/vim-scripts/DrawIt ]
+
+set runtimepath+=~/.vim/runtime/drawit
+
+" }}}
 
 " {{{ srcexpl.vim [ http://www.vim.org/scripts/script.php?script_id=2179 ]
 
