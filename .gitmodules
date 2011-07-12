@@ -46,3 +46,6 @@
 [submodule "runtime/align"]
 	path = runtime/align
 	url = git://github.com/vim-scripts/Align.git
+[submodule "runtime/srcexpl.vim"]
+	path = runtime/srcexpl.vim
+	url = git://github.com/vim-scripts/Source-Explorer-srcexpl.vim.git

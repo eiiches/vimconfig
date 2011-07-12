@@ -661,6 +661,8 @@ set runtimepath+=~/.vim/runtime/align
 
 " {{{ srcexpl.vim [ http://www.vim.org/scripts/script.php?script_id=2179 ]
 
+set runtimepath+=~/.vim/runtime/srcexpl.vim
+
 nnoremap <silent> <Leader>j :SrcExplToggle<CR>
 let g:SrcExpl_winHeight = 8 " // Set the height of Source Explorer window
 let g:SrcExpl_refreshTime = 100 " // Set 100 ms for refreshing the Source Explorer
