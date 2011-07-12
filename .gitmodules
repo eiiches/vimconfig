@@ -52,3 +52,6 @@
 [submodule "runtime/vimwiki"]
 	path = runtime/vimwiki
 	url = git://github.com/vim-scripts/vimwiki.git
+[submodule "runtime/localrc"]
+	path = runtime/localrc
+	url = git://github.com/thinca/vim-localrc.git

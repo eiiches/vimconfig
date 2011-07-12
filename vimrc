@@ -489,14 +489,6 @@ cnoreabbrev qq Qq
 " }}}
 
 " Plugins: -----------------------------
-" {{{ localvimrc [ http://www.vim.org/scripts/script.php?script_id=441 ]
-
-let g:localvimrc_name = '.lvimrc'
-let g:localvimrc_count = -1
-let g:localvimrc_sandbox = 1
-let g:localvimrc_ask = 0
-
-" }}}
 " {{{ quickrun.vim [ http://www.vim.org/scripts/script.php?script_id=3146 ]
 
 set runtimepath+=~/.vim/runtime/vim-quickrun
@@ -658,6 +650,11 @@ set runtimepath+=~/.vim/runtime/drawit
 " {{{ align [ https://github.com/vim-scripts/Align ]
 
 set runtimepath+=~/.vim/runtime/align
+
+" }}}
+" {{{ localrc [ https://github.com/thinca/vim-localrc ]
+
+set runtimepath+=~/.vim/runtime/localrc
 
 " }}}
 
