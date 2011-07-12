@@ -227,9 +227,8 @@ noremap g0 0
 noremap $ g$
 noremap g$ $
 
-"make <c-l> clear the highlight as well as redraw
-nnoremap <C-L> :nohls<CR><C-L>
-inoremap <C-L> <C-O>:nohls<CR>
+" make <c-l> clear the highlight as well as redraw
+nnoremap <silent> <C-L> :nohls<CR><C-L>
 
 " reselect visual block after indent/unindent
 vnoremap < <gv
