@@ -251,7 +251,7 @@ set noerrorbells "do not ring error bells
 set shellslash
 set scrolloff=2 		" 2 lines bevore and after the current line when scrolling
 
-set grepprg=grep\ -nH\ $*
+set grepprg=grep\ -nH
 set makeprg=make
 
 set history=500 "overwrite the default above
