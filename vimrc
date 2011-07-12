@@ -653,6 +653,11 @@ set runtimepath+=~/.vim/runtime/argtextobj.vim
 set runtimepath+=~/.vim/runtime/drawit
 
 " }}}
+" {{{ align [ https://github.com/vim-scripts/Align ]
+
+set runtimepath+=~/.vim/runtime/align
+
+" }}}
 
 " {{{ srcexpl.vim [ http://www.vim.org/scripts/script.php?script_id=2179 ]
 

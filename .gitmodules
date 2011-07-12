@@ -43,3 +43,6 @@
 [submodule "runtime/drawit"]
 	path = runtime/drawit
 	url = git://github.com/vim-scripts/DrawIt.git
+[submodule "runtime/align"]
+	path = runtime/align
+	url = git://github.com/vim-scripts/Align.git
