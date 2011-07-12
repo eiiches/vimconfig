@@ -643,6 +643,11 @@ nnoremap <silent> gS :call OpenInteractiveShell()<CR>
 set runtimepath+=~/.vim/runtime/zencoding-vim
 
 " }}}
+" {{{ argtextobj.vim [ https://github.com/vim-scripts/argtextobj.vim ]
+
+set runtimepath+=~/.vim/runtime/argtextobj.vim
+
+" }}}
 
 " {{{ srcexpl.vim [ http://www.vim.org/scripts/script.php?script_id=2179 ]
 

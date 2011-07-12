@@ -37,3 +37,6 @@
 [submodule "runtime/zencoding-vim"]
 	path = runtime/zencoding-vim
 	url = git://github.com/mattn/zencoding-vim.git
+[submodule "runtime/argtextobj.vim"]
+	path = runtime/argtextobj.vim
+	url = git://github.com/vim-scripts/argtextobj.vim.git
