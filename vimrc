@@ -511,6 +511,8 @@ set runtimepath+=~/.vim/runtime/vim-surround
 " }}}
 " {{{ vimwiki [ http://www.vim.org/scripts/script.php?script_id=2226 ]
 
+set runtimepath+=~/.vim/runtime/vimwiki
+
 " do not specify default wiki.
 let g:vimwiki_list = [{}]
 

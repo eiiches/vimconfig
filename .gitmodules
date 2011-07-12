@@ -49,3 +49,6 @@
 [submodule "runtime/srcexpl.vim"]
 	path = runtime/srcexpl.vim
 	url = git://github.com/vim-scripts/Source-Explorer-srcexpl.vim.git
+[submodule "runtime/vimwiki"]
+	path = runtime/vimwiki
+	url = git://github.com/vim-scripts/vimwiki.git
