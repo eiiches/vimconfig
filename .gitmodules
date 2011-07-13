@@ -55,3 +55,9 @@
 [submodule "runtime/localrc"]
 	path = runtime/localrc
 	url = git://github.com/thinca/vim-localrc.git
+[submodule "runtime/matchit"]
+	path = runtime/matchit
+	url = git://github.com/vim-scripts/matchit.zip.git
+[submodule "runtime/matchit_python"]
+	path = runtime/matchit_python
+	url = git://github.com/vim-scripts/python_match.vim.git

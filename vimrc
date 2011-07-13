@@ -680,7 +680,12 @@ set runtimepath+=~/.vim/runtime/align
 set runtimepath+=~/.vim/runtime/localrc
 
 " }}}
+" {{{ matchit [ https://github.com/vim-scripts/matchit.zip ]
 
+set runtimepath+=~/.vim/runtime/matchit
+set runtimepath+=~/.vim/runtime/matchit_python
+
+" }}}
 " {{{ srcexpl.vim [ http://www.vim.org/scripts/script.php?script_id=2179 ]
 
 set runtimepath+=~/.vim/runtime/srcexpl.vim
