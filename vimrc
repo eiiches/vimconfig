@@ -288,6 +288,9 @@ if version >= 703
 endif
 let g:python_space_error_highlight = 1
 
+" highlight 'self'
+au FileType python syn keyword pythonBuiltin self
+
 " }}}
 " {{{ C
 
