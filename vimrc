@@ -619,6 +619,12 @@ augroup vimshellmaps
 	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>L <ESC><C-w>La
 	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>= <ESC><C-w>=a
 
+	" Disable cursor keys
+	au FileType {vimshell,int-*} imap <buffer><silent> OA <Nop>
+	au FileType {vimshell,int-*} imap <buffer><silent> OB <Nop>
+	" au FileType {vimshell,int-*} imap <buffer><silent> OC <Nop>
+	" au FileType {vimshell,int-*} imap <buffer><silent> OD <Nop>
+
 	" Switch to insert mode on BufEnter
 	au BufEnter *vimshell call vimshell#start_insert()
 	au BufEnter iexe-* startinsert!
