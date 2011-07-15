@@ -61,3 +61,6 @@
 [submodule "runtime/matchit_python"]
 	path = runtime/matchit_python
 	url = git://github.com/vim-scripts/python_match.vim.git
+[submodule "runtime/easymotion"]
+	path = runtime/easymotion
+	url = git://github.com/Lokaltog/vim-easymotion.git

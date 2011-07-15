@@ -686,6 +686,12 @@ set runtimepath+=~/.vim/runtime/matchit
 set runtimepath+=~/.vim/runtime/matchit_python
 
 " }}}
+" {{{ easymotion [ https://github.com/Lokaltog/vim-easymotion ]
+
+set runtimepath+=~/.vim/runtime/easymotion
+let g:EasyMotion_leader_key = ','
+
+" }}}
 " {{{ srcexpl.vim [ http://www.vim.org/scripts/script.php?script_id=2179 ]
 
 set runtimepath+=~/.vim/runtime/srcexpl.vim
