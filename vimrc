@@ -253,7 +253,11 @@ cnoremap <C-p> <Up>
 set nowrap
 set ruler		" show the cursor position all the time
 set number
-set noerrorbells "do not ring error bells
+
+" suppress error bells
+set noerrorbells
+set novisualbell
+
 set shellslash
 set scrolloff=2 		" 2 lines bevore and after the current line when scrolling
 
