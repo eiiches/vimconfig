@@ -85,7 +85,14 @@ if has("autocmd")
 	autocmd BufWritePost .vimrc,~/.vim/vimrc source $MYVIMRC
 endif
 
-nmap <leader>v :vsplit $MYVIMRC<CR>
+function! OpenVimrc()
+	if empty(bufname("%")) && ! &modified && empty(&buftype)
+		edit $MYVIMRC
+	else
+		tabnew $MYVIMRC
+	endif
+endfunction
+nnoremap <silent> <leader>v :call OpenVimrc()<CR>
 
 " }}}
 " {{{ encoding and format
