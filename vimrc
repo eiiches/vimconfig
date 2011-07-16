@@ -434,6 +434,11 @@ endfunction
 
 au FileType tex nnoremap <silent> <buffer> <Leader>r :call OpenPdf()<CR>
 
+" show math symbols using conceal feature
+if has("autocmd") && has("conceal")
+	au FileType tex setlocal conceallevel=2
+endif
+
 " }}}
 " {{{ Makefile
 
