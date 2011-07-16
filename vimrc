@@ -257,34 +257,68 @@ nnoremap <C-k> ddkP
 " }}}
 " {{{ miscellaneous
 
+" do not wrap text by default.
 set nowrap
-set ruler		" show the cursor position all the time
+
+" show line number
 set number
 
 " suppress error bells
 set noerrorbells
 set novisualbell
 
-set shellslash
-set scrolloff=2 		" 2 lines bevore and after the current line when scrolling
+" lines before and after the current line when scrolling
+set scrolloff=2
 
-set grepprg=grep\ -nH
-set makeprg=make
-
-set history=500 "overwrite the default above
-
-"set completeopt=menu,longest,preview
-set completeopt=menuone
-
-" set swap directory
-" set directory=~/.vim/swp
-
-" tab shown as >---
+" show tab as >---
 set listchars+=tab:>-
 
 " split direction
 set splitbelow
 set splitright
+
+" completion
+set completeopt=menuone
+
+" keep history
+set history=500
+
+" }}}
+" {{{ make and grep
+
+" redirect everything to stdout.
+set shellpipe=&>
+
+" shell commands for :make and :grep
+set grepprg=grep\ -nH
+set makeprg=make
+
+" When b:make_after_write is 1, make target 'b:make_target'
+" using first available Makefile listed in b:make_file
+function! QuickMake()
+	let makefiles = exists('b:make_file') ? b:make_file : 'Makefile'
+	let target = exists('b:make_target') ? b:make_target : ''
+	for makefile in split(makefiles, ',')
+		if filereadable(glob(makefile))
+			silent execute 'make -f ' . makefile . ' ' . target
+			return
+		endif
+	endfor
+	echo 'Makefile not available.'
+endfunction
+command! -nargs=0 QuickMake call QuickMake() | normal! <C-l>
+
+" call _QuickMake() everytime buffer is written.
+function! _QuickMake()
+	if exists('b:make_after_write') && b:make_after_write
+		call QuickMake()
+	endif
+endfunction
+au BufWritePost * call _QuickMake()
+
+" open quickfix automatically
+au QuickFixCmdPost [^l]* nested cwindow
+au QuickFixCmdPost l* nested lwindow
 
 " }}}
 
@@ -418,17 +452,10 @@ au BufNewFile,BufRead *.frag,*.vert,*.glsl setf glsl
 " }}}
 " {{{ LaTeX
 
-function! MakeTex()
-	if filereadable('Makefile')
-		silent make | cwin
-	else
-		silent make -f '~/.vim/makerules/Makefile' %<.pdf | cwin
-	endif
-endfunction
-
-au FileType tex setlocal shellpipe=&>
+au FileType tex let b:make_file = 'Makefile,~/.vim/makerules/Makefile'
+au FileType tex let b:make_target = '%<.pdf'
+au FileType tex let b:make_after_write = 1
 au FileType tex setlocal errorformat=%f:%l:\ %m
-au! BufWritePost *.tex call MakeTex()
 
 function! OpenPdf()
 	let s:pdfpath = expand('%:p:r').'.pdf'
@@ -438,7 +465,6 @@ function! OpenPdf()
 		echo 'File not found: ' . s:pdfpath
 	endif
 endfunction
-
 au FileType tex nnoremap <silent> <buffer> <Leader>r :call OpenPdf()<CR>
 
 " show math symbols using conceal feature
