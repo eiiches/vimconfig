@@ -668,10 +668,19 @@ au FileType int-python set filetype=python
 
 " Interactive Shell
 function! OpenInteractiveShell()
+	let default = ''
+	if has_key(g:vimshell_interactive_interpreter_commands, &filetype)
+		let default = g:vimshell_interactive_interpreter_commands[&filetype]
+	endif
+	let interp = input("Interpreter: ", default)
 	try
-		VimShellInteractive
+		execute 'VimShellInteractive ' . interp
 	catch
-		echo 'No interpreter registered for "' . &filetype . '"'
+		if empty(interp)
+			echo 'No interpreter registered for filetype = "' . &filetype . '"'
+		else
+			echo 'Failed to execute "' . interp . '"'
+		endif
 	endtry
 endfunction
 nnoremap <silent> gs :VimShellPop<CR>
