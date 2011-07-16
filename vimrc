@@ -89,7 +89,7 @@ function! OpenVimrc()
 	if empty(bufname("%")) && ! &modified && empty(&buftype)
 		edit $MYVIMRC
 	else
-		tabnew $MYVIMRC
+		vsplit $MYVIMRC
 	endif
 endfunction
 nnoremap <silent> <leader>v :call OpenVimrc()<CR>
