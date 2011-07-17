@@ -255,6 +255,38 @@ nnoremap <C-j> ddp
 nnoremap <C-k> ddkP
 
 " }}}
+" {{{ resize mode
+
+function! PrintMode(mode)
+	if &showmode
+		echoh ModeMsg | echo a:mode | echohl None
+		redraw
+	endif
+endfunction
+
+function! ResizeMode()
+	while 1
+		call PrintMode('-- RESIZE --')
+		try
+			let key = nr2char(getchar())
+			if index(['>', '<', '+', '-', '=', 'h', 'l', 'j', 'k'], key) < 0
+				throw ''
+			endif
+			execute "normal! \<C-w>" . key
+			redraw
+		catch
+			break
+		endtry
+	endwhile
+	call PrintMode('')
+endfunction
+
+nnoremap <silent> <C-w>> <C-w>>:call ResizeMode()<CR>
+nnoremap <silent> <C-w>< <C-w><:call ResizeMode()<CR>
+nnoremap <silent> <C-w>- <C-w>-:call ResizeMode()<CR>
+nnoremap <silent> <C-w>+ <C-w>+:call ResizeMode()<CR>
+
+" }}}
 " {{{ miscellaneous
 
 " do not wrap text by default.
