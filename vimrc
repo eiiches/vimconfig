@@ -78,11 +78,18 @@ endif " has("autocmd")
 " }}}
 
 " Settings: ----------------------------
+" {{{ reset augroup vimrc
+
+augroup vimrc
+	autocmd!
+augroup END
+
+" }}}
 " {{{ .vimrc editing and reloading
 
 " automatic reloading
 if has("autocmd")
-	autocmd BufWritePost .vimrc,~/.vim/vimrc source $MYVIMRC
+	autocmd vimrc BufWritePost .vimrc,~/.vim/vimrc source $MYVIMRC
 endif
 
 function! OpenVimrc()
@@ -346,11 +353,17 @@ function! _QuickMake()
 		call QuickMake()
 	endif
 endfunction
-au BufWritePost * call _QuickMake()
+au vimrc BufWritePost * call _QuickMake()
 
 " open quickfix automatically
-au QuickFixCmdPost [^l]* nested cwindow
-au QuickFixCmdPost l* nested lwindow
+au vimrc QuickFixCmdPost [^l]* nested cwindow
+au vimrc QuickFixCmdPost l* nested lwindow
+
+" }}}
+" {{{ session autoload
+
+" automatically restore session when vim is started without arguments.
+autocmd vimrc VimEnter * if argc() == 0 | call RestoreSession() | endif
 
 " }}}
 
@@ -358,32 +371,41 @@ au QuickFixCmdPost l* nested lwindow
 " {{{ XML
 
 let g:xml_syntax_folding=1
-au FileType xml setlocal foldmethod=syntax
+augroup vimrc-xml
+	au!
+	au vimrc FileType xml setlocal foldmethod=syntax
+augroup END
 
 " }}}
 " {{{ Python
 
-au FileType python setlocal expandtab
-au FileType python setlocal tabstop=4
-au FileType python setlocal softtabstop=4
-au FileType python setlocal shiftwidth=4
-if version >= 703
-	au FileType python setlocal colorcolumn=80
-endif
-let g:python_space_error_highlight = 1
+augroup vimrc-python
+	au!
+	au FileType python setlocal expandtab
+	au FileType python setlocal tabstop=4
+	au FileType python setlocal softtabstop=4
+	au FileType python setlocal shiftwidth=4
+	if version >= 703
+		au FileType python setlocal colorcolumn=80
+	endif
+	let g:python_space_error_highlight = 1
 
-" highlight 'self'
-au FileType python syn keyword pythonBuiltin self
+	" highlight 'self'
+	au FileType python syn keyword pythonBuiltin self
+augroup END
 
 " }}}
 " {{{ C
 
-au FileType c,cpp setlocal dict=~/.vim/dict/c/*.dict
-au FileType c,cpp setlocal commentstring=\ \/\*\ %s\ \*\/
-au FileType c,cpp setlocal list listchars+=precedes:<,extends:>
-au FileType c,cpp set foldcolumn=2
-au FileType c,cpp let g:c_space_errors = 1
-au FileType   cpp let g:c_no_curly_error = 1
+augroup vimrc-c
+	au!
+	au FileType c,cpp setlocal dict=~/.vim/dict/c/*.dict
+	au FileType c,cpp setlocal commentstring=\ \/\*\ %s\ \*\/
+	au FileType c,cpp setlocal list listchars+=precedes:<,extends:>
+	au FileType c,cpp set foldcolumn=2
+	au FileType c,cpp let g:c_space_errors = 1
+	au FileType   cpp let g:c_no_curly_error = 1
+augroup END
 
 " {{{ gtk
 
@@ -399,7 +421,7 @@ endfunction
 
 " for gtk development
 let g:Filetype_c_gtk = 0
-au BufReadPost,BufWritePost *.c,*.h,*.cpp,*.hpp call CheckGtkDevehelopment()
+au vimrc-c BufReadPost,BufWritePost *.c,*.h,*.cpp,*.hpp call CheckGtkDevehelopment()
 function! CheckGtkDevehelopment()
 	for s:line in getline(0, line("$"))
 		if s:line =~# '<glib.h>' || s:line =~# '<gtk/gtk.h>'
@@ -422,92 +444,128 @@ endfunction
 " }}}
 " {{{ D
 
-au FileType d setlocal commentstring=\ \/\*\ %s\ \*\/
-au FileType d setlocal list listchars+=precedes:<,extends:>
+augroup vimrc-d
+	au!
+	au FileType d setlocal commentstring=\ \/\*\ %s\ \*\/
+	au FileType d setlocal list listchars+=precedes:<,extends:>
+augroup END
 
 " }}}
 " {{{ Vala
 
-au BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-au BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-au BufRead *.vala set smartindent
-au BufRead *.vala set cindent
-au BufRead,BufNewFile *.vala setfiletype vala
-au BufRead,BufNewFile *.vapi setfiletype vala
+augroup vimrc-vala
+	au!
+	au BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+	au BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+	au BufRead *.vala set smartindent
+	au BufRead *.vala set cindent
+	au BufRead,BufNewFile *.vala setfiletype vala
+	au BufRead,BufNewFile *.vapi setfiletype vala
+augroup END
 
 " }}}
 " {{{ Brainfuck
 
-au BufRead,BufNewFile *.bf setfiletype brainfuck
+augroup vimrc-brainfuck
+	au!
+	au BufRead,BufNewFile *.bf setfiletype brainfuck
+augroup END
 
 " }}}
 " {{{ C#
 
-au FileType cs setlocal commentstring=\ \/\*\ %s\ \*\/
-au FileType cs setlocal efm=%f(%l,%c):\ error\ CS%n:\ %m
+augroup vimrc-csharp
+	au!
+	au FileType cs setlocal commentstring=\ \/\*\ %s\ \*\/
+	au FileType cs setlocal efm=%f(%l,%c):\ error\ CS%n:\ %m
+augroup END
 
 " }}}
 " {{{ Shell Script
-"
-au BufWritePost *.sh exe "silent !chmod +x %"
+
+augroup vimrc-shellscript
+	au!
+	au BufWritePost *.sh exe "silent !chmod +x %"
+augroup END
 
 " }}}
 " {{{ Squirrel
 
-au! BufRead,BufNewFile *.nut setfiletype squirrel
+augroup vimrc-squirrel
+	au!
+	au BufRead,BufNewFile *.nut setfiletype squirrel
+augroup END
 
 " }}}
 " {{{ Vim
 
-au FileType vim set foldcolumn=2
-au FileType vim nnoremap <buffer> K :vert help <C-R>=expand('<cword>')<CR><CR><C-w>p
+augroup vimrc-vim
+	au!
+	au FileType vim set foldcolumn=2
+	au FileType vim nnoremap <buffer> K :vert help <C-R>=expand('<cword>')<CR><CR><C-w>p
+augroup END
 
 " }}}
 " {{{ ActionScript
 
-au BufRead,BufNewFile *.as set filetype=actionscript
-au FileType actionscript setlocal dictionary+=~/.vim/dict/actionscript/actionscript.dict
-au FileType actionscript set omnifunc=actionscriptcomplete#Complete
+augroup vimrc-actionscript
+	au!
+	au BufRead,BufNewFile *.as set filetype=actionscript
+	au FileType actionscript setlocal dictionary+=~/.vim/dict/actionscript/actionscript.dict
+	au FileType actionscript set omnifunc=actionscriptcomplete#Complete
+augroup END
 
 " }}}
 " {{{ Microsoft Office
 
-au BufReadCmd *.pptx call zip#Browse(expand("<amatch>"))
-au BufReadCmd *.xlsx call zip#Browse(expand("<amatch>"))
-au BufReadCmd *.docx call zip#Browse(expand("<amatch>"))
+augroup vimrc-msoffice
+	au!
+	au BufReadCmd *.pptx call zip#Browse(expand("<amatch>"))
+	au BufReadCmd *.xlsx call zip#Browse(expand("<amatch>"))
+	au BufReadCmd *.docx call zip#Browse(expand("<amatch>"))
+augroup END
 
 " }}}
 " {{{ OpenGL Shader
 
-au BufNewFile,BufRead *.frag,*.vert,*.glsl setf glsl
+augroup vimrc-shader
+	au!
+	au BufNewFile,BufRead *.frag,*.vert,*.glsl setf glsl
+augroup END
 
 " }}}
 " {{{ LaTeX
 
-au FileType tex let b:make_file = 'Makefile,~/.vim/makerules/Makefile'
-au FileType tex let b:make_target = '%<.pdf'
-au FileType tex let b:make_after_write = 1
-au FileType tex setlocal errorformat=%f:%l:\ %m
+augroup vimrc-tex
+	au!
+	au FileType tex let b:make_file = 'Makefile,~/.vim/makerules/Makefile'
+	au FileType tex let b:make_target = '%<.pdf'
+	au FileType tex let b:make_after_write = 1
+	au FileType tex setlocal errorformat=%f:%l:\ %m
 
-function! OpenPdf()
-	let s:pdfpath = expand('%:p:r').'.pdf'
-	if filereadable(s:pdfpath)
-		call vimproc#system_bg('evince '.s:pdfpath)
-	else
-		echo 'File not found: ' . s:pdfpath
+	function! OpenPdf()
+		let s:pdfpath = expand('%:p:r').'.pdf'
+		if filereadable(s:pdfpath)
+			call vimproc#system_bg('evince '.s:pdfpath)
+		else
+			echo 'File not found: ' . s:pdfpath
+		endif
+	endfunction
+	au FileType tex nnoremap <silent> <buffer> <Leader>r :call OpenPdf()<CR>
+
+	" show math symbols using conceal feature
+	if has("autocmd") && has("conceal")
+		au FileType tex setlocal conceallevel=2
 	endif
-endfunction
-au FileType tex nnoremap <silent> <buffer> <Leader>r :call OpenPdf()<CR>
-
-" show math symbols using conceal feature
-if has("autocmd") && has("conceal")
-	au FileType tex setlocal conceallevel=2
-endif
+augroup END
 
 " }}}
 " {{{ Makefile
 
-au FileType make set noexpandtab
+augroup vimrc-make
+	au!
+	au FileType make set noexpandtab
+augroup END
 
 " }}}
 
@@ -562,9 +620,6 @@ function! SaveSession()
 	mksession!
 endfunction
 command! -nargs=0 SaveSession call SaveSession()
-
-" automatically restore session when vim is started without arguments.
-autocmd VimEnter * if argc() == 0 | call RestoreSession() | endif
 
 " :qq to save session and quit
 command! -nargs=0 Qq call SaveSession() | qa
@@ -671,9 +726,10 @@ imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 " {{{ javacomplete [ http://www.vim.org/scripts/script.php?script_id=1785 ]
 
 set runtimepath+=~/.vim/runtime/javacomplete
-if has("autocmd")
+augroup vimrc-javacomplete
+	au!
 	au Filetype java setlocal omnifunc=javacomplete#Complete
-endif
+augroup END
 
 " }}}
 " {{{ vimproc [ https://github.com/Shougo/vimproc ]
@@ -685,8 +741,7 @@ set runtimepath+=~/.vim/runtime/vimproc
 
 set runtimepath+=~/.vim/runtime/vimshell
 
-augroup vimshellmaps
-	" Clear
+augroup vimrc-vimshell
 	au!
 
 	" Ctrl-D to exit
@@ -718,11 +773,11 @@ augroup vimshellmaps
 augroup END
 
 " Aliases
-au FileType vimshell call vimshell#altercmd#define('sl', 'ls')
-au FileType vimshell call vimshell#altercmd#define('ll', 'ls -l')
+au vimrc-vimshell FileType vimshell call vimshell#altercmd#define('sl', 'ls')
+au vimrc-vimshell FileType vimshell call vimshell#altercmd#define('ll', 'ls -l')
 
 " Python interpreter
-au FileType int-python set filetype=python
+au vimrc-vimshell FileType int-python set filetype=python
 
 " Interactive Shell
 function! OpenInteractiveShell()
