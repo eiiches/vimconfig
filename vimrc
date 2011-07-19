@@ -642,19 +642,19 @@ command! -nargs=0 UpdateHelp call UpdateHelp()
 " }}}
 
 " Plugins: -----------------------------
-" {{{ quickrun.vim [ http://www.vim.org/scripts/script.php?script_id=3146 ]
+" {{{ quickrun.vim
 
 set runtimepath+=~/.vim/runtime/vim-quickrun
 nnoremap <silent> <Leader>r :QuickRun -mode n<CR>
 vnoremap <silent> <Leader>r :QuickRun -mode v<CR>
 
 " }}}
-" {{{ surround.vim [ http://www.vim.org/scripts/script.php?script_id=1697 ]
+" {{{ surround.vim
 
 set runtimepath+=~/.vim/runtime/vim-surround
 
 " }}}
-" {{{ vimwiki [ http://www.vim.org/scripts/script.php?script_id=2226 ]
+" {{{ vimwiki
 
 set runtimepath+=~/.vim/runtime/vimwiki
 
@@ -665,24 +665,24 @@ let g:vimwiki_folding = 0
 let g:vimwiki_camel_case = 0
 
 " }}}
-" {{{ vim-ref [ http://www.vim.org/scripts/script.php?script_id=3067 ]
+" {{{ vim-ref
 
 set runtimepath+=~/.vim/runtime/vim-ref-gtkdoc
 set runtimepath+=~/.vim/runtime/vim-ref
 let g:ref_noenter=1
 
 " }}}
-" {{{ metarw [ http://www.vim.org/scripts/script.php?script_id=2335 ]
+" {{{ metarw
 
 set runtimepath+=~/.vim/runtime/vim-metarw
 
 " }}}
-" {{{ metarw-git [ http://www.vim.org/scripts/script.php?script_id=2336 ]
+" {{{ metarw-git
 
 set runtimepath+=~/.vim/runtime/metarw-git
 
 " }}}
-" {{{ git-branch-info [ http://www.vim.org/scripts/script.php?script_id=2258 ]
+" {{{ git-branch-info
 
 set runtimepath+=~/.vim/runtime/vim-git-branch-info
 let g:git_branch_status_head_current=1
@@ -692,7 +692,7 @@ let g:git_branch_status_around='[]'
 let g:git_branch_status_ignore_remotes=1
 
 " }}}
-" {{{ unite.vim [ http://www.vim.org/scripts/script.php?script_id=3396 ]
+" {{{ unite.vim
 
 set runtimepath+=~/.vim/runtime/unite.vim
 
@@ -708,7 +708,7 @@ nnoremap gL :UniteWithCurrentDir -prompt=>>\  -buffer-name=files file<CR>
 nnoremap gr :Unite -prompt=>>\  -buffer-name=files file_mru directory_mru<CR>
 
 " }}}
-" {{{ neocomplcache [ http://www.vim.org/scripts/script.php?script_id=2620 ]
+" {{{ neocomplcache
 
 set runtimepath+=~/.vim/runtime/neocomplcache
 let g:neocomplcache_enable_at_startup = 1
@@ -723,7 +723,7 @@ let g:neocomplcache_snippets_dir = '~/.vim/snippets'
 imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 
 " }}}
-" {{{ javacomplete [ http://www.vim.org/scripts/script.php?script_id=1785 ]
+" {{{ javacomplete
 
 set runtimepath+=~/.vim/runtime/javacomplete
 augroup vimrc-javacomplete
@@ -732,12 +732,12 @@ augroup vimrc-javacomplete
 augroup END
 
 " }}}
-" {{{ vimproc [ https://github.com/Shougo/vimproc ]
+" {{{ vimproc
 
 set runtimepath+=~/.vim/runtime/vimproc
 
 " }}}
-" {{{ vimshell [ https://github.com/Shougo/vimshell ]
+" {{{ vimshell
 
 set runtimepath+=~/.vim/runtime/vimshell
 
@@ -800,44 +800,44 @@ nnoremap <silent> gs :VimShellPop<CR>
 nnoremap <silent> gS :call OpenInteractiveShell()<CR>
 
 " }}}
-" {{{ zencoding [ https://github.com/mattn/zencoding-vim ]
+" {{{ zencoding
 
 set runtimepath+=~/.vim/runtime/zencoding-vim
 
 " }}}
-" {{{ argtextobj.vim [ https://github.com/vim-scripts/argtextobj.vim ]
+" {{{ argtextobj.vim
 
 set runtimepath+=~/.vim/runtime/argtextobj.vim
 
 " }}}
-" {{{ drawit [ https://github.com/vim-scripts/DrawIt ]
+" {{{ drawit
 
 set runtimepath+=~/.vim/runtime/drawit
 
 " }}}
-" {{{ align [ https://github.com/vim-scripts/Align ]
+" {{{ align
 
 set runtimepath+=~/.vim/runtime/align
 
 " }}}
-" {{{ localrc [ https://github.com/thinca/vim-localrc ]
+" {{{ localrc
 
 set runtimepath+=~/.vim/runtime/localrc
 
 " }}}
-" {{{ matchit [ https://github.com/vim-scripts/matchit.zip ]
+" {{{ matchit
 
 set runtimepath+=~/.vim/runtime/matchit
 set runtimepath+=~/.vim/runtime/matchit_python
 
 " }}}
-" {{{ easymotion [ https://github.com/Lokaltog/vim-easymotion ]
+" {{{ easymotion
 
 set runtimepath+=~/.vim/runtime/easymotion
 let g:EasyMotion_leader_key = ','
 
 " }}}
-" {{{ srcexpl.vim [ http://www.vim.org/scripts/script.php?script_id=2179 ]
+" {{{ srcexpl.vim
 
 set runtimepath+=~/.vim/runtime/srcexpl.vim
 
@@ -860,7 +860,7 @@ let g:SrcExpl_updateTagsCmd = "ctags --c++-kinds=+p --fields=+iaS --extra=+q --s
 let g:SrcExpl_updateTagsKey = "<F12>" " // Set <F12> key for updating the tags file artificially
 
 " }}}
-" {{{ taglist [ http://www.vim.org/scripts/script.php?script_id=273 ]
+" {{{ taglist
 
 set runtimepath+=~/.vim/runtime/taglist
 " let Tlist_Auto_Open = 1
