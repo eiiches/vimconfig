@@ -64,3 +64,6 @@
 [submodule "runtime/easymotion"]
 	path = runtime/easymotion
 	url = git://github.com/Lokaltog/vim-easymotion.git
+[submodule "runtime/omnicppcomplete"]
+	path = runtime/omnicppcomplete
+	url = git://github.com/vim-scripts/OmniCppComplete.git

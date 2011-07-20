@@ -732,6 +732,21 @@ augroup vimrc-javacomplete
 augroup END
 
 " }}}
+" {{{ omnicppcomplete
+
+set runtimepath+=~/.vim/runtime/omnicppcomplete
+augroup vimrc-omnicppcomplete
+	au!
+	au FileType c,cpp call omni#cpp#complete#Init()
+augroup END
+
+" show prototype in popup
+let OmniCpp_ShowPrototypeInAbbr = 1
+
+" complete after ::
+let OmniCpp_MayCompleteScope = 1
+
+" }}}
 " {{{ vimproc
 
 set runtimepath+=~/.vim/runtime/vimproc
