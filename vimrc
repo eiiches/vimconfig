@@ -735,10 +735,19 @@ augroup END
 " }}}
 " {{{ omnicppcomplete
 
+function! UpdateTags()
+	for i in neocomplcache#sources#include_complete#get_include_files(bufnr('%'))
+		execute 'setlocal tags+=' . neocomplcache#cache#encode_name('include_tags', i)
+	endfor
+	execute 'setlocal tags+=' . neocomplcache#cache#encode_name('tags_output', expand('%:p'))
+endfunction
+
 set runtimepath+=~/.vim/runtime/omnicppcomplete
 augroup vimrc-omnicppcomplete
 	au!
 	au FileType c,cpp call omni#cpp#complete#Init()
+	au BufWritePost *.{cpp,c} call UpdateTags()
+	au FileType c,cpp call UpdateTags()
 augroup END
 
 " show prototype in popup
