@@ -399,7 +399,6 @@ augroup END
 
 augroup vimrc-c
 	au!
-	au FileType c,cpp setlocal dict=~/.vim/dict/c/*.dict
 	au FileType c,cpp setlocal commentstring=\ \/\*\ %s\ \*\/
 	au FileType c,cpp setlocal list listchars+=precedes:<,extends:>
 	au FileType c,cpp set foldcolumn=2
@@ -407,40 +406,30 @@ augroup vimrc-c
 	au FileType   cpp let g:c_no_curly_error = 1
 augroup END
 
-" {{{ gtk
-
-" emulate devhelp.vim using vim-ref
-let s:lastword = ''
-function! RefreshGtkdoc()
-		let s:word = GetCursorWord()
-		if len(s:word) > 4 && s:lastword != s:word
-			call ref#open('gtkdoc', s:word, {'noenter': 1})
-			let s:lastword = s:word
-		endif
+" gtk development
+function! GtkDocOrMan()
+	if exists('b:gtk_development_in_c') && b:gtk_development_in_c
+		execute 'Ref gtkdoc ' . expand('<cword>')
+	else
+		execute 'Ref man ' . expand('<cword>')
+	endif
 endfunction
-
-" for gtk development
-let g:Filetype_c_gtk = 0
-au vimrc-c BufReadPost,BufWritePost *.c,*.h,*.cpp,*.hpp call CheckGtkDevehelopment()
-function! CheckGtkDevehelopment()
+function! CheckGtkDevehelopmentInC()
+	let b:gtk_development_in_c = 0
 	for s:line in getline(0, line("$"))
 		if s:line =~# '<glib.h>' || s:line =~# '<gtk/gtk.h>'
-			let g:Filetype_c_gtk = 1
+			let b:gtk_development_in_c = 1
 			break
 		endif
 	endfor
-
-	if g:Filetype_c_gtk
-"		setlocal updatetime=150
-"		au CursorHold <buffer> call RefreshGtkdoc()
-"		au CursorHoldI <buffer> call RefreshGtkdoc()
-"		inoremap <buffer> <silent> <C-n> <C-n><C-r>=RefreshGtkdoc()?'':''<Esc><C-n><C-p>
-"		inoremap <buffer> <silent> <C-p> <C-p><C-r>=RefreshGtkdoc()?'':''<Esc><C-n><C-p>
-		nnoremap <buffer> <silent> K :call RefreshGtkdoc()<CR>
+	if b:gtk_development_in_c
+		set path+=/usr/include/gtk-2.0
+		set path+=/usr/include/glib-2.0
 	endif
+	nnoremap <buffer><silent> K :call GtkDocOrMan()<CR>
 endfunction
+au vimrc-c BufReadPost,BufWritePost *.c,*.h,*.cpp,*.hpp call CheckGtkDevehelopmentInC()
 
-" }}}
 " }}}
 " {{{ D
 
