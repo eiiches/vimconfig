@@ -538,6 +538,7 @@ augroup END
 
 augroup vimrc-tex
 	au!
+	au FileType plaintex set filetype=tex
 	au FileType tex let b:make_file = 'Makefile,~/.vim/makerules/Makefile'
 	au FileType tex let b:make_target = '%<.pdf'
 	au FileType tex let b:make_after_write = 1
