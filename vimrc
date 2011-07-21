@@ -867,6 +867,11 @@ nmap ga <Plug>(altr-forward)
 nmap gA <Plug>(altr-back)
 
 " }}}
+" {{{ tex.vim
+
+set runtimepath+=~/.vim/runtime/tex.vim
+
+" }}}
 " {{{ srcexpl.vim
 
 set runtimepath+=~/.vim/runtime/srcexpl.vim

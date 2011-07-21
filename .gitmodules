@@ -73,3 +73,6 @@
 [submodule "runtime/javacomplete"]
 	path = runtime/javacomplete
 	url = git://github.com/vim-scripts/javacomplete.git
+[submodule "runtime/tex.vim"]
+	path = runtime/tex.vim
+	url = git://github.com/vim-scripts/tex.vim--Tanzler.git
