@@ -890,14 +890,6 @@ let g:SrcExpl_updateTagsCmd = "ctags --c++-kinds=+p --fields=+iaS --extra=+q --s
 let g:SrcExpl_updateTagsKey = "<F12>" " // Set <F12> key for updating the tags file artificially
 
 " }}}
-" {{{ taglist
-
-set runtimepath+=~/.vim/runtime/taglist
-" let Tlist_Auto_Open = 1
-" let g:Tlist_Use_Rigth_Window = 1
-nnoremap <silent> <Leader>f :TlistToggle<CR>
-
-" }}}
 " {{{ GNONEAlignArguments
 " http://damien.lespiau.name/blog/2009/12/07/aligning-c-function-parameters-with-vim/
 " http://git.lespiau.name/cgit/sk/plain/dotfiles/vim/plugin/GNOME-align-args.vim
