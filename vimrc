@@ -558,6 +558,15 @@ augroup vimrc-make
 augroup END
 
 " }}}
+" {{{ HTML
+
+augroup vimrc-html
+	au!
+	au FileType html nnoremap <silent><buffer> <Leader>r
+				\ :call vimproc#system_bg('firefox file://'.expand('%:p'))<CR>
+augroup END
+
+" }}}
 
 " Commands: ----------------------------
 " {{{ :WriteSudo
