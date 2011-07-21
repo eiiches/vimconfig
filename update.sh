@@ -10,6 +10,7 @@ git submodule foreach 'git checkout master; git pull'
 ( cd runtime/vim-metarw && make )
 ( cd runtime/metarw-git && make )
 ( cd runtime/vim-ref-gtkdoc/gtkdoc && make )
+( cd runtime/vim-altr && make )
 
 vim +UpdateHelp +q
 

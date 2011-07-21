@@ -67,3 +67,6 @@
 [submodule "runtime/omnicppcomplete"]
 	path = runtime/omnicppcomplete
 	url = git://github.com/vim-scripts/OmniCppComplete.git
+[submodule "runtime/vim-altr"]
+	path = runtime/vim-altr
+	url = git://github.com/kana/vim-altr.git

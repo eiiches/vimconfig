@@ -860,6 +860,13 @@ set runtimepath+=~/.vim/runtime/easymotion
 let g:EasyMotion_leader_key = ','
 
 " }}}
+" {{{ vim-altr
+
+set runtimepath+=~/.vim/runtime/vim-altr
+nmap ga <Plug>(altr-forward)
+nmap gA <Plug>(altr-back)
+
+" }}}
 " {{{ srcexpl.vim
 
 set runtimepath+=~/.vim/runtime/srcexpl.vim
