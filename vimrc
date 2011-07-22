@@ -208,6 +208,7 @@ set statusline=%f\ %y[%{&fileencoding},%{&fileformat}]%<%{MyBranch()}%h%m%r%=%-1
 
 " list candidates in statusline for commandline completion
 set wildmenu
+set wildmode=longest,list
 
 " show INSERT when in the mode.
 set showmode
