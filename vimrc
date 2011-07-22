@@ -92,14 +92,15 @@ if has("autocmd")
 	autocmd vimrc BufWritePost .vimrc,~/.vim/vimrc source $MYVIMRC
 endif
 
-function! OpenVimrc()
+function! OpenVimrc(command)
 	if empty(bufname("%")) && ! &modified && empty(&buftype)
 		edit $MYVIMRC
 	else
-		vsplit $MYVIMRC
+		execute a:command . ' $MYVIMRC'
 	endif
 endfunction
-nnoremap <silent> <leader>v :call OpenVimrc()<CR>
+nnoremap <silent> <leader>v :call OpenVimrc('vsplit')<CR>
+nnoremap <silent> <C-w><leader>v :call OpenVimrc('tabnew')<CR>
 
 " }}}
 " {{{ encoding and format
