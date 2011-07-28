@@ -364,6 +364,46 @@ au vimrc QuickFixCmdPost l* nested lwindow
 autocmd vimrc VimEnter * if argc() == 0 | call RestoreSession() | endif
 
 " }}}
+" {{{ template
+
+let g:template_dir = '~/.vim/templates'
+
+function! LoadTemplate(...)
+	let extension = a:0 ? a:1 : expand('%:e')
+	let template_dir = expand(g:template_dir)
+	let template = template_dir . '/template.' . extension
+	if filereadable(template)
+		" load template
+		call append(0, readfile(template))
+		silent normal! Gdd
+
+		" set cursor at ${0}.
+		call cursor(1, 0)
+		if search('${0}', 'cW', line('$'))
+			silent normal d4l
+		else
+			call cursor(line('$'), 0)
+		endif
+	endif
+endfunction
+
+function! EditTemplate(...)
+	let extension = a:0 ? a:1 : expand('%:e')
+	if empty(extension)
+		echoerr 'Cannot determine file extension.'
+		return
+	endif
+	let template_dir = expand(g:template_dir)
+	let template = template_dir . '/template.' . extension
+	if filewritable(template) || !filereadable(template) && filewritable(template_dir) == 2
+		execute 'vsplit ' . template
+	else
+		echoerr 'Cannot open ' . template . ' for writing.'
+	endif
+endfunction
+command! -nargs=? EditTemplate call EditTemplate(<f-args>)
+
+" }}}
 
 " FileTypes: ---------------------------
 " {{{ XML
@@ -379,6 +419,7 @@ augroup END
 
 augroup vimrc-python
 	au!
+	au BufNewFile *.py silent call LoadTemplate()
 	au FileType python setlocal expandtab
 	au FileType python setlocal tabstop=4
 	au FileType python setlocal softtabstop=4
@@ -525,6 +566,7 @@ augroup END
 
 augroup vimrc-tex
 	au!
+	au BufNewFile *.tex call LoadTemplate()
 	au FileType plaintex set filetype=tex
 	au FileType tex let b:make_file = 'Makefile,~/.vim/makerules/Makefile'
 	au FileType tex let b:make_target = '%<.pdf'
