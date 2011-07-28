@@ -668,7 +668,7 @@ Bundle 'vimwiki'
 " do not specify default wiki.
 let g:vimwiki_list = [{}]
 
-let g:vimwiki_folding = 0
+let g:vimwiki_folding = 1
 let g:vimwiki_camel_case = 0
 
 " }}}
