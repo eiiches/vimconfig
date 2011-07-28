@@ -196,15 +196,11 @@ endif
 " }}}
 " {{{ status line
 
-" status line util function
-function! MyBranch()
-	if exists('*GitBranchInfoString') | return GitBranchInfoString()
-				\ | else | return '' | endif
-endfunction
-
 " always show statusline
 set laststatus=2
-set statusline=%f\ %y[%{&fileencoding},%{&fileformat}]%<%{MyBranch()}%h%m%r%=%-14.(%l,%c%V%)\ %P
+
+" statusline
+set statusline=%f\ %y[%{&fileencoding},%{&fileformat}]%<%{fugitive#statusline()}%h%m%r%=%-14.(%l,%c%V%)\ %P
 
 " list candidates in statusline for commandline completion
 set wildmenu
@@ -693,16 +689,6 @@ Bundle 'vim-metarw'
 Bundle 'metarw-git'
 
 " }}}
-" {{{ git-branch-info
-
-Bundle 'vim-git-branch-info'
-let g:git_branch_status_head_current=1
-let g:git_branch_status_text=''
-let g:git_branch_status_nogit=''
-let g:git_branch_status_around='[]'
-let g:git_branch_status_ignore_remotes=1
-
-" }}}
 " {{{ unite.vim
 
 Bundle 'unite.vim'
@@ -905,6 +891,11 @@ let g:SrcExpl_searchLocalDef = 0 " search local file for the keyword
 let g:SrcExpl_isUpdateTags = 0 " // Let the Source Explorer update the tags file when opening
 let g:SrcExpl_updateTagsCmd = "ctags --c++-kinds=+p --fields=+iaS --extra=+q --sort=foldcase --exclude=*~ ." " // Use program 'ctags' with argument '--sort=foldcase -R' to update a tags file
 let g:SrcExpl_updateTagsKey = "<F12>" " // Set <F12> key for updating the tags file artificially
+
+" }}}
+" {{{ fugitive.vim
+
+Bundle 'fugitive'
 
 " }}}
 " {{{ GNONEAlignArguments

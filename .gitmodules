@@ -19,9 +19,6 @@
 [submodule "bundle/vim-metarw"]
 	path = bundle/vim-metarw
 	url = git://github.com/kana/vim-metarw.git
-[submodule "bundle/vim-git-branch-info"]
-	path = bundle/vim-git-branch-info
-	url = git://github.com/taq/vim-git-branch-info.git
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
 	url = http://github.com/tpope/vim-surround.git
@@ -76,3 +73,6 @@
 [submodule "bundle/tex.vim"]
 	path = bundle/tex.vim
 	url = git://github.com/vim-scripts/tex.vim--Tanzler.git
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = git://github.com/tpope/vim-fugitive.git
