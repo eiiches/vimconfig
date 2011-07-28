@@ -641,23 +641,33 @@ endfunction
 command! -nargs=0 UpdateHelp call UpdateHelp()
 
 " }}}
+" {{{ :Bundle
+
+function! Bundle(...)
+	for bundle in a:000
+		execute 'set runtimepath+=~/.vim/bundle/' . eval(bundle)
+	endfor
+endfunction
+command! -nargs=* Bundle call Bundle(<f-args>)
+
+" }}}
 
 " Plugins: -----------------------------
 " {{{ quickrun.vim
 
-set runtimepath+=~/.vim/runtime/vim-quickrun
+Bundle 'vim-quickrun'
 nnoremap <silent> <Leader>r :QuickRun -mode n<CR>
 vnoremap <silent> <Leader>r :QuickRun -mode v<CR>
 
 " }}}
 " {{{ surround.vim
 
-set runtimepath+=~/.vim/runtime/vim-surround
+Bundle 'vim-surround'
 
 " }}}
 " {{{ vimwiki
 
-set runtimepath+=~/.vim/runtime/vimwiki
+Bundle 'vimwiki'
 
 " do not specify default wiki.
 let g:vimwiki_list = [{}]
@@ -668,24 +678,24 @@ let g:vimwiki_camel_case = 0
 " }}}
 " {{{ vim-ref
 
-set runtimepath+=~/.vim/runtime/vim-ref-gtkdoc
-set runtimepath+=~/.vim/runtime/vim-ref
+Bundle 'vim-ref-gtkdoc'
+Bundle 'vim-ref'
 let g:ref_noenter=1
 
 " }}}
 " {{{ metarw
 
-set runtimepath+=~/.vim/runtime/vim-metarw
+Bundle 'vim-metarw'
 
 " }}}
 " {{{ metarw-git
 
-set runtimepath+=~/.vim/runtime/metarw-git
+Bundle 'metarw-git'
 
 " }}}
 " {{{ git-branch-info
 
-set runtimepath+=~/.vim/runtime/vim-git-branch-info
+Bundle 'vim-git-branch-info'
 let g:git_branch_status_head_current=1
 let g:git_branch_status_text=''
 let g:git_branch_status_nogit=''
@@ -695,7 +705,7 @@ let g:git_branch_status_ignore_remotes=1
 " }}}
 " {{{ unite.vim
 
-set runtimepath+=~/.vim/runtime/unite.vim
+Bundle 'unite.vim'
 
 " <ESC> to leave Unite mode
 autocmd FileType unite nmap <buffer> <ESC> <Plug>(unite_exit)
@@ -711,7 +721,7 @@ nnoremap gr :Unite -prompt=>>\  -buffer-name=files file_mru directory_mru<CR>
 " }}}
 " {{{ neocomplcache
 
-set runtimepath+=~/.vim/runtime/neocomplcache
+Bundle 'neocomplcache'
 let g:neocomplcache_enable_at_startup = 1
 inoremap <expr><C-x><C-o> &filetype == 'vim' ? "\<C-x><C-v><C-p>" : neocomplcache#manual_omni_complete()
 let g:neocomplcache_dictionary_filetype_lists =
@@ -726,7 +736,7 @@ imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 " }}}
 " {{{ javacomplete
 
-set runtimepath+=~/.vim/runtime/javacomplete
+Bundle 'javacomplete'
 augroup vimrc-javacomplete
 	au!
 	au Filetype java setlocal omnifunc=javacomplete#Complete
@@ -742,7 +752,7 @@ function! UpdateTags()
 	execute 'setlocal tags+=' . neocomplcache#cache#encode_name('tags_output', expand('%:p'))
 endfunction
 
-set runtimepath+=~/.vim/runtime/omnicppcomplete
+Bundle 'omnicppcomplete'
 augroup vimrc-omnicppcomplete
 	au!
 	au FileType c,cpp call omni#cpp#complete#Init()
@@ -759,12 +769,12 @@ let OmniCpp_MayCompleteScope = 1
 " }}}
 " {{{ vimproc
 
-set runtimepath+=~/.vim/runtime/vimproc
+Bundle 'vimproc'
 
 " }}}
 " {{{ vimshell
 
-set runtimepath+=~/.vim/runtime/vimshell
+Bundle 'vimshell'
 
 augroup vimrc-vimshell
 	au!
@@ -827,56 +837,56 @@ nnoremap <silent> gS :call OpenInteractiveShell()<CR>
 " }}}
 " {{{ zencoding
 
-set runtimepath+=~/.vim/runtime/zencoding-vim
+Bundle 'zencoding-vim'
 
 " }}}
 " {{{ argtextobj.vim
 
-set runtimepath+=~/.vim/runtime/argtextobj.vim
+Bundle 'argtextobj.vim'
 
 " }}}
 " {{{ drawit
 
-set runtimepath+=~/.vim/runtime/drawit
+Bundle 'drawit'
 
 " }}}
 " {{{ align
 
-set runtimepath+=~/.vim/runtime/align
+Bundle 'align'
 
 " }}}
 " {{{ localrc
 
-set runtimepath+=~/.vim/runtime/localrc
+Bundle 'localrc'
 
 " }}}
 " {{{ matchit
 
-set runtimepath+=~/.vim/runtime/matchit
-set runtimepath+=~/.vim/runtime/matchit_python
+Bundle 'matchit'
+Bundle 'matchit_python'
 
 " }}}
 " {{{ easymotion
 
-set runtimepath+=~/.vim/runtime/easymotion
+Bundle 'easymotion'
 let g:EasyMotion_leader_key = ','
 
 " }}}
 " {{{ vim-altr
 
-set runtimepath+=~/.vim/runtime/vim-altr
+Bundle 'vim-altr'
 nmap ga <Plug>(altr-forward)
 nmap gA <Plug>(altr-back)
 
 " }}}
 " {{{ tex.vim
 
-set runtimepath+=~/.vim/runtime/tex.vim
+Bundle 'tex.vim'
 
 " }}}
 " {{{ srcexpl.vim
 
-set runtimepath+=~/.vim/runtime/srcexpl.vim
+Bundle 'srcexpl.vim'
 
 nnoremap <silent> <Leader>j :SrcExplToggle<CR>
 let g:SrcExpl_winHeight = 8 " // Set the height of Source Explorer window

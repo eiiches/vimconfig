@@ -1,78 +1,78 @@
-[submodule "runtime/vim-quickrun"]
-	path = runtime/vim-quickrun
+[submodule "bundle/vim-quickrun"]
+	path = bundle/vim-quickrun
 	url = git://github.com/thinca/vim-quickrun.git
-[submodule "runtime/vim-ref"]
-	path = runtime/vim-ref
+[submodule "bundle/vim-ref"]
+	path = bundle/vim-ref
 	url = git://github.com/thinca/vim-ref.git
-[submodule "runtime/nerdtree"]
-	path = runtime/nerdtree
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree
-[submodule "runtime/neocomplcache"]
-	path = runtime/neocomplcache
+[submodule "bundle/neocomplcache"]
+	path = bundle/neocomplcache
 	url = git://github.com/Shougo/neocomplcache.git
-[submodule "runtime/vim-ref-gtkdoc"]
-	path = runtime/vim-ref-gtkdoc
+[submodule "bundle/vim-ref-gtkdoc"]
+	path = bundle/vim-ref-gtkdoc
 	url = git://github.com/eiiches/vim-ref-gtkdoc.git
-[submodule "runtime/metarw-git"]
-	path = runtime/metarw-git
+[submodule "bundle/metarw-git"]
+	path = bundle/metarw-git
 	url = git://github.com/kana/vim-metarw-git.git
-[submodule "runtime/vim-metarw"]
-	path = runtime/vim-metarw
+[submodule "bundle/vim-metarw"]
+	path = bundle/vim-metarw
 	url = git://github.com/kana/vim-metarw.git
-[submodule "runtime/vim-git-branch-info"]
-	path = runtime/vim-git-branch-info
+[submodule "bundle/vim-git-branch-info"]
+	path = bundle/vim-git-branch-info
 	url = git://github.com/taq/vim-git-branch-info.git
-[submodule "runtime/vim-surround"]
-	path = runtime/vim-surround
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
 	url = http://github.com/tpope/vim-surround.git
-[submodule "runtime/unite.vim"]
-	path = runtime/unite.vim
+[submodule "bundle/unite.vim"]
+	path = bundle/unite.vim
 	url = git://github.com/Shougo/unite.vim.git
-[submodule "runtime/vimshell"]
-	path = runtime/vimshell
+[submodule "bundle/vimshell"]
+	path = bundle/vimshell
 	url = git://github.com/Shougo/vimshell.git
-[submodule "runtime/vimproc"]
-	path = runtime/vimproc
+[submodule "bundle/vimproc"]
+	path = bundle/vimproc
 	url = git://github.com/Shougo/vimproc.git
-[submodule "runtime/zencoding-vim"]
-	path = runtime/zencoding-vim
+[submodule "bundle/zencoding-vim"]
+	path = bundle/zencoding-vim
 	url = git://github.com/mattn/zencoding-vim.git
-[submodule "runtime/argtextobj.vim"]
-	path = runtime/argtextobj.vim
+[submodule "bundle/argtextobj.vim"]
+	path = bundle/argtextobj.vim
 	url = git://github.com/vim-scripts/argtextobj.vim.git
-[submodule "runtime/drawit"]
-	path = runtime/drawit
+[submodule "bundle/drawit"]
+	path = bundle/drawit
 	url = git://github.com/vim-scripts/DrawIt.git
-[submodule "runtime/align"]
-	path = runtime/align
+[submodule "bundle/align"]
+	path = bundle/align
 	url = git://github.com/vim-scripts/Align.git
-[submodule "runtime/srcexpl.vim"]
-	path = runtime/srcexpl.vim
+[submodule "bundle/srcexpl.vim"]
+	path = bundle/srcexpl.vim
 	url = git://github.com/vim-scripts/Source-Explorer-srcexpl.vim.git
-[submodule "runtime/vimwiki"]
-	path = runtime/vimwiki
+[submodule "bundle/vimwiki"]
+	path = bundle/vimwiki
 	url = git://github.com/vim-scripts/vimwiki.git
-[submodule "runtime/localrc"]
-	path = runtime/localrc
+[submodule "bundle/localrc"]
+	path = bundle/localrc
 	url = git://github.com/thinca/vim-localrc.git
-[submodule "runtime/matchit"]
-	path = runtime/matchit
+[submodule "bundle/matchit"]
+	path = bundle/matchit
 	url = git://github.com/vim-scripts/matchit.zip.git
-[submodule "runtime/matchit_python"]
-	path = runtime/matchit_python
+[submodule "bundle/matchit_python"]
+	path = bundle/matchit_python
 	url = git://github.com/vim-scripts/python_match.vim.git
-[submodule "runtime/easymotion"]
-	path = runtime/easymotion
+[submodule "bundle/easymotion"]
+	path = bundle/easymotion
 	url = git://github.com/Lokaltog/vim-easymotion.git
-[submodule "runtime/omnicppcomplete"]
-	path = runtime/omnicppcomplete
+[submodule "bundle/omnicppcomplete"]
+	path = bundle/omnicppcomplete
 	url = git://github.com/vim-scripts/OmniCppComplete.git
-[submodule "runtime/vim-altr"]
-	path = runtime/vim-altr
+[submodule "bundle/vim-altr"]
+	path = bundle/vim-altr
 	url = git://github.com/kana/vim-altr.git
-[submodule "runtime/javacomplete"]
-	path = runtime/javacomplete
+[submodule "bundle/javacomplete"]
+	path = bundle/javacomplete
 	url = git://github.com/vim-scripts/javacomplete.git
-[submodule "runtime/tex.vim"]
-	path = runtime/tex.vim
+[submodule "bundle/tex.vim"]
+	path = bundle/tex.vim
 	url = git://github.com/vim-scripts/tex.vim--Tanzler.git
