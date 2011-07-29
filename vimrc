@@ -943,6 +943,13 @@ let g:SrcExpl_updateTagsKey = "<F12>" " // Set <F12> key for updating the tags f
 " {{{ fugitive.vim
 
 Bundle 'fugitive'
+nnoremap ,git :Git<Space>
+nnoremap <silent> ,log :silent Glog \| redraw!<CR>
+nnoremap <silent> ,st :silent Gstatus<CR>
+nnoremap <silent> ,diff :Gdiff<CR>
+nnoremap <silent> ,commit :Gcommit<CR>
+nnoremap <silent> ,orig :Gvsplit<CR>
+nnoremap <silent> ,cached :Git diff --cached<CR>
 
 " }}}
 " {{{ GNONEAlignArguments
