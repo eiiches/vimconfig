@@ -668,7 +668,7 @@ command! -nargs=0 SaveSession call SaveSession()
 
 " :qq to save session and quit
 command! -nargs=0 Qq call SaveSession() | qa
-cnoreabbrev qq Qq
+cnoreabbrev <expr> qq (getcmdtype() == ':' && getcmdline() ==# 'qq') ? 'Qq' : 'qq'
 
 " }}}
 " {{{ :UpdateHelp
