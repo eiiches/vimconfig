@@ -949,4 +949,14 @@ noremap <Leader>g :GNOMEAlignArguments<CR>
 
 " }}}
 
+" Local: -------------------------------
+" {{{ source ~/.vim/lvimrc
+
+let g:local_vimrc = expand('~/.vim/lvimrc')
+if filereadable(g:local_vimrc)
+	execute 'source '.g:local_vimrc
+endif
+
+" }}}
+
 " vim: ts=4:sw=4:sts=0:fdm=marker:fmr={{{,}}}
