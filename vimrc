@@ -263,6 +263,9 @@ nnoremap <C-k> ddkP
 " toggle wrap
 nnoremap <silent> mw :set wrap!<CR>
 
+" toggle list
+nnoremap <silent> ml :set list!<CR>
+
 " }}}
 " {{{ resize mode
 
