@@ -751,15 +751,10 @@ nnoremap gr :Unite -prompt=>>\  -buffer-name=files file_mru directory_mru<CR>
 
 Bundle 'neocomplcache'
 let g:neocomplcache_enable_at_startup = 1
-inoremap <expr><C-x><C-o> &filetype == 'vim' ? "\<C-x><C-v><C-p>" : neocomplcache#manual_omni_complete()
-let g:neocomplcache_dictionary_filetype_lists =
-		\ {
-		\ 	'default': '',
-		\ 	'actionscript': $HOME.'/.vim/dict/actionscript/*.dict'
-		\ }
 
+" snippets
 let g:neocomplcache_snippets_dir = '~/.vim/snippets'
-imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
+imap <silent><C-l> <Plug>(neocomplcache_snippets_expand)
 
 " }}}
 " {{{ javacomplete
