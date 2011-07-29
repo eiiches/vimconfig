@@ -711,6 +711,14 @@ endfunction
 command! -nargs=* Bundle call Bundle(<f-args>)
 
 " }}}
+" {{{ :Chomp
+
+command! -range=% -nargs=0 Chomp :<line1>,<line2>s/\s\+$//g
+
+" FIXME: doesn't work when range is given.
+cnoreabbrev <expr> chomp (getcmdtype() == ':' && getcmdline() ==# 'chomp') ?  'Chomp' : 'chomp'
+
+" }}}
 
 " Plugins: -----------------------------
 " {{{ quickrun.vim
