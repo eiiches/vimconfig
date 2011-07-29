@@ -1,3 +1,0 @@
-[svn-remote "vim-latex"]
-	url = https://vim-latex.svn.sourceforge.net/svnroot/vim-latex
-	fetch = trunk:refs/remotes/vim-latex-svn
