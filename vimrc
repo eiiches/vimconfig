@@ -404,6 +404,12 @@ endfunction
 command! -nargs=? EditTemplate call EditTemplate(<f-args>)
 
 " }}}
+" {{{ default viewers
+
+let g:viewer_pdf = 'evince'
+let g:viewer_html = 'firefox'
+
+" }}}
 
 " FileTypes: ---------------------------
 " {{{ XML
@@ -576,7 +582,7 @@ augroup vimrc-tex
 	function! OpenPdf()
 		let s:pdfpath = expand('%:p:r').'.pdf'
 		if filereadable(s:pdfpath)
-			call vimproc#system_bg('evince '.s:pdfpath)
+			call vimproc#system_bg(g:viewer_pdf.' '.s:pdfpath)
 		else
 			echo 'File not found: ' . s:pdfpath
 		endif
@@ -603,7 +609,7 @@ augroup END
 augroup vimrc-html
 	au!
 	au FileType html nnoremap <silent><buffer> <Leader>r
-				\ :call vimproc#system_bg('firefox file://'.expand('%:p'))<CR>
+				\ :call vimproc#system_bg(g:viewer_html.' file://'.expand('%:p'))<CR>
 augroup END
 
 " }}}
