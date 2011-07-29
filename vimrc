@@ -301,6 +301,11 @@ nnoremap <silent> <C-w>+ <C-w>+:call ResizeMode()<CR>
 " do not wrap text by default.
 set nowrap
 
+" when wrap is on...
+let &showbreak = '> '
+set linebreak
+set breakat&
+
 " show line number
 set number
 
