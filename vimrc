@@ -96,7 +96,7 @@ function! OpenVimrc(command)
 	if empty(bufname("%")) && ! &modified && empty(&buftype)
 		edit $MYVIMRC
 	else
-		execute a:command . ' $MYVIMRC'
+		execute a:command '$MYVIMRC'
 	endif
 endfunction
 nnoremap <silent> <leader>v :call OpenVimrc('vsplit')<CR>
@@ -337,7 +337,7 @@ function! QuickMake()
 	let target = exists('b:make_target') ? b:make_target : ''
 	for makefile in split(makefiles, ',')
 		if filereadable(glob(makefile))
-			silent execute 'make -f ' . makefile . ' ' . target
+			silent execute 'make -f' makefile target
 			return
 		endif
 	endfor
@@ -396,7 +396,7 @@ function! EditTemplate(...)
 	let template_dir = expand(g:template_dir)
 	let template = template_dir . '/template.' . extension
 	if filewritable(template) || !filereadable(template) && filewritable(template_dir) == 2
-		execute 'vsplit ' . template
+		execute 'vsplit' template
 	else
 		echoerr 'Cannot open ' . template . ' for writing.'
 	endif
@@ -454,9 +454,9 @@ augroup END
 " gtk development
 function! GtkDocOrMan()
 	if exists('b:gtk_development_in_c') && b:gtk_development_in_c
-		execute 'Ref gtkdoc ' . expand('<cword>')
+		execute 'Ref gtkdoc' expand('<cword>')
 	else
-		execute 'Ref man ' . expand('<cword>')
+		execute 'Ref man' expand('<cword>')
 	endif
 endfunction
 function! CheckGtkDevehelopmentInC()
@@ -679,7 +679,7 @@ function! UpdateHelp()
 		if isdirectory(l:docdir)
 			echo l:docdir
 			try
-				execute 'helptags ' . l:docdir
+				execute 'helptags' l:docdir
 			catch /^Vim\%((\a\+)\)\=:E152/
 				continue
 			endtry
@@ -855,7 +855,7 @@ function! OpenInteractiveShell()
 	endif
 	let interp = input("Interpreter: ", default)
 	try
-		execute 'VimShellInteractive ' . interp
+		execute 'VimShellInteractive' interp
 	catch
 		if empty(interp)
 			echo 'No interpreter registered for filetype = "' . &filetype . '"'
@@ -965,7 +965,7 @@ noremap <Leader>g :GNOMEAlignArguments<CR>
 
 let g:local_vimrc = expand('~/.vim/lvimrc')
 if filereadable(g:local_vimrc)
-	execute 'source '.g:local_vimrc
+	execute 'source' g:local_vimrc
 endif
 
 " }}}
