@@ -260,6 +260,9 @@ vnoremap <expr> <C-k> (mode() !=# 'V' ? 'V' : '') . 'dkP`[V`]'
 nnoremap <C-j> ddp
 nnoremap <C-k> ddkP
 
+" toggle wrap
+nnoremap <silent> mw :set wrap!<CR>
+
 " }}}
 " {{{ resize mode
 
