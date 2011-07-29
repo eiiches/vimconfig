@@ -678,7 +678,11 @@ function! UpdateHelp()
 		let l:docdir = rundir . '/doc'
 		if isdirectory(l:docdir)
 			echo l:docdir
-			execute 'helptags ' . l:docdir
+			try
+				execute 'helptags ' . l:docdir
+			catch /^Vim\%((\a\+)\)\=:E152/
+				continue
+			endtry
 		endif
 	endfor
 endfunction
