@@ -205,6 +205,7 @@ set statusline=%f\ %y[%{&fileencoding},%{&fileformat}]%<%{fugitive#statusline()}
 " list candidates in statusline for commandline completion
 set wildmenu
 set wildmode=longest,list
+set wildignore=*~
 
 " show INSERT when in the mode.
 set showmode
