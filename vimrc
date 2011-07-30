@@ -271,7 +271,7 @@ nnoremap <silent> ml :set list!<CR>
 
 function! PrintMode(mode)
 	if &showmode
-		echoh ModeMsg | echo a:mode | echohl None
+		echohl ModeMsg | echo a:mode | echohl None
 		redraw
 	endif
 endfunction
@@ -353,7 +353,7 @@ function! QuickMake()
 			return
 		endif
 	endfor
-	echo 'Makefile not available.'
+	echohl ErrorMsg | echo 'Makefile not available.' | echohl None
 endfunction
 command! -nargs=0 QuickMake call QuickMake() | normal! <C-l>
 
@@ -402,7 +402,7 @@ endfunction
 function! EditTemplate(...)
 	let extension = a:0 ? a:1 : expand('%:e')
 	if empty(extension)
-		echoerr 'Cannot determine file extension.'
+		echohl ErrorMsg | echo 'Cannot determine file extension.' | echohl
 		return
 	endif
 	let template_dir = expand(g:template_dir)
@@ -410,7 +410,7 @@ function! EditTemplate(...)
 	if filewritable(template) || !filereadable(template) && filewritable(template_dir) == 2
 		execute 'vsplit' template
 	else
-		echoerr 'Cannot open ' . template . ' for writing.'
+		echohl ErrorMsg | echo 'Cannot open ' . template . ' for writing.' | echohl None
 	endif
 endfunction
 command! -nargs=? EditTemplate call EditTemplate(<f-args>)
@@ -608,7 +608,7 @@ augroup vimrc-tex
 		if filereadable(s:pdfpath)
 			call vimproc#system_bg(g:viewer_pdf.' '.s:pdfpath)
 		else
-			echo 'File not found: ' . s:pdfpath
+			echohl ErrorMsg | echo 'File not found: ' . s:pdfpath | echohl None
 		endif
 	endfunction
 	au FileType tex nnoremap <silent> <buffer> <Leader>r :call OpenPdf()<CR>
@@ -889,11 +889,11 @@ function! OpenInteractiveShell()
 	try
 		execute 'VimShellInteractive' interp
 	catch
-		if empty(interp)
-			echo 'No interpreter registered for filetype = "' . &filetype . '"'
-		else
-			echo 'Failed to execute "' . interp . '"'
-		endif
+		echohl ErrorMsg
+		echo empty(interp) ?
+					\ ('No interpreter registered for filetype = "' .  &filetype . '"') :
+					\ ('Failed to execute "' . interp . '"')
+		echohl None
 	endtry
 endfunction
 nnoremap <silent> gs :VimShellPop<CR>
