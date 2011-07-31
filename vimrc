@@ -991,6 +991,11 @@ nnoremap <silent> ,cached :Git diff --cached<CR>
 noremap <Leader>g :GNOMEAlignArguments<CR>
 
 " }}}
+" {{{  vim-css-color
+
+Bundle 'vim-css-color/after'
+
+" }}}
 
 " Local: -------------------------------
 " {{{ source ~/.vim/lvimrc
