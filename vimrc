@@ -943,6 +943,9 @@ Bundle 'vim-altr'
 nmap ga <Plug>(altr-forward)
 nmap gA <Plug>(altr-back)
 
+call altr#define('vimrc', 'gvimrc', 'lvimrc')
+call altr#define('.vimrc', '.gvimrc', '.vim/lvimrc')
+
 " }}}
 " {{{ tex.vim
 
