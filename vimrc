@@ -434,6 +434,35 @@ inoreabbrev lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit,
 			\ mollit anim id est laborum.
 
 " }}}
+" {{{ changing directories
+
+" default
+let t:cwd = getcwd()
+
+" per tab current directory
+function! TabCD(dir)
+	execute 'cd' fnameescape(expand(a:dir))
+	let t:cwd = getcwd()
+endfunction
+command! -bar -complete=dir -nargs=? TabCD call TabCD(<q-args>)
+
+" cd and CD expands to TabCD
+command! -bar -complete=dir -nargs=? CD TabCD <args>
+cnoreabbrev <expr> cd (getcmdtype() == ':' && getcmdline() ==# 'cd') ? 'CD' : 'cd'
+
+" cd when switing tabs
+function! TabCDTabEnter()
+	if !exists('t:cwd')
+		let t:cwd = getcwd()
+	endif
+	execute 'cd' fnameescape(expand(t:cwd))
+endfunction
+autocmd vimrc TabEnter * call TabCDTabEnter()
+
+" cdd expands to CD %:h
+cnoreabbrev <expr> cdd (getcmdtype() == ':' && getcmdline() ==# 'cdd') ? 'CD %:h' : 'cdd'
+
+" }}}
 
 " FileTypes: ---------------------------
 " {{{ XML
