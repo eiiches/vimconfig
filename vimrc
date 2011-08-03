@@ -298,6 +298,9 @@ nnoremap <silent> <C-w>< <C-w><:call ResizeMode()<CR>
 nnoremap <silent> <C-w>- <C-w>-:call ResizeMode()<CR>
 nnoremap <silent> <C-w>+ <C-w>+:call ResizeMode()<CR>
 
+" reset window size on VimResized
+au vimrc VimResized * execute "normal! \<C-w>="
+
 " }}}
 " {{{ miscellaneous
 
