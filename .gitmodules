@@ -79,3 +79,6 @@
 [submodule "bundle/vim-css-color"]
 	path = bundle/vim-css-color
 	url = git://github.com/eiiches/vim-css-color.git
+[submodule "bundle/errormarker"]
+	path = bundle/errormarker
+	url = git://github.com/vim-scripts/errormarker.vim.git

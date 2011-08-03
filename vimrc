@@ -1028,6 +1028,11 @@ noremap <Leader>g :GNOMEAlignArguments<CR>
 Bundle 'vim-css-color/after'
 
 " }}}
+" {{{ errormarker.vim
+
+Bundle 'errormarker'
+
+" }}}
 
 " Local: -------------------------------
 " {{{ source ~/.vim/lvimrc
