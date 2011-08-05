@@ -184,6 +184,59 @@ endfunction
 set foldtext=MyFoldText()
 set fillchars-=fold:-
 
+" analogue to the standard function foldclosed()
+function! FoldOpened(lnum)
+	" when fold is open or fold doesn't exist, -1
+	if foldclosed(a:lnum) != -1 || foldlevel(a:lnum) <= 0
+		return -1
+	endif
+
+	" save context
+	let save_lz = &lazyredraw
+	let &lazyredraw = 1
+	let save_view = winsaveview()
+
+	" close fold temporarily and find the first line of the fold
+	normal! zc
+	let result = foldclosed(a:lnum)
+	normal! zo
+
+	" restore context
+	call winrestview(save_view)
+	let &lazyredraw = save_lz
+
+	return result
+endfunction
+
+" close the fold, if cursor is at the first column of the first line of a open fold.
+" open the fold, if cursor is on a closed fold.
+" otherwise, just move the cursor to the left
+function! Map_h()
+	let l:lnum = line('.')
+	if foldlevel(l:lnum) > 0
+		if col('.') == 1 && FoldOpened(l:lnum) == l:lnum
+			normal! zc
+			return
+		elseif foldclosed(l:lnum) != -1 && ! ( col('.') == 1 && foldclosed(l:lnum) == l:lnum )
+			normal! zo
+			return
+		endif
+	endif
+	normal! h
+endfunction
+nnoremap <silent> h :call Map_h()<CR>
+
+" open fold if cursor is on the closed fold.
+function! Map_l()
+	let l:lnum = line('.')
+	if foldlevel(l:lnum) > 0 && foldclosed(l:lnum) != -1
+		normal! zo
+		return
+	endif
+	normal! l
+endfunction
+nnoremap <silent> l :call Map_l()<CR>
+
 " }}}
 " {{{ undo
 
