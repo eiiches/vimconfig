@@ -235,9 +235,11 @@ noremap j gj
 noremap gj j
 noremap k gk
 noremap gk k
-noremap 0 g0
+
+" left-right motion.
+noremap 0 hg0
 noremap g0 0
-noremap $ g$
+noremap $ lg$
 noremap g$ $
 
 " make <c-l> clear the highlight as well as redraw
