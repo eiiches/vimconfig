@@ -390,6 +390,9 @@ set completeopt=menuone
 " keep history
 set history=500
 
+" virtualedit in block mode
+set virtualedit=block
+
 " }}}
 " {{{ make and grep
 
