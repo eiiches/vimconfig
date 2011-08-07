@@ -82,3 +82,6 @@
 [submodule "bundle/errormarker"]
 	path = bundle/errormarker
 	url = git://github.com/vim-scripts/errormarker.vim.git
+[submodule "bundle/unite-outline"]
+	path = bundle/unite-outline
+	url = git://github.com/h1mesuke/unite-outline.git

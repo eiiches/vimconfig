@@ -879,6 +879,13 @@ nnoremap gL :UniteWithCurrentDir -prompt=>>\  -buffer-name=files file<CR>
 nnoremap gr :Unite -prompt=>>\  -buffer-name=files file_mru directory_mru<CR>
 
 " }}}
+" {{{ unite-outline
+
+Bundle 'unite-outline'
+
+nnoremap go :Unite outline<CR>
+
+" }}}
 " {{{ neocomplcache
 
 Bundle 'neocomplcache'
