@@ -296,10 +296,10 @@ noremap k gk
 noremap gk k
 
 " left-right motion.
-noremap 0 hg0
-noremap g0 0
-noremap $ lg$
-noremap g$ $
+nnoremap 0 hg0
+nnoremap g0 0
+nnoremap $ lg$
+nnoremap g$ $
 
 " yank to end
 nnoremap Y y$
