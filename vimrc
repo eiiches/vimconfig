@@ -237,6 +237,12 @@ function! Map_l()
 endfunction
 nnoremap <silent> l :call Map_l()<CR>
 
+" linewise text object for open folds.
+vnoremap <silent> iz :normal! [zjV]zk<CR>
+onoremap <silent> iz :normal Viz<CR>
+vnoremap <silent> az :normal! [zV]z<CR>
+onoremap <silent> az :normal Vaz<CR>
+
 " }}}
 " {{{ undo
 
