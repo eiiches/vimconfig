@@ -301,6 +301,9 @@ noremap g0 0
 noremap $ lg$
 noremap g$ $
 
+" yank to end
+nnoremap Y y$
+
 " make <c-l> clear the highlight as well as redraw
 nnoremap <silent> <C-L> :nohls<CR><C-L>
 
