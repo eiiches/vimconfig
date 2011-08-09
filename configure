@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if ! test -d src; then
+	echo "This script must be run in the top of the source directory." > /dev/stderr
+	exit 1
+fi
+
+./configure --with-features=huge --enable-perlinterp=dynamic \
+	--enable-pythoninterp=yes --enable-rubyinterp=yes \
+	--enable-multibyte --enable-gnome-check "$@"

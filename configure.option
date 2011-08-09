@@ -1,1 +1,0 @@
---with-features=huge --enable-perlinterp=dynamic --enable-pythoninterp=yes --enable-rubyinterp=yes --enable-multibyte --enable-gnome-check
