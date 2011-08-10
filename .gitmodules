@@ -85,3 +85,6 @@
 [submodule "bundle/unite-outline"]
 	path = bundle/unite-outline
 	url = git://github.com/h1mesuke/unite-outline.git
+[submodule "bundle/unite-history"]
+	path = bundle/unite-history
+	url = git://github.com/thinca/vim-unite-history.git

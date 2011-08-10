@@ -895,6 +895,13 @@ Bundle 'unite-outline'
 nnoremap go :Unite outline<CR>
 
 " }}}
+" {{{ unite-history
+
+Bundle 'unite-history'
+
+nnoremap gh :Unite history/command<CR>
+
+" }}}
 " {{{ neocomplcache
 
 Bundle 'neocomplcache'
