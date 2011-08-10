@@ -859,9 +859,13 @@ let g:vimwiki_camel_case = 0
 " }}}
 " {{{ vim-ref
 
-Bundle 'vim-ref-gtkdoc'
 Bundle 'vim-ref'
 let g:ref_noenter=1
+
+" }}}
+" {{{ vim-ref-gtk
+
+Bundle 'vim-ref-gtkdoc'
 
 " }}}
 " {{{ metarw
@@ -1059,6 +1063,10 @@ Bundle 'localrc'
 " {{{ matchit
 
 Bundle 'matchit'
+
+" }}}
+" {{{ matchit-python
+
 Bundle 'matchit_python'
 
 " }}}
