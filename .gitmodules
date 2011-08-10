@@ -88,3 +88,6 @@
 [submodule "bundle/unite-history"]
 	path = bundle/unite-history
 	url = git://github.com/thinca/vim-unite-history.git
+[submodule "bundle/unite-help"]
+	path = bundle/unite-help
+	url = git://github.com/tsukkee/unite-help.git

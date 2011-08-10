@@ -902,6 +902,14 @@ Bundle 'unite-history'
 nnoremap gh :Unite history/command<CR>
 
 " }}}
+" {{{ unite-help
+
+Bundle 'unite-help'
+
+command! -nargs=? -complete=help Help :Unite -prompt=>>\  -immediately -input=<args> help
+cnoreabbrev <expr> help (getcmdtype() == ':' && getcmdline() ==# 'help') ? 'Help' : 'help'
+
+" }}}
 " {{{ neocomplcache
 
 Bundle 'neocomplcache'
