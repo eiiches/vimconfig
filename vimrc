@@ -893,6 +893,9 @@ nnoremap gl :UniteWithBufferDir -prompt=>>\  -buffer-name=files file<CR>
 nnoremap gL :UniteWithCurrentDir -prompt=>>\  -buffer-name=files file<CR>
 nnoremap gr :Unite -prompt=>>\  -buffer-name=files file_mru directory_mru<CR>
 
+" resume
+nnoremap gn :UniteResume<CR>
+
 if exists(':CD') == 2
 	let g:unite_cd_command = 'CD'
 endif
