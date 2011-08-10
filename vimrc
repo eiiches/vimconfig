@@ -519,6 +519,8 @@ command! -bar -complete=dir -nargs=? TabCD call TabCD(<q-args>)
 " cd and CD expands to TabCD
 command! -bar -complete=dir -nargs=? CD TabCD <args>
 cnoreabbrev <expr> cd (getcmdtype() == ':' && getcmdline() ==# 'cd') ? 'CD' : 'cd'
+command! -bar -complete=dir -nargs=? LCD TabCD <args>
+cnoreabbrev <expr> lcd (getcmdtype() == ':' && getcmdline() ==# 'lcd') ? 'LCD' : 'lcd'
 
 " cd when switing tabs
 function! TabCDTabEnter()
@@ -886,6 +888,14 @@ nnoremap gb :Unite -prompt=>>\  buffer<CR>
 nnoremap gl :UniteWithBufferDir -prompt=>>\  -buffer-name=files file<CR>
 nnoremap gL :UniteWithCurrentDir -prompt=>>\  -buffer-name=files file<CR>
 nnoremap gr :Unite -prompt=>>\  -buffer-name=files file_mru directory_mru<CR>
+
+if exists(':CD') == 2
+	let g:unite_cd_command = 'CD'
+endif
+
+if exists(':LCD') == 2
+	let g:unite_lcd_command = 'LCD'
+endif
 
 " }}}
 " {{{ unite-outline
