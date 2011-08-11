@@ -679,6 +679,7 @@ augroup vimrc-vim
 	au!
 	au FileType vim set foldcolumn=2
 	au FileType vim nnoremap <buffer> K :vert help <C-R>=expand('<cword>')<CR><CR><C-w>p
+	au FileType vim set formatoptions-=t
 augroup END
 
 " }}}
