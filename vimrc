@@ -333,13 +333,6 @@ cnoremap <C-l> <Right>
 cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
 
-" move text linewise
-" FIXME: <C-k> doesn't work when cursor is at the bottom or top of the buffer.
-vnoremap <expr> <C-j> (mode() !=# 'V' ? 'V' : '') . 'dp`[V`]'
-vnoremap <expr> <C-k> (mode() !=# 'V' ? 'V' : '') . 'dkP`[V`]'
-nnoremap <C-j> ddp
-nnoremap <C-k> ddkP
-
 " toggle wrap
 nnoremap <silent> mw :set wrap!<CR>
 
