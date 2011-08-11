@@ -346,6 +346,11 @@ nnoremap <silent> mw :set wrap!<CR>
 " toggle list
 nnoremap <silent> ml :set list!<CR>
 
+" clipboard
+nnoremap <silent> ,paste "+p
+vnoremap <silent> ,copy "+y
+vnoremap <silent> ,cut "+d
+
 " }}}
 " {{{ resize mode
 
