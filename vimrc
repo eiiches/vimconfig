@@ -546,8 +546,8 @@ function! TabCDTabEnter()
 endfunction
 autocmd vimrc TabEnter * call TabCDTabEnter()
 
-" cdd expands to CD %:h
-call s:expandcmddyn('cdd', "'CD '.(empty(expand('%:h'))?getcwd():expand('%:h'))")
+" cdd expands to CD %:p:h
+call s:expandcmddyn('cdd', "'CD '.(empty(expand('%:p:h'))?getcwd():expand('%:p:h'))")
 
 " }}}
 
