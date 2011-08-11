@@ -284,6 +284,22 @@ set report=0    " report always the number of lines changed
 set matchpairs+=<:>
 
 " }}}
+" {{{ functions
+
+function! s:quote(str)
+	return '"'. a:str . '"'
+endfunction
+function! s:expandcmddyn(orig, repl)
+	execute "cnoreabbrev <expr>" a:orig
+				\ "(getcmdtype() == ':' && getcmdline() ==# " s:quote(a:orig) ")"
+				\ "?" a:repl
+				\ ":" s:quote(a:orig)
+endfunction
+function! s:expandcmd(orig, repl)
+	call s:expandcmddyn(a:orig, s:quote(a:repl))
+endfunction
+
+" }}}
 " {{{ key mappings
 
 " list and open buffer
@@ -518,9 +534,10 @@ command! -bar -complete=dir -nargs=? TabCD call TabCD(<q-args>)
 
 " cd and CD expands to TabCD
 command! -bar -complete=dir -nargs=? CD TabCD <args>
-cnoreabbrev <expr> cd (getcmdtype() == ':' && getcmdline() ==# 'cd') ? 'CD' : 'cd'
+call s:expandcmd('cd', 'CD')
+
 command! -bar -complete=dir -nargs=? LCD TabCD <args>
-cnoreabbrev <expr> lcd (getcmdtype() == ':' && getcmdline() ==# 'lcd') ? 'LCD' : 'lcd'
+call s:expandcmd('lcd', 'LCD')
 
 " cd when switing tabs
 function! TabCDTabEnter()
@@ -532,7 +549,7 @@ endfunction
 autocmd vimrc TabEnter * call TabCDTabEnter()
 
 " cdd expands to CD %:h
-cnoreabbrev <expr> cdd (getcmdtype() == ':' && getcmdline() ==# 'cdd') ? 'CD %:h' : 'cdd'
+call s:expandcmddyn('cdd', "'CD '.(empty(expand('%:h'))?getcwd():expand('%:h'))")
 
 " }}}
 
@@ -793,7 +810,7 @@ command! -nargs=0 SaveSession call SaveSession()
 
 " :qq to save session and quit
 command! -nargs=0 Qq call SaveSession() | qa
-cnoreabbrev <expr> qq (getcmdtype() == ':' && getcmdline() ==# 'qq') ? 'Qq' : 'qq'
+call s:expandcmd('qq', 'Qq')
 
 " }}}
 " {{{ :UpdateHelp
@@ -829,7 +846,7 @@ command! -nargs=* Bundle call Bundle(<f-args>)
 command! -range=% -nargs=0 Chomp :<line1>,<line2>s/\s\+$//g
 
 " FIXME: doesn't work when range is given.
-cnoreabbrev <expr> chomp (getcmdtype() == ':' && getcmdline() ==# 'chomp') ?  'Chomp' : 'chomp'
+call s:expandcmd('chomp', 'Chomp')
 
 " }}}
 
@@ -924,7 +941,7 @@ nnoremap gh :Unite history/command<CR>
 Bundle 'unite-help'
 
 command! -nargs=? -complete=help Help :Unite -prompt=>>\  -immediately -input=<args> help
-cnoreabbrev <expr> help (getcmdtype() == ':' && getcmdline() ==# 'help') ? 'Help' : 'help'
+call s:expandcmd('help', 'Help')
 
 " }}}
 " {{{ neocomplcache
