@@ -902,6 +902,10 @@ Bundle 'unite.vim'
 autocmd vimrc FileType unite nmap <buffer> <ESC> <Plug>(unite_exit)
 autocmd vimrc FileType unite imap <buffer> jj <Plug>(unite_insert_leave)
 
+" Unite action mapping
+autocmd vimrc FileType unite nnoremap <buffer><expr> sp unite#do_action('split')
+autocmd vimrc FileType unite nnoremap <buffer><expr> vsp unite#do_action('vsplit')
+
 " override mapping for :ls :buf
 nnoremap gb :Unite -prompt=>>\  buffer<CR>
 
