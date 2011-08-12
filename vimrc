@@ -920,6 +920,23 @@ if exists(':LCD') == 2
 	let g:unite_lcd_command = 'LCD'
 endif
 
+" unite-grep
+function! s:unite_grep_interactive(target)
+	let pattern = input('Pattern: ')
+	if empty(pattern)
+		" try to use the current search
+		let pattern = substitute(@/,'\\', '\\\\', 'g')
+	else
+		" set as current search (if not empty)
+		let @/ = pattern
+	endif
+	let command = 'Unite grep:'.a:target.'::'.pattern
+	execute command
+	echo ':'.command
+endfunction
+nnoremap <silent> g/ :call <sid>unite_grep_interactive('%')<CR>
+nnoremap <silent> g? :call <sid>unite_grep_interactive('')<CR>
+
 " }}}
 " {{{ unite-outline
 
