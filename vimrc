@@ -899,8 +899,8 @@ Bundle 'metarw-git'
 Bundle 'unite.vim'
 
 " <ESC> to leave Unite mode
-autocmd FileType unite nmap <buffer> <ESC> <Plug>(unite_exit)
-autocmd FileType unite imap <buffer> jj <Plug>(unite_insert_leave)
+autocmd vimrc FileType unite nmap <buffer> <ESC> <Plug>(unite_exit)
+autocmd vimrc FileType unite imap <buffer> jj <Plug>(unite_insert_leave)
 
 " override mapping for :ls :buf
 nnoremap gb :Unite -prompt=>>\  buffer<CR>
