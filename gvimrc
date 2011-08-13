@@ -35,6 +35,30 @@ nnoremap <silent> - :call <sid>change_font_size(-1)<CR>
 nnoremap <silent> + :call <sid>change_font_size(1)<CR>
 
 " }}}
+" {{{ GUI features
+
+" remove toolbar
+set guioptions-=T
+
+" remove menubar
+set guioptions-=m
+
+" remove tabbar
+set guioptions-=e
+
+" remove scrollbars
+set guioptions-=rL
+
+" }}}
+" {{{ IM control
+
+set iminsert=0
+set imsearch=0
+
+" disable IM when switching to normal mode
+inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+
+" }}}
 
 " hide the mouse when typing text
 set mousehide
@@ -45,16 +69,4 @@ map! <S-Insert> <MiddleMouse>
 
 " colorscheme
 colorscheme myxoria256
-
-" remove GUI features
-set guioptions-=T "tool bar
-set guioptions-=m "gui menu
-set guioptions-=e "tab bar
-set guioptions-=r "right-scrollbar
-set guioptions-=L "left-scrollbar
-
-" IM
-set iminsert=0
-set imsearch=0
-inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 
