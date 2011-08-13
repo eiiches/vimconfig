@@ -344,6 +344,17 @@ nnoremap <silent> ,paste "+p
 vnoremap <silent> ,copy "+y
 vnoremap <silent> ,cut "+d
 
+" define text objects like in( or an}
+function! s:define_text_objects()
+	for mode in ['i', 'a']
+		for type in ['(', ')', '{', '}', '[', ']', '<', '>', "'", '"']
+			execute 'onoremap <expr>' mode.'n'.type '"\<ESC>f'.type.'".v:operator."'.mode.type.'"'
+			execute 'vnoremap <expr>' mode.'n'.type '"\<ESC>f'.type.'v'.mode.type.'"'
+		endfor
+	endfor
+endfunction
+call s:define_text_objects()
+
 " }}}
 " {{{ resize mode
 
