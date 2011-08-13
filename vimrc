@@ -89,18 +89,18 @@ augroup END
 
 " automatic reloading
 if has("autocmd")
-	autocmd vimrc BufWritePost .vimrc,~/.vim/vimrc source $MYVIMRC
+	autocmd vimrc BufWritePost .vimrc,~/.vim/vimrc,~/.vim/lvimrc execute 'source' expand('<amatch>')
 endif
 
-function! OpenVimrc(command)
+function! s:open_vimrc(command, vimrc)
 	if empty(bufname("%")) && ! &modified && empty(&buftype)
-		edit $MYVIMRC
+		execute 'edit' a:vimrc
 	else
-		execute a:command '$MYVIMRC'
+		execute a:command a:vimrc
 	endif
 endfunction
-nnoremap <silent> <leader>v :call OpenVimrc('vsplit')<CR>
-nnoremap <silent> <C-w><leader>v :call OpenVimrc('tabnew')<CR>
+nnoremap <silent> <leader>v :call <sid>open_vimrc('vsplit', $MYVIMRC)<CR>
+nnoremap <silent> <C-w><leader>v :call <sid>open_vimrc('tabnew', $MYVIMRC)<CR>
 
 " }}}
 " {{{ encoding and format
