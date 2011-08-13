@@ -20,6 +20,21 @@ augroup END
 autocmd gvimrc BufWritePost .gvimrc,~/.vim/gvimrc execute 'source' expand('<amatch>')
 
 " }}}
+" {{{ font
+
+let g:fontname = 'Bitstream Vera Sans Mono'
+let g:fontsize = 7
+let &guifont = g:fontname.' '.g:fontsize
+
+" font size
+function! s:change_font_size(inc)
+	let g:fontsize += a:inc
+	let &guifont = g:fontname.' '.g:fontsize
+endfunction
+nnoremap <silent> - :call <sid>change_font_size(-1)<CR>
+nnoremap <silent> + :call <sid>change_font_size(1)<CR>
+
+" }}}
 
 " hide the mouse when typing text
 set mousehide
@@ -30,9 +45,6 @@ map! <S-Insert> <MiddleMouse>
 
 " colorscheme
 colorscheme myxoria256
-
-" set font
-set guifont=Bitstream\ Vera\ Sans\ Mono\ 7
 
 " remove GUI features
 set guioptions-=T "tool bar
