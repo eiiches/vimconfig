@@ -937,6 +937,7 @@ autocmd vimrc FileType unite imap <buffer> jj <Plug>(unite_insert_leave)
 " Unite action mapping
 autocmd vimrc FileType unite nnoremap <buffer><expr> sp unite#do_action('split')
 autocmd vimrc FileType unite nnoremap <buffer><expr> vsp unite#do_action('vsplit')
+autocmd vimrc FileType unite nnoremap <buffer><expr> tab unite#do_action('tabopen')
 
 " override mapping for :ls :buf
 nnoremap gb :Unite -prompt=>>\  buffer<CR>
