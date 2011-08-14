@@ -32,6 +32,9 @@ git submodule foreach 'git checkout master; git pull'
 ( cd bundle/vim-ref-gtkdoc/gtkdoc && make )
 ( cd bundle/vim-altr && make )
 
+# make colorscheme
+( cd colors && make )
+
 # update helptags
 vim +UpdateHelp +q
 

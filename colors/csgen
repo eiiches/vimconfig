@@ -1,0 +1,105 @@
+#!/usr/bin/python
+
+import sys
+
+normalfg = '#d0d0d0'
+normalbg = '#1c1c1c'
+
+termcolors = [[0x00, 0x00, 0x00], [0xCD, 0x00, 0x00],
+              [0x00, 0xCD, 0x00], [0xCD, 0xCD, 0x00],
+              [0x00, 0x00, 0xEE], [0xCD, 0x00, 0xCD],
+              [0x00, 0xCD, 0xCD], [0xE5, 0xE5, 0xE5],
+              [0x7F, 0x7F, 0x7F], [0xFF, 0x00, 0x00],
+              [0x00, 0xFF, 0x00], [0xFF, 0xFF, 0x00],
+              [0x5C, 0x5C, 0xFF], [0xFF, 0x00, 0xFF],
+              [0x00, 0xFF, 0xFF], [0xFF, 0xFF, 0xFF]]
+
+class Converter: # {{{
+
+    values = [0x00, 0x5F, 0x87, 0xAF, 0xD7, 0xFF]
+
+    def __init__(self):
+        pass
+
+    def _rgb_by_index(self, index):
+        if index < 16:
+            return termcolors[index]
+        elif 16 <= index < 233:
+            index -= 16
+            return [self.values[(index//36)%6],
+                    self.values[(index//6)%6],
+                    self.values[index%6]]
+        elif 233 <= index < 254:
+            return [8+(index-232)*0x0A]*3
+
+    def _code_by_rgb(self, rgb):
+        return '#{0:02X}{1:02X}{2:02X}'.format(*rgb)
+
+    def _code_by_index(self, index):
+        return self._code_by_rgb(self._rgb_by_index(index))
+
+    def _guicolor(self, value):
+        try:
+            return self._code_by_index(int(value))
+        except ValueError:
+            return value
+
+    def ctermfg(self, value, context=None):
+        if value == 'none':
+            if context and 'Normal' in context.split():
+                return 'guifg', normalfg
+            return 'guifg', 'fg'
+        return 'guifg', self._guicolor(value)
+
+    def ctermbg(self, value, context=None):
+        if value == 'none':
+            if context and 'Normal' in context.split():
+                return 'guibg', normalbg
+            return 'guibg', 'bg'
+        return 'guibg', self._guicolor(value)
+
+    def cterm(self, value, context=None):
+        return 'gui', value
+
+    def _none(self, value, context=None):
+        return None
+
+    def __getitem__(self, key):
+        try:
+            return getattr(self, key)
+        except AttributeError:
+            return self._none
+
+converter = Converter()
+
+# }}}
+
+def highlight_gui(line):
+    result = []
+    for term in line.split():
+        result.append(term)
+        try:
+            key, value = term.split('=')
+            result.append('='.join(converter[key](value, context=line)))
+        except TypeError: pass
+        except ValueError: pass
+    return ' '.join(result)
+
+def generate(source):
+    result = []
+    for line in source.split('\n'):
+        try:
+            if line.split()[0] == 'hi':
+                line = highlight_gui(line)
+        except IndexError: pass
+        finally: result.append(line)
+    return '\n'.join(result)
+
+if __name__ == '__main__':
+
+    if len(sys.argv) < 2:
+        print >> sys.stderr, 'Usage: {0} source'.format(sys.argv[0])
+
+    with open(sys.argv[1]) as f:
+        print generate(f.read().decode('utf-8'))
+

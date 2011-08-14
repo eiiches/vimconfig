@@ -1,0 +1,94 @@
+" Vim color file
+"
+" Name:       xoria256.vim
+" Version:    1.2
+" Maintainer:	Dmitriy Y. Zotikov (xio) <xio@ungrund.org>
+"
+" Should work in recent 256 color terminals.  88-color terms like urxvt are
+" unsupported.
+"
+" Don't forget to install 'ncurses-term' and set TERM to xterm-256color or
+" similar value.
+"
+" Color numbers (0-255) see:
+" http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
+
+
+
+" Bla-bla ----------------------------------------------------------------------
+
+if &t_Co != 256 && ! has("gui_running")
+  echomsg ""
+  echomsg "err: please use GUI or a 256-color terminal (so that t_Co=256 could be set)"
+  echomsg ""
+  finish
+endif
+
+set background=dark
+
+hi clear
+
+if exists("syntax_on")
+  syntax reset
+endif
+
+let colors_name = "myxoria256"
+
+
+
+" The real part ----------------------------------------------------------------
+
+"" General colors
+hi Normal       ctermfg=252     ctermbg=none    cterm=none
+hi CursorColumn                 ctermbg=238
+hi Cursor                       ctermbg=214
+hi CursorLine                   ctermbg=238
+hi FoldColumn   ctermfg=248     ctermbg=none
+hi Folded       ctermfg=blue    ctermbg=none
+hi IncSearch    ctermfg=0       ctermbg=223     cterm=none
+hi NonText      ctermfg=240     ctermbg=none    cterm=bold
+hi Pmenu        ctermfg=0       ctermbg=246
+hi PmenuSbar                    ctermbg=243
+hi PmenuSel     ctermfg=0       ctermbg=243
+hi PmenuThumb                   ctermbg=252
+hi Search       ctermfg=0       ctermbg=149
+hi SignColumn   ctermfg=248
+hi SpecialKey   ctermfg=240
+hi StatusLine   ctermfg=16      ctermbg=12      cterm=bold
+hi StatusLineNC                 ctermbg=237     cterm=none
+hi TabLine      ctermfg=fg      ctermbg=242     cterm=underline
+hi TabLineFill  ctermfg=fg      ctermbg=242     cterm=underline
+hi VertSplit    ctermfg=237     ctermbg=237     cterm=none
+hi Visual       ctermfg=24      ctermbg=153
+hi VIsualNOS    ctermfg=24      ctermbg=153     cterm=none
+hi WildMenu     ctermfg=0       ctermbg=150     cterm=bold
+hi Conceal                      ctermbg=none
+
+"" Syntax highlighting
+hi Comment      ctermfg=244
+hi Constant     ctermfg=229
+hi Error        ctermfg=15      ctermbg=1
+hi ErrorMsg     ctermfg=15      ctermbg=1
+hi Identifier   ctermfg=182                     cterm=none
+hi Ignore       ctermfg=238
+hi LineNr       ctermfg=248     ctermbg=233
+hi MatchParen   ctermfg=188     ctermbg=68      cterm=bold
+hi Number       ctermfg=180
+hi PreProc      ctermfg=150
+hi Special      ctermfg=174
+hi Statement    ctermfg=110                     cterm=none
+hi Todo         ctermfg=0       ctermbg=184
+hi Type         ctermfg=146                     cterm=none
+hi Underlined   ctermfg=39                      cterm=underline
+
+"" Special
+""" .diff
+hi diffAdded    ctermfg=150
+hi diffRemoved  ctermfg=174
+""" vimdiff
+hi diffAdd      ctermfg=none    ctermbg=61
+hi diffDelete   ctermfg=none    ctermbg=246     cterm=none
+hi diffChange   ctermfg=none    ctermbg=97
+hi diffText     ctermfg=none    ctermbg=163     cterm=none
+
+" vim: set expandtab tabstop=2 shiftwidth=2 smarttab softtabstop=2 ft=vim:
