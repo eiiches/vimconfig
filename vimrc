@@ -427,6 +427,9 @@ set history=500
 " virtualedit in block mode
 set virtualedit=block
 
+" try to keep current column
+set nostartofline
+
 " }}}
 " {{{ make and grep
 
