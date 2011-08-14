@@ -1,4 +1,8 @@
-all: myxoria256.vim
+source = $(wildcard *.vcs)
+output = $(source:.vcs=.vim)
 
-myxoria256.vim: myxoria256.vcs csgen
-	./csgen myxoria256.vcs > myxoria256.vim
+all: $(output)
+
+.SUFFIXES: .vcs .vim
+.vcs.vim:
+	./csgen $< > $@
