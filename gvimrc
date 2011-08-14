@@ -60,6 +60,9 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 
 " }}}
 
+" disable visualbell
+set novisualbell
+
 " hide the mouse when typing text
 set mousehide
 
