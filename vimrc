@@ -564,6 +564,24 @@ autocmd vimrc TabEnter * call TabCDTabEnter()
 call s:expandcmddyn('cdd', "'CD '.(empty(expand('%:p:h'))?getcwd():expand('%:p:h'))")
 
 " }}}
+" {{{ syntax
+
+" show synstack for debugging colorscheme
+let g:synstack_enabled = 0
+function! s:toggle_synstack()
+	let g:synstack_enabled = ! g:synstack_enabled
+	augroup vimrc-synstack
+		au!
+		if g:synstack_enabled
+			au CursorMoved * echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+		else
+			echo
+		endif
+	augroup END
+endfunction
+nnoremap <silent> ,syn :<C-u>call <sid>toggle_synstack()<CR>
+
+" }}}
 
 " FileTypes: ---------------------------
 " {{{ XML
