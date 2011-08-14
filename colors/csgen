@@ -48,13 +48,13 @@ class Converter: # {{{
     def _rgb_by_index(self, index):
         if index < 16:
             return termcolors[index]
-        elif 16 <= index < 233:
+        elif 16 <= index < 232:
             index -= 16
             return [self.values[(index//36)%6],
                     self.values[(index//6)%6],
                     self.values[index%6]]
-        elif 233 <= index < 254:
-            return [8+(index-232)*0x0A]*3
+        elif 232 <= index < 256:
+            return [(index-232)*10+8]*3
 
     def _code_by_rgb(self, rgb):
         return '#{0:02X}{1:02X}{2:02X}'.format(*rgb)
