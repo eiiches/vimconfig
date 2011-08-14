@@ -49,6 +49,9 @@ set guioptions-=e
 " remove scrollbars
 set guioptions-=rL
 
+" use console dialog
+set guioptions+=c
+
 " }}}
 " {{{ IM control
 
