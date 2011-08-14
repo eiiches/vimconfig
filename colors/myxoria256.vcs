@@ -1,21 +1,22 @@
 " Vim color file
 "
 " Name:       xoria256.vim
-" Version:    1.2
-" Maintainer:	Dmitriy Y. Zotikov (xio) <xio@ungrund.org>
+" Version:    1.5
+" Maintainer: Dmitriy Y. Zotikov (xio) <xio@ungrund.org>
 "
 " Should work in recent 256 color terminals.  88-color terms like urxvt are
-" unsupported.
+" NOT supported.
 "
 " Don't forget to install 'ncurses-term' and set TERM to xterm-256color or
 " similar value.
 "
 " Color numbers (0-255) see:
 " http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
+"
+" For a specific filetype highlighting rules issue :syntax list when a file of
+" that type is opened.
 
-
-
-" Bla-bla ----------------------------------------------------------------------
+" Initialization {{{
 
 if &t_Co != 256 && ! has("gui_running")
   echomsg ""
@@ -34,45 +35,48 @@ endif
 
 let colors_name = "myxoria256"
 
+"}}}
 
-
-" The real part ----------------------------------------------------------------
-
-"" General colors
-hi Normal       ctermfg=252     ctermbg=none    cterm=none
-hi CursorColumn                 ctermbg=238
+" General
+hi Conceal                      ctermbg=none
 hi Cursor                       ctermbg=214
-hi CursorLine                   ctermbg=238
-hi FoldColumn   ctermfg=248     ctermbg=none
+hi CursorColumn                 ctermbg=238
+hi CursorLine                   ctermbg=237     cterm=none
+hi ErrorMsg     ctermfg=15      ctermbg=1
+hi FoldColumn   ctermfg=247     ctermbg=233
 hi Folded       ctermfg=12      ctermbg=none
 hi IncSearch    ctermfg=0       ctermbg=223     cterm=none
+hi LineNr       ctermfg=247     ctermbg=233
+hi MatchParen   ctermfg=188     ctermbg=68      cterm=bold
 hi NonText      ctermfg=240     ctermbg=none    cterm=bold
-hi Pmenu        ctermfg=0       ctermbg=246
-hi PmenuSbar                    ctermbg=243
-hi PmenuSel     ctermfg=0       ctermbg=243
-hi PmenuThumb                   ctermbg=252
+hi Normal       ctermfg=252     ctermbg=none    cterm=none
+hi Pmenu        ctermfg=0       ctermbg=250
+hi PmenuSbar                    ctermbg=252
+hi PmenuSel     ctermfg=255     ctermbg=243
+hi PmenuThumb   ctermfg=243
 hi Search       ctermfg=0       ctermbg=149
 hi SignColumn   ctermfg=248
 hi SpecialKey   ctermfg=240
+hi SpellBad     ctermfg=160     ctermbg=none    cterm=underline
+hi SpellCap     ctermfg=189     ctermbg=none    cterm=underline
+hi SpellLocal   ctermfg=98      ctermbg=none    cterm=underline
+hi SpellRare    ctermfg=168     ctermbg=none    cterm=underline
 hi StatusLine   ctermfg=16      ctermbg=12      cterm=bold
 hi StatusLineNC                 ctermbg=237     cterm=none
-hi TabLine      ctermfg=fg      ctermbg=242     cterm=underline
-hi TabLineFill  ctermfg=fg      ctermbg=242     cterm=underline
+hi TabLine      ctermfg=fg      ctermbg=242     cterm=none
+hi TabLineFill  ctermfg=fg      ctermbg=244     cterm=none
+hi Title        ctermfg=225
 hi VertSplit    ctermfg=237     ctermbg=237     cterm=none
-hi Visual       ctermfg=24      ctermbg=153
-hi VIsualNOS    ctermfg=24      ctermbg=153     cterm=none
+hi Visual       ctermfg=255     ctermbg=96
+hi VisualNOS    ctermfg=255     ctermbg=60
 hi WildMenu     ctermfg=0       ctermbg=150     cterm=bold
-hi Conceal                      ctermbg=none
 
-"" Syntax highlighting
+" Syntax
 hi Comment      ctermfg=244
 hi Constant     ctermfg=229
 hi Error        ctermfg=15      ctermbg=1
-hi ErrorMsg     ctermfg=15      ctermbg=1
 hi Identifier   ctermfg=182                     cterm=none
 hi Ignore       ctermfg=238
-hi LineNr       ctermfg=248     ctermbg=233
-hi MatchParen   ctermfg=188     ctermbg=68      cterm=bold
 hi Number       ctermfg=180
 hi PreProc      ctermfg=150
 hi Special      ctermfg=174
@@ -81,14 +85,56 @@ hi Todo         ctermfg=0       ctermbg=184
 hi Type         ctermfg=146                     cterm=none
 hi Underlined   ctermfg=39                      cterm=underline
 
-"" Special
-""" .diff
+" Diff
+hi DiffAdd      ctermfg=0       ctermbg=151
+hi DiffDelete   ctermfg=0       ctermbg=246     cterm=none
+hi DiffChange   ctermfg=0       ctermbg=181
+hi DiffText     ctermfg=0       ctermbg=174     cterm=none
+
+" FileType
+" {{{ diff
+
 hi diffAdded    ctermfg=150
 hi diffRemoved  ctermfg=174
-""" vimdiff
-hi diffAdd      ctermfg=none    ctermbg=61
-hi diffDelete   ctermfg=none    ctermbg=246     cterm=none
-hi diffChange   ctermfg=none    ctermbg=97
-hi diffText     ctermfg=none    ctermbg=163     cterm=none
+
+" }}}
+" {{{ html
+
+" hi htmlTag      ctermfg=146
+" hi htmlEndTag   ctermfg=146
+hi htmlTag      ctermfg=244
+hi htmlEndTag   ctermfg=244
+hi htmlArg      ctermfg=182
+hi htmlValue    ctermfg=187
+hi htmlTitle    ctermfg=254     ctermbg=95
+" hi htmlArg      ctermfg=146
+" hi htmlTagName  ctermfg=146
+" hi htmlString   ctermfg=187
+
+" }}}
+" {{{ django
+
+hi djangoVarBlock  ctermfg=180
+hi djangoTagBlock  ctermfg=150
+hi djangoStatement ctermfg=146
+hi djangoFilter    ctermfg=174
+
+" }}}
+" {{{ python
+
+hi pythonExceptions ctermfg=174
+
+" }}}
+" {{{ nerdtree
+
+hi Directory    ctermfg=110
+hi treeCWD      ctermfg=180
+hi treeClosable ctermfg=174
+hi treeOpenable ctermfg=150
+hi treePart     ctermfg=244
+hi treeDirSlash ctermfg=244
+hi treeLink     ctermfg=182
+
+" }}}
 
 " vim: set expandtab tabstop=2 shiftwidth=2 smarttab softtabstop=2 ft=vim:
