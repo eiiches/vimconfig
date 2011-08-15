@@ -17,7 +17,7 @@ augroup END
 " }}}
 " {{{ auto reload gvimrc
 
-autocmd gvimrc BufWritePost .gvimrc,~/.vim/gvimrc,~/.vim/lgvimrc execute 'source' expand('<amatch>')
+autocmd gvimrc BufWritePost .gvimrc,~/.vim/gvimrc,~/.vim/lgvimrc source $MYGVIMRC
 
 " }}}
 " {{{ font
@@ -29,7 +29,7 @@ let g:fontsize = 7
 function! s:update_guifont()
 	let &guifont = g:fontname.' '.g:fontsize
 endfunction
-autocmd gvimrc GUIEnter * call s:update_guifont()
+autocmd gvimrc User gvimrcPost call s:update_guifont()
 
 " font size
 function! s:inc_font_size(inc)
@@ -96,6 +96,14 @@ let g:local_gvimrc = expand('~/.vim/lgvimrc')
 if filereadable(g:local_gvimrc)
 	execute 'source' g:local_gvimrc
 endif
+
+" }}}
+
+" Post: --------------------------------
+" {{{ gvimrcPost evnet
+
+autocmd gvimrc User gvimrcPost silent
+doautocmd gvimrc User gvimrcPost
 
 " }}}
 

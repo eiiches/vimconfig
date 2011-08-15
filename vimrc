@@ -89,7 +89,11 @@ augroup END
 
 " automatic reloading
 if has("autocmd")
-	autocmd vimrc BufWritePost .vimrc,~/.vim/vimrc,~/.vim/lvimrc execute 'source' expand('<amatch>')
+	autocmd vimrc BufWritePost .vimrc,~/.vim/vimrc,~/.vim/lvimrc
+				\  source $MYVIMRC
+				\| if has('gui_running')
+				\|     source $MYGVIMRC
+				\| endif
 endif
 
 function! s:open_vimrc(command, vimrc)
@@ -1224,6 +1228,14 @@ let g:local_vimrc = expand('~/.vim/lvimrc')
 if filereadable(g:local_vimrc)
 	execute 'source' g:local_vimrc
 endif
+
+" }}}
+
+" Post: --------------------------------
+" {{{ vimrcPost evnet
+
+autocmd vimrc User vimrcPost silent
+doautocmd vimrc User vimrcPost
 
 " }}}
 
