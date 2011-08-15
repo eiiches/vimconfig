@@ -17,22 +17,27 @@ augroup END
 " }}}
 " {{{ auto reload gvimrc
 
-autocmd gvimrc BufWritePost .gvimrc,~/.vim/gvimrc execute 'source' expand('<amatch>')
+autocmd gvimrc BufWritePost .gvimrc,~/.vim/gvimrc,~/.vim/lgvimrc execute 'source' expand('<amatch>')
 
 " }}}
 " {{{ font
 
 let g:fontname = 'Bitstream Vera Sans Mono'
 let g:fontsize = 7
-let &guifont = g:fontname.' '.g:fontsize
 
-" font size
-function! s:change_font_size(inc)
-	let g:fontsize += a:inc
+" set guifont
+function! s:update_guifont()
 	let &guifont = g:fontname.' '.g:fontsize
 endfunction
-nnoremap <silent> - :call <sid>change_font_size(-1)<CR>
-nnoremap <silent> + :call <sid>change_font_size(1)<CR>
+autocmd gvimrc GUIEnter * call s:update_guifont()
+
+" font size
+function! s:inc_font_size(inc)
+	let g:fontsize += a:inc
+	call s:update_guifont()
+endfunction
+nnoremap <silent> - :call <sid>inc_font_size(-1)<CR>
+nnoremap <silent> + :call <sid>inc_font_size(1)<CR>
 
 " }}}
 " {{{ GUI features
@@ -76,3 +81,14 @@ map! <S-Insert> <MiddleMouse>
 " colorscheme
 colorscheme myxoria256
 
+" Local: -------------------------------
+" {{{ source ~/.vim/lgvimrc
+
+let g:local_gvimrc = expand('~/.vim/lgvimrc')
+if filereadable(g:local_gvimrc)
+	execute 'source' g:local_gvimrc
+endif
+
+" }}}
+
+" vim: ts=4:sw=4:sts=0:fdm=marker:fmr={{{,}}}
