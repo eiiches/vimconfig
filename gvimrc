@@ -67,6 +67,14 @@ set imsearch=0
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 
 " }}}
+" {{{ title
+
+set t_ts=
+set t_fs=
+let &titlestring = "%t"
+set title
+
+" }}}
 
 " disable visualbell
 set novisualbell
