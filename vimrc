@@ -344,9 +344,9 @@ nnoremap <silent> mw :set wrap!<CR>
 nnoremap <silent> ml :set list!<CR>
 
 " clipboard
-nnoremap <silent> ,paste "+p
-vnoremap <silent> ,copy "+y
-vnoremap <silent> ,cut "+d
+nnoremap ,pa "+p
+vnoremap ,co "+y
+vnoremap ,cu "+d
 
 " define text objects like in( or an}
 function! s:define_text_objects()
