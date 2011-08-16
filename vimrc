@@ -586,6 +586,18 @@ endfunction
 nnoremap <silent> ,syn :<C-u>call <sid>toggle_synstack()<CR>
 
 " }}}
+" {{{ suspend
+
+let g:session_dir_suspend = '/tmp'
+function! s:suspend()
+	let pid = getpid()
+	let timestamp = localtime()
+	execute 'mksession!' g:session_dir_suspend . '/vim-session-'.pid.'-'.timestamp.'.vim'
+	suspend
+endfunction
+noremap <silent> <C-z> :call <sid>suspend()<CR>
+
+" }}}
 
 " FileTypes: ---------------------------
 " {{{ XML
