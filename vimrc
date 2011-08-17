@@ -682,12 +682,10 @@ augroup END
 
 augroup vimrc-vala
 	au!
-	au BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-	au BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-	au BufRead *.vala set smartindent
-	au BufRead *.vala set cindent
-	au BufRead,BufNewFile *.vala setfiletype vala
-	au BufRead,BufNewFile *.vapi setfiletype vala
+	au BufRead *.vala,*.vapi setlocal efm& efm+=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+	au BufRead *.vala,*.vapi setlocal smartindent
+	au BufRead *.vala,*.vapi setlocal cindent
+	au BufRead,BufNewFile *.vala,*.vapi setfiletype vala
 augroup END
 
 " }}}
