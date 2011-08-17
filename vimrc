@@ -392,7 +392,12 @@ nnoremap <silent> <C-w>- <C-w>-:call ResizeMode()<CR>
 nnoremap <silent> <C-w>+ <C-w>+:call ResizeMode()<CR>
 
 " reset window size on VimResized
-au vimrc VimResized * execute "normal! \<C-w>="
+function! s:on_resized()
+	let tab = tabpagenr()
+	tabdo wincmd =
+	execute 'normal!' tab.'gt'
+endfunction
+au vimrc VimResized * call <sid>on_resized()
 
 " }}}
 " {{{ miscellaneous
