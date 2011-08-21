@@ -1176,6 +1176,7 @@ nmap gA <Plug>(altr-back)
 
 call altr#define('vimrc', 'gvimrc', 'lvimrc', 'lgvimrc')
 call altr#define('.vimrc', '.gvimrc', '.vim/lvimrc', '.vim/lgvimrc')
+call altr#define('%.cpp', '%.hpp', '%.c', '%.h')
 
 " }}}
 " {{{ tex.vim
