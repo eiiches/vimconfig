@@ -1235,6 +1235,11 @@ Bundle 'vim-css-color/after'
 Bundle 'errormarker'
 
 " }}}
+" {{{ vim-colored-colorscheme
+
+Bundle 'vim-colored-colorscheme/after'
+
+" }}}
 
 " Local: -------------------------------
 " {{{ source ~/.vim/lvimrc

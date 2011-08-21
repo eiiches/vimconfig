@@ -91,3 +91,6 @@
 [submodule "bundle/unite-help"]
 	path = bundle/unite-help
 	url = git://github.com/tsukkee/unite-help.git
+[submodule "bundle/vim-colored-colorscheme"]
+	path = bundle/vim-colored-colorscheme
+	url = git://github.com/eiiches/vim-colored-colorscheme.git
