@@ -133,6 +133,8 @@ set cinoptions=(0,u0,U0
 set cinoptions+=g0
 " do not indent function return type
 set cinoptions+=t0
+" do not indent inside namespace
+set cinoptions+=N-s
 
 " }}}
 " {{{ colors
