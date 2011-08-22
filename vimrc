@@ -1233,11 +1233,6 @@ noremap <Leader>g :GNOMEAlignArguments<CR>
 Bundle 'vim-css-color/after'
 
 " }}}
-" {{{ errormarker.vim
-
-Bundle 'errormarker'
-
-" }}}
 " {{{ vim-colored-colorscheme
 
 Bundle 'vim-colored-colorscheme/after'
