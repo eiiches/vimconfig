@@ -971,11 +971,11 @@ nnoremap gr :Unite -prompt=>>\  -buffer-name=files file_mru directory_mru<CR>
 nnoremap gn :UniteResume<CR>
 
 if exists(':CD') == 2
-	let g:unite_cd_command = 'CD'
+	let g:unite_kind_openable_cd_command = 'CD'
 endif
 
 if exists(':LCD') == 2
-	let g:unite_lcd_command = 'LCD'
+	let g:unite_kind_openable_lcd_command = 'LCD'
 endif
 
 " unite-grep
