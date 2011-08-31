@@ -1034,6 +1034,7 @@ let g:neocomplcache_enable_at_startup = 1
 " snippets
 let g:neocomplcache_snippets_dir = '~/.vim/snippets'
 imap <silent><C-l> <Plug>(neocomplcache_snippets_expand)
+imap <C-s>  <Plug>(neocomplcache_start_unite_snippet)
 
 " }}}
 " {{{ javacomplete
