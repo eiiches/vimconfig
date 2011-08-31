@@ -807,6 +807,14 @@ augroup vimrc-html
 augroup END
 
 " }}}
+" {{{ Javascript / JSON
+
+augroup vimrc-javascript
+	autocmd!
+	autocmd BufNewFile,BufRead *.json setfiletype javascript
+augroup END
+
+" }}}
 
 " Commands: ----------------------------
 " {{{ :WriteSudo
