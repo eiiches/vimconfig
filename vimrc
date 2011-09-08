@@ -569,7 +569,11 @@ function! TabCDTabEnter()
 	endif
 	execute 'cd' fnameescape(expand(t:cwd))
 endfunction
+function! TabCDWinEnter()
+	call TabCDTabEnter()
+endfunction
 autocmd vimrc TabEnter * call TabCDTabEnter()
+autocmd vimrc WinEnter * call TabCDWinEnter()
 
 " cdd expands to CD %:p:h
 call s:expandcmddyn('cdd', "'CD '.(empty(expand('%:p:h'))?getcwd():expand('%:p:h'))")
