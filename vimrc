@@ -89,7 +89,7 @@ augroup END
 
 " automatic reloading
 if has("autocmd")
-	autocmd vimrc BufWritePost .vimrc,~/.vim/vimrc,~/.vim/lvimrc
+	autocmd vimrc BufWritePost .vimrc,~/.vim/vimrc,~/.vim/vimrc.local
 				\  source $MYVIMRC
 				\| if has('gui_running')
 				\|     source $MYGVIMRC
@@ -1367,9 +1367,9 @@ Bundle 'vim-colored-colorscheme/after'
 " }}}
 
 " Local: -------------------------------
-" {{{ source ~/.vim/lvimrc
+" {{{ source ~/.vim/vimrc.local
 
-let g:local_vimrc = expand('~/.vim/lvimrc')
+let g:local_vimrc = expand('~/.vim/vimrc.local')
 if filereadable(g:local_vimrc)
 	execute 'source' g:local_vimrc
 endif

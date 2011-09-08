@@ -17,7 +17,7 @@ augroup END
 " }}}
 " {{{ auto reload gvimrc
 
-autocmd gvimrc BufWritePost .gvimrc,~/.vim/gvimrc,~/.vim/lgvimrc source $MYGVIMRC
+autocmd gvimrc BufWritePost .gvimrc,~/.vim/gvimrc,~/.vim/gvimrc.local source $MYGVIMRC
 
 " }}}
 " {{{ font
@@ -90,9 +90,9 @@ map! <S-Insert> <MiddleMouse>
 colorscheme myxoria256
 
 " Local: -------------------------------
-" {{{ source ~/.vim/lgvimrc
+" {{{ source ~/.vim/gvimrc.local
 
-let g:local_gvimrc = expand('~/.vim/lgvimrc')
+let g:local_gvimrc = expand('~/.vim/gvimrc.local')
 if filereadable(g:local_gvimrc)
 	execute 'source' g:local_gvimrc
 endif
