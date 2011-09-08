@@ -632,6 +632,10 @@ augroup vimrc-python
 
 	" highlight 'self'
 	au FileType python syn keyword pythonBuiltin self
+
+	" indent guide
+	au FileType python syn match pythonIndent /\%(\_^\s*\)\@<=\%(\%1v\|\%5v\|\%9v\|\%13v\)\s/
+	au FileType python hi link pythonIndent CursorColumn
 augroup END
 
 " }}}
