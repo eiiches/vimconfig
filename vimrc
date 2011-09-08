@@ -481,8 +481,10 @@ nnoremap q: :q
 function! PrintMode(mode)
 	if &showmode
 		echohl ModeMsg | echo a:mode | echohl None
-		redraw
+	else
+		echo
 	endif
+	redraw
 endfunction
 
 function! ResizeMode()
