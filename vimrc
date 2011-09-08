@@ -1189,6 +1189,10 @@ call altr#define('vimrc', 'gvimrc', 'lvimrc', 'lgvimrc')
 call altr#define('.vimrc', '.gvimrc', '.vim/lvimrc', '.vim/lgvimrc')
 call altr#define('%.cpp', '%.hpp', '%.c', '%.h')
 
+" rule for django
+" call altr#define('%/views.py', '%/models.py', '%/urls.py', '%/admin.py', '%/tests.py', '%/settings.py')
+call altr#define('views.py', 'models.py', 'urls.py', 'admin.py', 'tests.py', 'settings.py')
+
 " }}}
 " {{{ tex.vim
 
