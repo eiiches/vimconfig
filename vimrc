@@ -976,23 +976,19 @@ autocmd vimrc FileType unite nnoremap <buffer><expr> sp unite#do_action('split')
 autocmd vimrc FileType unite nnoremap <buffer><expr> vsp unite#do_action('vsplit')
 autocmd vimrc FileType unite nnoremap <buffer><expr> tab unite#do_action('tabopen')
 
-" override mapping for :ls :buf
-nnoremap gb :Unite -prompt=>>\  buffer<CR>
-
-nnoremap gl :UniteWithBufferDir -prompt=>>\  -buffer-name=files file<CR>
-nnoremap gL :UniteWithCurrentDir -prompt=>>\  -buffer-name=files file<CR>
-nnoremap gr :Unite -prompt=>>\  -buffer-name=files file_mru directory_mru<CR>
+" NOTE: overriding the mapping for 'gb', which was :ls :buf
+nnoremap gb :UniteWithBufferDir -buffer-name=files buffer file_mru file<CR>
+nnoremap gc :UniteWithCurrentDir -buffer-name=files buffer file_mru file<CR>
+nnoremap gl :Unite -buffer-name=files buffer file_mru file<CR>
 
 " resume
 nnoremap gn :UniteResume<CR>
 
-if exists(':CD') == 2
-	let g:unite_kind_openable_cd_command = 'CD'
-endif
-
-if exists(':LCD') == 2
-	let g:unite_kind_openable_lcd_command = 'LCD'
-endif
+" config
+let g:unite_source_file_mru_limit = 200
+let g:unite_kind_openable_cd_command = 'CD'
+let g:unite_kind_openable_lcd_command = 'LCD'
+let g:unite_source_file_mru_filename_format = ''
 
 " unite-grep
 function! s:unite_grep_interactive(target)
@@ -1004,7 +1000,7 @@ function! s:unite_grep_interactive(target)
 		" set as current search (if not empty)
 		let @/ = pattern
 	endif
-	let command = 'Unite grep:'.a:target.'::'.pattern
+	let command = 'Unite -buffer-name=search grep:'.a:target.'::'.pattern
 	execute command
 	echo ':'.command
 endfunction
@@ -1030,8 +1026,7 @@ nnoremap gh :Unite history/command<CR>
 
 Bundle 'unite-help'
 
-command! -nargs=? -complete=help Help :Unite -prompt=>>\  -immediately -input=<args> help
-call s:expandcmd('help', 'Help')
+nnoremap gH :<C-u>Unite -start-insert help<CR>
 
 " }}}
 " {{{ neocomplcache
