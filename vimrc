@@ -472,6 +472,9 @@ function! s:define_text_objects()
 endfunction
 call s:define_text_objects()
 
+" disable command-line window
+nnoremap q: :q
+
 " }}}
 " {{{ resize mode
 
