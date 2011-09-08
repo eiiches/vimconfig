@@ -190,9 +190,13 @@ endfunction
 set foldtext=MyFoldText()
 set fillchars-=fold:-
 
-" analogue to the standard function foldclosed()
-function! FoldOpened(lnum)
-	" when fold is open or fold doesn't exist, -1
+" Analogue to the standard function foldclosed()
+" s:foldopened({lnum})
+" The result is a Number.  If the line {lnum} is in a open
+" fold, the result is the number of the first line in that fold.
+" If the line {lnum} is not in a open fold, -1 is returned.
+function! s:foldopened(lnum)
+	" when fold is closed or fold doesn't exist, -1
 	if foldclosed(a:lnum) != -1 || foldlevel(a:lnum) <= 0
 		return -1
 	endif
@@ -214,16 +218,44 @@ function! FoldOpened(lnum)
 	return result
 endfunction
 
-" close the fold, if cursor is at the first column of the first line of a open fold.
+" Analogue to the standard function foldclosedend()
+" s:foldopenedend({lnum})
+" The result is a Number.  If the line {lnum} is in a open
+" fold, the result is the number of the last line in that fold.
+" If the line {lnum} is not in a open fold, -1 is returned.
+function! s:foldopenedend(lnum)
+	" when fold is closed or fold doesn't exist, -1
+	if foldclosedend(a:lnum) != -1 || foldlevel(a:lnum) <= 0
+		return -1
+	endif
+
+	" save context
+	let save_lz = &lazyredraw
+	let &lazyredraw = 1
+	let save_view = winsaveview()
+
+	" close fold temporarily and find the first line of the fold
+	normal! zc
+	let result = foldclosedend(a:lnum)
+	normal! zo
+
+	" restore context
+	call winrestview(save_view)
+	let &lazyredraw = save_lz
+
+	return result
+endfunction
+
+" close the fold, if cursor is at the first column of the first or the last line of a open fold.
 " open the fold, if cursor is on a closed fold.
 " otherwise, just move the cursor to the left
 function! Map_h()
 	let l:lnum = line('.')
 	if foldlevel(l:lnum) > 0
-		if col('.') == 1 && FoldOpened(l:lnum) == l:lnum
+		if col('.') == 1 && (s:foldopened(l:lnum) == l:lnum || s:foldopenedend(l:lnum) == l:lnum)
 			normal! zc
 			return
-		elseif foldclosed(l:lnum) != -1 && ! ( col('.') == 1 && foldclosed(l:lnum) == l:lnum )
+		elseif foldclosed(l:lnum) != -1 && ! ( col('.') == 1 && (foldclosed(l:lnum) == l:lnum || foldclosedend(l:lnum) == l:lnum))
 			normal! zo
 			return
 		endif
