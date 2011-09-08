@@ -261,22 +261,133 @@ endif
 " }}}
 " {{{ status line
 
-" always show statusline
-set laststatus=2
-
-" statusline
-set statusline=%f\ %y[%{&fileencoding},%{&fileformat}]%<%{fugitive#statusline()}%h%m%r%=%-14.(%l,%c%V%)\ %P
+" show incomplete commands
+set showcmd
 
 " list candidates in statusline for commandline completion
 set wildmenu
 set wildmode=longest,list
 set wildignore=*~
 
-" show INSERT when in the mode.
-set showmode
+" hide mode in command line
+set noshowmode
 
-" show incomplete commands
-set showcmd
+" always show statusline
+set laststatus=2
+
+function! s:update_statusline(new_stl, type, current) " {{{
+	" Inspired by StatusLineHighlight by Ingo Karkat
+
+	let current = (a:current ? "" : "NC")
+	let type = a:type
+	let new_stl = a:new_stl
+
+	" Prepare current buffer specific text
+	" Syntax: <CUR> ... </CUR>
+	let new_stl = substitute(new_stl, '<CUR>\(.\{-,}\)</CUR>', (a:current ? '\1' : ''), 'g')
+
+	" Prepare statusline colors
+	" Syntax: #[ ... ]
+	let new_stl = substitute(new_stl, '#\[\(\w\+\)\]', '%#StatusLine'.type.'\1'.current.'#', 'g')
+
+	if &l:statusline ==# new_stl
+		" Statusline already set, nothing to do
+		return
+	endif
+
+	if empty(&l:statusline)
+		" No statusline is set, use my_stl
+		let &l:statusline = new_stl
+	else
+		" Check if a custom statusline is set
+		let plain_stl = substitute(&l:statusline, '%#StatusLine\w\+#', '', 'g')
+
+		if &l:statusline ==# plain_stl
+			" A custom statusline is set, don't modify
+			return
+		endif
+
+		" No custom statusline is set, use my_stl
+		let &l:statusline = new_stl
+	endif
+endfunction " }}}
+function! s:update_statusline_colors(colors) " {{{
+	for type in keys(a:colors)
+		for name in keys(a:colors[type])
+			let colors = {'c': a:colors[type][name][0], 'nc': a:colors[type][name][1]}
+			let type = (type == 'NONE' ? '' : type)
+			let name = (name == 'NONE' ? '' : name)
+
+			if exists("colors['c'][0]")
+				exec 'hi StatusLine'.type.name.' ctermbg='.colors['c'][0].' ctermfg='.colors['c'][1].' cterm='.colors['c'][2]
+			endif
+
+			if exists("colors['nc'][0]")
+				exec 'hi StatusLine'.type.name.'NC ctermbg='.colors['nc'][0].' ctermfg='.colors['nc'][1].' cterm='.colors['nc'][2]
+			endif
+		endfor
+	endfor
+endfunction " }}}
+" {{{ let s:statuscolors = {
+let s:statuscolors = {
+	\   'NONE': {
+		\   'NONE'         : [[ 236, 231, 'bold'], [ 232, 244, 'none']]
+	\ }
+	\ , 'Normal': {
+		\   'Mode'         : [[ 214, 235, 'bold'], [                 ]]
+		\ , 'FileName'     : [[ 240, 231, 'bold'], [ 234, 244, 'none']]
+		\ , 'ModFlag'      : [[ 240,   9, 'bold'], [ 234, 239, 'none']]
+		\ , 'BufFlag'      : [[ 236, 250, 'none'], [ 232, 239, 'none']]
+		\ , 'Blank'        : [[ 236, 247, 'none'], [ 233, 239, 'none']]
+		\ , 'Branch'       : [[ 236, 250, 'none'], [ 233, 239, 'none']]
+		\ , 'FileFormat'   : [[ 236, 250, 'none'], [ 233, 239, 'none']]
+		\ , 'FileEncoding' : [[ 236, 250, 'none'], [ 233, 239, 'none']]
+		\ , 'FileType'     : [[ 236, 250, 'none'], [ 232, 239, 'none']]
+		\ , 'LinePercent'  : [[ 240, 250, 'none'], [ 234, 239, 'none']]
+		\ , 'LineNumber'   : [[ 252, 236, 'bold'], [ 235, 244, 'none']]
+		\ , 'LineColumn'   : [[ 252, 240, 'none'], [ 235, 239, 'none']]
+	\ }
+	\ , 'Insert': {
+		\   'Mode'         : [[ 31,  231, 'bold'], [                 ]]
+		\ , 'FileName'     : [[ 240, 231, 'bold'], [                 ]]
+		\ , 'ModFlag'      : [[ 240,   9, 'bold'], [                 ]]
+		\ , 'BufFlag'      : [[ 236, 250, 'none'], [                 ]]
+		\ , 'Blank'        : [[ 236, 247, 'none'], [                 ]]
+		\ , 'Branch'       : [[ 236, 250, 'none'], [                 ]]
+		\ , 'FileFormat'   : [[ 236, 250, 'none'], [                 ]]
+		\ , 'FileEncoding' : [[ 236, 250, 'none'], [                 ]]
+		\ , 'FileType'     : [[ 236, 250, 'none'], [                 ]]
+		\ , 'LinePercent'  : [[ 240, 250, 'none'], [                 ]]
+		\ , 'LineNumber'   : [[ 252, 236, 'bold'], [                 ]]
+		\ , 'LineColumn'   : [[ 252, 240, 'none'], [                 ]]
+	\ }
+\ }
+" }}}
+
+let g:default_stl  = ""
+let g:default_stl .= "<CUR>#[Mode] %{&paste ? 'PASTE ' : ''}%{substitute(strtrans(mode()), '', '', 'g')} </CUR>"
+let g:default_stl .= "#[FileName] %t " " File name
+let g:default_stl .= "#[ModFlag]%{&readonly ? '[RO] ' : ''}" " RO flag
+let g:default_stl .= "#[ModFlag]%{&modifiable && &modified ? '[+] ' : ''}" " Modified flag
+let g:default_stl .= "#[Blank]" " Padding/HL group
+let g:default_stl .= "%<" " Truncate right
+let g:default_stl .= "%=" " Right align
+let g:default_stl .= "#[BufFlag]%{&previewwindow ? '[Preview] ' : ''}" " PRV flags
+let g:default_stl .= "#[Branch]%{strlen(fugitive#statusline()) ? fugitive#statusline().' ' : '' }"
+let g:default_stl .= "#[FileEncoding][%{(&fenc == '' ? &enc : &fenc)}," " File encoding
+let g:default_stl .= "#[FileFormat]%{&fileformat}] " " File format
+let g:default_stl .= "#[FileType]%{strlen(&ft) ? '['.&ft.'] ' : ''}" " File type
+let g:default_stl .= "#[LinePercent] %p%% " " Line/column/virtual column, Line percentage
+let g:default_stl .= "#[LineNumber] %l#[LineColumn]:%c-%v " " Line/column/virtual column, Line percentage
+
+augroup vimrc-statusline
+	au!
+	au ColorScheme * call <sid>update_statusline_colors(s:statuscolors)
+	au BufEnter,BufWinEnter,WinEnter,CmdwinEnter,CursorHold,BufWritePost,InsertLeave * call <sid>update_statusline((exists('b:stl') ? b:stl : g:default_stl), 'Normal', 1)
+	au BufLeave,BufWinLeave,WinLeave,CmdwinLeave * call <sid>update_statusline((exists('b:stl') ? b:stl : g:default_stl), 'Normal', 0)
+	au InsertEnter,CursorHoldI * call <sid>update_statusline((exists('b:stl') ? b:stl : g:default_stl), 'Insert', 1)
+augroup END
+call s:update_statusline_colors(s:statuscolors)
 
 " }}}
 " {{{ search
