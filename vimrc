@@ -1266,36 +1266,37 @@ augroup vimrc-vimshell
 	" au FileType {vimshell,int-*} imap <buffer><silent> OD <Nop>
 
 	" Switch to insert mode on BufEnter
-	au BufEnter *vimshell call vimshell#start_insert()
-	au BufEnter iexe-* startinsert!
+	au BufEnter *vimshell* call vimshell#start_insert()
+	au BufEnter iexe-*,texe-* startinsert!
 augroup END
 
-" Aliases
-au vimrc-vimshell FileType vimshell call vimshell#altercmd#define('sl', 'ls')
-au vimrc-vimshell FileType vimshell call vimshell#altercmd#define('ll', 'ls -l')
-
-" Python interpreter
-au vimrc-vimshell FileType int-python set filetype=python
-
-" Interactive Shell
-function! OpenInteractiveShell()
+" Interactive
+function! s:open_vimshellinteractive()
 	let default = ''
 	if has_key(g:vimshell_interactive_interpreter_commands, &filetype)
 		let default = g:vimshell_interactive_interpreter_commands[&filetype]
 	endif
 	let interp = input("Interpreter: ", default)
-	try
-		execute 'VimShellInteractive' interp
-	catch
-		echohl ErrorMsg
-		echo empty(interp) ?
-					\ ('No interpreter registered for filetype = "' .  &filetype . '"') :
-					\ ('Failed to execute "' . interp . '"')
-		echohl None
-	endtry
+	execute 'VimShellInteractive' interp
 endfunction
-nnoremap <silent> gs :VimShellPop<CR>
-nnoremap <silent> gS :call OpenInteractiveShell()<CR>
+nnoremap <silent> gsi :call <sid>open_vimshellinteractive()<CR>
+
+" Terminal
+function! s:open_vimshellterminal()
+	let shell = input("Interpreter: ")
+	execute 'VimShellTerminal' shell
+endfunction
+nnoremap <silent> gst :call <sid>open_vimshellterminal()<CR>
+
+" Shell
+nnoremap <silent> gsh :VimShellPop <C-R>=expand('%:h:p')<CR><CR>
+au vimrc-vimshell FileType vimshell call vimshell#altercmd#define('sl', 'ls')
+au vimrc-vimshell FileType vimshell call vimshell#altercmd#define('ll', 'ls -l')
+
+" Python
+nnoremap <silent> gspy :VimShellTerminal ipython -colors NoColor<CR>
+hi termipythonPrompt ctermfg=40
+hi termipythonOutput ctermfg=9
 
 " }}}
 " {{{ zencoding
