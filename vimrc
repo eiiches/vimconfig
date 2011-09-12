@@ -1332,9 +1332,9 @@ Bundle 'argtextobj.vim'
 Bundle 'drawit'
 
 " }}}
-" {{{ align
+" {{{ alignta
 
-Bundle 'align'
+Bundle 'vim-alignta'
 
 " }}}
 " {{{ localrc
