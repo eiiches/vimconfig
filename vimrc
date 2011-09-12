@@ -507,39 +507,62 @@ call s:define_text_objects()
 " disable command-line window
 nnoremap q: :q
 
-" }}}
-" {{{ resize mode
+" delete word
+inoremap <C-b> <C-w>
 
-function! PrintMode(mode)
-	if &showmode
-		echohl ModeMsg | echo a:mode | echohl None
-	else
-		echo
+" }}}
+" {{{ wincmd
+
+let s:wincmd_keys = ['h', 'j', 'k', 'l', 'w', 'p']
+let s:wincmd_keys_keep_insert = ['H', 'J', 'K', 'L', '=', '>', '<', '+', '-']
+
+" <C-w> in insert mode.
+function! s:define_wincmds()
+	for cmd in s:wincmd_keys
+		execute 'inoremap <silent>' '<C-w>'.cmd '<ESC>:wincmd '.cmd.'<CR>'
+	endfor
+	for cmd in s:wincmd_keys_keep_insert
+		execute 'inoremap <silent>' '<C-w>'.cmd '<C-o>:wincmd '.cmd.'<CR>'
+	endfor
+endfunction
+call s:define_wincmds()
+
+" wincmd mode
+function! s:echomode(...)
+	if ! &showmode
+		return
 	endif
+
+	let mode = ''
+	if a:0 > 0
+		let mode = '-- '.a:000[0].' --'
+	endif
+
+	echohl ModeMsg | echo mode | echohl None
 	redraw
 endfunction
 
-function! ResizeMode()
+function! s:wincmdmode()
 	while 1
-		call PrintMode('-- RESIZE --')
-		try
-			let key = nr2char(getchar())
-			if index(['>', '<', '+', '-', '=', 'h', 'l', 'j', 'k'], key) < 0
-				throw ''
-			endif
-			execute "normal! \<C-w>" . key
-			redraw
-		catch
+		call s:echomode('RESIZE')
+		let key = nr2char(getchar())
+		if index(s:wincmd_keys, key) < 0 &&
+					\ index(s:wincmd_keys_keep_insert, key) < 0
 			break
-		endtry
+		endif
+		execute 'wincmd' key
+		redraw
 	endwhile
-	call PrintMode('')
+	call s:echomode()
 endfunction
 
-nnoremap <silent> <C-w>> <C-w>>:call ResizeMode()<CR>
-nnoremap <silent> <C-w>< <C-w><:call ResizeMode()<CR>
-nnoremap <silent> <C-w>- <C-w>-:call ResizeMode()<CR>
-nnoremap <silent> <C-w>+ <C-w>+:call ResizeMode()<CR>
+let s:wincmd_mode_trigger_keys = ['>', '<', '+', '-']
+function! s:define_wincmd_mode_triggers()
+	for cmd in s:wincmd_mode_trigger_keys
+		execute 'nnoremap <silent>' '<C-w>'.cmd '<C-w>'.cmd.':call <sid>wincmdmode()<CR>'
+	endfor
+endfunction
+call s:define_wincmd_mode_triggers()
 
 " reset window size on VimResized
 function! s:on_resized()
@@ -1236,17 +1259,6 @@ augroup vimrc-vimshell
 	" Ctrl-D to exit
 	au FileType {vimshell,int-*} imap <buffer><silent> <C-d> <ESC>:q<CR>
 
-	" Moving to other windows
-	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>h <ESC><C-w>h
-	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>j <ESC><C-w>j
-	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>k <ESC><C-w>k
-	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>l <ESC><C-w>l
-	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>H <ESC><C-w>Ha
-	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>J <ESC><C-w>Ja
-	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>K <ESC><C-w>Ka
-	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>L <ESC><C-w>La
-	au FileType {vimshell,int-*} imap <buffer><silent> <C-w>= <ESC><C-w>=a
-
 	" Disable cursor keys
 	au FileType {vimshell,int-*} imap <buffer><silent> OA <Nop>
 	au FileType {vimshell,int-*} imap <buffer><silent> OB <Nop>
@@ -1256,9 +1268,6 @@ augroup vimrc-vimshell
 	" Switch to insert mode on BufEnter
 	au BufEnter *vimshell call vimshell#start_insert()
 	au BufEnter iexe-* startinsert!
-
-	" Orignal <C-w>
-	au FileType {vimshell,int-*} inoremap <buffer><silent> <C-w><C-w> <C-w>
 augroup END
 
 " Aliases
