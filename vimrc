@@ -1097,9 +1097,19 @@ nnoremap <silent> <Leader>r :QuickRun -mode n<CR>
 vnoremap <silent> <Leader>r :QuickRun -mode v<CR>
 
 " }}}
+" {{{ repeat.vim
+
+Bundle 'vim-repeat'
+
+" }}}
 " {{{ surround.vim
 
 Bundle 'vim-surround'
+
+" }}}
+" {{{ vim-abolish
+
+Bundle 'vim-abolish'
 
 " }}}
 " {{{ vimwiki

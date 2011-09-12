@@ -94,3 +94,9 @@
 [submodule "bundle/vim-colored-colorscheme"]
 	path = bundle/vim-colored-colorscheme
 	url = git://github.com/eiiches/vim-colored-colorscheme.git
+[submodule "bundle/vim-repeat"]
+	path = bundle/vim-repeat
+	url = git://github.com/tpope/vim-repeat.git
+[submodule "bundle/vim-abolish"]
+	path = bundle/vim-abolish
+	url = git://github.com/tpope/vim-abolish.git
