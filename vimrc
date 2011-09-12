@@ -994,6 +994,14 @@ augroup vimrc-javascript
 augroup END
 
 " }}}
+" {{{ markdown
+
+augroup vimrc-markdown
+	au!
+	au BufRead,BufNewFile *.md set filetype=markdown
+augroup END
+
+" }}}
 
 " Commands: ----------------------------
 " {{{ :WriteSudo
