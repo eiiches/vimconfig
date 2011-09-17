@@ -398,7 +398,7 @@ let s:statuscolors = {
 
 let g:default_stl  = ""
 let g:default_stl .= "<CUR>#[Mode] %{&paste ? 'PASTE ' : ''}%{substitute(strtrans(mode()), '', '', 'g')} </CUR>"
-let g:default_stl .= "#[FileName] %t " " File name
+let g:default_stl .= "#[FileName] %f " " File name
 let g:default_stl .= "#[ModFlag]%{&readonly ? '[RO] ' : ''}" " RO flag
 let g:default_stl .= "#[ModFlag]%{&modifiable && &modified ? '[+] ' : ''}" " Modified flag
 let g:default_stl .= "#[Blank]" " Padding/HL group
