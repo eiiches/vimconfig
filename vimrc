@@ -1372,6 +1372,9 @@ call altr#define('%.cpp', '%.hpp', '%.c', '%.h')
 " call altr#define('%/views.py', '%/models.py', '%/urls.py', '%/admin.py', '%/tests.py', '%/settings.py')
 call altr#define('views.py', 'models.py', 'urls.py', 'admin.py', 'tests.py', 'settings.py')
 
+" rule for autotools
+call altr#define('Makefile.am', 'configure.ac')
+
 " }}}
 " {{{ tex.vim
 
