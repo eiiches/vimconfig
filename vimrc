@@ -996,9 +996,16 @@ augroup END
 " }}}
 " {{{ markdown
 
+function! s:preview_markdown(path)
+	call vimproc#system('markdown '.a:path.' > '.a:path.'.html')
+	call vimproc#system_bg(g:viewer_html.' file://'.a:path.'.html')
+endfunction
+
 augroup vimrc-markdown
 	au!
 	au BufRead,BufNewFile *.md set filetype=markdown
+	au FileType markdown nnoremap <silent><buffer> <Leader>r
+				\ :call <sid>preview_markdown(expand('%:p'))<CR>
 augroup END
 
 " }}}
