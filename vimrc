@@ -421,6 +421,12 @@ augroup vimrc-statusline
 augroup END
 call s:update_statusline_colors(s:statuscolors)
 
+" update statusline immediately after entering normal mode.
+if has('unix') && !has('gui_running')
+	inoremap <silent> <ESC> <ESC>
+	inoremap <silent> <C-[> <ESC>
+endif
+
 " }}}
 " {{{ search
 
