@@ -1045,8 +1045,8 @@ endif
 " }}}
 " {{{ :Hex
 
-command! Hex :%!xxd
-command! Unhex :%!xxd -r
+command! Hex set binary | edit | execute ':%!xxd' | set ft=xxd
+command! Unhex %!xxd -r
 
 " }}}
 " {{{ :Maps
