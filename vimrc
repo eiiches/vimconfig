@@ -1446,6 +1446,21 @@ Bundle 'vim-css-color/after'
 Bundle 'vim-colored-colorscheme/after'
 
 " }}}
+" {{{ rainbowbrackets
+
+Bundle 'rainbowbrackets'
+
+let g:rainbowbrackets_colors = [9, 10, 33, 190]
+let g:rainbowbrackets_enable_round_brackets = 1
+let g:rainbowbrackets_enable_curly_brackets = 0
+let g:rainbowbrackets_enable_square_brackets = 0
+
+augroup vimrc-rainbowbrackets
+	autocmd!
+	autocmd FileType javascript let b:rainbowbrackets_enable_curly_brackets = 1
+augroup END
+
+" }}}
 
 " Local: -------------------------------
 " {{{ source ~/.vim/vimrc.local

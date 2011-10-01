@@ -100,3 +100,6 @@
 [submodule "bundle/vim-alignta"]
 	path = bundle/vim-alignta
 	url = git://github.com/h1mesuke/vim-alignta.git
+[submodule "bundle/rainbowbrackets"]
+	path = bundle/rainbowbrackets
+	url = git://github.com/eiiches/vim-rainbowbrackets.git
