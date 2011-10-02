@@ -1467,6 +1467,13 @@ augroup vimrc-rainbowbrackets
 augroup END
 
 " }}}
+" {{{ colorconvert.vim
+
+Bundle 'colorconvert.vim'
+
+let g:colorconvert_profile = 'GnomeTerminal.Tango'
+
+" }}}
 
 " Local: -------------------------------
 " {{{ source ~/.vim/vimrc.local

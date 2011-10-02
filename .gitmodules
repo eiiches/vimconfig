@@ -103,3 +103,6 @@
 [submodule "bundle/rainbowbrackets"]
 	path = bundle/rainbowbrackets
 	url = git://github.com/eiiches/vim-rainbowbrackets.git
+[submodule "bundle/colorconvert.vim"]
+	path = bundle/colorconvert.vim
+	url = git://github.com/eiiches/vim-colorconvert.git
