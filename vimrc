@@ -1450,7 +1450,13 @@ Bundle 'vim-colored-colorscheme/after'
 
 Bundle 'rainbowbrackets'
 
-let g:rainbowbrackets_colors = [9, 10, 33, 190]
+let g:rainbowbrackets_colors =
+			\ [
+			\   'ctermfg=9',
+			\   'ctermfg=10',
+			\   'ctermfg=33',
+			\   'ctermfg=190'
+			\ ]
 let g:rainbowbrackets_enable_round_brackets = 1
 let g:rainbowbrackets_enable_curly_brackets = 0
 let g:rainbowbrackets_enable_square_brackets = 0
