@@ -799,11 +799,6 @@ noremap <silent> <C-z> :call <sid>suspend()<CR>
 " {{{ tabline
 
 function! s:get_tabpage_label(n)
-	let title = gettabvar(a:n, 'title')
-	if !empty(title)
-		return title
-	endif
-
 	let bufnrs = tabpagebuflist(a:n)
 	let hi = a:n is tabpagenr() ? '%#TabLineSel#' : '%#TabLine#'
 
@@ -814,12 +809,7 @@ function! s:get_tabpage_label(n)
 
 	let mod = len(filter(copy(bufnrs), 'getbufvar(v:val, "&modified")')) ? '+' : ''
 	let sp = (no . mod) ==# '' ? '' : ' '
-
-	let curbufnr = bufnrs[tabpagewinnr(a:n) - 1]
-	let fname = fnamemodify(bufname(curbufnr), ":t")
-	if empty(fname)
-		let fname = '[No Name]'
-	endif
+	let fname = '%f'
 
 	let label = no . mod . sp . fname
 
