@@ -786,6 +786,47 @@ endfunction
 noremap <silent> <C-z> :call <sid>suspend()<CR>
 
 " }}}
+" {{{ tabline
+
+function! s:get_tabpage_label(n)
+	let title = gettabvar(a:n, 'title')
+	if !empty(title)
+		return title
+	endif
+
+	let bufnrs = tabpagebuflist(a:n)
+	let hi = a:n is tabpagenr() ? '%#TabLineSel#' : '%#TabLine#'
+
+	let no = len(bufnrs)
+	if no is 1
+		let no = ''
+	endif
+
+	let mod = len(filter(copy(bufnrs), 'getbufvar(v:val, "&modified")')) ? '+' : ''
+	let sp = (no . mod) ==# '' ? '' : ' '
+
+	let curbufnr = bufnrs[tabpagewinnr(a:n) - 1]
+	let fname = fnamemodify(bufname(curbufnr), ":t")
+	if empty(fname)
+		let fname = '[No Name]'
+	endif
+
+	let label = no . mod . sp . fname
+
+	return '%' . a:n . 'T' . hi . ' ' . label . ' %T%#TabLineFill#'
+endfunction
+
+function! MyTabline()
+	let titles = map(range(1, tabpagenr('$')), 's:get_tabpage_label(v:val)')
+	let separator = ''
+	let tabpages = join(titles, separator) . separator . '%#TabLineFill#%T'
+	let info = '%#TabLineSel# ' . fnamemodify(getcwd(), ":~") . ' '
+	return tabpages . '%=' . info
+endfunction
+set tabline=%!MyTabline()
+set showtabline=2
+
+" }}}
 
 " FileTypes: ---------------------------
 " {{{ XML
