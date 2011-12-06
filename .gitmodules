@@ -106,3 +106,6 @@
 [submodule "bundle/colorconvert.vim"]
 	path = bundle/colorconvert.vim
 	url = git://github.com/eiiches/vim-colorconvert.git
+[submodule "bundle/vimfiler"]
+	path = bundle/vimfiler
+	url = git://github.com/Shougo/vimfiler.git

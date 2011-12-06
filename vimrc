@@ -1515,6 +1515,12 @@ Bundle 'colorconvert.vim'
 let g:colorconvert_profile = 'GnomeTerminal.Tango'
 
 " }}}
+" {{{ vimfiler
+
+Bundle 'vimfiler'
+let g:vimfiler_as_default_explorer = 1
+
+" }}}
 
 " Local: -------------------------------
 " {{{ source ~/.vim/vimrc.local
