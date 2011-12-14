@@ -620,10 +620,12 @@ set nostartofline
 
 function! s:ibusdisable()
 python << EOF
-import ibus
-bus = ibus.Bus()
-ic = ibus.InputContext(bus, bus.current_input_contxt())
-ic.disable()
+try:
+	import ibus
+	bus = ibus.Bus()
+	ic = ibus.InputContext(bus, bus.current_input_contxt())
+	ic.disable()
+except: pass
 EOF
 endfunction
 autocmd vimrc InsertLeave * call <sid>ibusdisable()
