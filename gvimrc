@@ -100,7 +100,7 @@ endif
 " }}}
 
 " Post: --------------------------------
-" {{{ gvimrcPost evnet
+" {{{ gvimrcPost event
 
 autocmd gvimrc User gvimrcPost silent
 doautocmd gvimrc User gvimrcPost

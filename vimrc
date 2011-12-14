@@ -1539,7 +1539,7 @@ endif
 " }}}
 
 " Post: --------------------------------
-" {{{ vimrcPost evnet
+" {{{ vimrcPost event
 
 autocmd vimrc User vimrcPost silent
 doautocmd vimrc User vimrcPost
