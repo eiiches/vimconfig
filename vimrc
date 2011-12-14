@@ -809,7 +809,11 @@ function! s:get_tabpage_label(n)
 
 	let mod = len(filter(copy(bufnrs), 'getbufvar(v:val, "&modified")')) ? '+' : ''
 	let sp = (no . mod) ==# '' ? '' : ' '
-	let fname = '%f'
+	let curbufnr = bufnrs[tabpagewinnr(a:n) - 1]
+	let fname = fnamemodify(bufname(curbufnr), ':t')
+	if empty(fname)
+		let fname = '[No Name]'
+	endif
 
 	let label = no . mod . sp . fname
 
