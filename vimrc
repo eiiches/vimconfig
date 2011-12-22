@@ -1278,6 +1278,11 @@ Bundle 'unite-help'
 nnoremap gH :<C-u>Unite -start-insert help<CR>
 
 " }}}
+" {{{ unite-colorscheme
+
+Bundle 'unite-colorscheme'
+
+" }}}
 " {{{ neocomplcache
 
 Bundle 'neocomplcache'

@@ -109,3 +109,6 @@
 [submodule "bundle/vimfiler"]
 	path = bundle/vimfiler
 	url = git://github.com/Shougo/vimfiler.git
+[submodule "bundle/unite-colorscheme"]
+	path = bundle/unite-colorscheme
+	url = git://github.com/ujihisa/unite-colorscheme.git
