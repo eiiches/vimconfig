@@ -402,6 +402,7 @@ let g:default_stl .= "#[FileName] %f " " File name
 let g:default_stl .= "#[ModFlag]%{&readonly ? '[RO] ' : ''}" " RO flag
 let g:default_stl .= "#[ModFlag]%{&modifiable && &modified ? '[+] ' : ''}" " Modified flag
 let g:default_stl .= "#[Blank]" " Padding/HL group
+let g:default_stl .= " %{cfi#format(\"[%s()]\", \"\")}"
 let g:default_stl .= "%<" " Truncate right
 let g:default_stl .= "%=" " Right align
 let g:default_stl .= "#[BufFlag]%{&previewwindow ? '[Preview] ' : ''}" " PRV flags
@@ -1210,6 +1211,11 @@ Bundle 'vim-metarw'
 " {{{ metarw-git
 
 Bundle 'metarw-git'
+
+" }}}
+" {{{ current-func-info.vim
+
+Bundle 'current-func-info'
 
 " }}}
 " {{{ unite.vim

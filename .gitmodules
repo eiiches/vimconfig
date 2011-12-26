@@ -112,3 +112,6 @@
 [submodule "bundle/unite-colorscheme"]
 	path = bundle/unite-colorscheme
 	url = git://github.com/ujihisa/unite-colorscheme.git
+[submodule "bundle/current-func-info"]
+	path = bundle/current-func-info
+	url = git://github.com/tyru/current-func-info.vim.git
