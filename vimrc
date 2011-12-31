@@ -1157,6 +1157,12 @@ command! -range=% -nargs=0 Chomp :<line1>,<line2>s/\s\+$//g
 call s:expandcmd('chomp', 'Chomp')
 
 " }}}
+" {{{ :Ronbun
+
+command! -range=% -nargs=0 Ronbun :<line1>,<line2>Subvert/{、,。}/{，,．}/g
+call s:expandcmd('ronbun', 'Ronbun')
+
+" }}}
 
 " Plugins: -----------------------------
 " {{{ quickrun.vim
