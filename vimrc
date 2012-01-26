@@ -834,6 +834,11 @@ set tabline=%!MyTabline()
 set showtabline=2
 
 " }}}
+" {{{ langauge
+
+language en_US.utf-8
+
+" }}}
 
 " FileTypes: ---------------------------
 " {{{ XML
