@@ -115,3 +115,6 @@
 [submodule "bundle/current-func-info"]
 	path = bundle/current-func-info
 	url = git://github.com/tyru/current-func-info.vim.git
+[submodule "bundle/unite-tselect"]
+	path = bundle/unite-tselect
+	url = git://github.com/eiiches/unite-tselect.git

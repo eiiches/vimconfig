@@ -1300,6 +1300,13 @@ nnoremap gH :<C-u>Unite -start-insert help<CR>
 Bundle 'unite-colorscheme'
 
 " }}}
+" {{{ unite-tselect
+
+Bundle 'unite-tselect'
+nnoremap g<C-]> :<C-u>Unite -immediately tselect:<C-r>=expand('<cword>')<CR><CR>
+nnoremap g] :<C-u>Unite tselect:<C-r>=expand('<cword>')<CR><CR>
+
+" }}}
 " {{{ neocomplcache
 
 Bundle 'neocomplcache'
