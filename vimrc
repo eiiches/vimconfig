@@ -1304,7 +1304,7 @@ Bundle 'unite-colorscheme'
 
 Bundle 'unite-tselect'
 nnoremap g<C-]> :<C-u>Unite -immediately tselect:<C-r>=expand('<cword>')<CR><CR>
-nnoremap g] :<C-u>Unite tselect:<C-r>=expand('<cword>')<CR><CR>
+nnoremap g] :<C-u>Unite -auto-preview tselect:<C-r>=expand('<cword>')<CR><CR>
 
 " }}}
 " {{{ neocomplcache
