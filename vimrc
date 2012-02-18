@@ -1351,6 +1351,11 @@ let OmniCpp_ShowPrototypeInAbbr = 1
 let OmniCpp_MayCompleteScope = 1
 
 " }}}
+" {{{ neocomplcache-snippets
+
+Bundle 'neocomplcache-snippets-complete'
+
+" }}}
 " {{{ vimproc
 
 Bundle 'vimproc'
