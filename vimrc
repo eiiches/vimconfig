@@ -455,6 +455,15 @@ function! s:expandcmd(orig, repl)
 	call s:expandcmddyn(a:orig, s:quote(a:repl))
 endfunction
 
+function! WrapTextRange(line1, line2, list1, list2)
+	for text in reverse(a:list2)
+		call append(a:line2, text)
+	endfor
+	for text in reverse(a:list1)
+		call append(a:line1, text)
+	endfor
+endfunction
+
 " }}}
 " {{{ key mappings
 
@@ -873,7 +882,21 @@ augroup vimrc-python
 augroup END
 
 " }}}
-" {{{ C
+" {{{ C/C++
+
+function! IncludeGuard(macro)
+	call WrapTextRange(0, line('$'),
+				\ ['#ifndef '.a:macro, '#define '.a:macro],
+				\ ['#endif /* '.a:macro.' */'])
+endfunction
+
+function! Namespace(line1, line2, identifier)
+	call WrapTextRange(a:line1-1, a:line2,
+				\ ['', 'namespace '.a:identifier.' {'],
+				\ ['} /* namespace '.a:identifier.' */', ''])
+endfunction
+command! -range -nargs=1 Namespace call Namespace(<line1>, <line2>, <f-args>)
+call s:expandcmd('namespace', 'Namespace')
 
 augroup vimrc-c
 	au!
@@ -882,6 +905,7 @@ augroup vimrc-c
 	au FileType c,cpp set foldcolumn=2
 	au FileType c,cpp let g:c_space_errors = 1
 	au FileType   cpp let g:c_no_curly_error = 1
+	au BufNewFile *.{h,hpp} call IncludeGuard("_" . substitute(toupper(expand("%:t")), "[\\.-]", "_", "g") . "_")
 augroup END
 
 " gtk development
