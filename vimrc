@@ -1192,6 +1192,13 @@ command! -range=% -nargs=0 Ronbun :<line1>,<line2>Subvert/{、,。}/{，,．}/g
 call s:expandcmd('ronbun', 'Ronbun')
 
 " }}}
+" {{{ :Mktag
+
+command! -nargs=0 Mktag silent exe '!ctags -R .' | normal! <C-l>
+call s:expandcmd('mktag', 'Mktag')
+call s:expandcmd('mkt', 'Mktag')
+
+" }}}
 
 " Plugins: -----------------------------
 " {{{ quickrun.vim
