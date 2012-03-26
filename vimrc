@@ -900,6 +900,15 @@ endfunction
 command! -range -nargs=1 Namespace call Namespace(<line1>, <line2>, <f-args>)
 call s:expandcmd('namespace', 'Namespace')
 
+function! ExternC(line1, line2)
+	call WrapTextRange(a:line1-1, a:line2,
+				\ ['#ifdef __cplusplus', 'extern "C" {', '#endif'],
+				\ ['#ifdef __cplusplus', '}', '#endif'])
+endfunction
+command! -range ExternC call ExternC(<line1>, <line2>)
+call s:expandcmd('externc', 'ExternC')
+
+
 augroup vimrc-c
 	au!
 	au FileType c,cpp setlocal commentstring=\ \/\*\ %s\ \*\/
