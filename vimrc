@@ -629,6 +629,7 @@ set virtualedit=block
 set nostartofline
 
 function! s:ibusdisable()
+if has('python')
 python << EOF
 try:
 	import ibus
@@ -637,6 +638,7 @@ try:
 	ic.disable()
 except: pass
 EOF
+endif
 endfunction
 autocmd vimrc InsertLeave * call <sid>ibusdisable()
 
