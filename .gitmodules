@@ -121,3 +121,6 @@
 [submodule "bundle/neocomplcache-snippets-complete"]
 	path = bundle/neocomplcache-snippets-complete
 	url = git://github.com/Shougo/neocomplcache-snippets-complete.git
+[submodule "bundle/vim-ref-info"]
+	path = bundle/vim-ref-info
+	url = git://github.com/eiiches/vim-ref-info.git

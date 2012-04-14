@@ -1256,6 +1256,11 @@ let g:ref_noenter=1
 Bundle 'vim-ref-gtkdoc'
 
 " }}}
+" {{{ vim-ref-info
+
+Bundle 'vim-ref-info'
+
+" }}}
 " {{{ metarw
 
 Bundle 'vim-metarw'
