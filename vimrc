@@ -1249,6 +1249,25 @@ let g:vimwiki_camel_case = 0
 
 Bundle 'vim-ref'
 let g:ref_noenter=1
+let g:ref_source_webdict_sites = {
+			\ 'alc': {
+			\	'url': 'http://eow.alc.co.jp/search?q=%s',
+			\	'keyword_encoding': 'utf-8',
+			\	'cache': 1,
+			\ },
+			\ 'wikipedia:ja': 'http://ja.wikipedia.org/wiki/%s',
+			\ 'wikipedia:en': 'http://en.wikipedia.org/wiki/%s',
+			\ }
+
+let g:ref_source_webdict_sites.default = 'wikipedia:ja'
+function! g:ref_source_webdict_sites.alc.filter(output)
+	return join(split(a:output, "\n")[32:], "\n")
+endfunction
+
+command! -nargs=1 Alc Ref webdict alc <args>
+call s:expandcmd('alc', 'Alc')
+
+let g:ref_open = 'vsplit'
 
 " }}}
 " {{{ vim-ref-gtk
