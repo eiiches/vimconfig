@@ -1218,6 +1218,17 @@ Bundle 'vim-quickrun'
 nnoremap <silent> <Leader>r :QuickRun -mode n<CR>
 vnoremap <silent> <Leader>r :QuickRun -mode v<CR>
 
+let g:quickrun_config = {}
+let g:quickrun_config['cpp'] = {
+			\ 'type': 'cpp',
+			\ 'cmdopt': '-std=c++0x'
+			\ }
+
+let g:quickrun_config['postscr'] = {
+			\ 'type': 'postscr',
+			\ 'command': 'gs',
+			\ }
+
 " }}}
 " {{{ repeat.vim
 
