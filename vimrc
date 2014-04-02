@@ -1389,11 +1389,6 @@ nnoremap g] :<C-u>Unite -auto-preview tselect:<C-r>=expand('<cword>')<CR><CR>
 Bundle 'neocomplcache'
 let g:neocomplcache_enable_at_startup = 1
 
-" snippets
-let g:neocomplcache_snippets_dir = '~/.vim/snippets'
-imap <silent><C-l> <Plug>(neocomplcache_snippets_expand)
-imap <C-s>  <Plug>(neocomplcache_start_unite_snippet)
-
 " }}}
 " {{{ javacomplete
 
@@ -1428,9 +1423,15 @@ let OmniCpp_ShowPrototypeInAbbr = 1
 let OmniCpp_MayCompleteScope = 1
 
 " }}}
-" {{{ neocomplcache-snippets
+" {{{ neosnippet.vim
 
-Bundle 'neocomplcache-snippets-complete'
+Bundle 'neosnippet.vim'
+
+imap <C-l> <Plug>(neosnippet_expand_or_jump)
+smap <C-l> <Plug>(neosnippet_expand_or_jump)
+xmap <C-l> <Plug>(neosnippet_expand_target)
+
+let g:neosnippet#snippets_directory = '~/.vim/snippets'
 
 " }}}
 " {{{ vimproc

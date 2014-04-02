@@ -124,3 +124,6 @@
 [submodule "bundle/vim-ref-info"]
 	path = bundle/vim-ref-info
 	url = git://github.com/eiiches/vim-ref-info.git
+[submodule "bundle/neosnippet.vim"]
+	path = bundle/neosnippet.vim
+	url = git@github.com:Shougo/neosnippet.vim.git
