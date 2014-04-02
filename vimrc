@@ -1211,10 +1211,14 @@ call s:expandcmd('mkt', 'Mktag')
 
 " }}}
 
+set runtimepath+=~/.vim/neobundle.vim
+call neobundle#rc(expand('~/.vim/bundle/'))
+
 " Plugins: -----------------------------
 " {{{ quickrun.vim
 
-Bundle 'vim-quickrun'
+NeoBundle 'thinca/vim-quickrun'
+
 nnoremap <silent> <Leader>r :QuickRun -mode n<CR>
 vnoremap <silent> <Leader>r :QuickRun -mode v<CR>
 
@@ -1232,17 +1236,17 @@ let g:quickrun_config['postscr'] = {
 " }}}
 " {{{ repeat.vim
 
-Bundle 'vim-repeat'
+NeoBundle 'tpope/vim-repeat'
 
 " }}}
 " {{{ surround.vim
 
-Bundle 'vim-surround'
+NeoBundle 'tpope/vim-surround'
 
 " }}}
 " {{{ vim-abolish
 
-Bundle 'vim-abolish'
+NeoBundle 'tpope/vim-abolish'
 
 " }}}
 " {{{ vimwiki
@@ -1258,7 +1262,7 @@ let g:vimwiki_camel_case = 0
 " }}}
 " {{{ vim-ref
 
-Bundle 'vim-ref'
+NeoBundle 'thinca/vim-ref'
 let g:ref_noenter=1
 let g:ref_source_webdict_sites = {
 			\ 'alc': {
@@ -1293,12 +1297,12 @@ Bundle 'vim-ref-info'
 " }}}
 " {{{ metarw
 
-Bundle 'vim-metarw'
+NeoBundle 'kana/vim-metarw'
 
 " }}}
 " {{{ metarw-git
 
-Bundle 'metarw-git'
+NeoBundle 'kana/vim-metarw-git'
 
 " }}}
 " {{{ current-func-info.vim
@@ -1308,7 +1312,7 @@ Bundle 'current-func-info'
 " }}}
 " {{{ unite.vim
 
-Bundle 'unite.vim'
+NeoBundle 'Shougo/unite.vim'
 
 " <ESC> to leave Unite mode
 autocmd vimrc FileType unite nmap <buffer> <ESC> <Plug>(unite_exit)
@@ -1353,7 +1357,7 @@ nnoremap <silent> g? :call <sid>unite_grep_interactive('')<CR>
 " }}}
 " {{{ unite-outline
 
-Bundle 'unite-outline'
+NeoBundle 'Shougo/unite-outline'
 
 nnoremap go :Unite outline<CR>
 
@@ -1425,7 +1429,7 @@ let OmniCpp_MayCompleteScope = 1
 " }}}
 " {{{ neosnippet.vim
 
-Bundle 'neosnippet.vim'
+NeoBundle 'Shougo/neosnippet.vim'
 
 imap <C-l> <Plug>(neosnippet_expand_or_jump)
 smap <C-l> <Plug>(neosnippet_expand_or_jump)
@@ -1436,12 +1440,12 @@ let g:neosnippet#snippets_directory = '~/.vim/snippets'
 " }}}
 " {{{ vimproc
 
-Bundle 'vimproc'
+NeoBundle 'Shougo/vimproc'
 
 " }}}
 " {{{ vimshell
 
-Bundle 'vimshell'
+NeoBundle 'Shougo/vimshell.vim'
 
 augroup vimrc-vimshell
 	au!
@@ -1491,7 +1495,7 @@ hi termipythonOutput ctermfg=9
 " }}}
 " {{{ zencoding
 
-Bundle 'zencoding-vim'
+NeoBundle 'mattn/zencoding-vim'
 
 " }}}
 " {{{ argtextobj.vim
@@ -1511,7 +1515,7 @@ Bundle 'vim-alignta'
 " }}}
 " {{{ localrc
 
-Bundle 'localrc'
+NeoBundle 'thinca/vim-localrc'
 
 " }}}
 " {{{ matchit
@@ -1532,7 +1536,7 @@ let g:EasyMotion_leader_key = ','
 " }}}
 " {{{ vim-altr
 
-Bundle 'vim-altr'
+NeoBundle 'kana/vim-altr'
 nmap ga <Plug>(altr-forward)
 nmap gA <Plug>(altr-back)
 
@@ -1578,7 +1582,7 @@ let g:SrcExpl_updateTagsKey = "<F12>" " // Set <F12> key for updating the tags f
 " }}}
 " {{{ fugitive.vim
 
-Bundle 'fugitive'
+NeoBundle 'tpope/vim-fugitive'
 nnoremap ,git :Git<Space>
 nnoremap <silent> ,log :silent Glog \| redraw!<CR>
 nnoremap <silent> ,st :silent Gstatus<CR>
@@ -1635,7 +1639,7 @@ let g:colorconvert_profile = 'GnomeTerminal.Tango'
 " }}}
 " {{{ vimfiler
 
-Bundle 'vimfiler'
+NeoBundle 'Shougo/vimfiler.vim'
 let g:vimfiler_as_default_explorer = 1
 
 " }}}

@@ -1,9 +1,3 @@
-[submodule "bundle/vim-quickrun"]
-	path = bundle/vim-quickrun
-	url = git://github.com/thinca/vim-quickrun.git
-[submodule "bundle/vim-ref"]
-	path = bundle/vim-ref
-	url = git://github.com/thinca/vim-ref.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree
@@ -13,27 +7,6 @@
 [submodule "bundle/vim-ref-gtkdoc"]
 	path = bundle/vim-ref-gtkdoc
 	url = git://github.com/eiiches/vim-ref-gtkdoc.git
-[submodule "bundle/metarw-git"]
-	path = bundle/metarw-git
-	url = git://github.com/kana/vim-metarw-git.git
-[submodule "bundle/vim-metarw"]
-	path = bundle/vim-metarw
-	url = git://github.com/kana/vim-metarw.git
-[submodule "bundle/vim-surround"]
-	path = bundle/vim-surround
-	url = http://github.com/tpope/vim-surround.git
-[submodule "bundle/unite.vim"]
-	path = bundle/unite.vim
-	url = git://github.com/Shougo/unite.vim.git
-[submodule "bundle/vimshell"]
-	path = bundle/vimshell
-	url = git://github.com/Shougo/vimshell.git
-[submodule "bundle/vimproc"]
-	path = bundle/vimproc
-	url = git://github.com/Shougo/vimproc.git
-[submodule "bundle/zencoding-vim"]
-	path = bundle/zencoding-vim
-	url = git://github.com/mattn/zencoding-vim.git
 [submodule "bundle/argtextobj.vim"]
 	path = bundle/argtextobj.vim
 	url = git://github.com/vim-scripts/argtextobj.vim.git
@@ -46,9 +19,6 @@
 [submodule "bundle/vimwiki"]
 	path = bundle/vimwiki
 	url = git://github.com/vim-scripts/vimwiki.git
-[submodule "bundle/localrc"]
-	path = bundle/localrc
-	url = git://github.com/thinca/vim-localrc.git
 [submodule "bundle/matchit"]
 	path = bundle/matchit
 	url = git://github.com/vim-scripts/matchit.zip.git
@@ -61,27 +31,18 @@
 [submodule "bundle/omnicppcomplete"]
 	path = bundle/omnicppcomplete
 	url = git://github.com/vim-scripts/OmniCppComplete.git
-[submodule "bundle/vim-altr"]
-	path = bundle/vim-altr
-	url = git://github.com/kana/vim-altr.git
 [submodule "bundle/javacomplete"]
 	path = bundle/javacomplete
 	url = git://github.com/vim-scripts/javacomplete.git
 [submodule "bundle/tex.vim"]
 	path = bundle/tex.vim
 	url = git://github.com/vim-scripts/tex.vim--Tanzler.git
-[submodule "bundle/fugitive"]
-	path = bundle/fugitive
-	url = git://github.com/tpope/vim-fugitive.git
 [submodule "bundle/vim-css-color"]
 	path = bundle/vim-css-color
 	url = git://github.com/eiiches/vim-css-color.git
 [submodule "bundle/errormarker"]
 	path = bundle/errormarker
 	url = git://github.com/vim-scripts/errormarker.vim.git
-[submodule "bundle/unite-outline"]
-	path = bundle/unite-outline
-	url = git://github.com/h1mesuke/unite-outline.git
 [submodule "bundle/unite-history"]
 	path = bundle/unite-history
 	url = git://github.com/thinca/vim-unite-history.git
@@ -91,12 +52,6 @@
 [submodule "bundle/vim-colored-colorscheme"]
 	path = bundle/vim-colored-colorscheme
 	url = git://github.com/eiiches/vim-colored-colorscheme.git
-[submodule "bundle/vim-repeat"]
-	path = bundle/vim-repeat
-	url = git://github.com/tpope/vim-repeat.git
-[submodule "bundle/vim-abolish"]
-	path = bundle/vim-abolish
-	url = git://github.com/tpope/vim-abolish.git
 [submodule "bundle/vim-alignta"]
 	path = bundle/vim-alignta
 	url = git://github.com/h1mesuke/vim-alignta.git
@@ -106,9 +61,6 @@
 [submodule "bundle/colorconvert.vim"]
 	path = bundle/colorconvert.vim
 	url = git://github.com/eiiches/vim-colorconvert.git
-[submodule "bundle/vimfiler"]
-	path = bundle/vimfiler
-	url = git://github.com/Shougo/vimfiler.git
 [submodule "bundle/unite-colorscheme"]
 	path = bundle/unite-colorscheme
 	url = git://github.com/ujihisa/unite-colorscheme.git
@@ -124,6 +76,6 @@
 [submodule "bundle/vim-ref-info"]
 	path = bundle/vim-ref-info
 	url = git://github.com/eiiches/vim-ref-info.git
-[submodule "bundle/neosnippet.vim"]
-	path = bundle/neosnippet.vim
-	url = git@github.com:Shougo/neosnippet.vim.git
+[submodule "neobundle.vim"]
+	path = neobundle.vim
+	url = https://github.com/Shougo/neobundle.vim.git
