@@ -1179,16 +1179,6 @@ endfunction
 command! -nargs=0 UpdateHelp call UpdateHelp()
 
 " }}}
-" {{{ :Bundle
-
-function! Bundle(...)
-	for bundle in a:000
-		execute 'set runtimepath+=~/.vim/bundle/' . eval(bundle)
-	endfor
-endfunction
-command! -nargs=* Bundle call Bundle(<f-args>)
-
-" }}}
 " {{{ :Chomp
 
 command! -range=% -nargs=0 Chomp :<line1>,<line2>s/\s\+$//g
