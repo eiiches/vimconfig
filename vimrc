@@ -1251,7 +1251,7 @@ NeoBundle 'tpope/vim-abolish'
 " }}}
 " {{{ vimwiki
 
-Bundle 'vimwiki'
+NeoBundle 'vim-scripts/vimwiki'
 
 " do not specify default wiki.
 let g:vimwiki_list = [{}]
@@ -1287,12 +1287,12 @@ let g:ref_open = 'vsplit'
 " }}}
 " {{{ vim-ref-gtk
 
-Bundle 'vim-ref-gtkdoc'
+NeoBundle 'eiiches/vim-ref-gtkdoc'
 
 " }}}
 " {{{ vim-ref-info
 
-Bundle 'vim-ref-info'
+NeoBundle 'eiiches/vim-ref-info'
 
 " }}}
 " {{{ metarw
@@ -1307,7 +1307,7 @@ NeoBundle 'kana/vim-metarw-git'
 " }}}
 " {{{ current-func-info.vim
 
-Bundle 'current-func-info'
+NeoBundle 'tyru/current-func-info.vim'
 
 " }}}
 " {{{ unite.vim
@@ -1364,39 +1364,39 @@ nnoremap go :Unite outline<CR>
 " }}}
 " {{{ unite-history
 
-Bundle 'unite-history'
+NeoBundle 'thinca/vim-unite-history'
 
 nnoremap gh :Unite history/command<CR>
 
 " }}}
 " {{{ unite-help
 
-Bundle 'unite-help'
+NeoBundle 'tsukkee/unite-help'
 
 nnoremap gH :<C-u>Unite -start-insert help<CR>
 
 " }}}
 " {{{ unite-colorscheme
 
-Bundle 'unite-colorscheme'
+NeoBundle 'ujihisa/unite-colorscheme'
 
 " }}}
 " {{{ unite-tselect
 
-Bundle 'unite-tselect'
+NeoBundle 'eiiches/unite-tselect'
 nnoremap g<C-]> :<C-u>Unite -immediately tselect:<C-r>=expand('<cword>')<CR><CR>
 nnoremap g] :<C-u>Unite -auto-preview tselect:<C-r>=expand('<cword>')<CR><CR>
 
 " }}}
 " {{{ neocomplcache
 
-Bundle 'neocomplcache'
+NeoBundle 'Shougo/neocomplcache'
 let g:neocomplcache_enable_at_startup = 1
 
 " }}}
 " {{{ javacomplete
 
-Bundle 'javacomplete'
+NeoBundle 'vim-scripts/javacomplete'
 augroup vimrc-javacomplete
 	au!
 	au Filetype java setlocal omnifunc=javacomplete#Complete
@@ -1412,7 +1412,7 @@ function! UpdateTags()
 	execute 'setlocal tags+=' . neocomplcache#cache#encode_name('tags_output', expand('%:p'))
 endfunction
 
-Bundle 'omnicppcomplete'
+NeoBundle 'vim-scripts/OmniCppComplete'
 augroup vimrc-omnicppcomplete
 	au!
 	au FileType c,cpp call omni#cpp#complete#Init()
@@ -1500,17 +1500,17 @@ NeoBundle 'mattn/zencoding-vim'
 " }}}
 " {{{ argtextobj.vim
 
-Bundle 'argtextobj.vim'
+NeoBundle 'vim-scripts/argtextobj.vim'
 
 " }}}
 " {{{ drawit
 
-Bundle 'drawit'
+NeoBundle 'vim-scripts/DrawIt'
 
 " }}}
 " {{{ alignta
 
-Bundle 'vim-alignta'
+NeoBundle 'h1mesuke/vim-alignta'
 
 " }}}
 " {{{ localrc
@@ -1520,17 +1520,17 @@ NeoBundle 'thinca/vim-localrc'
 " }}}
 " {{{ matchit
 
-Bundle 'matchit'
+NeoBundle 'vim-scripts/matchit.zip'
 
 " }}}
 " {{{ matchit-python
 
-Bundle 'matchit_python'
+NeoBundle 'vim-scripts/python_match.vim'
 
 " }}}
 " {{{ easymotion
 
-Bundle 'easymotion'
+NeoBundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_leader_key = ','
 
 " }}}
@@ -1554,12 +1554,12 @@ call altr#define('Makefile.am', 'configure.ac')
 " }}}
 " {{{ tex.vim
 
-Bundle 'tex.vim'
+NeoBundle 'vim-scripts/tex.vim--Tanzler'
 
 " }}}
 " {{{ srcexpl.vim
 
-Bundle 'srcexpl.vim'
+NeoBundle 'vim-scripts/Source-Explorer-srcexpl.vim'
 
 nnoremap <silent> <Leader>j :SrcExplToggle<CR>
 let g:SrcExpl_winHeight = 8 " // Set the height of Source Explorer window
@@ -1601,17 +1601,17 @@ noremap <Leader>g :GNOMEAlignArguments<CR>
 " }}}
 " {{{  vim-css-color
 
-Bundle 'vim-css-color/after'
+NeoBundle 'eiiches/vim-css-color'
 
 " }}}
 " {{{ vim-colored-colorscheme
 
-Bundle 'vim-colored-colorscheme/after'
+NeoBundle 'eiiches/vim-colored-colorscheme'
 
 " }}}
 " {{{ rainbowbrackets
 
-Bundle 'rainbowbrackets'
+NeoBundle 'eiiches/vim-rainbowbrackets'
 
 let g:rainbowbrackets_colors =
 			\ [
@@ -1632,7 +1632,7 @@ augroup END
 " }}}
 " {{{ colorconvert.vim
 
-Bundle 'colorconvert.vim'
+NeoBundle 'eiiches/vim-colorconvert'
 
 let g:colorconvert_profile = 'GnomeTerminal.Tango'
 
@@ -1641,6 +1641,16 @@ let g:colorconvert_profile = 'GnomeTerminal.Tango'
 
 NeoBundle 'Shougo/vimfiler.vim'
 let g:vimfiler_as_default_explorer = 1
+
+" }}}
+" {{{ nerdtree
+
+NeoBundle 'scrooloose/nerdtree'
+
+" }}}
+" {{{ errormarker
+
+NeoBundle 'vim-scripts/errormarker.vim'
 
 " }}}
 
