@@ -104,7 +104,6 @@ function! s:open_vimrc(command, vimrc)
 	endif
 endfunction
 nnoremap <silent> <leader>v :call <sid>open_vimrc('vsplit', $MYVIMRC)<CR>
-nnoremap <silent> <C-w><leader>v :call <sid>open_vimrc('tabnew', $MYVIMRC)<CR>
 
 " }}}
 " {{{ encoding and format
@@ -402,7 +401,6 @@ let g:default_stl .= "#[FileName] %f " " File name
 let g:default_stl .= "#[ModFlag]%{&readonly ? '[RO] ' : ''}" " RO flag
 let g:default_stl .= "#[ModFlag]%{&modifiable && &modified ? '[+] ' : ''}" " Modified flag
 let g:default_stl .= "#[Blank]" " Padding/HL group
-let g:default_stl .= " %{cfi#format(\"[%s()]\", \"\")}"
 let g:default_stl .= "%<" " Truncate right
 let g:default_stl .= "%=" " Right align
 let g:default_stl .= "#[BufFlag]%{&previewwindow ? '[Preview] ' : ''}" " PRV flags
@@ -920,28 +918,28 @@ augroup vimrc-c
 augroup END
 
 " gtk development
-function! GtkDocOrMan()
-	if exists('b:gtk_development_in_c') && b:gtk_development_in_c
-		execute 'Ref gtkdoc' expand('<cword>')
-	else
-		execute 'Ref man' expand('<cword>')
-	endif
-endfunction
-function! CheckGtkDevehelopmentInC()
-	let b:gtk_development_in_c = 0
-	for s:line in getline(0, line("$"))
-		if s:line =~# '<glib.h>' || s:line =~# '<gtk/gtk.h>'
-			let b:gtk_development_in_c = 1
-			break
-		endif
-	endfor
-	if b:gtk_development_in_c
-		set path+=/usr/include/gtk-2.0
-		set path+=/usr/include/glib-2.0
-	endif
-	nnoremap <buffer><silent> K :call GtkDocOrMan()<CR>
-endfunction
-au vimrc-c BufReadPost,BufWritePost *.c,*.h,*.cpp,*.hpp call CheckGtkDevehelopmentInC()
+" function! GtkDocOrMan()
+" 	if exists('b:gtk_development_in_c') && b:gtk_development_in_c
+" 		execute 'Ref gtkdoc' expand('<cword>')
+" 	else
+" 		execute 'Ref man' expand('<cword>')
+" 	endif
+" endfunction
+" function! CheckGtkDevehelopmentInC()
+" 	let b:gtk_development_in_c = 0
+" 	for s:line in getline(0, line("$"))
+" 		if s:line =~# '<glib.h>' || s:line =~# '<gtk/gtk.h>'
+" 			let b:gtk_development_in_c = 1
+" 			break
+" 		endif
+" 	endfor
+" 	if b:gtk_development_in_c
+" 		set path+=/usr/include/gtk-2.0
+" 		set path+=/usr/include/glib-2.0
+" 	endif
+" 	nnoremap <buffer><silent> K :call GtkDocOrMan()<CR>
+" endfunction
+" au vimrc-c BufReadPost,BufWritePost *.c,*.h,*.cpp,*.hpp call CheckGtkDevehelopmentInC()
 
 " }}}
 " {{{ D
@@ -985,7 +983,16 @@ augroup END
 
 augroup vimrc-shellscript
 	au!
-	au BufWritePost *.sh exe "silent !chmod +x %"
+	au BufNewFile *.sh let b:buf_is_new_file = 1
+	au BufWritePost *.sh if exists('b:buf_is_new_file') && b:buf_is_new_file == 1 | exe "silent !chmod +x %" | endif | let b:buf_is_new_file = 1
+augroup END
+
+" }}}
+" {{{ Rust
+
+augroup vimrc-rust
+	au!
+	au BufRead,BufNewFile *.rs setfiletype rust
 augroup END
 
 " }}}
@@ -1205,6 +1212,7 @@ set runtimepath+=~/.vim/neobundle.vim
 call neobundle#rc(expand('~/.vim/bundle/'))
 
 " Plugins: -----------------------------
+
 " {{{ quickrun.vim
 
 NeoBundle 'thinca/vim-quickrun'
@@ -1223,6 +1231,11 @@ let g:quickrun_config['postscr'] = {
 			\ 'command': 'gs',
 			\ }
 
+let g:quickrun_config['rust'] = {
+			\ 'type': 'rust',
+			\ 'command': 'rustc',
+			\ }
+
 " }}}
 " {{{ repeat.vim
 
@@ -1237,17 +1250,6 @@ NeoBundle 'tpope/vim-surround'
 " {{{ vim-abolish
 
 NeoBundle 'tpope/vim-abolish'
-
-" }}}
-" {{{ vimwiki
-
-NeoBundle 'vim-scripts/vimwiki'
-
-" do not specify default wiki.
-let g:vimwiki_list = [{}]
-
-let g:vimwiki_folding = 1
-let g:vimwiki_camel_case = 0
 
 " }}}
 " {{{ vim-ref
@@ -1295,11 +1297,6 @@ NeoBundle 'kana/vim-metarw'
 NeoBundle 'kana/vim-metarw-git'
 
 " }}}
-" {{{ current-func-info.vim
-
-NeoBundle 'tyru/current-func-info.vim'
-
-" }}}
 " {{{ unite.vim
 
 NeoBundle 'Shougo/unite.vim'
@@ -1343,6 +1340,7 @@ function! s:unite_grep_interactive(target)
 endfunction
 nnoremap <silent> g/ :call <sid>unite_grep_interactive('%')<CR>
 nnoremap <silent> g? :call <sid>unite_grep_interactive('')<CR>
+nnoremap <silent> gs :Unite neosnippet<CR>
 
 " }}}
 " {{{ unite-outline
@@ -1380,8 +1378,14 @@ nnoremap g] :<C-u>Unite -auto-preview tselect:<C-r>=expand('<cword>')<CR><CR>
 " }}}
 " {{{ neocomplcache
 
-NeoBundle 'Shougo/neocomplcache'
-let g:neocomplcache_enable_at_startup = 1
+NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
+if neobundle#is_installed('neocomplete')
+	let g:neocomplete#enable_at_startup = 1
+	let g:neocomplete#enable_ignore_case = 1
+	let g:neocomplete#enable_smart_case = 1
+elseif neobundle#is_installed('neocomplcache')
+	let g:neocomplcache_enable_at_startup = 1
+endif
 
 " }}}
 " {{{ javacomplete
@@ -1395,12 +1399,12 @@ augroup END
 " }}}
 " {{{ omnicppcomplete
 
-function! UpdateTags()
-	for i in neocomplcache#sources#include_complete#get_include_files(bufnr('%'))
-		execute 'setlocal tags+=' . neocomplcache#cache#encode_name('include_tags', i)
-	endfor
-	execute 'setlocal tags+=' . neocomplcache#cache#encode_name('tags_output', expand('%:p'))
-endfunction
+" function! UpdateTags()
+" 	for i in neocomplcache#sources#include_complete#get_include_files(bufnr('%'))
+" 		execute 'setlocal tags+=' . neocomplcache#cache#encode_name('include_tags', i)
+" 	endfor
+" 	execute 'setlocal tags+=' . neocomplcache#cache#encode_name('tags_output', expand('%:p'))
+" endfunction
 
 NeoBundle 'vim-scripts/OmniCppComplete'
 augroup vimrc-omnicppcomplete
@@ -1428,64 +1432,24 @@ xmap <C-l> <Plug>(neosnippet_expand_target)
 let g:neosnippet#snippets_directory = '~/.vim/snippets'
 
 " }}}
+" {{{ neosnippet-snippets
+
+NeoBundle 'Shougo/neosnippet-snippets'
+
+" }}}
+" {{{ neomru
+
+NeoBundle 'Shougo/neomru.vim'
+
+" }}}
 " {{{ vimproc
 
 NeoBundle 'Shougo/vimproc'
 
 " }}}
-" {{{ vimshell
+" {{{ emmet-vim
 
-NeoBundle 'Shougo/vimshell.vim'
-
-augroup vimrc-vimshell
-	au!
-
-	" Ctrl-D to exit
-	au FileType {vimshell,int-*} imap <buffer><silent> <C-d> <ESC>:q<CR>
-
-	" Disable cursor keys
-	au FileType {vimshell,int-*} imap <buffer><silent> OA <Nop>
-	au FileType {vimshell,int-*} imap <buffer><silent> OB <Nop>
-	" au FileType {vimshell,int-*} imap <buffer><silent> OC <Nop>
-	" au FileType {vimshell,int-*} imap <buffer><silent> OD <Nop>
-
-	" Switch to insert mode on BufEnter
-	au BufEnter *vimshell* call vimshell#start_insert()
-	au BufEnter iexe-*,texe-* startinsert!
-augroup END
-
-" Interactive
-function! s:open_vimshellinteractive()
-	let default = ''
-	if has_key(g:vimshell_interactive_interpreter_commands, &filetype)
-		let default = g:vimshell_interactive_interpreter_commands[&filetype]
-	endif
-	let interp = input("Interpreter: ", default)
-	execute 'VimShellInteractive' interp
-endfunction
-nnoremap <silent> gsi :call <sid>open_vimshellinteractive()<CR>
-
-" Terminal
-function! s:open_vimshellterminal()
-	let shell = input("Interpreter: ")
-	execute 'VimShellTerminal' shell
-endfunction
-nnoremap <silent> gst :call <sid>open_vimshellterminal()<CR>
-
-" Shell
-nnoremap <silent> gsh :VimShellPop <C-R>=expand('%:h:p')<CR><CR>
-au vimrc-vimshell FileType vimshell call vimshell#altercmd#define('sl', 'ls')
-au vimrc-vimshell FileType vimshell call vimshell#altercmd#define('ll', 'ls -l')
-
-" Python
-nnoremap <silent> gspy :VimShellTerminal ipython -colors NoColor<CR>
-hi termipythonPrompt ctermfg=40
-hi termipythonOutput ctermfg=9
-
-" }}}
-" {{{ zencoding
-
-NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'mattn/emmet-vim'
 
 " }}}
 " {{{ argtextobj.vim
@@ -1521,7 +1485,9 @@ NeoBundle 'vim-scripts/python_match.vim'
 " {{{ easymotion
 
 NeoBundle 'Lokaltog/vim-easymotion'
-let g:EasyMotion_leader_key = ','
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
+nmap s <Plug>(easymotion-s2)
 
 " }}}
 " {{{ vim-altr
@@ -1636,11 +1602,44 @@ let g:vimfiler_as_default_explorer = 1
 " {{{ nerdtree
 
 NeoBundle 'scrooloose/nerdtree'
+nnoremap <Leader>f :<C-u>NERDTreeFocus<CR>
+let g:NERDTreeQuitOnOpen = 1
 
 " }}}
 " {{{ errormarker
 
 NeoBundle 'vim-scripts/errormarker.vim'
+
+" }}}
+" {{{ vim-go
+
+NeoBundle 'fatih/vim-go'
+let g:go_snippet_engine = "neosnippet"
+
+" }}}
+" {{{ tagbar
+
+NeoBundle 'majutsushi/tagbar'
+nnoremap <Leader>t :TagbarOpenAutoClose<CR>
+
+" }}}
+" {{{ molokai
+
+NeoBundle 'fatih/molokai'
+
+colorscheme molokai
+hi Normal ctermbg=none
+hi Folded ctermbg=none
+
+" }}}
+" {{{ editorconfig
+
+NeoBundle 'editorconfig/editorconfig-vim'
+
+" }}}
+" {{{ rust.vim
+
+NeoBundle 'wting/rust.vim'
 
 " }}}
 

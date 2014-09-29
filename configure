@@ -5,6 +5,8 @@ if ! test -d src; then
 	exit 1
 fi
 
-./configure --with-features=huge --enable-perlinterp=dynamic \
-	--enable-pythoninterp=yes --enable-rubyinterp=yes \
-	--enable-multibyte --enable-gnome-check "$@"
+./configure --with-features=huge \
+	--enable-pythoninterp=yes --enable-luainterp \
+	--enable-multibyte --enable-gnome-check --enable-fail-if-missing "$@"
+
+#	--enable-perlinterp=dynamic --enable-rubyinterp=yes \
