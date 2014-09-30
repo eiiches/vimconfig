@@ -1212,7 +1212,6 @@ set runtimepath+=~/.vim/neobundle.vim
 call neobundle#rc(expand('~/.vim/bundle/'))
 
 " Plugins: -----------------------------
-
 " {{{ quickrun.vim
 
 NeoBundle 'thinca/vim-quickrun'
@@ -1376,15 +1375,26 @@ nnoremap g<C-]> :<C-u>Unite -immediately tselect:<C-r>=expand('<cword>')<CR><CR>
 nnoremap g] :<C-u>Unite -auto-preview tselect:<C-r>=expand('<cword>')<CR><CR>
 
 " }}}
-" {{{ neocomplcache
+" {{{ neocomplcache / neocomplete
 
 NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
 if neobundle#is_installed('neocomplete')
 	let g:neocomplete#enable_at_startup = 1
 	let g:neocomplete#enable_ignore_case = 1
 	let g:neocomplete#enable_smart_case = 1
+	let g:neocomplete#force_overwrite_completefunc = 1
+	if !exists('g:neocomplete#force_omni_input_patterns')
+		let g:neocomplete#force_omni_input_patterns = {}
+	endif
+	let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+	let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
 elseif neobundle#is_installed('neocomplcache')
 	let g:neocomplcache_enable_at_startup = 1
+	let g:neocomplcache_force_overwrite_completefunc = 1
+	if !exists("g:neocomplcache_force_omni_patterns")
+		let g:neocomplcache_force_omni_patterns = {}
+	endif
+	let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|::'
 endif
 
 " }}}
@@ -1395,30 +1405,6 @@ augroup vimrc-javacomplete
 	au!
 	au Filetype java setlocal omnifunc=javacomplete#Complete
 augroup END
-
-" }}}
-" {{{ omnicppcomplete
-
-" function! UpdateTags()
-" 	for i in neocomplcache#sources#include_complete#get_include_files(bufnr('%'))
-" 		execute 'setlocal tags+=' . neocomplcache#cache#encode_name('include_tags', i)
-" 	endfor
-" 	execute 'setlocal tags+=' . neocomplcache#cache#encode_name('tags_output', expand('%:p'))
-" endfunction
-
-NeoBundle 'vim-scripts/OmniCppComplete'
-augroup vimrc-omnicppcomplete
-	au!
-	au FileType c,cpp call omni#cpp#complete#Init()
-	au BufWritePost *.{cpp,c} call UpdateTags()
-	au FileType c,cpp call UpdateTags()
-augroup END
-
-" show prototype in popup
-let OmniCpp_ShowPrototypeInAbbr = 1
-
-" complete after ::
-let OmniCpp_MayCompleteScope = 1
 
 " }}}
 " {{{ neosnippet.vim
@@ -1627,9 +1613,12 @@ nnoremap <Leader>t :TagbarOpenAutoClose<CR>
 
 NeoBundle 'fatih/molokai'
 
+augroup vimrc-color
+	au!
+	au ColorScheme * hi Normal ctermbg=none
+	au ColorScheme * hi Folded ctermbg=none
+augroup END
 colorscheme molokai
-hi Normal ctermbg=none
-hi Folded ctermbg=none
 
 " }}}
 " {{{ editorconfig
@@ -1640,6 +1629,17 @@ NeoBundle 'editorconfig/editorconfig-vim'
 " {{{ rust.vim
 
 NeoBundle 'wting/rust.vim'
+
+" }}}
+" {{{ clang_complete
+
+NeoBundle 'Rip-Rip/clang_complete'
+let g:clang_complete_auto = 0
+let g:clang_use_library = 1
+let g:clang_library_path = '/usr/share/clang'
+let g:clang_user_options = '2>/dev/null|| exit 0'
+let g:clang_complete_copen = 1
+let g:clang_auto_select = 0
 
 " }}}
 
