@@ -1281,7 +1281,7 @@ let g:ref_source_webdict_sites = {
 
 let g:ref_source_webdict_sites.default = 'wikipedia:ja'
 function! g:ref_source_webdict_sites.alc.filter(output)
-	return join(split(a:output, "\n")[32:], "\n")
+	return join(split(a:output, "\n")[16:], "\n")
 endfunction
 
 command! -nargs=1 Alc Ref webdict alc <args>
