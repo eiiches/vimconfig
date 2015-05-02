@@ -1389,6 +1389,21 @@ nnoremap g<C-]> :<C-u>Unite -immediately tselect:<C-r>=expand('<cword>')<CR><CR>
 nnoremap g] :<C-u>Unite -auto-preview tselect:<C-r>=expand('<cword>')<CR><CR>
 
 " }}}
+" {{{ unite-grep-vcs
+
+" NeoBundle 'lambdalisue/unite-grep-vcs'
+NeoBundleLazy 'lambdalisue/unite-grep-vcs',
+			\ {
+			\     'autoload': {
+			\         'unite_sources': ['grep/git', 'grep/hg'],
+			\     }
+			\ }
+
+nnoremap <silent> ,grep :Unite grep/git:.<CR>
+nnoremap <S-C-G> :<C-u>Unite grep/git:.<CR><C-R>=expand("<cword>")<CR>
+hi link uniteSource__GrepPattern Identifier
+
+" }}}
 " {{{ neocomplcache / neocomplete
 
 NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
