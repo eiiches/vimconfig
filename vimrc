@@ -882,6 +882,14 @@ augroup vimrc-python
 augroup END
 
 " }}}
+" {{{ Haskell
+
+augroup vimrc-haskell
+    au!
+    au FileType haskell setlocal sw=4 ts=4 sts=4 et
+augroup END
+
+" }}}
 " {{{ C/C++
 
 function! IncludeGuard(macro)
