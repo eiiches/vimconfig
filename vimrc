@@ -1522,6 +1522,9 @@ call altr#define('views.py', 'models.py', 'urls.py', 'admin.py', 'tests.py', 'se
 " rule for autotools
 call altr#define('Makefile.am', 'configure.ac')
 
+" rule for go
+call altr#define('%.go.in', '%.go', '%_test.go')
+
 " }}}
 " {{{ tex.vim
 
