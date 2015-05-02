@@ -951,6 +951,14 @@ augroup vimrc-d
 augroup END
 
 " }}}
+" {{{ Go
+
+augroup vimrc-go
+	au!
+	au FileType go nnoremap <C-]> :<C-u>GoDef<CR>
+augroup END
+
+" }}}
 " {{{ Vala
 
 augroup vimrc-vala
@@ -1233,6 +1241,12 @@ let g:quickrun_config['postscr'] = {
 let g:quickrun_config['rust'] = {
 			\ 'type': 'rust',
 			\ 'command': 'rustc',
+			\ }
+
+let g:quickrun_config['go'] = {
+			\ 'type': 'go',
+			\ 'command': 'go',
+			\ 'options': ['run'],
 			\ }
 
 " }}}
