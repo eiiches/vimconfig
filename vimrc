@@ -7,73 +7,79 @@
 "   for MS-DOS and Win32:  $VIM\_vimrc
 "   for OpenVMS:  sys$login:.vimrc
 
-" {{{
+if version < 703
+	echoerr "unsupported vim version:" version
+	finish
+endif
 
-" When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
   finish
 endif
 
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
+" Initialize: --------------------------
+" {{{
+
 set nocompatible
+filetype off
+filetype plugin indent off
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+" }}}
 
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file
-endif
+" NeoBundle: ---------------------------
+" {{{
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
+set runtimepath+=~/.vim/bundle/neobundle.vim
+call neobundle#begin(expand('~/.vim/bundle/'))
 
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
+NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'fatih/molokai'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'eiiches/vim-ref-gtkdoc'
+NeoBundle 'eiiches/vim-ref-info'
+NeoBundle 'kana/vim-metarw'
+NeoBundle 'kana/vim-metarw-git'
+NeoBundle 'Shougo/unite.vim'
+NeoBundleLazy 'Shougo/unite-outline', {'autoload': {'unite_sources': ['outline']}}
+NeoBundleLazy 'thinca/vim-unite-history', {'autoload': {'unite_sources': ['history/command']}}
+NeoBundleLazy 'tsukkee/unite-help', {'autoload': {'unite_sources': ['help']}}
+NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload': {'unite_sources': ['colorscheme']}}
+NeoBundleLazy 'eiiches/unite-tselect', {'autoload': {'unite_sources': ['tselect']}}
+NeoBundleLazy 'lambdalisue/unite-grep-vcs', {'autoload': {'unite_sources': ['grep/git', 'grep/hg']}}
+NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'vim-scripts/argtextobj.vim'
+NeoBundle 'vim-scripts/DrawIt'
+NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'thinca/vim-localrc'
+NeoBundle 'vim-scripts/matchit.zip'
+NeoBundle 'vim-scripts/python_match.vim'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'kana/vim-altr'
+NeoBundleLazy 'vim-scripts/tex.vim--Tanzler', {'autoload': {'filetypes': ['tex']}}
+NeoBundle 'vim-scripts/Source-Explorer-srcexpl.vim'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'eiiches/vim-css-color'
+NeoBundle 'eiiches/vim-colored-colorscheme'
+NeoBundle 'eiiches/vim-rainbowbrackets'
+NeoBundle 'eiiches/vim-colorconvert'
+NeoBundle 'Shougo/vimfiler.vim'
+NeoBundleLazy 'scrooloose/nerdtree', {'augroup': 'NERDTree'}
+NeoBundle 'vim-scripts/errormarker.vim'
+NeoBundleLazy 'fatih/vim-go', {'autoload': {'filetypes': ['go']}}
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundleLazy 'wting/rust.vim', {'autoload': {'filetypes': ['rust']}}
+NeoBundleLazy 'Rip-Rip/clang_complete', {'autoload': {'filetypes': ['c', 'cpp']}}
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
-
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
-
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  " Also don't do it when the mark is in the first line, that is the default
-  " position when opening a file.
-  autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-
-  augroup END
-
-else
-
-  set autoindent		" always set autoindenting on
-
-endif " has("autocmd")
+call neobundle#end()
 
 " }}}
 
@@ -81,7 +87,7 @@ endif " has("autocmd")
 " {{{ reset augroup vimrc
 
 augroup vimrc
-	autocmd!
+	au!
 augroup END
 
 " }}}
@@ -106,7 +112,7 @@ endfunction
 nnoremap <silent> <leader>v :call <sid>open_vimrc('vsplit', $MYVIMRC)<CR>
 
 " }}}
-" {{{ encoding and format
+" {{{ file encoding
 
 set encoding=utf-8
 set fileencoding=utf-8
@@ -116,7 +122,7 @@ set fileformat=unix
 set fileformats=unix,dos,mac
 
 " }}}
-" {{{ indenting
+" {{{ default indentation
 
 " these below are the defaults. maybe overridden later
 set tabstop=4
@@ -136,25 +142,26 @@ set cinoptions+=t0
 set cinoptions+=N-s
 
 " }}}
-" {{{ colors
-"
-" set terminal color
-set t_Co=256
+" {{{ syntax and colors
 
-" colorscheme delek slate delek zell wombat rdark
+function! s:PatchColors()
+	hi Normal ctermbg=none
+	hi Folded ctermbg=none
+endfunction
+
+au vimrc User vimrcPost filetype plugin indent on
+au vimrc User vimrcPost syntax on
+au vimrc User vimrcPost call s:PatchColors()
+
+augroup vimrc-color
+	au!
+	au ColorScheme * call s:PatchColors()
+augroup END
+
 if &t_Co >= 256
-	colorscheme myxoria256
+	colorscheme molokai
 else
 	colorscheme desert
-endif
-
-" workaround for some enviroment.
-if has("terminfo")
-	set t_Sf=[3%p1%dm
-	set t_Sb=[4%p1%dm
-else
-	set t_Sf=[3%dm
-	set t_Sb=[4%dm
 endif
 
 " }}}
@@ -418,7 +425,7 @@ augroup vimrc-statusline
 	au BufLeave,BufWinLeave,WinLeave,CmdwinLeave * call <sid>update_statusline((exists('b:stl') ? b:stl : g:default_stl), 'Normal', 0)
 	au InsertEnter,CursorHoldI * call <sid>update_statusline((exists('b:stl') ? b:stl : g:default_stl), 'Insert', 1)
 augroup END
-call s:update_statusline_colors(s:statuscolors)
+au vimrc User vimrcPost call s:update_statusline_colors(s:statuscolors)
 
 " update statusline immediately after entering normal mode.
 if has('unix') && !has('gui_running')
@@ -429,6 +436,7 @@ endif
 " }}}
 " {{{ search
 
+set hlsearch
 set incsearch   " do incremental searching
 set smartcase   " but don't ignore it, when search string contains uppercase letters
 set ignorecase  " ignore case
@@ -464,6 +472,13 @@ endfunction
 
 " }}}
 " {{{ key mappings
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-U> <C-G>u<C-U>
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
 
 " list and open buffer
 nnoremap gb :ls<CR>:buf<Space>
@@ -626,6 +641,9 @@ set virtualedit=block
 " try to keep current column
 set nostartofline
 
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
 function! s:ibusdisable()
 if has('python')
 python << EOF
@@ -778,7 +796,7 @@ autocmd vimrc WinEnter * call TabCDWinEnter()
 call s:expandcmddyn('cdd', "'CD '.(empty(expand('%:p:h'))?getcwd():expand('%:p:h'))")
 
 " }}}
-" {{{ syntax
+" {{{ debugging
 
 " show synstack for debugging colorscheme
 let g:synstack_enabled = 0
@@ -848,18 +866,280 @@ set showtabline=2
 language en_US.utf-8
 
 " }}}
+" {{{ backup
+
+if has("vms")
+  set nobackup		" do not keep a backup file, use versions instead
+else
+  set backup		" keep a backup file
+endif
+
+" }}}
+" {{{ editing
+
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+" Also don't do it when the mark is in the first line, that is the default
+" position when opening a file.
+au vimrc BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
+
+" }}}
+
+" Plugins: -----------------------------
+" {{{ thinca/vim-quickrun
+
+let g:quickrun_config = {}
+nnoremap <silent> <Leader>r :QuickRun -mode n<CR>
+vnoremap <silent> <Leader>r :QuickRun -mode v<CR>
+
+" }}}
+" {{{ thinca/vim-ref
+
+let g:ref_noenter=1
+let g:ref_source_webdict_sites = {
+			\ 'alc': {
+			\	'url': 'http://eow.alc.co.jp/search?q=%s',
+			\	'keyword_encoding': 'utf-8',
+			\	'cache': 1,
+			\ },
+			\ 'wikipedia:ja': 'http://ja.wikipedia.org/wiki/%s',
+			\ 'wikipedia:en': 'http://en.wikipedia.org/wiki/%s',
+			\ }
+
+let g:ref_source_webdict_sites.default = 'wikipedia:ja'
+function! g:ref_source_webdict_sites.alc.filter(output)
+	return join(split(a:output, "\n")[16:], "\n")
+endfunction
+
+command! -nargs=1 Alc Ref webdict alc <args>
+call s:expandcmd('alc', 'Alc')
+
+let g:ref_open = 'vsplit'
+
+" }}}
+" {{{ shougo/unite.vim
+
+" <ESC> to leave Unite mode
+autocmd vimrc FileType unite nmap <buffer> <ESC> <Plug>(unite_exit)
+autocmd vimrc FileType unite imap <buffer> jj <Plug>(unite_insert_leave)
+
+" Unite action mapping
+autocmd vimrc FileType unite nnoremap <buffer><expr> sp unite#do_action('split')
+autocmd vimrc FileType unite nnoremap <buffer><expr> vsp unite#do_action('vsplit')
+autocmd vimrc FileType unite nnoremap <buffer><expr> tab unite#do_action('tabopen')
+
+" NOTE: overriding the mapping for 'gb', which was :ls :buf
+nnoremap gb :UniteWithBufferDir -buffer-name=files buffer file_mru file<CR>
+nnoremap gc :UniteWithCurrentDir -buffer-name=files buffer file_mru file<CR>
+nnoremap gl :Unite -buffer-name=files buffer file_mru file<CR>
+
+" resume
+nnoremap gn :UniteResume<CR>
+
+" config
+let g:unite_source_file_mru_limit = 200
+let g:unite_kind_openable_cd_command = 'CD'
+let g:unite_kind_openable_lcd_command = 'LCD'
+let g:unite_source_file_mru_filename_format = ''
+
+" unite-grep
+function! s:unite_grep_interactive(target)
+	let pattern = input('Pattern: ')
+	if empty(pattern)
+		" try to use the current search
+		let pattern = substitute(@/,'\\', '\\\\', 'g')
+	else
+		" set as current search (if not empty)
+		let @/ = pattern
+	endif
+	let command = 'Unite -buffer-name=search grep:'.a:target.'::'.pattern
+	execute command
+	echo ':'.command
+endfunction
+nnoremap <silent> g/ :call <sid>unite_grep_interactive('%')<CR>
+nnoremap <silent> g? :call <sid>unite_grep_interactive('')<CR>
+nnoremap <silent> gs :Unite neosnippet<CR>
+
+" }}}
+" {{{ shougo/unite-outline
+
+nnoremap go :<C-u>Unite -auto-preview -prompt=>\  -start-insert outline<CR>
+
+" }}}
+" {{{ thinca/vim-unite-history
+
+nnoremap gh :Unite history/command<CR>
+
+" }}}
+" {{{ tsukkee/unite-help
+
+nnoremap gH :<C-u>Unite -prompt=>\  -start-insert help<CR>
+
+" }}}
+" {{{ eiiches/unite-tselect
+
+nnoremap g<C-]> :<C-u>Unite -immediately tselect:<C-r>=expand('<cword>')<CR><CR>
+nnoremap g] :<C-u>Unite -auto-preview tselect:<C-r>=expand('<cword>')<CR><CR>
+
+" }}}
+" {{{ lambdalisue/unite-grep-vcs
+
+nnoremap <silent> <C-g>/ :<C-u>Unite -auto-preview -prompt=>\  -start-insert grep/git:.<CR>
+nnoremap <silent> <C-g>* :<C-u>Unite -auto-preview -prompt=>\  -start-insert grep/git:.<CR><C-r>=expand("<cword>")<CR><CR>
+hi link uniteSource__GrepPattern Identifier
+
+" }}}
+" {{{ shougo/{neocomplete,neocomplcache}
+
+if neobundle#is_installed('neocomplete')
+	let g:neocomplete#enable_at_startup = 1
+	let g:neocomplete#enable_ignore_case = 1
+	let g:neocomplete#enable_smart_case = 1
+	let g:neocomplete#force_overwrite_completefunc = 1
+	if !exists('g:neocomplete#force_omni_input_patterns')
+		let g:neocomplete#force_omni_input_patterns = {}
+	endif
+	let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+	let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+elseif neobundle#is_installed('neocomplcache')
+	let g:neocomplcache_enable_at_startup = 1
+	let g:neocomplcache_force_overwrite_completefunc = 1
+	if !exists("g:neocomplcache_force_omni_patterns")
+		let g:neocomplcache_force_omni_patterns = {}
+	endif
+	let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|::'
+endif
+
+" }}}
+" {{{ shougo/neosnippet.vim
+
+
+imap <C-l> <Plug>(neosnippet_expand_or_jump)
+smap <C-l> <Plug>(neosnippet_expand_or_jump)
+xmap <C-l> <Plug>(neosnippet_expand_target)
+
+let g:neosnippet#snippets_directory = '~/.vim/snippets'
+
+" }}}
+" {{{ lokaltog/vim-easymotion
+
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
+nmap s <Plug>(easymotion-s2)
+
+" }}}
+" {{{ vim-scripts/source-explorer-srcexpl.vim
+
+nnoremap <silent> <Leader>j :SrcExplToggle<CR>
+let g:SrcExpl_winHeight = 8 " // Set the height of Source Explorer window
+let g:SrcExpl_refreshTime = 100 " // Set 100 ms for refreshing the Source Explorer
+let g:SrcExpl_jumpKey = "<ENTER>" " // Set "Enter" key to jump into the exact definition context
+let g:SrcExpl_gobackKey = "<SPACE>" " // Set "Space" key for back from the definition context
+" // In order to Avoid conflicts, the Source Explorer should know what plugins
+" // are using buffers. And you need add their bufname into the list below
+" // according to the command ":buffers!"
+let g:SrcExpl_pluginList = [
+        \ "__Tag_List__",
+        \ "_NERD_tree_",
+        \ "Source_Explorer"
+    \ ]
+let g:SrcExpl_searchLocalDef = 0 " search local file for the keyword
+let g:SrcExpl_isUpdateTags = 0 " // Let the Source Explorer update the tags file when opening
+let g:SrcExpl_updateTagsCmd = "ctags --c++-kinds=+p --fields=+iaS --extra=+q --sort=foldcase --exclude=*~ ." " // Use program 'ctags' with argument '--sort=foldcase -R' to update a tags file
+let g:SrcExpl_updateTagsKey = "<F12>" " // Set <F12> key for updating the tags file artificially
+
+" }}}
+" {{{ tpope/vim-fugitive.vim
+
+nnoremap ,git :Git<Space>
+nnoremap <silent> ,log :silent Glog \| redraw!<CR>
+nnoremap <silent> ,st :silent Gstatus<CR>
+nnoremap <silent> ,diff :Gdiff<CR>
+nnoremap <silent> ,commit :Gcommit<CR>
+nnoremap <silent> ,orig :Gvsplit<CR>
+nnoremap <silent> ,cached :Git diff --cached<CR>
+
+" }}}
+" {{{ eiiches/rainbowbrackets
+
+let g:rainbowbrackets_colors =
+			\ [
+			\   'ctermfg=9',
+			\   'ctermfg=10',
+			\   'ctermfg=33',
+			\   'ctermfg=190'
+			\ ]
+let g:rainbowbrackets_enable_round_brackets = 1
+let g:rainbowbrackets_enable_curly_brackets = 0
+let g:rainbowbrackets_enable_square_brackets = 0
+
+augroup vimrc-rainbowbrackets
+	autocmd!
+	autocmd FileType javascript let b:rainbowbrackets_enable_curly_brackets = 1
+augroup END
+
+" }}}
+" {{{ eiiches/colorconvert.vim
+
+let g:colorconvert_profile = 'GnomeTerminal.Tango'
+
+" }}}
+" {{{ shougo/vimfiler.vim
+
+let g:vimfiler_as_default_explorer = 1
+
+" }}}
+" {{{ scrooloose/nerdtree
+
+nnoremap <Leader>f :<C-u>NeoBundleSource 'scrooloose/nerdtree'<CR>:NERDTreeFocus<CR>
+let g:NERDTreeQuitOnOpen = 1
+
+" }}}
+" {{{ majutsushi/tagbar
+
+nnoremap <Leader>t :TagbarOpenAutoClose<CR>
+
+" }}}
+" {{{ kana/vim-altr
+
+nmap ga <Plug>(altr-forward)
+nmap gA <Plug>(altr-back)
+
+call altr#define('vimrc', 'gvimrc', 'lvimrc', 'lgvimrc')
+call altr#define('.vimrc', '.gvimrc', '.vim/lvimrc', '.vim/lgvimrc')
+
+" rule for django
+" call altr#define('%/views.py', '%/models.py', '%/urls.py', '%/admin.py', '%/tests.py', '%/settings.py')
+call altr#define('views.py', 'models.py', 'urls.py', 'admin.py', 'tests.py', 'settings.py')
+
+" rule for autotools
+call altr#define('Makefile.am', 'configure.ac')
+
+" }}}
 
 " FileTypes: ---------------------------
-" {{{ XML
+" {{{ text
+
+augroup vimrc-text
+	au!
+	autocmd FileType text setlocal textwidth=78
+augroup END
+
+" }}}
+" {{{ xml
 
 let g:xml_syntax_folding=1
 augroup vimrc-xml
 	au!
-	au vimrc FileType xml setlocal foldmethod=syntax
+	au FileType xml setlocal foldmethod=syntax
 augroup END
 
 " }}}
-" {{{ Python
+" {{{ python
 
 augroup vimrc-python
 	au!
@@ -882,7 +1162,7 @@ augroup vimrc-python
 augroup END
 
 " }}}
-" {{{ Haskell
+" {{{ haskell
 
 augroup vimrc-haskell
     au!
@@ -890,7 +1170,7 @@ augroup vimrc-haskell
 augroup END
 
 " }}}
-" {{{ C/C++
+" {{{ c/c++
 
 function! IncludeGuard(macro)
 	call WrapTextRange(0, line('$'),
@@ -923,6 +1203,10 @@ augroup vimrc-c
 	au FileType c,cpp let g:c_space_errors = 1
 	au FileType   cpp let g:c_no_curly_error = 1
 	au BufNewFile *.{h,hpp} call IncludeGuard("_" . substitute(toupper(expand("%:t")), "[\\.-]", "_", "g") . "_")
+
+	" http://damien.lespiau.name/blog/2009/12/07/aligning-c-function-parameters-with-vim/
+	" http://git.lespiau.name/cgit/sk/plain/dotfiles/vim/plugin/GNOME-align-args.vim
+	au FileType c,cpp noremap <Leader>g :GNOMEAlignArguments<CR>
 augroup END
 
 " gtk development
@@ -949,53 +1233,42 @@ augroup END
 " endfunction
 " au vimrc-c BufReadPost,BufWritePost *.c,*.h,*.cpp,*.hpp call CheckGtkDevehelopmentInC()
 
-" }}}
-" {{{ D
+let g:clang_complete_auto = 0
+let g:clang_use_library = 1
+let g:clang_user_options = '-std=c++11'
+let g:clang_library_path = '/usr/share/clang'
+let g:clang_user_options = ''
+let g:clang_complete_copen = 1
+let g:clang_auto_select = 0
 
-augroup vimrc-d
-	au!
-	au FileType d setlocal commentstring=\ \/\*\ %s\ \*\/
-	au FileType d setlocal list listchars+=precedes:<,extends:>
-augroup END
+call altr#define('%.cpp', '%.hpp', '%.c', '%.h')
+
+let g:quickrun_config['cpp'] = {
+			\ 'type': 'cpp',
+			\ 'cmdopt': '-std=c++11'
+			\ }
 
 " }}}
-" {{{ Go
+" {{{ golang
 
 augroup vimrc-go
 	au!
-	au FileType go nnoremap <C-]> :<C-u>GoDef<CR>
+	au FileType go nnoremap <silent> <C-]> :<C-u>GoDef<CR>
+	au FileType go nnoremap <C-g>o :<C-u>GoImports<CR>
 augroup END
 
-" }}}
-" {{{ Vala
+call altr#define('%.go.in', '%.go', '%_test.go')
 
-augroup vimrc-vala
-	au!
-	au BufRead *.vala,*.vapi setlocal efm& efm+=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-	au BufRead *.vala,*.vapi setlocal smartindent
-	au BufRead *.vala,*.vapi setlocal cindent
-	au BufRead,BufNewFile *.vala,*.vapi setfiletype vala
-augroup END
+let g:go_snippet_engine = "neosnippet"
 
-" }}}
-" {{{ Brainfuck
-
-augroup vimrc-brainfuck
-	au!
-	au BufRead,BufNewFile *.bf setfiletype brainfuck
-augroup END
+let g:quickrun_config['go'] = {
+			\ 'type': 'go',
+			\ 'command': 'go',
+			\ 'options': ['run'],
+			\ }
 
 " }}}
-" {{{ C#
-
-augroup vimrc-csharp
-	au!
-	au FileType cs setlocal commentstring=\ \/\*\ %s\ \*\/
-	au FileType cs setlocal efm=%f(%l,%c):\ error\ CS%n:\ %m
-augroup END
-
-" }}}
-" {{{ Shell Script
+" {{{ sh
 
 augroup vimrc-shellscript
 	au!
@@ -1004,11 +1277,76 @@ augroup vimrc-shellscript
 augroup END
 
 " }}}
-" {{{ Rust
+" {{{ rust
 
 augroup vimrc-rust
 	au!
 	au BufRead,BufNewFile *.rs setfiletype rust
+augroup END
+
+let g:quickrun_config['rust'] = {
+			\ 'type': 'rust',
+			\ 'command': 'rustc',
+			\ }
+
+" }}}
+" {{{ vim
+
+augroup vimrc-vim
+	au!
+	au FileType vim set foldcolumn=2
+	au FileType vim nnoremap <buffer><silent> K :vert help <C-R>=expand('<cword>')<CR> <bar> wincmd p<CR>
+	au FileType vim set formatoptions-=t
+augroup END
+
+" }}}
+" {{{ make
+
+augroup vimrc-make
+	au!
+	au FileType make set noexpandtab
+augroup END
+
+" }}}
+" {{{ html
+
+augroup vimrc-html
+	au!
+	au FileType html nnoremap <silent><buffer> <Leader>r
+				\ :call vimproc#system_bg(g:viewer_html.' file://'.expand('%:p'))<CR>
+augroup END
+
+" }}}
+" {{{ json/javascript
+
+augroup vimrc-javascript
+	autocmd!
+	autocmd BufNewFile,BufRead *.json setfiletype javascript
+augroup END
+
+" }}}
+" {{{ markdown
+
+function! s:preview_markdown(path)
+	call vimproc#system('markdown '.a:path.' > '.a:path.'.html')
+	call vimproc#system_bg(g:viewer_html.' file://'.a:path.'.html')
+endfunction
+
+augroup vimrc-markdown
+	au!
+	au BufRead,BufNewFile *.md set filetype=markdown
+	au FileType markdown nnoremap <silent><buffer> <Leader>r
+				\ :call <sid>preview_markdown(expand('%:p'))<CR>
+augroup END
+
+" }}}
+" {{{ others
+
+" {{{ OpenGL Shader
+
+augroup vimrc-shader
+	au!
+	au BufNewFile,BufRead *.frag,*.vert,*.glsl setf glsl
 augroup END
 
 " }}}
@@ -1017,16 +1355,6 @@ augroup END
 augroup vimrc-squirrel
 	au!
 	au BufRead,BufNewFile *.nut setfiletype squirrel
-augroup END
-
-" }}}
-" {{{ Vim
-
-augroup vimrc-vim
-	au!
-	au FileType vim set foldcolumn=2
-	au FileType vim nnoremap <buffer><silent> K :vert help <C-R>=expand('<cword>')<CR> <bar> wincmd p<CR>
-	au FileType vim set formatoptions-=t
 augroup END
 
 " }}}
@@ -1050,12 +1378,12 @@ augroup vimrc-msoffice
 augroup END
 
 " }}}
-" {{{ OpenGL Shader
+" {{{ postscript
 
-augroup vimrc-shader
-	au!
-	au BufNewFile,BufRead *.frag,*.vert,*.glsl setf glsl
-augroup END
+let g:quickrun_config['postscr'] = {
+			\ 'type': 'postscr',
+			\ 'command': 'gs',
+			\ }
 
 " }}}
 " {{{ LaTeX
@@ -1086,44 +1414,43 @@ augroup vimrc-tex
 augroup END
 
 " }}}
-" {{{ Makefile
+" {{{ Brainfuck
 
-augroup vimrc-make
+augroup vimrc-brainfuck
 	au!
-	au FileType make set noexpandtab
+	au BufRead,BufNewFile *.bf setfiletype brainfuck
 augroup END
 
 " }}}
-" {{{ HTML
+" {{{ C#
 
-augroup vimrc-html
+augroup vimrc-csharp
 	au!
-	au FileType html nnoremap <silent><buffer> <Leader>r
-				\ :call vimproc#system_bg(g:viewer_html.' file://'.expand('%:p'))<CR>
+	au FileType cs setlocal commentstring=\ \/\*\ %s\ \*\/
+	au FileType cs setlocal efm=%f(%l,%c):\ error\ CS%n:\ %m
 augroup END
 
 " }}}
-" {{{ Javascript / JSON
+" {{{ D
 
-augroup vimrc-javascript
-	autocmd!
-	autocmd BufNewFile,BufRead *.json setfiletype javascript
+augroup vimrc-d
+	au!
+	au FileType d setlocal commentstring=\ \/\*\ %s\ \*\/
+	au FileType d setlocal list listchars+=precedes:<,extends:>
 augroup END
 
 " }}}
-" {{{ markdown
+" {{{ Vala
 
-function! s:preview_markdown(path)
-	call vimproc#system('markdown '.a:path.' > '.a:path.'.html')
-	call vimproc#system_bg(g:viewer_html.' file://'.a:path.'.html')
-endfunction
-
-augroup vimrc-markdown
+augroup vimrc-vala
 	au!
-	au BufRead,BufNewFile *.md set filetype=markdown
-	au FileType markdown nnoremap <silent><buffer> <Leader>r
-				\ :call <sid>preview_markdown(expand('%:p'))<CR>
+	au BufRead *.vala,*.vapi setlocal efm& efm+=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+	au BufRead *.vala,*.vapi setlocal smartindent
+	au BufRead *.vala,*.vapi setlocal cindent
+	au BufRead,BufNewFile *.vala,*.vapi setfiletype vala
 augroup END
+
+" }}}
 
 " }}}
 
@@ -1221,465 +1548,6 @@ call s:expandcmd('ronbun', 'Ronbun')
 command! -nargs=0 Mktag silent exe '!ctags -R .' | normal! <C-l>
 call s:expandcmd('mktag', 'Mktag')
 call s:expandcmd('mkt', 'Mktag')
-
-" }}}
-
-set runtimepath+=~/.vim/neobundle.vim
-call neobundle#rc(expand('~/.vim/bundle/'))
-
-" Plugins: -----------------------------
-" {{{ quickrun.vim
-
-NeoBundle 'thinca/vim-quickrun'
-
-nnoremap <silent> <Leader>r :QuickRun -mode n<CR>
-vnoremap <silent> <Leader>r :QuickRun -mode v<CR>
-
-let g:quickrun_config = {}
-let g:quickrun_config['cpp'] = {
-			\ 'type': 'cpp',
-			\ 'cmdopt': '-std=c++0x'
-			\ }
-
-let g:quickrun_config['postscr'] = {
-			\ 'type': 'postscr',
-			\ 'command': 'gs',
-			\ }
-
-let g:quickrun_config['rust'] = {
-			\ 'type': 'rust',
-			\ 'command': 'rustc',
-			\ }
-
-let g:quickrun_config['go'] = {
-			\ 'type': 'go',
-			\ 'command': 'go',
-			\ 'options': ['run'],
-			\ }
-
-" }}}
-" {{{ repeat.vim
-
-NeoBundle 'tpope/vim-repeat'
-
-" }}}
-" {{{ surround.vim
-
-NeoBundle 'tpope/vim-surround'
-
-" }}}
-" {{{ vim-abolish
-
-NeoBundle 'tpope/vim-abolish'
-
-" }}}
-" {{{ vim-ref
-
-NeoBundle 'thinca/vim-ref'
-let g:ref_noenter=1
-let g:ref_source_webdict_sites = {
-			\ 'alc': {
-			\	'url': 'http://eow.alc.co.jp/search?q=%s',
-			\	'keyword_encoding': 'utf-8',
-			\	'cache': 1,
-			\ },
-			\ 'wikipedia:ja': 'http://ja.wikipedia.org/wiki/%s',
-			\ 'wikipedia:en': 'http://en.wikipedia.org/wiki/%s',
-			\ }
-
-let g:ref_source_webdict_sites.default = 'wikipedia:ja'
-function! g:ref_source_webdict_sites.alc.filter(output)
-	return join(split(a:output, "\n")[16:], "\n")
-endfunction
-
-command! -nargs=1 Alc Ref webdict alc <args>
-call s:expandcmd('alc', 'Alc')
-
-let g:ref_open = 'vsplit'
-
-" }}}
-" {{{ vim-ref-gtk
-
-NeoBundle 'eiiches/vim-ref-gtkdoc'
-
-" }}}
-" {{{ vim-ref-info
-
-NeoBundle 'eiiches/vim-ref-info'
-
-" }}}
-" {{{ metarw
-
-NeoBundle 'kana/vim-metarw'
-
-" }}}
-" {{{ metarw-git
-
-NeoBundle 'kana/vim-metarw-git'
-
-" }}}
-" {{{ unite.vim
-
-NeoBundle 'Shougo/unite.vim'
-
-" <ESC> to leave Unite mode
-autocmd vimrc FileType unite nmap <buffer> <ESC> <Plug>(unite_exit)
-autocmd vimrc FileType unite imap <buffer> jj <Plug>(unite_insert_leave)
-
-" Unite action mapping
-autocmd vimrc FileType unite nnoremap <buffer><expr> sp unite#do_action('split')
-autocmd vimrc FileType unite nnoremap <buffer><expr> vsp unite#do_action('vsplit')
-autocmd vimrc FileType unite nnoremap <buffer><expr> tab unite#do_action('tabopen')
-
-" NOTE: overriding the mapping for 'gb', which was :ls :buf
-nnoremap gb :UniteWithBufferDir -buffer-name=files buffer file_mru file<CR>
-nnoremap gc :UniteWithCurrentDir -buffer-name=files buffer file_mru file<CR>
-nnoremap gl :Unite -buffer-name=files buffer file_mru file<CR>
-
-" resume
-nnoremap gn :UniteResume<CR>
-
-" config
-let g:unite_source_file_mru_limit = 200
-let g:unite_kind_openable_cd_command = 'CD'
-let g:unite_kind_openable_lcd_command = 'LCD'
-let g:unite_source_file_mru_filename_format = ''
-
-" unite-grep
-function! s:unite_grep_interactive(target)
-	let pattern = input('Pattern: ')
-	if empty(pattern)
-		" try to use the current search
-		let pattern = substitute(@/,'\\', '\\\\', 'g')
-	else
-		" set as current search (if not empty)
-		let @/ = pattern
-	endif
-	let command = 'Unite -buffer-name=search grep:'.a:target.'::'.pattern
-	execute command
-	echo ':'.command
-endfunction
-nnoremap <silent> g/ :call <sid>unite_grep_interactive('%')<CR>
-nnoremap <silent> g? :call <sid>unite_grep_interactive('')<CR>
-nnoremap <silent> gs :Unite neosnippet<CR>
-
-" }}}
-" {{{ unite-outline
-
-NeoBundle 'Shougo/unite-outline'
-
-nnoremap go :Unite outline<CR>
-
-" }}}
-" {{{ unite-history
-
-NeoBundle 'thinca/vim-unite-history'
-
-nnoremap gh :Unite history/command<CR>
-
-" }}}
-" {{{ unite-help
-
-NeoBundle 'tsukkee/unite-help'
-
-nnoremap gH :<C-u>Unite -start-insert help<CR>
-
-" }}}
-" {{{ unite-colorscheme
-
-NeoBundle 'ujihisa/unite-colorscheme'
-
-" }}}
-" {{{ unite-tselect
-
-NeoBundle 'eiiches/unite-tselect'
-nnoremap g<C-]> :<C-u>Unite -immediately tselect:<C-r>=expand('<cword>')<CR><CR>
-nnoremap g] :<C-u>Unite -auto-preview tselect:<C-r>=expand('<cword>')<CR><CR>
-
-" }}}
-" {{{ unite-grep-vcs
-
-" NeoBundle 'lambdalisue/unite-grep-vcs'
-NeoBundleLazy 'lambdalisue/unite-grep-vcs',
-			\ {
-			\     'autoload': {
-			\         'unite_sources': ['grep/git', 'grep/hg'],
-			\     }
-			\ }
-
-nnoremap <silent> ,grep :Unite grep/git:.<CR>
-nnoremap <S-C-G> :<C-u>Unite grep/git:.<CR><C-R>=expand("<cword>")<CR>
-hi link uniteSource__GrepPattern Identifier
-
-" }}}
-" {{{ neocomplcache / neocomplete
-
-NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
-if neobundle#is_installed('neocomplete')
-	let g:neocomplete#enable_at_startup = 1
-	let g:neocomplete#enable_ignore_case = 1
-	let g:neocomplete#enable_smart_case = 1
-	let g:neocomplete#force_overwrite_completefunc = 1
-	if !exists('g:neocomplete#force_omni_input_patterns')
-		let g:neocomplete#force_omni_input_patterns = {}
-	endif
-	let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
-	let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-elseif neobundle#is_installed('neocomplcache')
-	let g:neocomplcache_enable_at_startup = 1
-	let g:neocomplcache_force_overwrite_completefunc = 1
-	if !exists("g:neocomplcache_force_omni_patterns")
-		let g:neocomplcache_force_omni_patterns = {}
-	endif
-	let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|::'
-endif
-
-" }}}
-" {{{ javacomplete
-
-NeoBundle 'vim-scripts/javacomplete'
-augroup vimrc-javacomplete
-	au!
-	au Filetype java setlocal omnifunc=javacomplete#Complete
-augroup END
-
-" }}}
-" {{{ neosnippet.vim
-
-NeoBundle 'Shougo/neosnippet.vim'
-
-imap <C-l> <Plug>(neosnippet_expand_or_jump)
-smap <C-l> <Plug>(neosnippet_expand_or_jump)
-xmap <C-l> <Plug>(neosnippet_expand_target)
-
-let g:neosnippet#snippets_directory = '~/.vim/snippets'
-
-" }}}
-" {{{ neosnippet-snippets
-
-NeoBundle 'Shougo/neosnippet-snippets'
-
-" }}}
-" {{{ neomru
-
-NeoBundle 'Shougo/neomru.vim'
-
-" }}}
-" {{{ vimproc
-
-NeoBundle 'Shougo/vimproc'
-
-" }}}
-" {{{ emmet-vim
-
-NeoBundle 'mattn/emmet-vim'
-
-" }}}
-" {{{ argtextobj.vim
-
-NeoBundle 'vim-scripts/argtextobj.vim'
-
-" }}}
-" {{{ drawit
-
-NeoBundle 'vim-scripts/DrawIt'
-
-" }}}
-" {{{ alignta
-
-NeoBundle 'h1mesuke/vim-alignta'
-
-" }}}
-" {{{ localrc
-
-NeoBundle 'thinca/vim-localrc'
-
-" }}}
-" {{{ matchit
-
-NeoBundle 'vim-scripts/matchit.zip'
-
-" }}}
-" {{{ matchit-python
-
-NeoBundle 'vim-scripts/python_match.vim'
-
-" }}}
-" {{{ easymotion
-
-NeoBundle 'Lokaltog/vim-easymotion'
-let g:EasyMotion_do_mapping = 0
-let g:EasyMotion_smartcase = 1
-nmap s <Plug>(easymotion-s2)
-
-" }}}
-" {{{ vim-altr
-
-NeoBundle 'kana/vim-altr'
-nmap ga <Plug>(altr-forward)
-nmap gA <Plug>(altr-back)
-
-call altr#define('vimrc', 'gvimrc', 'lvimrc', 'lgvimrc')
-call altr#define('.vimrc', '.gvimrc', '.vim/lvimrc', '.vim/lgvimrc')
-call altr#define('%.cpp', '%.hpp', '%.c', '%.h')
-
-" rule for django
-" call altr#define('%/views.py', '%/models.py', '%/urls.py', '%/admin.py', '%/tests.py', '%/settings.py')
-call altr#define('views.py', 'models.py', 'urls.py', 'admin.py', 'tests.py', 'settings.py')
-
-" rule for autotools
-call altr#define('Makefile.am', 'configure.ac')
-
-" rule for go
-call altr#define('%.go.in', '%.go', '%_test.go')
-
-" }}}
-" {{{ tex.vim
-
-NeoBundle 'vim-scripts/tex.vim--Tanzler'
-
-" }}}
-" {{{ srcexpl.vim
-
-NeoBundle 'vim-scripts/Source-Explorer-srcexpl.vim'
-
-nnoremap <silent> <Leader>j :SrcExplToggle<CR>
-let g:SrcExpl_winHeight = 8 " // Set the height of Source Explorer window
-let g:SrcExpl_refreshTime = 100 " // Set 100 ms for refreshing the Source Explorer
-let g:SrcExpl_jumpKey = "<ENTER>" " // Set "Enter" key to jump into the exact definition context
-let g:SrcExpl_gobackKey = "<SPACE>" " // Set "Space" key for back from the definition context
-" // In order to Avoid conflicts, the Source Explorer should know what plugins
-" // are using buffers. And you need add their bufname into the list below
-" // according to the command ":buffers!"
-let g:SrcExpl_pluginList = [
-        \ "__Tag_List__",
-        \ "_NERD_tree_",
-        \ "Source_Explorer"
-    \ ]
-let g:SrcExpl_searchLocalDef = 0 " search local file for the keyword
-let g:SrcExpl_isUpdateTags = 0 " // Let the Source Explorer update the tags file when opening
-let g:SrcExpl_updateTagsCmd = "ctags --c++-kinds=+p --fields=+iaS --extra=+q --sort=foldcase --exclude=*~ ." " // Use program 'ctags' with argument '--sort=foldcase -R' to update a tags file
-let g:SrcExpl_updateTagsKey = "<F12>" " // Set <F12> key for updating the tags file artificially
-
-" }}}
-" {{{ fugitive.vim
-
-NeoBundle 'tpope/vim-fugitive'
-nnoremap ,git :Git<Space>
-nnoremap <silent> ,log :silent Glog \| redraw!<CR>
-nnoremap <silent> ,st :silent Gstatus<CR>
-nnoremap <silent> ,diff :Gdiff<CR>
-nnoremap <silent> ,commit :Gcommit<CR>
-nnoremap <silent> ,orig :Gvsplit<CR>
-nnoremap <silent> ,cached :Git diff --cached<CR>
-
-" }}}
-" {{{ GNONEAlignArguments
-" http://damien.lespiau.name/blog/2009/12/07/aligning-c-function-parameters-with-vim/
-" http://git.lespiau.name/cgit/sk/plain/dotfiles/vim/plugin/GNOME-align-args.vim
-
-noremap <Leader>g :GNOMEAlignArguments<CR>
-
-" }}}
-" {{{  vim-css-color
-
-NeoBundle 'eiiches/vim-css-color'
-
-" }}}
-" {{{ vim-colored-colorscheme
-
-NeoBundle 'eiiches/vim-colored-colorscheme'
-
-" }}}
-" {{{ rainbowbrackets
-
-NeoBundle 'eiiches/vim-rainbowbrackets'
-
-let g:rainbowbrackets_colors =
-			\ [
-			\   'ctermfg=9',
-			\   'ctermfg=10',
-			\   'ctermfg=33',
-			\   'ctermfg=190'
-			\ ]
-let g:rainbowbrackets_enable_round_brackets = 1
-let g:rainbowbrackets_enable_curly_brackets = 0
-let g:rainbowbrackets_enable_square_brackets = 0
-
-augroup vimrc-rainbowbrackets
-	autocmd!
-	autocmd FileType javascript let b:rainbowbrackets_enable_curly_brackets = 1
-augroup END
-
-" }}}
-" {{{ colorconvert.vim
-
-NeoBundle 'eiiches/vim-colorconvert'
-
-let g:colorconvert_profile = 'GnomeTerminal.Tango'
-
-" }}}
-" {{{ vimfiler
-
-NeoBundle 'Shougo/vimfiler.vim'
-let g:vimfiler_as_default_explorer = 1
-
-" }}}
-" {{{ nerdtree
-
-NeoBundle 'scrooloose/nerdtree'
-nnoremap <Leader>f :<C-u>NERDTreeFocus<CR>
-let g:NERDTreeQuitOnOpen = 1
-
-" }}}
-" {{{ errormarker
-
-NeoBundle 'vim-scripts/errormarker.vim'
-
-" }}}
-" {{{ vim-go
-
-NeoBundle 'fatih/vim-go'
-let g:go_snippet_engine = "neosnippet"
-
-" }}}
-" {{{ tagbar
-
-NeoBundle 'majutsushi/tagbar'
-nnoremap <Leader>t :TagbarOpenAutoClose<CR>
-
-" }}}
-" {{{ molokai
-
-NeoBundle 'fatih/molokai'
-
-augroup vimrc-color
-	au!
-	au ColorScheme * hi Normal ctermbg=none
-	au ColorScheme * hi Folded ctermbg=none
-augroup END
-colorscheme molokai
-
-" }}}
-" {{{ editorconfig
-
-NeoBundle 'editorconfig/editorconfig-vim'
-
-" }}}
-" {{{ rust.vim
-
-NeoBundle 'wting/rust.vim'
-
-" }}}
-" {{{ clang_complete
-
-NeoBundle 'Rip-Rip/clang_complete'
-let g:clang_complete_auto = 0
-let g:clang_use_library = 1
-let g:clang_library_path = '/usr/share/clang'
-let g:clang_user_options = '2>/dev/null|| exit 0'
-let g:clang_complete_copen = 1
-let g:clang_auto_select = 0
 
 " }}}
 
