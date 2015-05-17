@@ -1113,7 +1113,7 @@ au vimrc FileType vimfiler nnoremap <silent><buffer><expr> t vimfiler#do_switch_
 " }}}
 " {{{ majutsushi/tagbar
 
-nnoremap <Leader>t :TagbarOpenAutoClose<CR>
+nnoremap <Leader>t :TagbarOpen fj<CR>
 
 " }}}
 " {{{ kana/vim-altr
