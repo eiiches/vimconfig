@@ -20,8 +20,13 @@ endif
 " {{{
 
 set nocompatible
+
 filetype off
 filetype plugin indent off
+
+augroup vimrc
+	au!
+augroup END
 
 " }}}
 
@@ -44,7 +49,7 @@ NeoBundle 'kana/vim-metarw'
 NeoBundle 'kana/vim-metarw-git'
 NeoBundle 'Shougo/unite.vim'
 NeoBundleLazy 'Shougo/unite-outline', {'autoload': {'unite_sources': ['outline']}}
-NeoBundleLazy 'thinca/vim-unite-history', {'autoload': {'unite_sources': ['history/command']}}
+NeoBundle 'thinca/vim-unite-history'
 NeoBundleLazy 'tsukkee/unite-help', {'autoload': {'unite_sources': ['help']}}
 NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload': {'unite_sources': ['colorscheme']}}
 NeoBundleLazy 'eiiches/unite-tselect', {'autoload': {'unite_sources': ['tselect']}}
@@ -84,13 +89,6 @@ call neobundle#end()
 " }}}
 
 " Settings: ----------------------------
-" {{{ reset augroup vimrc
-
-augroup vimrc
-	au!
-augroup END
-
-" }}}
 " {{{ .vimrc editing and reloading
 
 " automatic reloading
@@ -102,14 +100,14 @@ if has("autocmd")
 				\| endif
 endif
 
-function! s:open_vimrc(command, vimrc)
+function! s:OpenVimRc(command, vimrc)
 	if empty(bufname("%")) && ! &modified && empty(&buftype)
 		execute 'edit' a:vimrc
 	else
 		execute a:command a:vimrc
 	endif
 endfunction
-nnoremap <silent> <leader>v :call <sid>open_vimrc('vsplit', $MYVIMRC)<CR>
+nnoremap <silent> <leader>v :call <sid>OpenVimRc('vsplit', $MYVIMRC)<CR>
 
 " }}}
 " {{{ file encoding
@@ -933,12 +931,12 @@ autocmd vimrc FileType unite nnoremap <buffer><expr> vsp unite#do_action('vsplit
 autocmd vimrc FileType unite nnoremap <buffer><expr> tab unite#do_action('tabopen')
 
 " NOTE: overriding the mapping for 'gb', which was :ls :buf
-nnoremap gb :UniteWithBufferDir -buffer-name=files buffer file_mru file<CR>
-nnoremap gc :UniteWithCurrentDir -buffer-name=files buffer file_mru file<CR>
-nnoremap gl :Unite -buffer-name=files buffer file_mru file<CR>
+nnoremap gb :<C-u>UniteWithBufferDir -prompt=>\  -buffer-name=files buffer file_mru file<CR>
+nnoremap gc :<C-u>UniteWithCurrentDir -prompt=>\  -buffer-name=files buffer file_mru file<CR>
+nnoremap gl :<C-u>Unite -prompt=>\  -buffer-name=files buffer file_mru file<CR>
 
 " resume
-nnoremap gn :UniteResume<CR>
+nnoremap gn :<C-u>UniteResume -prompt=>\ <CR>
 
 " config
 let g:unite_source_file_mru_limit = 200
@@ -962,7 +960,8 @@ function! s:unite_grep_interactive(target)
 endfunction
 nnoremap <silent> g/ :call <sid>unite_grep_interactive('%')<CR>
 nnoremap <silent> g? :call <sid>unite_grep_interactive('')<CR>
-nnoremap <silent> gs :Unite neosnippet<CR>
+
+nnoremap <silent> gs :<C-u>Unite -prompt=>\  -start-insert neosnippet<CR>
 
 " }}}
 " {{{ shougo/unite-outline
@@ -972,7 +971,9 @@ nnoremap go :<C-u>Unite -auto-preview -prompt=>\  -start-insert outline<CR>
 " }}}
 " {{{ thinca/vim-unite-history
 
-nnoremap gh :Unite history/command<CR>
+let g:unite_source_history_yank_enable = 1
+nnoremap gh :<C-u>Unite -prompt=>\  history/command<CR>
+nnoremap gP :<C-u>Unite -prompt=>\  history/yank<CR>
 
 " }}}
 " {{{ tsukkee/unite-help
@@ -1483,8 +1484,8 @@ endif
 " }}}
 " {{{ :Hex
 
-command! Hex set binary | edit | execute ':%!xxd' | set ft=xxd
-command! Unhex %!xxd -r
+command! Hex set binary | edit | execute ':%!xxd -g1' | set ft=xxd
+command! Unhex %!xxd -g1 -r
 
 " }}}
 " {{{ :Maps
