@@ -76,7 +76,6 @@ NeoBundle 'eiiches/vim-colored-colorscheme'
 NeoBundle 'eiiches/vim-rainbowbrackets'
 NeoBundle 'eiiches/vim-colorconvert'
 NeoBundle 'Shougo/vimfiler.vim'
-NeoBundleLazy 'scrooloose/nerdtree', {'augroup': 'NERDTree'}
 NeoBundle 'vim-scripts/errormarker.vim'
 NeoBundleLazy 'fatih/vim-go', {'autoload': {'filetypes': ['go']}}
 NeoBundle 'majutsushi/tagbar'
@@ -1091,13 +1090,23 @@ let g:colorconvert_profile = 'GnomeTerminal.Tango'
 " }}}
 " {{{ shougo/vimfiler.vim
 
+let g:loaded_netrwPlugin = 1 " disable netrw
 let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_ignore_pattern = '^\%(\.git\|.\+\~\)$'
 
-" }}}
-" {{{ scrooloose/nerdtree
+nnoremap <Leader>f :<C-u>VimFilerTree<CR>
 
-nnoremap <Leader>f :<C-u>NeoBundleSource 'scrooloose/nerdtree'<CR>:NERDTreeFocus<CR>
-let g:NERDTreeQuitOnOpen = 1
+command! VimFilerTree call VimFilerTree(<f-args>)
+function! VimFilerTree(...)
+	let l:h = expand(a:0 > 0 ? a:1 : '%:p:h')
+	let l:path = isdirectory(l:h) ? l:h : ''
+	exec ':VimFiler -split -simple -winwidth=32 -no-quit ' . l:path
+	wincmd t
+	setl winfixwidth
+endfunction
+
+au vimrc FileType vimfiler nnoremap <silent><buffer><expr> v vimfiler#do_switch_action('vsplit')
+au vimrc FileType vimfiler nnoremap <silent><buffer><expr> t vimfiler#do_switch_action('tabsplit')
 
 " }}}
 " {{{ majutsushi/tagbar
