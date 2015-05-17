@@ -82,6 +82,7 @@ NeoBundle 'majutsushi/tagbar'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundleLazy 'wting/rust.vim', {'autoload': {'filetypes': ['rust']}}
 NeoBundleLazy 'Rip-Rip/clang_complete', {'autoload': {'filetypes': ['c', 'cpp']}}
+NeoBundle 't9md/vim-choosewin'
 
 call neobundle#end()
 
@@ -1128,6 +1129,18 @@ call altr#define('views.py', 'models.py', 'urls.py', 'admin.py', 'tests.py', 'se
 
 " rule for autotools
 call altr#define('Makefile.am', 'configure.ac')
+
+" }}}
+" {{{ t9md/vim-choosewin
+
+nmap <C-w>w <Plug>(choosewin)
+nmap <C-w><C-w> <Plug>(choosewin)
+
+let g:choosewin_overlay_enable = 1
+let g:choosewin_overlay_clear_multibyte = 1
+let g:choosewin_blink_on_land = 0
+let g:choosewin_statusline_replace = 1
+let g:choosewin_tabline_replace = 0
 
 " }}}
 
