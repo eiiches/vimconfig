@@ -85,6 +85,7 @@ NeoBundleLazy 'Rip-Rip/clang_complete', {'autoload': {'filetypes': ['c', 'cpp']}
 NeoBundle 't9md/vim-choosewin'
 
 call neobundle#end()
+NeoBundleCheck
 
 " }}}
 
