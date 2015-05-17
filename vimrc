@@ -1094,7 +1094,7 @@ let g:colorconvert_profile = 'GnomeTerminal.Tango'
 
 let g:loaded_netrwPlugin = 1 " disable netrw
 let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_ignore_pattern = '^\%(\.git\|.\+\~\)$'
+let g:vimfiler_ignore_pattern = '^\%(\.git\|.\+\~\|\..\+\.swp\)$'
 
 nnoremap <Leader>f :<C-u>VimFilerTree<CR>
 
