@@ -931,9 +931,9 @@ autocmd vimrc FileType unite nnoremap <buffer><expr> vsp unite#do_action('vsplit
 autocmd vimrc FileType unite nnoremap <buffer><expr> tab unite#do_action('tabopen')
 
 " NOTE: overriding the mapping for 'gb', which was :ls :buf
-nnoremap gb :<C-u>UniteWithBufferDir -prompt=>\  -buffer-name=files buffer file_mru file<CR>
-nnoremap gc :<C-u>UniteWithCurrentDir -prompt=>\  -buffer-name=files buffer file_mru file<CR>
-nnoremap gl :<C-u>Unite -prompt=>\  -buffer-name=files buffer file_mru file<CR>
+nnoremap gb :<C-u>UniteWithBufferDir -prompt=>\  -start-insert -buffer-name=files buffer file_mru file<CR>
+nnoremap gc :<C-u>UniteWithCurrentDir -prompt=>\  -start-insert -buffer-name=files buffer file_mru file<CR>
+nnoremap gl :<C-u>Unite -prompt=>\  -start-insert -buffer-name=files buffer file_mru file<CR>
 
 " resume
 nnoremap gn :<C-u>UniteResume -prompt=>\ <CR>
