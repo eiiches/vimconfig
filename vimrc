@@ -971,8 +971,8 @@ nnoremap go :<C-u>Unite -auto-preview -prompt=>\  -start-insert outline<CR>
 " {{{ thinca/vim-unite-history
 
 let g:unite_source_history_yank_enable = 1
-nnoremap gh :<C-u>Unite -prompt=>\  history/command<CR>
-nnoremap gP :<C-u>Unite -prompt=>\  history/yank<CR>
+nnoremap gh :<C-u>Unite -prompt=>\  -start-insert history/command<CR>
+nnoremap gP :<C-u>Unite -prompt=>\  -start-insert history/yank<CR>
 
 " }}}
 " {{{ tsukkee/unite-help
