@@ -1181,7 +1181,6 @@ augroup vimrc-go
 	au!
 	au FileType go nnoremap <silent> <C-]> :<C-u>GoDef<CR>
 	au FileType go nnoremap <C-g>o :<C-u>GoImports<CR>
-	au BufWritePost *.go silent GoLint
 augroup END
 
 call altr#define('%.go.in', '%.go', '%_test.go')
