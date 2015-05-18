@@ -54,7 +54,9 @@ NeoBundleLazy 'tsukkee/unite-help', {'autoload': {'unite_sources': ['help']}}
 NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload': {'unite_sources': ['colorscheme']}}
 NeoBundleLazy 'eiiches/unite-tselect', {'autoload': {'unite_sources': ['tselect']}}
 NeoBundleLazy 'lambdalisue/unite-grep-vcs', {'autoload': {'unite_sources': ['grep/git', 'grep/hg']}}
-NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
+if has('lua')
+	NeoBundle 'Shougo/neocomplete'
+endif
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neomru.vim'
@@ -902,7 +904,7 @@ nnoremap <silent> <C-g>* :<C-u>Unite -auto-preview -prompt=>\  -start-insert gre
 hi link uniteSource__GrepPattern Identifier
 
 " }}}
-" {{{ shougo/{neocomplete,neocomplcache}
+" {{{ shougo/neocomplete
 
 if neobundle#is_installed('neocomplete')
 	let g:neocomplete#enable_at_startup = 1
@@ -914,13 +916,6 @@ if neobundle#is_installed('neocomplete')
 	endif
 	let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
 	let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-elseif neobundle#is_installed('neocomplcache')
-	let g:neocomplcache_enable_at_startup = 1
-	let g:neocomplcache_force_overwrite_completefunc = 1
-	if !exists("g:neocomplcache_force_omni_patterns")
-		let g:neocomplcache_force_omni_patterns = {}
-	endif
-	let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|::'
 endif
 
 " }}}
