@@ -95,7 +95,8 @@ NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundleLazy 'wting/rust.vim', {'autoload': {'filetypes': ['rust']}}
 NeoBundleLazy 'Rip-Rip/clang_complete', {'autoload': {'filetypes': ['c', 'cpp']}}
 NeoBundle 't9md/vim-choosewin'
-NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundleLazy 'derekwyatt/vim-scala', {'autoload': {'filetypes': ['scala']}}
 
 NeoBundle 'vim-scripts/nginx.vim'
