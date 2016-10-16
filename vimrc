@@ -60,7 +60,17 @@ endif
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/vimproc'
+
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
+
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'vim-scripts/argtextobj.vim'
 NeoBundle 'vim-scripts/DrawIt'
@@ -86,6 +96,22 @@ NeoBundleLazy 'wting/rust.vim', {'autoload': {'filetypes': ['rust']}}
 NeoBundleLazy 'Rip-Rip/clang_complete', {'autoload': {'filetypes': ['c', 'cpp']}}
 NeoBundle 't9md/vim-choosewin'
 NeoBundle 'bling/vim-airline'
+NeoBundleLazy 'derekwyatt/vim-scala', {'autoload': {'filetypes': ['scala']}}
+
+NeoBundle 'vim-scripts/nginx.vim'
+
+NeoBundle 'ujihisa/ref-hoogle'
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'ujihisa/neco-ghc'
+NeoBundle 'ctrlpvim/ctrlp.vim'
+
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'hashivim/vim-terraform'
+
+NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'Quramy/tsuquyomi'
 
 call neobundle#end()
 NeoBundleCheck
@@ -1032,6 +1058,7 @@ call altr#define('views.py', 'models.py', 'urls.py', 'admin.py', 'tests.py', 'se
 
 " rule for autotools
 call altr#define('Makefile.am', 'configure.ac')
+call altr#define('.tsx', '.html')
 
 " }}}
 " {{{ t9md/vim-choosewin
@@ -1044,6 +1071,18 @@ let g:choosewin_overlay_clear_multibyte = 1
 let g:choosewin_blink_on_land = 0
 let g:choosewin_statusline_replace = 1
 let g:choosewin_tabline_replace = 0
+
+" }}}
+" {{{ ctrlpvim/ctrlp.vim
+
+let g:ctrlp_custom_ignore = {
+			\ 'dir':  '\v[\/](\.(git|hg|svn)|node_modules|bower_components|target)$'
+			\ }
+
+" }}}
+" {{{ Quramy/tsuquyomi
+
+let g:tsuquyomi_completion_detail = 1
 
 " }}}
 
@@ -1261,8 +1300,10 @@ endfunction
 augroup vimrc-markdown
 	au!
 	au BufRead,BufNewFile *.md set filetype=markdown
-	au FileType markdown nnoremap <silent><buffer> <Leader>r
-				\ :call <sid>preview_markdown(expand('%:p'))<CR>
+	" au FileType markdown nnoremap <silent><buffer> <Leader>r
+				" \ :call <sid>preview_markdown(expand('%:p'))<CR>
+	au FileType markdown nnoremap <silent> <Leader>r :PrevimOpen<CR>
+	let g:vim_markdown_folding_disabled=1
 augroup END
 
 " }}}
@@ -1375,6 +1416,27 @@ augroup vimrc-vala
 	au BufRead *.vala,*.vapi setlocal cindent
 	au BufRead,BufNewFile *.vala,*.vapi setfiletype vala
 augroup END
+
+" }}}
+" {{{ IO
+
+augroup vimrc-io
+	au!
+	au BufRead,BufNewFile *.io setfiletype io
+augroup END
+
+let g:quickrun_config['io'] = {
+			\ 'type': 'io',
+			\ 'command': 'io',
+			\ }
+
+" }}}
+" {{{ scala
+
+let g:quickrun_config['scala'] = {
+			\ 'type': 'scala',
+			\ 'command': 'scala',
+			\ }
 
 " }}}
 
